@@ -1,0 +1,287 @@
+---
+import DjangoIcon from "@/components/icons/DjangoIcon.astro";
+import NodeIcon from "@/components/icons/NodeIcon.astro";
+import PostgreIcon from "@/components/icons/PostgreIcon.astro";
+import ReactIcon from "@/components/icons/ReactIcon.astro";
+import MySQLIcon from "@/components/icons/MySQLIcon.astro";
+import TailwindIcon from "@/components/icons/TailwindIcon.astro";
+import { Dot, GithubLogo, LinkBreak } from "@phosphor-icons/react";
+---
+
+<section id="proyectos" data-section="proyectos" class="pt-20 pb-16">
+  <span class="text-zinc-300 flex flex-row gap-4 items-center justify-start">
+    <!-- <Bag size={28} weight="fill" /> -->
+    <h2 class="text-3xl font-bold">Proyectos</h2>
+  </span>
+  <div class="flex flex-col gap-12 py-8">
+    <article class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <span class="bg-zinc-900/50 backdrop-blur rounded-2xl overflow-hidden">
+        <img
+          src="https://via.placeholder.com/300x200"
+          alt="pokedex"
+          class="w-full h-full object-cover transform transition-transform duration-300 hover:scale-110"
+        />
+      </span>
+      <span class="flex flex-col justify-between gap-1">
+        <h2 class="text-zinc-300 font-bold text-2xl">
+          Pokedex - pokemon API
+        </h2>
+        <div class="py-2 flex flex-row gap-2 items-center justify-start">
+          <button
+            class="rounded-full flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
+          >
+            <ReactIcon name="react" class="w-4 h-4" />
+            <span class="text-zinc-300 text-xs font-bold">react</span>
+          </button>
+          <button
+            class="rounded-full flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
+          >
+            <TailwindIcon name="tailwind" class="w-4 h-4" />
+            <span class="text-zinc-300 text-xs font-bold">tailwind</span>
+          </button>
+        </div>
+        <span class="text-emerald-400 text-xs flex flex-row items-center">
+          <Dot size={32} weight="bold" />
+          <strong>finalizado</strong>
+        </span>
+        <p class="text-zinc-300">
+          Pokedex es una aplicación web que permite buscar y visualizar
+          información de los pokemones.
+        </p>
+        <div class="py-2 flex flex-row gap-8 items-center justify-start">
+          <button
+            class="flex text-zinc-300 flex-row gap-1 items-center justify-center"
+          >
+            <GithubLogo size={20} />
+            <span class="text-xs font-bold">code</span>
+          </button>
+          <button
+            class="flex text-zinc-300 flex-row gap-1 items-center justify-center"
+          >
+            <LinkBreak size={20} />
+            <span class="text-xs font-bold">preview</span>
+          </button>
+        </div>
+      </span>
+    </article>
+    <article class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <span class="bg-zinc-900/50 backdrop-blur rounded-2xl overflow-hidden">
+        <img
+          src="https://via.placeholder.com/300x200"
+          alt="pokedex"
+          class="w-full h-full object-cover transform transition-transform duration-300 hover:scale-110"
+        />
+      </span>
+      <span class="flex flex-col justify-between gap-1">
+        <h2 class="text-zinc-300 font-bold text-2xl">
+          Will you be my valentine?
+        </h2>
+        <div class="py-2 flex flex-row gap-2 items-center justify-start">
+          <button
+            class="rounded-full flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
+          >
+            <ReactIcon name="react" class="w-4 h-4" />
+            <span class="text-zinc-300 text-xs font-bold">react</span>
+          </button>
+          <button
+            class="rounded-full flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
+          >
+            <TailwindIcon name="tailwind" class="w-4 h-4" />
+            <span class="text-zinc-300 text-xs font-bold">tailwind</span>
+          </button>
+        </div>
+        <span class="text-emerald-400 text-xs flex flex-row items-center">
+          <Dot size={32} weight="bold" />
+          <strong>finalizado</strong>
+        </span>
+        <p class="text-zinc-300 text-pretty">
+          Esta aplicación es alusiva al día de San Valentín, donde se el usuario
+          no puede rechazar la propuesta.
+        </p>
+        <div class="py-2 flex flex-row gap-8 items-center justify-start">
+          <button
+            class="flex text-zinc-300 flex-row gap-1 items-center justify-center"
+          >
+            <GithubLogo size={20} />
+            <span class="text-xs font-bold">code</span>
+          </button>
+          <button
+            class="flex text-zinc-300 flex-row gap-1 items-center justify-center"
+          >
+            <LinkBreak size={20} />
+            <span class="text-xs font-bold">preview</span>
+          </button>
+        </div>
+      </span>
+    </article>
+    <article class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <span class="bg-zinc-900/50 backdrop-blur rounded-2xl overflow-hidden">
+        <img
+          src="https://via.placeholder.com/300x200"
+          alt="pokedex"
+          class="w-full h-full object-cover transform transition-transform duration-300 hover:scale-110"
+        />
+      </span>
+      <span class="flex flex-col justify-between gap-1">
+        <h2 class="text-zinc-300 font-bold text-2xl">
+          Geo Weather - clima API
+        </h2>
+        <div class="py-2 flex flex-row gap-2 items-center justify-start">
+          <button
+            class="rounded-full flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
+          >
+            <ReactIcon name="react" class="w-4 h-4" />
+            <span class="text-zinc-300 text-xs font-bold">react</span>
+          </button>
+          <button
+            class="rounded-full flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
+          >
+            <TailwindIcon name="tailwind" class="w-4 h-4" />
+            <span class="text-zinc-300 text-xs font-bold">tailwind</span>
+          </button>
+        </div>
+        <span class="text-emerald-400 text-xs flex flex-row items-center">
+          <Dot size={32} weight="bold" />
+          <strong>finalizado</strong>
+        </span>
+        <p class="text-zinc-300 text-pretty">
+          Geo Weather es una aplicación web que permite buscar y visualizar
+          información del clima de cualquier ciudad.
+        </p>
+        <div class="py-2 flex flex-row gap-8 items-center justify-start">
+          <button
+            class="flex text-zinc-300 flex-row gap-1 items-center justify-center"
+          >
+            <GithubLogo size={20} />
+            <span class="text-xs font-bold">code</span>
+          </button>
+          <button
+            class="flex text-zinc-300 flex-row gap-1 items-center justify-center"
+          >
+            <LinkBreak size={20} />
+            <span class="text-xs font-bold">preview</span>
+          </button>
+        </div>
+      </span>
+    </article>
+    <article class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <span class="bg-zinc-900/50 backdrop-blur rounded-2xl overflow-hidden">
+        <img
+          src="https://via.placeholder.com/300x200"
+          alt="pokedex"
+          class="w-full h-full object-cover transform transition-transform duration-300 hover:scale-110"
+        />
+      </span>
+      <span class="flex flex-col justify-between gap-1">
+        <h2 class="text-zinc-300 font-bold text-2xl">AIC epsi</h2>
+        <div class="py-2 md:flex grid grid-cols-4 md:flex-row gap-2 items-center justify-start">
+          <button
+            class="rounded-full col-span-2 flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
+          >
+            <ReactIcon name="react" class="w-4 h-4" />
+            <span class="text-zinc-300 text-xs font-bold">react</span>
+          </button>
+          <button
+            class="rounded-full col-span-2 flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
+          >
+            <TailwindIcon name="tailwind" class="w-4 h-4" />
+            <span class="text-zinc-300 text-xs font-bold">tailwind</span>
+          </button>
+          <button
+            class="rounded-full col-span-2 flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
+          >
+            <NodeIcon name="node.js" class="w-4 h-4" />
+            <span class="text-zinc-300 text-xs font-bold">node.js</span>
+          </button>
+          <button
+            class="rounded-full col-span-2 flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
+          >
+            <MySQLIcon name="mysql" class="w-4 h-4" />
+            <span class="text-zinc-300 text-xs font-bold">mySQL</span>
+          </button>
+        </div>
+        <span class="text-emerald-400 text-xs flex flex-row items-center">
+          <Dot size={32} weight="bold" />
+          <strong>finalizado</strong>
+        </span>
+        <p class="text-zinc-300 text-pretty">
+          Prueba técnica para el desarrollo de un sistema de gestión para la
+          aasociacion indigena del cauca.
+        </p>
+        <div class="py-2 flex flex-row gap-8 items-center justify-start">
+          <button
+            class="flex text-zinc-300 flex-row gap-1 items-center justify-center"
+          >
+            <GithubLogo size={20} />
+            <span class="text-xs font-bold">code</span>
+          </button>
+          <!-- <button
+            class="flex text-zinc-300 flex-row gap-1 items-center justify-center"
+          >
+            <LinkBreak size={20} />
+            <span class="text-xs font-bold">preview</span>
+          </button> -->
+        </div>
+      </span>
+    </article>
+    <article class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <span class="bg-zinc-900/50 backdrop-blur rounded-2xl overflow-hidden">
+        <img
+          src="https://via.placeholder.com/300x200"
+          alt="pokedex"
+          class="w-full h-full object-cover transform transition-transform duration-300 hover:scale-110"
+        />
+      </span>
+      <span class="flex flex-col justify-between gap-1">
+        <h2 class="text-zinc-300 font-bold text-2xl">Manganiacos</h2>
+        <div class="py-2 md:flex grid grid-cols-4 md:flex-row gap-2 items-center justify-start">
+          <button
+            class="rounded-full col-span-2 flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
+          >
+            <ReactIcon name="react" class="w-4 h-4" />
+            <span class="text-zinc-300 text-xs font-bold">react</span>
+          </button>
+          <button
+            class="rounded-full col-span-2 flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
+          >
+            <TailwindIcon name="tailwind" class="w-4 h-4" />
+            <span class="text-zinc-300 text-xs font-bold">tailwind</span>
+          </button>
+          <button
+            class="rounded-full col-span-2 flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
+          >
+            <DjangoIcon name="django" class="w-4 h-4" />
+            <span class="text-zinc-300 text-xs font-bold">django</span>
+          </button>
+          <button
+            class="rounded-full col-span-2 flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
+          >
+            <PostgreIcon name="postgre" class="w-4 h-4" />
+            <span class="text-zinc-300 text-xs font-bold">postgreSQL</span>
+          </button>
+        </div>
+        <span class="text-amber-400 text-xs flex flex-row items-center">
+          <Dot size={32} weight="bold" />
+          <strong>en desarrollo</strong>
+        </span>
+        <p class="text-zinc-300 text-pretty">
+          Manganiacos es una aplicacion e-commerce para la venta de mangas.
+        </p>
+        <div class="py-2 flex flex-row gap-8 items-center justify-start">
+          <button
+            class="flex text-zinc-300 flex-row gap-1 items-center justify-center"
+          >
+            <GithubLogo size={20} />
+            <span class="text-xs font-bold">code</span>
+          </button>
+          <!-- <button
+            class="flex text-zinc-300 flex-row gap-1 items-center justify-center"
+          >
+            <LinkBreak size={20} />
+            <span class="text-xs font-bold">preview</span>
+          </button> -->
+        </div>
+      </span>
+    </article>
+  </div>
+</section>

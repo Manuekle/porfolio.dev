@@ -1,0 +1,66 @@
+---
+const navItems = [
+  {
+    title: "experiencia",
+    label: "experiencia",
+    url: "/#experiencia",
+  },
+  {
+    title: "proyectos",
+    label: "proyectos",
+    url: "/#proyectos",
+  },
+  {
+    title: "sobre mí",
+    label: "sobre-mi",
+    url: "/#sobre-mi",
+  },
+  {
+    title: "contacto",
+    label: "contacto",
+    url: "mailto:meerazo7@hotmail.com",
+  },
+];
+---
+
+<>
+  <nav
+    class="fixed left-0 top-0 z-10 md:flex hidden items-center w-full justify-center mt-4"
+  >
+    <div
+      class="flex font-bold border-2 px-8 py-2 rounded-full text-zinc-300 gap-8 border-zinc-800/50 bg-zinc-900/50 backdrop-blur"
+    >
+      {
+        navItems.map((link) => (
+          <a
+            href={link.url}
+            aria-label={link.label}
+            class="text-sm transition font-bold text-zinc-300 hover:text-header text-header"
+          >
+            {link.title}
+          </a>
+        ))
+      }
+    </div>
+  </nav>
+  <nav class="fixed top-0 left-0 flex md:hidden z-10 mt-8 px-8">
+    <button
+      class="flex items-center justify-center w-12 h-12 bg-zinc-900/50 border-2 border-zinc-800/50 rounded-full backdrop-blur"
+    >
+      <svg
+        class="w-6 h-6 text-zinc-300"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16m-7 6h7"></path>
+      </svg>
+    </button>
+  </nav>
+</>
+```

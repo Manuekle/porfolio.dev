@@ -1,0 +1,62 @@
+---
+import {
+  NavigationArrow,
+  GithubLogo,
+  LinkedinLogo,
+} from "@phosphor-icons/react";
+---
+
+<section class="flex flex-col">
+  <span class="flex flex-col gap-6 items-start">
+    <div class="flex flex-row items-center gap-6">
+      <figure
+        class="relative rounded-full overflow-hidden border border-zinc-600 w-16 h-16"
+      >
+        <img src="../../public/foto.jpg" alt="profile" />
+      </figure>
+      <button
+        class="rounded-full flex flex-row gap-2 items-center justify-center px-4 py-1 border-2 text-emerald-500 text-xs border-emerald-700 bg-zinc-900  transform transition-transform hover:scale-105 font-bold"
+        >disponible para trabajar
+      </button>
+    </div>
+    <h1
+      class="flex flex-row gap-1 font-bold text-3xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-zinc-200 via-zinc-300 to-zinc-400"
+    >
+      Hola,soy manuel!
+    </h1>
+    <span class="flex text-zinc-300 flex-row gap-3 items-center">
+      <NavigationArrow size={18} weight="bold" />
+      <h3
+        class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-blue-500 to-red-500"
+      >
+        Colombia
+      </h3>
+    </span>
+    <p class="text-balance text-zinc-300 text-lg md:text-xl font-bold">
+      +3 años de experiencia. <strong class="text-header underline"
+        >Ingeniero de software</strong
+      > en proceso. Me gusta trabajar con tecnologías web y me especializo en diseño
+      y desarrollo web.
+    </p>
+  </span>
+</section>
+<section class="flex flex-row gap-4 py-6">
+  <a
+    href="https://www.linkedin.com/in/manuekle/"
+    target="_blank"
+    class="cursor-pointer px-6 py-1 border border-zinc-600 bg-zinc-900 text-white rounded-full flex flex-row gap-2 items-center justify-center"
+  >
+    <LinkedinLogo size={18} weight="bold" />
+    <span class="font-bold"> linkedin </span>
+  </a>
+  <a
+    href="https://github.com/Manuekle"
+    target="_blank"
+    class="cursor-pointer px-6 py-1 border border-zinc-600 bg-zinc-900 text-white rounded-full flex flex-row gap-2 items-center justify-center"
+  >
+    <GithubLogo size={18} weight="bold" />
+    <span class="font-bold">github</span>
+  </a>
+</section>
+
+<style></style>
