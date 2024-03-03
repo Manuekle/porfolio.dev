@@ -1,3 +1,4 @@
+import defaultTheme from "tailwindcss/defaultTheme"
 import animations from "@midudev/tailwind-animations"
 
 /** @type {import('tailwindcss').Config} */
@@ -7,6 +8,26 @@ export default {
     extend: {
       colors: {
         header: "var(--color-header)",
+      },
+      fontFamily: {
+        sans: [
+          "DM Mono",
+          "Inter var",
+          "Inter",
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Roboto",
+          "Oxygen",
+          "Ubuntu",
+          "Cantarell",
+          "Fira Sans",
+          "Droid Sans",
+          "Helvetica Neue",
+          "sans-serif",
+          ...defaultTheme.fontFamily.sans,
+        ],
       },
     },
   },
