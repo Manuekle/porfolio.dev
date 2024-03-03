@@ -1,5 +1,6 @@
 ---
-
+import profileImage from "../assets/img/pic1.jpeg";
+import { Image } from "astro:assets";
 ---
 
 <section id="sobre-mi" data-section="sobre-mi" class="pt-2 py-16">
@@ -7,7 +8,7 @@
     <!-- <Bag size={28} weight="fill" /> -->
     <h2 class="text-3xl font-bold">Sobre mí</h2>
   </span>
-  <div class="grid grid-cols-3">
+  <div class="grid grid-cols-3 gap-8">
     <p class="text-zinc-300 md:col-span-2 col-span-3 py-8 text-balance">
       Me llamo <strong class="text-header">Manuel Esteban</strong>, a los 18
       años comencé a programar y desde entonces no he parado. Me encanta el
@@ -21,5 +22,16 @@
       nuevas. Me gustaría trabajar en una empresa donde pueda aportar mis conocimientos
       y seguir aprendiendo de otros profesionales.
     </p>
+    <span class="w-full col-span-1 flex justify-center items-center">
+      <figure
+        class="relative rounded-full overflow-hidden border border-zinc-600 w-60 h-60"
+      >
+        <Image
+          src={profileImage}
+          alt="profile"
+          class="w-full h-full object-cover"
+        />
+      </figure>
+    </span>
   </div>
 </section>
