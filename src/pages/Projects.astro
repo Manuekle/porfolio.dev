@@ -6,6 +6,7 @@ import ReactIcon from "../components/icons/ReactIcon.astro";
 import MySQLIcon from "../components/icons/MySQLIcon.astro";
 import TailwindIcon from "../components/icons/TailwindIcon.astro";
 import { Dot, GithubLogo, LinkBreak } from "@phosphor-icons/react";
+import AstroIcon from "../components/icons/AstroIcon.astro";
 ---
 
 <section id="proyectos" data-section="proyectos" class="pt-20 pb-16">
@@ -207,6 +208,56 @@ import { Dot, GithubLogo, LinkBreak } from "@phosphor-icons/react";
         <p class="text-zinc-300 text-pretty">
           Prueba técnica para el desarrollo de un sistema de gestión para la
           asociacion indigena del cauca.
+        </p>
+        <div class="py-2 flex flex-row gap-8 items-center justify-start">
+          <button
+            class="flex text-zinc-300 flex-row gap-1 items-center justify-center"
+          >
+            <GithubLogo size={20} />
+            <span class="text-xs font-bold">code</span>
+          </button>
+          <!-- <button
+            class="flex text-zinc-300 flex-row gap-1 items-center justify-center"
+          >
+            <LinkBreak size={20} />
+            <span class="text-xs font-bold">preview</span>
+          </button> -->
+        </div>
+      </span>
+    </article>
+    <article class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <span class="bg-zinc-900/50 backdrop-blur rounded-2xl overflow-hidden">
+        <img
+          src="https://via.placeholder.com/200x100"
+          alt="youtube-converter"
+          class="w-full h-full object-cover transform transition-transform duration-300 hover:scale-110"
+        />
+      </span>
+      <span class="flex flex-col justify-between gap-1">
+        <h2 class="text-zinc-300 font-bold text-2xl">
+          Convertidor de musica de youtube
+        </h2>
+        <div class="py-2 md:flex grid grid-cols-4 md:flex-row gap-2 items-center justify-start">
+          <button
+            class="rounded-full col-span-2 flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
+          >
+            <AstroIcon name="astro" class="w-4 h-4" />
+            <span class="text-zinc-300 text-xs font-bold">astro</span>
+          </button>
+          <button
+            class="rounded-full col-span-2 flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
+          >
+            <TailwindIcon name="tailwind" class="w-4 h-4" />
+            <span class="text-zinc-300 text-xs font-bold">tailwind</span>
+          </button>
+        </div>
+        <span class="text-emerald-400 text-xs flex flex-row items-center">
+          <Dot size={32} weight="bold" />
+          <strong>finalizado</strong>
+        </span>
+        <p class="text-zinc-300 text-pretty">
+          Convertidor de musica de youtube es una aplicación web que permite
+          buscar y descargar música de youtube.
         </p>
         <div class="py-2 flex flex-row gap-8 items-center justify-start">
           <button
