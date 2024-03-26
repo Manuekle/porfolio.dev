@@ -5,7 +5,6 @@ import {
   LinkedinLogo,
 } from "@phosphor-icons/react";
 
-import profileImage from "../assets/img/profile.jpg";
 import { Image } from "astro:assets";
 ---
 
@@ -15,7 +14,11 @@ import { Image } from "astro:assets";
       <figure
         class="relative rounded-full overflow-hidden border border-zinc-600 w-16 h-16"
       >
-        <Image src={profileImage} alt="profile" class="w-full h-full object-cover"/>
+        <Image
+          src="https://gravatar.com/avatar/404"
+          alt="profile"
+          class="w-full h-full object-cover"
+        />
       </figure>
       <button
         class="rounded-full flex flex-row gap-2 items-center justify-center px-4 py-1 border-2 text-emerald-500 text-xs border-emerald-700 bg-zinc-900 transform transition-transform hover:scale-105 font-bold"
