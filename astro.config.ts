@@ -7,18 +7,18 @@ import react from "@astrojs/react"
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), react()],
+  output: "server",
   adapter: vercel({
     webAnalytics: {
-      enabled: true
-    }
+      enabled: true,
+    },
   }),
-  output: "hybrid",
   vite: {
     build: {
-      cssMinify: "lightningcss"
+      cssMinify: "lightningcss",
     },
     ssr: {
-      noExternal: ["path-to-regexp"]
-    }
-  }
+      noExternal: ["path-to-regexp"],
+    },
+  },
 })
