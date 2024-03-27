@@ -7,11 +7,9 @@ import react from "@astrojs/react"
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), react()],
-  output: "server",
+  output: "hybrid",
   adapter: vercel({
-    webAnalytics: {
-      enabled: true,
-    },
+    webAnalytics: { enabled: true, },
   }),
   vite: {
     build: {
