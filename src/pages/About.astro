@@ -1,5 +1,6 @@
 ---
-// import { Image } from "astro:assets";
+import { Image } from "astro:assets";
+import profileFooter from "../assets/pic-footer.jpeg";
 ---
 
 <section id="sobre-mi" data-section="sobre-mi" class="pt-2 py-16">
@@ -27,12 +28,12 @@
       class="w-full order-1 md:order-2 md:col-span-1 flex justify-center items-center md:pt-0 pt-14"
     >
       <figure
-        class="relative rounded-full overflow-hidden border border-zinc-600 w-60 h-60"
+        class="relative rounded-full overflow-hidden border border-zinc-600 w-64 h-64"
       >
-        <img
-          src="https://gravatar.com/avatar/404"
-          alt="profile"
-          class="w-full h-full object-cover"
+        <Image
+          src={profileFooter}
+          alt="profile footer"
+          class="w-full h-full object-cover bg-center bg-cover"
         />
       </figure>
     </span>

@@ -7,6 +7,13 @@ import MySQLIcon from "../components/icons/MySQLIcon.astro";
 import TailwindIcon from "../components/icons/TailwindIcon.astro";
 import { Dot, GithubLogo, LinkBreak } from "@phosphor-icons/react";
 import AstroIcon from "../components/icons/AstroIcon.astro";
+
+import { Image } from "astro:assets";
+import pokedexImage from "../assets/pokedex.png";
+import valentineImage from "../assets/valentine.png";
+import weatherImage from "../assets/weather.png";
+import musicImage from "../assets/music.png";
+import cuteImage from "../assets/cute.png";
 ---
 
 <section id="proyectos" data-section="proyectos" class="pt-20 pb-16">
@@ -17,16 +24,14 @@ import AstroIcon from "../components/icons/AstroIcon.astro";
   <div class="flex flex-col gap-12 py-8">
     <article class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <span class="bg-zinc-900/50 backdrop-blur rounded-2xl overflow-hidden">
-        <img
-          src="https://via.placeholder.com/200x100"
+        <Image
+          src={pokedexImage}
           alt="pokedex"
           class="w-full h-full object-cover transform transition-transform duration-300 hover:scale-110"
         />
       </span>
       <span class="flex flex-col justify-between gap-1">
-        <h2 class="text-zinc-300 font-bold text-2xl">
-          Pokedex - pokemon API
-        </h2>
+        <h2 class="text-zinc-300 font-bold text-2xl">Pokedex - pokemon API</h2>
         <div class="py-2 flex flex-row gap-2 items-center justify-start">
           <button
             class="rounded-full flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
@@ -60,16 +65,20 @@ import AstroIcon from "../components/icons/AstroIcon.astro";
             class="flex text-zinc-300 flex-row gap-1 items-center justify-center"
           >
             <LinkBreak size={20} />
-            <span class="text-xs font-bold">preview</span>
+            <span class="text-xs font-bold">
+              <a href="https://pokedex-manu.vercel.app/" target="_blank">
+                preview
+              </a>
+            </span>
           </button>
         </div>
       </span>
     </article>
     <article class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <span class="bg-zinc-900/50 backdrop-blur rounded-2xl overflow-hidden">
-        <img
-          src="https://via.placeholder.com/200x100"
-          alt="pokedex"
+        <Image
+          src={valentineImage}
+          alt="valentine"
           class="w-full h-full object-cover transform transition-transform duration-300 hover:scale-110"
         />
       </span>
@@ -110,16 +119,23 @@ import AstroIcon from "../components/icons/AstroIcon.astro";
             class="flex text-zinc-300 flex-row gap-1 items-center justify-center"
           >
             <LinkBreak size={20} />
-            <span class="text-xs font-bold">preview</span>
+            <span class="text-xs font-bold">
+              <a
+                href="https://will-you-be-my-valentine-plsss.vercel.app/"
+                target="_blank"
+              >
+                preview
+              </a>
+            </span>
           </button>
         </div>
       </span>
     </article>
     <article class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <span class="bg-zinc-900/50 backdrop-blur rounded-2xl overflow-hidden">
-        <img
-          src="https://via.placeholder.com/200x100"
-          alt="pokedex"
+        <Image
+          src={weatherImage}
+          alt="weather"
           class="w-full h-full object-cover transform transition-transform duration-300 hover:scale-110"
         />
       </span>
@@ -160,45 +176,39 @@ import AstroIcon from "../components/icons/AstroIcon.astro";
             class="flex text-zinc-300 flex-row gap-1 items-center justify-center"
           >
             <LinkBreak size={20} />
-            <span class="text-xs font-bold">preview</span>
+            <span class="text-xs font-bold">
+              <a href="https://geoweather.vercel.app/" target="_blank">
+                preview
+              </a>
+            </span>
           </button>
         </div>
       </span>
     </article>
     <article class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <span class="bg-zinc-900/50 backdrop-blur rounded-2xl overflow-hidden">
-        <img
-          src="https://via.placeholder.com/200x100"
-          alt="pokedex"
+        <Image
+          src={cuteImage}
+          alt="cutetodo"
           class="w-full h-full object-cover transform transition-transform duration-300 hover:scale-110"
         />
       </span>
       <span class="flex flex-col justify-between gap-1">
-        <h2 class="text-zinc-300 font-bold text-2xl">AIC epsi</h2>
-        <div class="py-2 md:flex grid grid-cols-4 md:flex-row gap-2 items-center justify-start">
+        <h2 class="text-zinc-300 font-bold text-2xl">
+          Todo List - lista de tareas
+        </h2>
+        <div class="py-2 flex flex-row gap-2 items-center justify-start">
           <button
-            class="rounded-full col-span-2 flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
+            class="rounded-full flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
           >
             <ReactIcon name="react" class="w-4 h-4" />
             <span class="text-zinc-300 text-xs font-bold">react</span>
           </button>
           <button
-            class="rounded-full col-span-2 flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
+            class="rounded-full flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
           >
             <TailwindIcon name="tailwind" class="w-4 h-4" />
             <span class="text-zinc-300 text-xs font-bold">tailwind</span>
-          </button>
-          <button
-            class="rounded-full col-span-2 flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
-          >
-            <NodeIcon name="node.js" class="w-4 h-4" />
-            <span class="text-zinc-300 text-xs font-bold">node.js</span>
-          </button>
-          <button
-            class="rounded-full col-span-2 flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
-          >
-            <MySQLIcon name="mysql" class="w-4 h-4" />
-            <span class="text-zinc-300 text-xs font-bold">mySQL</span>
           </button>
         </div>
         <span class="text-emerald-400 text-xs flex flex-row items-center">
@@ -206,8 +216,8 @@ import AstroIcon from "../components/icons/AstroIcon.astro";
           <strong>finalizado</strong>
         </span>
         <p class="text-zinc-300 text-pretty">
-          Prueba técnica para el desarrollo de un sistema de gestión para la
-          asociacion indigena del cauca.
+          Todo List es una aplicación web que permite agregar, eliminar y marcar
+          tareas como completadas.
         </p>
         <div class="py-2 flex flex-row gap-8 items-center justify-start">
           <button
@@ -216,19 +226,23 @@ import AstroIcon from "../components/icons/AstroIcon.astro";
             <GithubLogo size={20} />
             <span class="text-xs font-bold">code</span>
           </button>
-          <!-- <button
+          <button
             class="flex text-zinc-300 flex-row gap-1 items-center justify-center"
           >
             <LinkBreak size={20} />
-            <span class="text-xs font-bold">preview</span>
-          </button> -->
+            <span class="text-xs font-bold">
+              <a href="https://todo-cute.vercel.app/" target="_blank">
+                preview
+              </a>
+            </span>
+          </button>
         </div>
       </span>
     </article>
     <article class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <span class="bg-zinc-900/50 backdrop-blur rounded-2xl overflow-hidden">
-        <img
-          src="https://via.placeholder.com/200x100"
+        <Image
+          src={musicImage}
           alt="youtube-converter"
           class="w-full h-full object-cover transform transition-transform duration-300 hover:scale-110"
         />
@@ -237,7 +251,9 @@ import AstroIcon from "../components/icons/AstroIcon.astro";
         <h2 class="text-zinc-300 font-bold text-2xl">
           Convertidor de musica de youtube
         </h2>
-        <div class="py-2 md:flex grid grid-cols-4 md:flex-row gap-2 items-center justify-start">
+        <div
+          class="py-2 md:flex grid grid-cols-4 md:flex-row gap-2 items-center justify-start"
+        >
           <button
             class="rounded-full col-span-2 flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
           >
@@ -266,72 +282,16 @@ import AstroIcon from "../components/icons/AstroIcon.astro";
             <GithubLogo size={20} />
             <span class="text-xs font-bold">code</span>
           </button>
-          <!-- <button
+          <button
             class="flex text-zinc-300 flex-row gap-1 items-center justify-center"
           >
             <LinkBreak size={20} />
-            <span class="text-xs font-bold">preview</span>
-          </button> -->
-        </div>
-      </span>
-    </article>
-    <article class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <span class="bg-zinc-900/50 backdrop-blur rounded-2xl overflow-hidden">
-        <img
-          src="https://via.placeholder.com/200x100"
-          alt="pokedex"
-          class="w-full h-full object-cover transform transition-transform duration-300 hover:scale-110"
-        />
-      </span>
-      <span class="flex flex-col justify-between gap-1">
-        <h2 class="text-zinc-300 font-bold text-2xl">Manganiacos</h2>
-        <div class="py-2 md:flex grid grid-cols-4 md:flex-row gap-2 items-center justify-start">
-          <button
-            class="rounded-full col-span-2 flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
-          >
-            <ReactIcon name="react" class="w-4 h-4" />
-            <span class="text-zinc-300 text-xs font-bold">react</span>
+            <span class="text-xs font-bold">
+              <a href="https://music-free.vercel.app/" target="_blank">
+                preview
+              </a>
+            </span>
           </button>
-          <button
-            class="rounded-full col-span-2 flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
-          >
-            <TailwindIcon name="tailwind" class="w-4 h-4" />
-            <span class="text-zinc-300 text-xs font-bold">tailwind</span>
-          </button>
-          <button
-            class="rounded-full col-span-2 flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
-          >
-            <DjangoIcon name="django" class="w-4 h-4" />
-            <span class="text-zinc-300 text-xs font-bold">django</span>
-          </button>
-          <button
-            class="rounded-full col-span-2 flex flex-row gap-2 items-center justify-center px-4 py-1 border border-zinc-700 bg-zinc-900"
-          >
-            <PostgreIcon name="postgre" class="w-4 h-4" />
-            <span class="text-zinc-300 text-xs font-bold">postgreSQL</span>
-          </button>
-        </div>
-        <span class="text-amber-400 text-xs flex flex-row items-center">
-          <Dot size={32} weight="bold" />
-          <strong>en desarrollo</strong>
-        </span>
-        <p class="text-zinc-300 text-pretty">
-          Manganiacos es una aplicacion e-commerce para la venta de mangas y
-          comics de todo tipo, con un sistema de suscripción.
-        </p>
-        <div class="py-2 flex flex-row gap-8 items-center justify-start">
-          <button
-            class="flex text-zinc-300 flex-row gap-1 items-center justify-center"
-          >
-            <GithubLogo size={20} />
-            <span class="text-xs font-bold">code</span>
-          </button>
-          <!-- <button
-            class="flex text-zinc-300 flex-row gap-1 items-center justify-center"
-          >
-            <LinkBreak size={20} />
-            <span class="text-xs font-bold">preview</span>
-          </button> -->
         </div>
       </span>
     </article>
