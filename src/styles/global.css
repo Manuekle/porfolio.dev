@@ -1,0 +1,59 @@
+@import 'tailwindcss';
+
+/* Custom Font Declarations */
+@font-face {
+  font-family: 'Besten';
+  src: url('/fonts/besten.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nukami';
+  src: url('/fonts/nukamiso.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --color-vintage-red: #d12128;
+    --color-vintage-blue: #01344f;
+    --color-vintage-cream: #fae3ac;
+    --color-white: #ffffff;
+
+    --color-entan: #d05a39;
+    --color-kurotobi: #322b26;
+    --color-kurenai: #9f0d27;
+    --color-shironeri: #f8f4e6;
+    --color-chigusa: #a8c0a5;
+
+    --font-fallback:
+      system-ui, -apple-system, blinkmacsystemfont, 'Segoe UI', 'Noto Sans', helvetica, arial,
+      sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+    --font-display: 'Besten', var(--font-fallback);
+    --font-primary: 'Nukami', var(--font-fallback);
+  }
+
+  body {
+    font-family: var(--font-primary);
+    background-color: var(--color-shironeri);
+    color: var(--color-kurotobi);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+  }
+}
+
+/* Japanese font import */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');

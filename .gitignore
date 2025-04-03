@@ -4,6 +4,9 @@ dist/
 # generated types
 .astro/
 
+# package-lock.json
+package-lock.json
+
 # dependencies
 node_modules/
 
@@ -19,3 +22,14 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# jetbrains setting folder
+.idea/
+
+package-lock.json
+
+# ignore vercel build
+.vercel/
+
+# ignore blur placeholders
+src/blur-placeholders.json

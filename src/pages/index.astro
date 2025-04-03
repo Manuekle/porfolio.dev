@@ -1,24 +1,141 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../pages/Header.astro";
-import Experience from "../pages/Experience.astro";
-import Tools from "../pages/Tools.astro";
-import Projects from "../pages/Projects.astro";
-import About from "../pages/About.astro";
-import Footer from "../pages/Footer.astro";
-import Navbar from "../components/Navbar.astro";
+import Layout from '../layouts/Layout.astro';
+import Profile from '../components/Profile.astro';
+import type { ProjectProps } from '../components/ProjectCard.astro';
+
+// Import icon components
+import ReactIcon from "../assets/icons/ReactIcon.astro";
+import TailwindIcon from "../assets/icons/TailwindIcon.astro";
+import AstroIcon from "../assets/icons/AstroIcon.astro";
+import NextIcon from "../assets/icons/NextIcon.astro";
+import PrismaIcon from "../assets/icons/PrismaIcon.astro";
+import RedisIcon from "../assets/icons/RedisIcon.astro";
+import JavascriptIcon from "../assets/icons/JavascriptIcon.astro";
+import VercelIcon from "../assets/icons/VercelIcon.astro";
+import TursoIcon from "../assets/icons/TursoIcon.astro";
+
+
+const contactInfo = {
+  birthdate: "2002.04.28",
+  phone: "318 872 8974",
+  email: "meerazo7@hotmail.com",
+  linkedin: "manuekle",
+  github: "manuekle",
+  website: "manudev.vercel.app",
+};
+// Languages data
+const languages = [
+  { name: "Español", level: "Nativo", percentage: 100 },
+  { name: "Inglés", level: "B2", percentage: 75 },
+  { name: "Alemán", level: "A1", percentage: 25 },
+];
+
+// About me text
+const aboutMe = [
+  "Desarrollador web con pasión por la programación y el aprendizaje continuo. Con experiencia en el desarrollo de aplicaciones web, me especializo en la creación de soluciones eficientes y escalables. Me considero una persona autodidacta, siempre en busca de nuevas tecnologías y mejores prácticas para optimizar mi trabajo.", 
+  "Disfruto colaborar en equipos de trabajo, compartir conocimientos y enfrentar nuevos desafíos. Destaco por mi responsabilidad, compromiso y enfoque en la mejora constante.",
+  "Mi objetivo es seguir creciendo como profesional y seguir aprendiendo cosas nuevas. Me gustaría trabajar en una empresa donde pueda aportar mis conocimientos y seguir aprendiendo de otros profesionales.",
+];
+// Sample projects data with component icons
+const projects: ProjectProps[] = [
+  {
+    title: "Geo Weather - Clima en tiempo real",
+    period: "2022",
+    description: "Una aplicación web que permite buscar y visualizar información del clima en tiempo real utilizando la API de OpenWeatherMap.",
+    image: "/geo-banner.png",
+    webLink: "https://geoweather.vercel.app/",
+    githubLink: "https://github.com/Manuekle/geo-weather",
+    technologies: [
+      { name: "react", icon: ReactIcon },
+      { name: "tailwind", icon: TailwindIcon },
+      { name: "vercel", icon: VercelIcon },
+      { name: "typescript", icon: "TS" }, // Keep as string since we don't have a TypeScript icon
+    ],
+  },
+  {
+    title: "Todo List - Lista de tareas",
+    period: "2022",
+    description: "Una aplicación web que permite crear, editar y eliminar tareas utilizando una base de datos local.",
+    image: "/todo-banner.png",
+    webLink: "https://todo-cute.vercel.app",
+    githubLink: "https://github.com/username/pokedex",
+    technologies: [
+      { name: "react", icon: ReactIcon },
+      { name: "tailwind", icon: TailwindIcon },
+      { name: "vercel", icon: VercelIcon },
+      { name: "typescript", icon: "TS" }, // Keep as string since we don't have a TypeScript icon
+    ],
+  },
+  {
+    title: "Pokedex - Pokemon API",
+    period: "2024",
+    description: "Una aplicación web que permite buscar y visualizar información de los pokemones utilizando la API oficial de Pokemon.",
+    image: "/poke-banner.png",
+    webLink: "https://pokedex-manu.vercel.app/",
+    githubLink: "https://github.com/username/pokedex",
+    technologies: [
+      { name: "react", icon: ReactIcon },
+      { name: "tailwind", icon: TailwindIcon },
+      { name: "vercel", icon: VercelIcon },
+      { name: "typescript", icon: "TS" }, // Keep as string since we don't have a TypeScript icon
+    ],
+  },
+  {
+    title: "Portfolio Personal",
+    period: "2025",
+    description: "Diseño y desarrollo de mi portfolio personal con estilo japonés de los 90s, utilizando Astro y Tailwind CSS.",
+    image: "/portfolio-banner.png",
+    webLink: "https://portfolio-example.com",
+    githubLink: "https://github.com/username/portfolio",
+    technologies: [
+      { name: "astro", icon: AstroIcon },
+      { name: "tailwind", icon: TailwindIcon },
+      { name: "vercel", icon: VercelIcon },
+      { name: "typescript", icon: "TS" }, // Keep as string since we don't have a TypeScript icon
+    ],
+  },
+  {
+    title: "GymRat+ - Seguimiento de entrenamientos y nutrición",
+    period: "2025",
+    description: "Sistema de seguimiento de entrenamientos y nutrición para un gimnasio.",
+      image: "/gym-banner.png",
+    webLink: "https://gymratplus.vercel.app/",
+    githubLink: "https://github.com/Manuekle/gymratplus",
+    technologies: [
+      { name: "nextjs", icon: NextIcon },
+      { name: "prisma", icon: PrismaIcon },
+      { name: "redis", icon: RedisIcon },
+      { name: "tailwind", icon: TailwindIcon },
+      { name: "vercel", icon: VercelIcon },
+    ],
+  },
+  {
+    title: "Edutrack - Sistema de seguimiento de aprendizaje",
+    period: "2025",
+    description: "Sistema de seguimiento de aprendizaje para una plataforma de educación.",
+    image: "/edutrack-banner.png",
+    webLink: "https://edutrack.vercel.app/",
+    githubLink: "https://github.com/Manuekle/gestion-asistencias",
+    technologies: [
+      { name: "react", icon: ReactIcon },
+      { name: "tailwind", icon: TailwindIcon },
+      { name: "javascript", icon: JavascriptIcon },
+      { name: "vercel", icon: VercelIcon },
+      { name: "turso", icon: TursoIcon },
+    ],
+  },
+];
 ---
 
-<Layout title="Portafolio de manuel">
-  <main class="flex flex-col px-8 md:px-80 pt-24 md:pt-36 pb-12" data-scroller>
-    <Navbar />
-    <Header />
-    <Tools />
-    <Experience />
-    <Projects />
-    <About />
-    <Footer />
-  </main>
+<Layout title="Manuel Erazo - 90s Portfolio">
+  <Profile 
+    name="ERAZO MEDINA, MANUEL ESTEBAN"
+    nameJapanese="私のポートフォリオ"
+    contactInfo={contactInfo}
+    photoUrl="/placeholder.jpeg"
+    projects={projects}
+    languages={languages}
+    aboutMe={aboutMe}
+  />
 </Layout>
 
-<style></style>
