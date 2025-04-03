@@ -1,34 +1,74 @@
 ---
 interface Props {
-  title: string;
-  description?: string;
+  title: string
+  description?: string
 }
 
-const { 
-  title, 
-  description = "Portfolio personal estilo japonés de los 90s", 
-} = Astro.props;
+const { title = 'Portfolio', description = 'Portfolio personal de Manuel Erazo' } = Astro.props
 ---
 
-
-<!DOCTYPE html>
-<html lang="ja">
+<!doctype html>
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="preload"
+      href="https://manudev.vercel.app/portfolio-banner.png"
+      as="image"
+      type="image/png"
+      crossorigin="anonymous"
+    />
+
+    <!-- Preload de las fuentes para que no se vea el cambio de fuente al cargar la pagina -->
+    <link
+      rel="preload"
+      href="/fonts/besten.otf"
+      as="font"
+      type="font/otf"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/fonts/kiwi.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/fonts/nukamiso.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
+    <meta name="description" content={description} />
+
+    <meta property="og:url" content="https://www.manudev.vercel.app" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://manudev.vercel.app/portfolio-banner.png" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content={title} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@manuekle" />
+    <meta name="twitter:creator" content="@manuekle" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
   </head>
   <body>
-    <main class="container mx-auto px-4 py-12 max-w-6xl">
+    <main class="container mx-auto max-w-6xl px-4 py-12">
       <slot />
     </main>
   </body>
 </html>
 
 <style is:global>
-  @import "../styles/global.css";
+  @import '../styles/global.css';
 </style>
-
