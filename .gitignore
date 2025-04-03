@@ -33,3 +33,4 @@ package-lock.json
 
 # ignore blur placeholders
 src/blur-placeholders.json
+.qodo
