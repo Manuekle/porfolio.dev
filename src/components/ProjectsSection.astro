@@ -1,0 +1,21 @@
+---
+import ProjectCard, { type ProjectProps } from './ProjectCard.astro';
+
+interface Props {
+  title: string;
+  projects: ProjectProps[];
+}
+
+const { title, projects } = Astro.props;
+---
+
+<div class="projects-section">
+  <h3 class="text-lg font-bold lowercase mb-4 font-display">{title}</h3>
+  
+  <div class="projects-grid space-y-6">
+    {projects.map((project) => (
+      <ProjectCard {...project} />
+    ))}
+  </div>
+</div>
+
