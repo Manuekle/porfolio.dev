@@ -4,7 +4,7 @@ interface Props {
   description?: string
 }
 
-const { title = 'Portfolio personal', description = 'Portfolio personal' } = Astro.props
+const { title = 'Portfolio', description = 'Portfolio personal de Manuel Erazo' } = Astro.props
 ---
 
 <!doctype html>
@@ -46,27 +46,21 @@ const { title = 'Portfolio personal', description = 'Portfolio personal' } = Ast
       type="font/ttf"
       crossorigin="anonymous"
     />
-    <meta name="description" content="Portfolio personal" />
+    <meta name="description" content={description} />
 
     <meta property="og:url" content="https://www.manudev.vercel.app" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Portfolio personal estilo japonés de los 90s" />
-    <meta
-      property="og:description"
-      content="Portfolio personal estilo japonés de los 90s, desarrollado por Manuel Erazo"
-    />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
     <meta property="og:image" content="https://manudev.vercel.app/portfolio-banner.png" />
     <meta property="og:locale" content="es_ES" />
-    <meta property="og:site_name" content="Portfolio personal estilo japonés de los 90s" />
+    <meta property="og:site_name" content={title} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@manuekle" />
     <meta name="twitter:creator" content="@manuekle" />
-    <meta name="twitter:title" content="Portfolio personal estilo japonés de los 90s" />
-    <meta
-      name="twitter:description"
-      content="Portfolio personal estilo japonés de los 90s, desarrollado por Manuel Erazo"
-    />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
   </head>
   <body>
     <main class="container mx-auto max-w-6xl px-4 py-12">
