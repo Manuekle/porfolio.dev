@@ -4,7 +4,7 @@ interface Props {
   description?: string
 }
 
-const { title, description = 'Portfolio personal estilo japonés de los 90s' } = Astro.props
+const { title = 'Portfolio personal', description = 'Portfolio personal' } = Astro.props
 ---
 
 <!doctype html>
@@ -18,7 +18,7 @@ const { title, description = 'Portfolio personal estilo japonés de los 90s' } =
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link
       rel="preload"
-      href="/public/portfolio-banner.png"
+      href="https://manudev.vercel.app/portfolio-banner.png"
       as="image"
       type="image/png"
       crossorigin="anonymous"
@@ -46,10 +46,7 @@ const { title, description = 'Portfolio personal estilo japonés de los 90s' } =
       type="font/ttf"
       crossorigin="anonymous"
     />
-    <meta
-      name="description"
-      content="Portfolio personal estilo japonés de los 90s, desarrollado por Manuel Erazo"
-    />
+    <meta name="description" content="Portfolio personal" />
 
     <meta property="og:url" content="https://www.manudev.vercel.app" />
     <meta property="og:type" content="website" />
@@ -58,7 +55,7 @@ const { title, description = 'Portfolio personal estilo japonés de los 90s' } =
       property="og:description"
       content="Portfolio personal estilo japonés de los 90s, desarrollado por Manuel Erazo"
     />
-    <meta property="og:image" content="/public/portfolio-banner.png" />
+    <meta property="og:image" content="https://manudev.vercel.app/portfolio-banner.png" />
     <meta property="og:locale" content="es_ES" />
     <meta property="og:site_name" content="Portfolio personal estilo japonés de los 90s" />
 
