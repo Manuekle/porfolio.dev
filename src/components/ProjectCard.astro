@@ -109,7 +109,7 @@ const iconMap = {
           technologies.map((tech) => {
             const IconComponent = iconMap[tech.name] || null
             return (
-              <span class="border-kurotobi inline-flex items-center rounded-full border px-2 py-0.5 text-xs">
+              <span class="mb-1 inline-flex items-center rounded-full border border-none bg-white px-3 py-1 text-xs font-medium shadow-md">
                 {IconComponent ? (
                   <span class="mr-1 inline-flex items-center justify-center">
                     <IconComponent class="h-3 w-3" />
