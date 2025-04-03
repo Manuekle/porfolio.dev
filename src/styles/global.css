@@ -2,15 +2,20 @@
 
 /* Custom Font Declarations */
 @font-face {
-  font-family: 'Besten';
-  src: url('/fonts/besten.otf') format('opentype');
-  font-weight: 400;
+  font-family: 'Kiwi';
+  src: url('/fonts/kiwi.woff2') format('woff2');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Nukami';
   src: url('/fonts/nukamiso.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Besten';
+  src: url('/fonts/besten.otf') format('opentype');
   font-weight: 400;
   font-display: swap;
 }
@@ -31,8 +36,9 @@
     --font-fallback:
       system-ui, -apple-system, blinkmacsystemfont, 'Segoe UI', 'Noto Sans', helvetica, arial,
       sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
-    --font-display: 'Besten', var(--font-fallback);
+    --font-display: 'Kiwi', var(--font-fallback);
     --font-primary: 'Nukami', var(--font-fallback);
+    --font-secondary: 'Besten', var(--font-fallback);
   }
 
   body {
@@ -43,11 +49,14 @@
 
   h1,
   h2,
-  h3,
   h4,
   h5,
   h6 {
     font-family: var(--font-display);
+  }
+
+  h3 {
+    font-family: var(--font-secondary);
   }
 
   .section-title {
