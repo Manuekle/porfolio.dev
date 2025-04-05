@@ -104,12 +104,12 @@ const iconMap = {
       <p class="mb-2 text-sm">{description}</p>
 
       <!-- Technologies -->
-      <div class="mb-3 flex flex-wrap gap-1">
+      <div class="mb-3 flex flex-wrap gap-2">
         {
           technologies.map((tech) => {
             const IconComponent = iconMap[tech.name] || null
             return (
-              <span class="bg-entan mb-1 inline-flex items-center rounded-full border border-none px-3 py-1 text-xs font-medium shadow-md">
+              <span class="mb-1 inline-flex items-center rounded-full bg-[#FFFFF0] px-3 py-1 text-xs font-medium shadow-sm">
                 {IconComponent ? (
                   <span class="mr-1 inline-flex items-center justify-center">
                     <IconComponent class="h-3 w-3" />

@@ -7,15 +7,13 @@ module.exports = {
         entan: '#D05A39', // Entan Iro (鉛丹色)
         kurotobi: '#322B26', // Kurotobi (黒鳶)
         kurenai: '#9F0D27', // Kurenai (紅)
-        shironeri: '#F8F4E6', // Shironeri (白練)
+        shironeri: '#FFFFFF', // Shironeri (白練)
         chigusa: '#A8C0A5', // Chigusa Nezu (千草鼠)
-        'vintage-red': '#d12128',
-        'vintage-blue': '#01344f',
-        'vintage-cream': '#fae3ac',
       },
       fontFamily: {
-        display: ['Besten', 'sans-serif'],
+        display: ['Open', 'sans-serif'],
         primary: ['Nukami', 'sans-serif'],
+        secondary: ['Maru', 'sans-serif'],
         fallback: [
           'system-ui',
           '-apple-system',

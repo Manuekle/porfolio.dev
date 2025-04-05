@@ -2,8 +2,8 @@
 
 /* Custom Font Declarations */
 @font-face {
-  font-family: 'Kiwi';
-  src: url('/fonts/kiwi.woff2') format('woff2');
+  font-family: 'Open';
+  src: url('/fonts/open.otf') format('opentype');
   font-display: swap;
 }
 
@@ -14,31 +14,26 @@
   font-display: swap;
 }
 @font-face {
-  font-family: 'Besten';
-  src: url('/fonts/besten.otf') format('opentype');
+  font-family: 'Maru';
+  src: url('/fonts/maru.ttf') format('truetype');
   font-weight: 400;
   font-display: swap;
 }
 
 @layer base {
   :root {
-    --color-vintage-red: #d12128;
-    --color-vintage-blue: #01344f;
-    --color-vintage-cream: #fae3ac;
-    --color-white: #ffffff;
-
     --color-entan: #d05a39;
     --color-kurotobi: #322b26;
     --color-kurenai: #9f0d27;
-    --color-shironeri: #f8f4e6;
+    --color-shironeri: #ffffff;
     --color-chigusa: #a8c0a5;
 
     --font-fallback:
       system-ui, -apple-system, blinkmacsystemfont, 'Segoe UI', 'Noto Sans', helvetica, arial,
       sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
-    --font-display: 'Kiwi', var(--font-fallback);
+    --font-display: 'Open', var(--font-fallback);
     --font-primary: 'Nukami', var(--font-fallback);
-    --font-secondary: 'Besten', var(--font-fallback);
+    --font-secondary: 'Maru', var(--font-fallback);
   }
 
   body {
