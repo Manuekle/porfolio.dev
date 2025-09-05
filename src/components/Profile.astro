@@ -31,6 +31,9 @@ import TypescriptIcon from '../assets/icons/TypescriptIcon.astro'
 import JavascriptIcon from '../assets/icons/JavascriptIcon.astro'
 import VercelIcon from '../assets/icons/VercelIcon.astro'
 import TursoIcon from '../assets/icons/TursoIcon.astro'
+import FlutterIcon from '../assets/icons/FlutterIcon.astro'
+import DartIcon from '../assets/icons/DartIcon.astro'
+import AwsIcon from '../assets/icons/AwsIcon.astro'
 
 interface ContactInfo {
   birthdate?: string
@@ -72,6 +75,9 @@ const skills = [
   { name: 'vue', icon: VueIcon },
   { name: 'html', icon: HtmlIcon },
   { name: 'css', icon: CssIcon },
+  { name: 'flutter', icon: FlutterIcon },
+  { name: 'dart', icon: DartIcon },
+  { name: 'aws', icon: AwsIcon },
   { name: 'python', icon: PythonIcon },
   { name: 'django', icon: DjangoIcon },
   { name: 'laravel', icon: LaravelIcon },
@@ -370,11 +376,24 @@ const skills = [
               <div class="flex">
                 <div class="year w-12 text-xs text-gray-500">2020-2021</div>
                 <div class="content pl-4">
-                  <p class="text-sm">fabrica de software</p>
+                  <p class="text-sm">Fabrica de Software</p>
                   <p class="text-xs text-gray-500">
                     Aplicacion web para el servicio nacional de aprendizaje, donde se manejan los
                     procesos de las dependencias del SENA a nivel nacional, entre ellas bienestar al
                     aprendiz, ENI, SENNOVA, Egresados
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="flex">
+                <div class="year w-12 text-xs text-gray-500">2025</div>
+                <div class="content pl-4">
+                  <p class="text-sm">Smurfit Kappa Cartón Colombia & Universidad del Cauca</p>
+                  <p class="text-xs text-gray-500">
+                    Desarrollo de una aplicación móvil educativa que permite visualizar mariposas en realidad aumentada.
+                    Este proyecto de colaboración busca promover la educación ambiental y la conservación de las mariposas
+                    nativas de la región del Cauca, combinando tecnología inmersiva con el aprendizaje interactivo.
                   </p>
                 </div>
               </div>
@@ -389,7 +408,7 @@ const skills = [
               <div class="flex">
                 <div class="year w-12 text-xs text-gray-500">2020</div>
                 <div class="content pl-4">
-                  <p class="text-sm">senasoft 2020</p>
+                  <p class="text-sm">Senasoft 2020</p>
                   <p class="text-xs text-gray-500">
                     Se desarrollo en el encuentro de tecnología que realiza anualmente el servicio
                     nacional de aprendizaje, una sistema de gestion de datos para una entidad
@@ -403,7 +422,7 @@ const skills = [
               <div class="flex">
                 <div class="year w-12 text-xs text-gray-500">2021</div>
                 <div class="content pl-4">
-                  <p class="text-sm">edesi 2021</p>
+                  <p class="text-sm">EDESI 2021</p>
                   <p class="text-xs text-gray-500">
                     Se presento un proyecto de investigacion en el XV encuentro departamental de
                     semilleros de investigacion en el cual se desarrollo un prototipo para la
@@ -412,7 +431,7 @@ const skills = [
                   </p>
                 </div>
               </div>
-            </div>
+            </div>            
           </div>
         </div>
 

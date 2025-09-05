@@ -13,6 +13,9 @@ import RedisIcon from '../assets/icons/RedisIcon.astro'
 import JavascriptIcon from '../assets/icons/JavascriptIcon.astro'
 import VercelIcon from '../assets/icons/VercelIcon.astro'
 import TursoIcon from '../assets/icons/TursoIcon.astro'
+import FlutterIcon from '../assets/icons/FlutterIcon.astro'
+import DartIcon from '../assets/icons/DartIcon.astro'
+import MongoIcon from '../assets/icons/MongoIcon.astro'
 
 const contactInfo = {
   birthdate: '2002.04.28',
@@ -38,50 +41,18 @@ const aboutMe = [
 // Sample projects data with component icons
 const projects: ProjectProps[] = [
   {
-    title: 'Geo Weather - Clima en tiempo real',
-    period: '2022',
+    title: 'ButterflyAR - Smurfit carton colombia',
+    period: '2025',
     description:
-      'Una aplicación web que permite buscar y visualizar información del clima en tiempo real utilizando la API de OpenWeatherMap.',
-    image: 'https://manudev.vercel.app/geo-banner.png',
-    webLink: 'https://geoweather.vercel.app/',
-    githubLink: 'https://github.com/Manuekle/geo-weather',
+      'Una aplicación educativa multiplataforma que permite explorar mariposas en Realidad Aumentada.',
+    image: 'https://manudev.vercel.app/butterfly-banner.png',
+    webLink: 'https://butterflyar.vercel.app/',
+    githubLink: 'https://github.com/Manuekle/butterflyar',
     technologies: [
-      { name: 'react', icon: ReactIcon },
-      { name: 'tailwind', icon: TailwindIcon },
-      { name: 'vercel', icon: VercelIcon },
-      { name: 'typescript', icon: 'TS' }, // Keep as string since we don't have a TypeScript icon
+      { name: 'flutter', icon: FlutterIcon },
+      { name: 'dart', icon: DartIcon },
     ],
-  },
-  {
-    title: 'Todo List - Lista de tareas',
-    period: '2022',
-    description:
-      'Una aplicación web que permite crear, editar y eliminar tareas utilizando una base de datos local.',
-    image: 'https://manudev.vercel.app/todo-banner.png',
-    webLink: 'https://todo-cute.vercel.app',
-    githubLink: 'https://github.com/Manuekle/todo-app',
-    technologies: [
-      { name: 'react', icon: ReactIcon },
-      { name: 'tailwind', icon: TailwindIcon },
-      { name: 'vercel', icon: VercelIcon },
-      { name: 'javascript', icon: JavascriptIcon }, // Keep as string since we don't have a TypeScript icon
-    ],
-  },
-  {
-    title: 'Pokedex - Pokemon API',
-    period: '2024',
-    description:
-      'Una aplicación web que permite buscar y visualizar información de los pokemones utilizando la API oficial de Pokemon.',
-    image: 'https://manudev.vercel.app/poke-banner.png',
-    webLink: 'https://pokedex-manu.vercel.app/',
-    githubLink: 'https://github.com/Manuekle/pokedex',
-    technologies: [
-      { name: 'react', icon: ReactIcon },
-      { name: 'tailwind', icon: TailwindIcon },
-      { name: 'vercel', icon: VercelIcon },
-      { name: 'javascript', icon: JavascriptIcon }, // Keep as string since we don't have a TypeScript icon
-    ],
-  },
+  },  
   {
     title: 'Portfolio Personal',
     period: '2025',
@@ -120,11 +91,12 @@ const projects: ProjectProps[] = [
     webLink: 'https://edutrack.vercel.app/',
     githubLink: 'https://github.com/Manuekle/gestion-asistencias',
     technologies: [
-      { name: 'react', icon: ReactIcon },
+      { name: 'nextjs', icon: NextIcon },
       { name: 'tailwind', icon: TailwindIcon },
-      { name: 'javascript', icon: JavascriptIcon },
+      { name: 'typescript', icon: 'TS' },
+      { name: 'prisma', icon: PrismaIcon },
+      { name: 'mongodb', icon: MongoIcon },
       { name: 'vercel', icon: VercelIcon },
-      { name: 'turso', icon: TursoIcon },
     ],
   },
 ]
