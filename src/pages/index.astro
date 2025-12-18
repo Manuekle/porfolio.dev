@@ -21,6 +21,11 @@ import DartIcon from '../assets/icons/DartIcon.astro'
 import MongoIcon from '../assets/icons/MongoIcon.astro'
 import FigmaIcon from '../assets/icons/FigmaIcon.astro'
 import DockerIcon from '../assets/icons/DockerIcon.astro'
+import AstroIcon from '../assets/icons/AstroIcon.astro'
+import JavascriptIcon from '../assets/icons/JavascriptIcon.astro'
+import MySQLIcon from '../assets/icons/MySQLIcon.astro'
+import PostmanIcon from '../assets/icons/PostmanIcon.astro'
+import VercelIcon from '../assets/icons/VercelIcon.astro'
 
 const name = 'Manuel Erazo'
 const title = 'Web Developer | React & Next.js Applications'
@@ -187,42 +192,133 @@ const projects = [
             Tools I Use
           </h3>
 
-          <div class="grid grid-cols-3 gap-3">
-            <div class="flex flex-col items-center gap-2">
-              <ReactIcon class="h-7 w-7" />
-              <span class="text-[10px] text-black">React</span>
+          <div class="relative">
+            <!-- Fade effect top -->
+            <div
+              class="pointer-events-none absolute top-0 right-0 left-0 z-10 h-8 bg-gradient-to-b from-[#F8F8F8] to-transparent"
+            >
             </div>
-            <div class="flex flex-col items-center gap-2">
-              <NextIcon class="h-7 w-7" />
-              <span class="text-[10px] text-black">Next.js</span>
+
+            <!-- Scrollable content -->
+            <div
+              class="scrollbar-hide max-h-[200px] space-y-4 overflow-y-auto pr-2"
+              style="scrollbar-width: none; -ms-overflow-style: none;"
+            >
+              <style>
+                .scrollbar-hide::-webkit-scrollbar {
+                  display: none;
+                }
+              </style>
+
+              <!-- Frontend -->
+              <div>
+                <div class="mb-2 text-[10px] font-semibold text-gray-400 uppercase">Frontend</div>
+                <div class="flex flex-wrap gap-2">
+                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                    <ReactIcon class="h-4 w-4" />
+                    <span class="text-[10px] text-black">React</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                    <NextIcon class="h-4 w-4" />
+                    <span class="text-[10px] text-black">Next.js</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                    <AstroIcon class="h-4 w-4" />
+                    <span class="text-[10px] text-black">Astro</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                    <TypescriptIcon class="h-4 w-4" />
+                    <span class="text-[10px] text-black">TypeScript</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                    <JavascriptIcon class="h-4 w-4" />
+                    <span class="text-[10px] text-black">JavaScript</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                    <TailwindIcon class="h-4 w-4" />
+                    <span class="text-[10px] text-black">Tailwind</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                    <FlutterIcon class="h-4 w-4" />
+                    <span class="text-[10px] text-black">Flutter</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                    <DartIcon class="h-4 w-4" />
+                    <span class="text-[10px] text-black">Dart</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Backend -->
+              <div>
+                <div class="mb-2 text-[10px] font-semibold text-gray-400 uppercase">Backend</div>
+                <div class="flex flex-wrap gap-2">
+                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                    <NodeIcon class="h-4 w-4" />
+                    <span class="text-[10px] text-black">Node.js</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                    <PythonIcon class="h-6 w-6" />
+                    <span class="text-[10px] text-black">Python</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Database -->
+              <div>
+                <div class="mb-2 text-[10px] font-semibold text-gray-400 uppercase">Database</div>
+                <div class="flex flex-wrap gap-2">
+                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                    <PostgreIcon class="h-4 w-4" />
+                    <span class="text-[10px] text-black">PostgreSQL</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                    <MySQLIcon class="h-4 w-4" />
+                    <span class="text-[10px] text-black">MySQL</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                    <PrismaIcon class="h-4 w-4" />
+                    <span class="text-[10px] text-black">Prisma</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                    <MongoIcon class="h-4 w-4" />
+                    <span class="text-[10px] text-black">MongoDB</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tools -->
+              <div>
+                <div class="mb-2 text-[10px] font-semibold text-gray-400 uppercase">Tools</div>
+                <div class="flex flex-wrap gap-2">
+                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                    <GitIcon class="h-4 w-4" />
+                    <span class="text-[10px] text-black">Git</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                    <FigmaIcon class="h-4 w-4" />
+                    <span class="text-[10px] text-black">Figma</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                    <DockerIcon class="h-4 w-4" />
+                    <span class="text-[10px] text-black">Docker</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                    <PostmanIcon class="h-4 w-4" />
+                    <span class="text-[10px] text-black">Postman</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                    <VercelIcon class="h-4 w-4" />
+                    <span class="text-[10px] text-black">Vercel</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="flex flex-col items-center gap-2">
-              <TypescriptIcon class="h-7 w-7" />
-              <span class="text-[10px] text-black">TypeScript</span>
-            </div>
-            <div class="flex flex-col items-center gap-2">
-              <TailwindIcon class="h-7 w-7" />
-              <span class="text-[10px] text-black">Tailwind</span>
-            </div>
-            <div class="flex flex-col items-center gap-2">
-              <NodeIcon class="h-7 w-7" />
-              <span class="text-[10px] text-black">Node.js</span>
-            </div>
-            <div class="flex flex-col items-center gap-2">
-              <PythonIcon class="h-7 w-7" />
-              <span class="text-[10px] text-black">Python</span>
-            </div>
-            <div class="flex flex-col items-center gap-2">
-              <PostgreIcon class="h-7 w-7" />
-              <span class="text-[10px] text-black">PostgreSQL</span>
-            </div>
-            <div class="flex flex-col items-center gap-2">
-              <GitIcon class="h-7 w-7" />
-              <span class="text-[10px] text-black">Git</span>
-            </div>
-            <div class="flex flex-col items-center gap-2">
-              <DockerIcon class="h-7 w-7" />
-              <span class="text-[10px] text-black">Docker</span>
+
+            <!-- Fade effect bottom -->
+            <div
+              class="pointer-events-none absolute right-0 bottom-0 left-0 z-10 h-8 bg-gradient-to-t from-[#F8F8F8] to-transparent"
+            >
             </div>
           </div>
         </BentoCard>
@@ -241,11 +337,13 @@ const projects = [
             />
 
             <!-- Gradient Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60">
+            <div
+              class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60"
+            >
             </div>
 
             <!-- Map Button - Top Right -->
-            <div class="absolute top-4 right-4">
+            <div class="pointer-events-auto absolute top-4 right-4 z-10">
               <a
                 href="https://maps.google.com/?q=Popayán,Colombia"
                 target="_blank"
@@ -257,7 +355,9 @@ const projects = [
             </div>
 
             <!-- Location Text - Centered -->
-            <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+            <div
+              class="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center"
+            >
               <div class="mb-1 text-4xl font-bold tracking-wider text-white">POPAYÁN</div>
               <div class="text-sm text-white/90">COLOMBIA</div>
             </div>
@@ -273,10 +373,10 @@ const projects = [
           </h3>
 
           <!-- Content Container with Slide Animation -->
-          <div class="relative mb-4 overflow-hidden">
+          <div class="relative mb-4 h-[120px] overflow-hidden">
             <div id="work-content" class="transition-all duration-300 ease-in-out">
               <div class="work-step active" data-step="1">
-                <div class="mb-2 text-lg font-semibold">01 Discovery Call</div>
+                <div class="mb-2 text-lg font-semibold">1 Discovery Call</div>
                 <p class="text-xs text-gray-600">
                   In the first stage, we'll have a Discovery Call to discuss your goals, needs, and
                   project requirements. This helps us align on vision and set the foundation for a
@@ -284,7 +384,7 @@ const projects = [
                 </p>
               </div>
               <div class="work-step hidden" data-step="2">
-                <div class="mb-2 text-lg font-semibold">02 Proposal & Planning</div>
+                <div class="mb-2 text-lg font-semibold">2 Proposal & Planning</div>
                 <p class="text-xs text-gray-600">
                   I'll create a detailed proposal outlining the project scope, timeline, and
                   deliverables. We'll refine the plan together to ensure everything aligns with your
@@ -292,21 +392,21 @@ const projects = [
                 </p>
               </div>
               <div class="work-step hidden" data-step="3">
-                <div class="mb-2 text-lg font-semibold">03 Design & Development</div>
+                <div class="mb-2 text-lg font-semibold">3 Design & Development</div>
                 <p class="text-xs text-gray-600">
                   This is where the magic happens! I'll design and build your project with attention
                   to detail, keeping you updated throughout the process.
                 </p>
               </div>
               <div class="work-step hidden" data-step="4">
-                <div class="mb-2 text-lg font-semibold">04 Testing & Review</div>
+                <div class="mb-2 text-lg font-semibold">4 Testing & Review</div>
                 <p class="text-xs text-gray-600">
                   Rigorous testing ensures everything works perfectly. We'll review together and
                   make any necessary adjustments before launch.
                 </p>
               </div>
               <div class="work-step hidden" data-step="5">
-                <div class="mb-2 text-lg font-semibold">05 Launch & Support</div>
+                <div class="mb-2 text-lg font-semibold">5 Launch & Support</div>
                 <p class="text-xs text-gray-600">
                   Your project goes live! I'll provide support during the launch and be available
                   for any questions or updates you might need.
@@ -316,36 +416,44 @@ const projects = [
           </div>
 
           <!-- Step Buttons -->
-          <div class="flex flex-wrap gap-2">
+          <div
+            class="scrollbar-hide -mx-2 flex gap-1.5 overflow-x-auto px-2"
+            style="scrollbar-width: none; -ms-overflow-style: none;"
+          >
+            <style>
+              .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+              }
+            </style>
             <button
-              class="work-step-btn active rounded-full bg-black px-4 py-2 text-xs font-medium text-white transition-colors"
+              class="work-step-btn active flex-shrink-0 rounded-full bg-black px-3 py-1.5 text-[10px] font-medium text-white transition-colors"
               data-step="1"
             >
-              Step 01
+              Step 1
             </button>
             <button
-              class="work-step-btn rounded-full bg-gray-200 px-4 py-2 text-xs font-medium text-gray-600 transition-colors"
+              class="work-step-btn flex-shrink-0 rounded-full bg-gray-200 px-3 py-1.5 text-[10px] font-medium text-gray-600 transition-colors"
               data-step="2"
             >
-              Step 02
+              Step 2
             </button>
             <button
-              class="work-step-btn rounded-full bg-gray-200 px-4 py-2 text-xs font-medium text-gray-600 transition-colors"
+              class="work-step-btn flex-shrink-0 rounded-full bg-gray-200 px-3 py-1.5 text-[10px] font-medium text-gray-600 transition-colors"
               data-step="3"
             >
-              Step 03
+              Step 3
             </button>
             <button
-              class="work-step-btn rounded-full bg-gray-200 px-4 py-2 text-xs font-medium text-gray-600 transition-colors"
+              class="work-step-btn flex-shrink-0 rounded-full bg-gray-200 px-3 py-1.5 text-[10px] font-medium text-gray-600 transition-colors"
               data-step="4"
             >
-              Step 04
+              Step 4
             </button>
             <button
-              class="work-step-btn rounded-full bg-gray-200 px-4 py-2 text-xs font-medium text-gray-600 transition-colors"
+              class="work-step-btn flex-shrink-0 rounded-full bg-gray-200 px-3 py-1.5 text-[10px] font-medium text-gray-600 transition-colors"
               data-step="5"
             >
-              Step 05
+              Step 5
             </button>
           </div>
         </BentoCard>
