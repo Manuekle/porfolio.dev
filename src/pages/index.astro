@@ -13,14 +13,27 @@ import TypescriptIcon from '../assets/icons/TypescriptIcon.astro'
 import TailwindIcon from '../assets/icons/TailwindIcon.astro'
 import NodeIcon from '../assets/icons/NodeIcon.astro'
 import PrismaIcon from '../assets/icons/PrismaIcon.astro'
+import PythonIcon from '../assets/icons/PythonIcon.astro'
+import PostgreIcon from '../assets/icons/PostgreIcon.astro'
+import GitIcon from '../assets/icons/GitIcon.astro'
+import FlutterIcon from '../assets/icons/FlutterIcon.astro'
+import DartIcon from '../assets/icons/DartIcon.astro'
+import MongoIcon from '../assets/icons/MongoIcon.astro'
+import FigmaIcon from '../assets/icons/FigmaIcon.astro'
+import DockerIcon from '../assets/icons/DockerIcon.astro'
 
 const name = 'Manuel Erazo'
 const title = 'Web Developer | React & Next.js Applications'
 
 const experience = [
   {
-    year: 'Jan 2024 - Present',
+    year: '2025',
     title: 'Web Developer',
+    organization: 'Smurfit Kappa Cartón Colombia',
+  },
+  {
+    year: '2023 - Present',
+    title: 'Freelance Web Developer',
     organization: 'Freelance / Academic Projects',
   },
   {
@@ -45,14 +58,14 @@ const projects = [
       'Responsive design for mobile and web',
     ],
     webLink: 'https://gymratplus.vercel.app/',
-    githubLink: 'https://github.com/manuekle/gymrat-plus',
+    githubLink: 'https://github.com/Manuekle/gymratplus',
   },
   {
     title: 'ButterflyAR',
     description:
       'An innovative augmented reality educational app that brings butterfly species to life, allowing users to explore and learn about different butterflies in an interactive 3D environment.',
     image: 'https://manudev.vercel.app/butterfly-banner.png',
-    techStack: ['Flutter', 'ARCore', 'ARKit', 'Firebase', 'Dart'],
+    techStack: ['Flutter', 'ARCore', 'ARKit', 'Dart'],
     features: [
       'AR visualization of butterfly species',
       'Interactive 3D models',
@@ -60,8 +73,7 @@ const projects = [
       'Species identification',
       'Cross-platform support (iOS & Android)',
     ],
-    webLink: 'https://butterflyar.vercel.app/',
-    githubLink: 'https://github.com/manuekle/butterfly-ar',
+    githubLink: 'https://github.com/Manuekle/butterflyar-mobile',
   },
   {
     title: 'QR Attendance',
@@ -77,7 +89,7 @@ const projects = [
       'Email notifications',
     ],
     webLink: 'https://edutrack-fup.vercel.app/',
-    githubLink: 'https://github.com/manuekle/qr-attendance',
+    githubLink: 'https://github.com/Manuekle/edutrack',
   },
 ]
 ---
@@ -99,20 +111,43 @@ const projects = [
           >
             What I've Done
           </h3>
-          <div class="space-y-4">
-            {
-              experience.map((exp) => (
-                <div class="flex items-start gap-3">
-                  <div class="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-black" />
-                  <div>
-                    <div class="text-xs font-semibold">{exp.title}</div>
-                    <div class="text-xs text-gray-600">
-                      {exp.year} · {exp.organization}
+          <div class="relative">
+            <!-- Fade effect top -->
+            <div
+              class="pointer-events-none absolute top-0 right-0 left-0 z-10 h-8 bg-gradient-to-b from-[#F8F8F8] to-transparent"
+            >
+            </div>
+
+            <!-- Scrollable content -->
+            <div
+              class="scrollbar-hide max-h-[200px] space-y-4 overflow-y-auto pr-2"
+              style="scrollbar-width: none; -ms-overflow-style: none;"
+            >
+              <style>
+                .scrollbar-hide::-webkit-scrollbar {
+                  display: none;
+                }
+              </style>
+              {
+                experience.map((exp) => (
+                  <div class="flex items-start gap-3">
+                    <div class="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-black" />
+                    <div>
+                      <div class="text-xs font-semibold">{exp.title}</div>
+                      <div class="text-xs text-gray-600">
+                        {exp.year} · {exp.organization}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))
-            }
+                ))
+              }
+            </div>
+
+            <!-- Fade effect bottom -->
+            <div
+              class="pointer-events-none absolute right-0 bottom-0 left-0 z-10 h-8 bg-gradient-to-t from-[#F8F8F8] to-transparent"
+            >
+            </div>
           </div>
         </BentoCard>
 
@@ -151,30 +186,43 @@ const projects = [
           >
             Tools I Use
           </h3>
-          <div class="grid grid-cols-3 gap-4">
+
+          <div class="grid grid-cols-3 gap-3">
             <div class="flex flex-col items-center gap-2">
-              <ReactIcon class="h-6 w-6" />
-              <span class="text-xs text-black">React</span>
+              <ReactIcon class="h-7 w-7" />
+              <span class="text-[10px] text-black">React</span>
             </div>
             <div class="flex flex-col items-center gap-2">
-              <NextIcon class="h-6 w-6" />
-              <span class="text-xs text-black">Next.js</span>
+              <NextIcon class="h-7 w-7" />
+              <span class="text-[10px] text-black">Next.js</span>
             </div>
             <div class="flex flex-col items-center gap-2">
-              <TypescriptIcon class="h-6 w-6" />
-              <span class="text-xs text-black">TypeScript</span>
+              <TypescriptIcon class="h-7 w-7" />
+              <span class="text-[10px] text-black">TypeScript</span>
             </div>
             <div class="flex flex-col items-center gap-2">
-              <TailwindIcon class="h-6 w-6" />
-              <span class="text-xs text-black">Tailwind</span>
+              <TailwindIcon class="h-7 w-7" />
+              <span class="text-[10px] text-black">Tailwind</span>
             </div>
             <div class="flex flex-col items-center gap-2">
-              <NodeIcon class="h-6 w-6" />
-              <span class="text-xs text-black">Node.js</span>
+              <NodeIcon class="h-7 w-7" />
+              <span class="text-[10px] text-black">Node.js</span>
             </div>
             <div class="flex flex-col items-center gap-2">
-              <PrismaIcon class="h-6 w-6" />
-              <span class="text-xs text-black">Prisma</span>
+              <PythonIcon class="h-7 w-7" />
+              <span class="text-[10px] text-black">Python</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <PostgreIcon class="h-7 w-7" />
+              <span class="text-[10px] text-black">PostgreSQL</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <GitIcon class="h-7 w-7" />
+              <span class="text-[10px] text-black">Git</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <DockerIcon class="h-7 w-7" />
+              <span class="text-[10px] text-black">Docker</span>
             </div>
           </div>
         </BentoCard>
