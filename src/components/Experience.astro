@@ -1,0 +1,29 @@
+---
+import BentoItem from './BentoItem.astro'
+
+interface TimelineItem {
+  year: string
+  title: string
+  organization?: string
+}
+
+interface Props {
+  experience: TimelineItem[]
+}
+
+const { experience } = Astro.props
+---
+
+<BentoItem title="Experience" class="md:col-span-1 md:row-span-1">
+  <ul class="space-y-4">
+    {
+      experience.map((item) => (
+        <li class="border-border relative border-l-2 pl-4">
+          <div class="text-muted-foreground text-xs">{item.year}</div>
+          <div class="text-xs font-semibold">{item.title}</div>
+          <div class="text-muted-foreground text-xs">{item.organization}</div>
+        </li>
+      ))
+    }
+  </ul>
+</BentoItem>

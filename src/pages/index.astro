@@ -1,115 +1,415 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Profile from '../components/Profile.astro'
-import type { ProjectProps } from '../components/ProjectCard.astro'
+import TopBar from '../components/TopBar.astro'
+import Hero from '../components/Hero.astro'
+import BentoCard from '../components/BentoCard.astro'
+import ProjectDialog from '../components/ProjectDialog.astro'
+import { Image } from 'astro:assets'
 
-// Import icon components
+// Tech Stack Icons
 import ReactIcon from '../assets/icons/ReactIcon.astro'
-import TailwindIcon from '../assets/icons/TailwindIcon.astro'
-import AstroIcon from '../assets/icons/AstroIcon.astro'
 import NextIcon from '../assets/icons/NextIcon.astro'
+import TypescriptIcon from '../assets/icons/TypescriptIcon.astro'
+import TailwindIcon from '../assets/icons/TailwindIcon.astro'
+import NodeIcon from '../assets/icons/NodeIcon.astro'
 import PrismaIcon from '../assets/icons/PrismaIcon.astro'
-import RedisIcon from '../assets/icons/RedisIcon.astro'
-import JavascriptIcon from '../assets/icons/JavascriptIcon.astro'
-import VercelIcon from '../assets/icons/VercelIcon.astro'
-import TursoIcon from '../assets/icons/TursoIcon.astro'
-import FlutterIcon from '../assets/icons/FlutterIcon.astro'
-import DartIcon from '../assets/icons/DartIcon.astro'
-import MongoIcon from '../assets/icons/MongoIcon.astro'
 
-const contactInfo = {
-  birthdate: '2002.04.28',
-  phone: '311 271 1242',
-  email: 'meerazo7@hotmail.com',
-  linkedin: 'manuekle',
-  github: 'manuekle',
-  website: 'manudev.vercel.app',
-}
-// Languages data
-const languages = [
-  { name: 'Español', level: 'Nativo', percentage: 100 },
-  { name: 'Inglés', level: 'B2', percentage: 75 },
-  { name: 'Alemán', level: 'A1', percentage: 25 },
-]
+const name = 'Manuel Erazo'
+const title = 'Web Developer | React & Next.js Applications'
 
-// About me text
-const aboutMe = [
-  'Desarrollador web con pasión por la programación y el aprendizaje continuo. Con experiencia en el desarrollo de aplicaciones web, me especializo en la creación de soluciones eficientes y escalables. Me considero una persona autodidacta, siempre en busca de nuevas tecnologías y mejores prácticas para optimizar mi trabajo.',
-  'Disfruto colaborar en equipos de trabajo, compartir conocimientos y enfrentar nuevos desafíos. Destaco por mi responsabilidad, compromiso y enfoque en la mejora constante.',
-  'Mi objetivo es seguir creciendo como profesional y seguir aprendiendo cosas nuevas. Me gustaría trabajar en una empresa donde pueda aportar mis conocimientos y seguir aprendiendo de otros profesionales.',
-]
-// Sample projects data with component icons
-const projects: ProjectProps[] = [
+const experience = [
   {
-    title: 'ButterflyAR - Smurfit carton colombia',
-    period: '2025',
-    description:
-      'Una aplicación educativa multiplataforma que permite explorar mariposas en Realidad Aumentada.',
-    image: 'https://manudev.vercel.app/butterfly-banner.png',
-    webLink: 'https://butterflyar.vercel.app/',
-    githubLink: 'https://github.com/Manuekle/butterflyar',
-    technologies: [
-      { name: 'flutter', icon: FlutterIcon },
-      { name: 'dart', icon: DartIcon },
-    ],
-  },  
-  {
-    title: 'Portfolio Personal',
-    period: '2025',
-    description:
-      'Diseño y desarrollo de mi portfolio personal con estilo japonés de los 90s, utilizando Astro y Tailwind CSS.',
-    image: 'https://manudev.vercel.app/folio-banner.png/',
-    webLink: 'https://manudev.vercel.app',
-    githubLink: 'https://github.com/Manuekle/porfolio.dev',
-    technologies: [
-      { name: 'astro', icon: AstroIcon },
-      { name: 'tailwind', icon: TailwindIcon },
-      { name: 'vercel', icon: VercelIcon },
-      { name: 'typescript', icon: 'TS' }, // Keep as string since we don't have a TypeScript icon
-    ],
+    year: 'Jan 2024 - Present',
+    title: 'Web Developer',
+    organization: 'Freelance / Academic Projects',
   },
   {
-    title: 'GymRat+ - Seguimiento de entrenamientos y nutrición',
-    period: '2025',
-    description: 'Sistema de seguimiento de entrenamientos y nutrición para un gimnasio.',
+    year: '2021 - 2026',
+    title: 'Computer Science Student',
+    organization: 'Fundación Universitaria de Popayán',
+  },
+]
+
+const projects = [
+  {
+    title: 'GymRat+',
+    description:
+      'A comprehensive fitness tracking application designed to help users monitor their workouts, track progress, and achieve their fitness goals with an intuitive interface.',
     image: 'https://manudev.vercel.app/gym-banner.png',
-    webLink: 'https://gymratplus.vercel.app/',
-    githubLink: 'https://github.com/Manuekle/gymratplus',
-    technologies: [
-      { name: 'nextjs', icon: NextIcon },
-      { name: 'prisma', icon: PrismaIcon },
-      { name: 'redis', icon: RedisIcon },
-      { name: 'tailwind', icon: TailwindIcon },
-      { name: 'vercel', icon: VercelIcon },
+    techStack: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Tailwind CSS'],
+    features: [
+      'Workout tracking and history',
+      'Progress visualization with charts',
+      'Custom exercise library',
+      'Real-time notifications',
+      'Responsive design for mobile and web',
     ],
+    webLink: 'https://gymratplus.vercel.app/',
+    githubLink: 'https://github.com/manuekle/gymrat-plus',
   },
   {
-    title: 'Edutrack - Sistema de seguimiento de aprendizaje',
-    period: '2025',
-    description: 'Sistema de seguimiento de aprendizaje para una plataforma de educación.',
-    image: 'https://manudev.vercel.app/edutrack-banner.png',
-    webLink: 'https://edutrack.vercel.app/',
-    githubLink: 'https://github.com/Manuekle/gestion-asistencias',
-    technologies: [
-      { name: 'nextjs', icon: NextIcon },
-      { name: 'tailwind', icon: TailwindIcon },
-      { name: 'typescript', icon: 'TS' },
-      { name: 'prisma', icon: PrismaIcon },
-      { name: 'mongodb', icon: MongoIcon },
-      { name: 'vercel', icon: VercelIcon },
+    title: 'ButterflyAR',
+    description:
+      'An innovative augmented reality educational app that brings butterfly species to life, allowing users to explore and learn about different butterflies in an interactive 3D environment.',
+    image: 'https://manudev.vercel.app/butterfly-banner.png',
+    techStack: ['Flutter', 'ARCore', 'ARKit', 'Firebase', 'Dart'],
+    features: [
+      'AR visualization of butterfly species',
+      'Interactive 3D models',
+      'Educational content and facts',
+      'Species identification',
+      'Cross-platform support (iOS & Android)',
     ],
+    webLink: 'https://butterflyar.vercel.app/',
+    githubLink: 'https://github.com/manuekle/butterfly-ar',
+  },
+  {
+    title: 'QR Attendance',
+    description:
+      'A modern attendance management system using QR codes for quick and efficient student check-ins, designed for educational institutions to streamline attendance tracking.',
+    image: 'https://manudev.vercel.app/edutrack-banner.png',
+    techStack: ['Next.js', 'React', 'Node.js', 'MongoDB', 'QR Code API'],
+    features: [
+      'QR code generation for classes',
+      'Real-time attendance tracking',
+      'Student and teacher dashboards',
+      'Attendance reports and analytics',
+      'Email notifications',
+    ],
+    webLink: 'https://edutrack-fup.vercel.app/',
+    githubLink: 'https://github.com/manuekle/qr-attendance',
   },
 ]
 ---
 
-<Layout title="Manuel Erazo - Portfolio">
-  <Profile
-    name="ERAZO MEDINA, MANUEL ESTEBAN"
-    nameJapanese="マヌエル・サン"
-    contactInfo={contactInfo}
-    photoUrl="/placeholder.jpeg"
-    projects={projects}
-    languages={languages}
-    aboutMe={aboutMe}
-  />
+<Layout title="Manuel Erazo - Web Developer">
+  <TopBar />
+
+  <Hero name={name} title={title} photoUrl="/placeholder.jpeg" />
+
+  <!-- Bento Grid -->
+  <div class="pb-20" style="background-color: #F8F8F8;">
+    <div class="mx-auto max-w-5xl px-6">
+      <!-- First Row: 3 columns -->
+      <div class="mb-6 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <!-- My Experience -->
+        <BentoCard>
+          <h3
+            class="mb-4 w-fit rounded-full bg-white px-3 py-1 text-xs font-semibold tracking-[-0.02em] text-zinc-500"
+          >
+            What I've Done
+          </h3>
+          <div class="space-y-4">
+            {
+              experience.map((exp) => (
+                <div class="flex items-start gap-3">
+                  <div class="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-black" />
+                  <div>
+                    <div class="text-xs font-semibold">{exp.title}</div>
+                    <div class="text-xs text-gray-600">
+                      {exp.year} · {exp.organization}
+                    </div>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </BentoCard>
+
+        <!-- My Projects -->
+        <BentoCard>
+          <h3
+            class="mb-4 w-fit rounded-full bg-white px-3 py-1 text-xs font-semibold tracking-[-0.02em] text-zinc-500"
+          >
+            Things I've Built
+          </h3>
+          <div class="grid grid-cols-3 gap-2">
+            {
+              projects.map((project) => (
+                <button
+                  class="open-project-dialog aspect-square overflow-hidden rounded-lg transition-all hover:scale-105 hover:shadow-lg"
+                  data-project={project.title.toLowerCase().replace(/\s+/g, '-')}
+                >
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={100}
+                    height={100}
+                    class="h-full w-full object-cover"
+                  />
+                </button>
+              ))
+            }
+          </div>
+          <div class="mt-3 text-xs text-gray-600">3 projects · Click to view details</div>
+        </BentoCard>
+
+        <!-- Tech Stack -->
+        <BentoCard>
+          <h3
+            class="mb-4 w-fit rounded-full bg-white px-3 py-1 text-xs font-semibold tracking-[-0.02em] text-zinc-500"
+          >
+            Tools I Use
+          </h3>
+          <div class="grid grid-cols-3 gap-4">
+            <div class="flex flex-col items-center gap-2">
+              <ReactIcon class="h-6 w-6" />
+              <span class="text-xs text-black">React</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <NextIcon class="h-6 w-6" />
+              <span class="text-xs text-black">Next.js</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <TypescriptIcon class="h-6 w-6" />
+              <span class="text-xs text-black">TypeScript</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <TailwindIcon class="h-6 w-6" />
+              <span class="text-xs text-black">Tailwind</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <NodeIcon class="h-6 w-6" />
+              <span class="text-xs text-black">Node.js</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <PrismaIcon class="h-6 w-6" />
+              <span class="text-xs text-black">Prisma</span>
+            </div>
+          </div>
+        </BentoCard>
+      </div>
+
+      <!-- Second Row: 2 columns -->
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <!-- Location -->
+        <BentoCard class="relative overflow-hidden !p-0">
+          <div class="relative h-full min-h-[300px]">
+            <!-- Map Background -->
+            <img
+              src="/map.png"
+              alt="Popayán, Colombia"
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+
+            <!-- Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60">
+            </div>
+
+            <!-- Map Button - Top Right -->
+            <div class="absolute top-4 right-4">
+              <a
+                href="https://maps.google.com/?q=Popayán,Colombia"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold text-black transition-colors hover:bg-gray-100"
+              >
+                Map
+              </a>
+            </div>
+
+            <!-- Location Text - Centered -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+              <div class="mb-1 text-4xl font-bold tracking-wider text-white">POPAYÁN</div>
+              <div class="text-sm text-white/90">COLOMBIA</div>
+            </div>
+          </div>
+        </BentoCard>
+
+        <!-- How I work -->
+        <BentoCard>
+          <h3
+            class="mb-4 w-fit rounded-full bg-white px-3 py-1 text-xs font-semibold tracking-[-0.02em] text-zinc-500"
+          >
+            How I Work
+          </h3>
+
+          <!-- Content Container with Slide Animation -->
+          <div class="relative mb-4 overflow-hidden">
+            <div id="work-content" class="transition-all duration-300 ease-in-out">
+              <div class="work-step active" data-step="1">
+                <div class="mb-2 text-lg font-semibold">01 Discovery Call</div>
+                <p class="text-xs text-gray-600">
+                  In the first stage, we'll have a Discovery Call to discuss your goals, needs, and
+                  project requirements. This helps us align on vision and set the foundation for a
+                  successful collaboration.
+                </p>
+              </div>
+              <div class="work-step hidden" data-step="2">
+                <div class="mb-2 text-lg font-semibold">02 Proposal & Planning</div>
+                <p class="text-xs text-gray-600">
+                  I'll create a detailed proposal outlining the project scope, timeline, and
+                  deliverables. We'll refine the plan together to ensure everything aligns with your
+                  vision.
+                </p>
+              </div>
+              <div class="work-step hidden" data-step="3">
+                <div class="mb-2 text-lg font-semibold">03 Design & Development</div>
+                <p class="text-xs text-gray-600">
+                  This is where the magic happens! I'll design and build your project with attention
+                  to detail, keeping you updated throughout the process.
+                </p>
+              </div>
+              <div class="work-step hidden" data-step="4">
+                <div class="mb-2 text-lg font-semibold">04 Testing & Review</div>
+                <p class="text-xs text-gray-600">
+                  Rigorous testing ensures everything works perfectly. We'll review together and
+                  make any necessary adjustments before launch.
+                </p>
+              </div>
+              <div class="work-step hidden" data-step="5">
+                <div class="mb-2 text-lg font-semibold">05 Launch & Support</div>
+                <p class="text-xs text-gray-600">
+                  Your project goes live! I'll provide support during the launch and be available
+                  for any questions or updates you might need.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step Buttons -->
+          <div class="flex flex-wrap gap-2">
+            <button
+              class="work-step-btn active rounded-full bg-black px-4 py-2 text-xs font-medium text-white transition-colors"
+              data-step="1"
+            >
+              Step 01
+            </button>
+            <button
+              class="work-step-btn rounded-full bg-gray-200 px-4 py-2 text-xs font-medium text-gray-600 transition-colors"
+              data-step="2"
+            >
+              Step 02
+            </button>
+            <button
+              class="work-step-btn rounded-full bg-gray-200 px-4 py-2 text-xs font-medium text-gray-600 transition-colors"
+              data-step="3"
+            >
+              Step 03
+            </button>
+            <button
+              class="work-step-btn rounded-full bg-gray-200 px-4 py-2 text-xs font-medium text-gray-600 transition-colors"
+              data-step="4"
+            >
+              Step 04
+            </button>
+            <button
+              class="work-step-btn rounded-full bg-gray-200 px-4 py-2 text-xs font-medium text-gray-600 transition-colors"
+              data-step="5"
+            >
+              Step 05
+            </button>
+          </div>
+        </BentoCard>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="py-8" style="background-color: #F8F8F8;">
+    <div class="mx-auto max-w-5xl px-6">
+      <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
+        <div class="text-xs text-gray-600">
+          © {new Date().getFullYear()} Manuel Erazo
+        </div>
+        <div class="flex gap-6">
+          <a
+            href="https://github.com/manuekle"
+            target="_blank"
+            class="text-xs text-gray-600 hover:text-black"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://www.linkedin.com/in/manuekle"
+            target="_blank"
+            class="text-xs text-gray-600 hover:text-black"
+          >
+            LinkedIn
+          </a>
+          <a href="mailto:meerazo7@hotmail.com" class="text-xs text-gray-600 hover:text-black">
+            Email
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Project Dialogs -->
+  {projects.map((project) => <ProjectDialog project={project} isOpen={false} />)}
+
+  <!-- Dialog Open Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Project Dialogs
+      const projectButtons = document.querySelectorAll('.open-project-dialog')
+
+      projectButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const projectId = button.getAttribute('data-project')
+          const dialog = document.getElementById(`dialog-${projectId}`)
+
+          if (dialog) {
+            dialog.classList.remove('opacity-0', 'pointer-events-none')
+          }
+        })
+      })
+
+      // Work Process Tabs
+      const stepButtons = document.querySelectorAll('.work-step-btn')
+      const workSteps = document.querySelectorAll('.work-step')
+      const workContent = document.getElementById('work-content')
+      let currentStep = 1
+
+      stepButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const newStep = parseInt(button.getAttribute('data-step'))
+
+          if (newStep === currentStep) return
+
+          // Determine animation direction
+          const direction = newStep > currentStep ? 'left' : 'right'
+
+          // Add slide-out animation
+          workContent.style.transform =
+            direction === 'left' ? 'translateX(-20px)' : 'translateX(20px)'
+          workContent.style.opacity = '0'
+
+          setTimeout(() => {
+            // Hide all steps
+            workSteps.forEach((step) => {
+              step.classList.add('hidden')
+              step.classList.remove('active')
+            })
+
+            // Show new step
+            const newStepElement = document.querySelector(`.work-step[data-step="${newStep}"]`)
+            if (newStepElement) {
+              newStepElement.classList.remove('hidden')
+              newStepElement.classList.add('active')
+            }
+
+            // Update button states
+            stepButtons.forEach((btn) => {
+              btn.classList.remove('active', 'bg-black', 'text-white')
+              btn.classList.add('bg-gray-200', 'text-gray-600')
+            })
+            button.classList.add('active', 'bg-black', 'text-white')
+            button.classList.remove('bg-gray-200', 'text-gray-600')
+
+            // Slide-in from opposite direction
+            workContent.style.transform =
+              direction === 'left' ? 'translateX(20px)' : 'translateX(-20px)'
+
+            setTimeout(() => {
+              workContent.style.transform = 'translateX(0)'
+              workContent.style.opacity = '1'
+            }, 50)
+
+            currentStep = newStep
+          }, 150)
+        })
+      })
+    })
+  </script>
 </Layout>

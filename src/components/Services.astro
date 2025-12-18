@@ -1,0 +1,37 @@
+---
+import BentoItem from './BentoItem.astro'
+
+const services = [
+  'React & Next.js web applications',
+  'Responsive UI with Tailwind CSS and shadcn',
+  'Authentication and protected routes',
+  'Forms, dashboards, and data-driven features',
+  'Clean code and clear communication',
+]
+---
+
+<BentoItem title="What I can help you with" class="md:col-span-1 md:row-span-2">
+  <ul class="space-y-4 pt-2">
+    {
+      services.map((service) => (
+        <li class="flex items-start gap-3">
+          <span class="bg-primary/10 text-primary mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              class="h-3.5 w-3.5"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </span>
+          <span class="text-muted-foreground text-xs font-medium">{service}</span>
+        </li>
+      ))
+    }
+  </ul>
+</BentoItem>

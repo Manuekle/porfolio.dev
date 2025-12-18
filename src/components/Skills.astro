@@ -1,0 +1,28 @@
+---
+import BentoItem from './BentoItem.astro'
+import ReactIcon from '../assets/icons/ReactIcon.astro'
+import NextIcon from '../assets/icons/NextIcon.astro'
+import AstroIcon from '../assets/icons/AstroIcon.astro'
+import TailwindIcon from '../assets/icons/TailwindIcon.astro'
+
+const skills = [
+  { name: 'React', icon: ReactIcon },
+  { name: 'Next.js', icon: NextIcon },
+  { name: 'Astro', icon: AstroIcon },
+  { name: 'Tailwind', icon: TailwindIcon },
+]
+---
+
+<BentoItem title="Tech Stack" class="md:col-span-1 md:row-span-1">
+  <div class="flex flex-wrap gap-4">
+    {
+      skills.map((skill) => (
+        <div class="bg-secondary hover:bg-secondary/80 flex items-center gap-2 rounded-md px-3 py-2 transition-colors">
+          <skill.icon class="h-5 w-5" />
+          <span class="text-xs font-medium">{skill.name}</span>
+        </div>
+      ))
+    }
+  </div>
+  <p class="text-muted-foreground mt-4 text-xs">+ many more (TypeScript, Prisma, Flutter...)</p>
+</BentoItem>

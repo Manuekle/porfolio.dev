@@ -1,0 +1,16 @@
+---
+import BentoItem from './BentoItem.astro'
+
+interface Props {
+  aboutMe: string[]
+}
+
+const { aboutMe } = Astro.props
+---
+
+<BentoItem title="About" class="md:col-span-1 md:row-span-1">
+  <div class="text-muted-foreground space-y-4 text-xs leading-relaxed">
+    <p>{aboutMe[0]}</p>
+    <p>{aboutMe[1]}</p>
+  </div>
+</BentoItem>
