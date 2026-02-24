@@ -1,0 +1,286 @@
+---
+import Layout from '../layouts/Layout.astro'
+import TopBar from '../components/TopBar.astro'
+import BentoCard from '../components/BentoCard.astro'
+import ReactIcon from '../assets/icons/ReactIcon.astro'
+import NextIcon from '../assets/icons/NextIcon.astro'
+import AstroIcon from '../assets/icons/AstroIcon.astro'
+import GeminiIcon from '../assets/icons/GeminiIcon.astro'
+import OpenAIIcon from '../assets/icons/OpenAIIcon.astro'
+import N8nIcon from '../assets/icons/N8nIcon.astro'
+import FigmaIcon from '../assets/icons/FigmaIcon.astro'
+import VercelIcon from '../assets/icons/VercelIcon.astro'
+import PrismaIcon from '../assets/icons/PrismaIcon.astro'
+
+const serviceIcons = {
+  web: ReactIcon,
+  ai: GeminiIcon,
+  ux: FigmaIcon,
+}
+
+const services = [
+  {
+    title: 'Desarrollo Web',
+    icon: 'web' as const,
+    description: 'Sitios y aplicaciones con React, Next.js y Astro.',
+    items: ['SPAs y landing pages', 'Dashboards y paneles', 'APIs y backend', 'Responsive y accesible'],
+  },
+  {
+    title: 'IA y LLMs',
+    icon: 'ai' as const,
+    description: 'Integraciones con modelos de lenguaje y flujos de IA.',
+    items: ['Chatbots y asistentes', 'OpenAI, Gemini, Anthropic', 'RAG y bases vectoriales', 'Automatización con n8n'],
+  },
+  {
+    title: 'Producto y UX',
+    icon: 'ux' as const,
+    description: 'Desde la idea hasta el despliegue.',
+    items: ['Diseño de flujos', 'Formularios y validación', 'Auth y rutas protegidas', 'Código limpio y documentado'],
+  },
+]
+
+const packageIcons = {
+  landing: AstroIcon,
+  webapp: NextIcon,
+  ai: OpenAIIcon,
+}
+
+const packages = [
+  {
+    name: 'Landing / MVP',
+    icon: 'landing' as const,
+    price: 'Desde $XXX',
+    description: 'Ideal para validar tu idea o presencia web.',
+    features: ['Landing page o sitio estático', 'Formulario de contacto', 'Diseño responsive', 'Despliegue (Vercel u otro)'],
+    cta: 'Consultar',
+  },
+  {
+    name: 'Web App',
+    icon: 'webapp' as const,
+    price: 'Desde $XXX',
+    description: 'Aplicación con auth, datos y panel.',
+    features: ['Next.js o Astro', 'Autenticación', 'Base de datos (Prisma + PostgreSQL)', 'Panel básico o dashboard'],
+    cta: 'Consultar',
+    highlight: true,
+  },
+  {
+    name: 'IA a medida',
+    icon: 'ai' as const,
+    price: 'Desde $XXX',
+    description: 'Integración de LLMs y flujos de IA.',
+    features: ['Chatbot o asistente', 'Integración OpenAI / Gemini / Claude', 'RAG o búsqueda semántica', 'API o integración n8n'],
+    cta: 'Consultar',
+  },
+]
+
+const faqs = [
+  { q: '¿Cómo trabajamos?', a: 'Definimos alcance y plazos por correo o llamada. Trabajo por proyecto o por horas, según lo que necesites.' },
+  { q: '¿Qué tecnologías usas?', a: 'Principalmente React, Next.js, Astro, TypeScript, Tailwind y Prisma. Para IA: OpenAI, Gemini, Anthropic y herramientas como n8n.' },
+  { q: '¿Ofreces mantenimiento?', a: 'Sí, puedo ofrecer soporte y mejoras continuas una vez entregado el proyecto.' },
+]
+---
+
+<Layout
+  title="Servicios - Manuel Erazo"
+  description="Desarrollo web, integraciones con IA (OpenAI, Gemini, Claude) y productos digitales. Consultoría y proyectos a medida."
+>
+  <TopBar />
+
+  <!-- Hero -->
+  <section style="background-color: #F8F8F8;">
+    <div class="mx-auto max-w-5xl px-6 py-16 md:py-24">
+      <div class="max-w-3xl">
+        <h1 class="mb-4 text-4xl font-bold tracking-[-0.04em] text-black md:text-5xl">
+          Todo lo que necesitas
+          <br />
+          <span class="italic" style="color: #ff6b35;">para llevar tu producto al siguiente nivel.</span>
+        </h1>
+        <p class="mb-8 text-lg text-gray-600 tracking-[-0.02em]">
+          Desarrollo web, integraciones con IA y aplicaciones a medida. Código limpio, entregas claras y enfoque en lo que importa.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a
+            href="#pricing"
+            class="inline-flex items-center rounded-full bg-black px-4 py-2 text-xs font-medium text-white transition-colors hover:bg-zinc-800"
+          >
+            Ver paquetes
+          </a>
+          <a
+            href="mailto:meerazo7@hotmail.com"
+            class="inline-flex items-center rounded-full border border-zinc-300 bg-white px-4 py-2 text-xs font-medium text-black transition-colors hover:bg-zinc-50"
+          >
+            Contactar
+          </a>
+        </div>
+        <p class="mt-10 text-xs font-medium uppercase tracking-wider text-gray-400">Tecnologías con las que trabajo</p>
+        <div class="mt-3 flex flex-wrap items-center gap-4">
+          <ReactIcon class="h-7 w-7 opacity-70" />
+          <NextIcon class="h-7 w-7 opacity-70" />
+          <AstroIcon class="h-7 w-7 opacity-70" />
+          <GeminiIcon class="h-7 w-7 opacity-70" />
+          <OpenAIIcon class="h-7 w-7 opacity-70" />
+          <N8nIcon class="h-7 w-7 opacity-70" />
+          <PrismaIcon class="h-7 w-7 opacity-70" />
+          <VercelIcon class="h-7 w-7 opacity-70" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qué ofrezco -->
+  <div class="pb-12" style="background-color: #F8F8F8;">
+    <div class="mx-auto max-w-5xl px-6">
+      <h2 class="mb-8 text-2xl font-semibold tracking-[-0.03em] text-black md:text-3xl">
+        Con qué te puedo ayudar
+      </h2>
+      <div class="grid gap-6 md:grid-cols-3">
+        {
+          services.map((s) => {
+            const ServiceIcon = serviceIcons[s.icon]
+            return (
+              <BentoCard>
+                <div class="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-white shadow-sm">
+                  <ServiceIcon class="h-7 w-7" />
+                </div>
+                <h3 class="mb-2 w-fit rounded-full bg-white px-3 py-1 text-xs font-semibold tracking-[-0.02em] text-zinc-500">
+                  {s.title}
+                </h3>
+                <p class="mb-4 text-xs text-gray-600">{s.description}</p>
+              <ul class="space-y-2">
+                {s.items.map((item) => (
+                  <li class="flex items-center gap-2 text-xs font-medium text-gray-700">
+                    <span class="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-black" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </BentoCard>
+            )
+          })
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Paquetes / Pricing -->
+  <div class="pb-20" style="background-color: #F8F8F8;">
+    <div class="mx-auto max-w-5xl px-6">
+      <h2 class="mb-2 text-2xl font-semibold tracking-[-0.03em] text-black md:text-3xl" id="pricing">
+        Paquetes
+      </h2>
+      <p class="mb-10 text-gray-600">
+        Precios orientativos. Cada proyecto se cotiza según alcance y plazos.
+      </p>
+      <div class="grid gap-6 md:grid-cols-3">
+        {
+          packages.map((pkg) => {
+            const PkgIcon = packageIcons[pkg.icon]
+            return (
+              <BentoCard class={pkg.highlight ? 'ring-2 ring-black' : ''}>
+                {pkg.highlight && (
+                  <span class="mb-3 inline-block rounded-full bg-black px-2 py-0.5 text-[10px] font-medium text-white">
+                    Recomendado
+                  </span>
+                )}
+                <div class="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-white shadow-sm">
+                  <PkgIcon class="h-6 w-6" />
+                </div>
+                <h3 class="mb-1 text-lg font-semibold">{pkg.name}</h3>
+              <p class="mb-4 text-2xl font-bold tracking-tight">{pkg.price}</p>
+              <p class="mb-4 text-xs text-gray-600">{pkg.description}</p>
+              <ul class="mb-6 space-y-2 text-xs text-gray-700">
+                {pkg.features.map((f) => (
+                  <li class="flex items-center gap-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      class="h-4 w-4 shrink-0 text-black"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={`mailto:meerazo7@hotmail.com?subject=Consulta: ${encodeURIComponent(pkg.name)}`}
+                class="inline-flex w-full justify-center rounded-full bg-black px-4 py-2 text-xs font-medium text-white transition-colors hover:bg-zinc-800"
+              >
+                {pkg.cta}
+              </a>
+            </BentoCard>
+            )
+          })
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="pb-20" style="background-color: #F8F8F8;">
+    <div class="mx-auto max-w-3xl px-6">
+      <h2 class="mb-8 text-2xl font-semibold tracking-[-0.03em] text-black md:text-3xl">
+        Preguntas frecuentes
+      </h2>
+      <div class="space-y-4">
+        {
+          faqs.map((faq) => (
+            <BentoCard>
+              <div class="flex items-start gap-3">
+                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-black text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                  </svg>
+                </span>
+                <div>
+                  <h3 class="mb-2 text-xs font-semibold text-black">{faq.q}</h3>
+                  <p class="text-xs text-gray-600 leading-relaxed">{faq.a}</p>
+                </div>
+              </div>
+            </BentoCard>
+          ))
+        }
+      </div>
+      <p class="mt-8 text-center text-xs text-gray-600">
+        ¿Más dudas? Escríbeme a
+        <a href="mailto:meerazo7@hotmail.com" class="font-medium text-black underline hover:no-underline">
+          meerazo7@hotmail.com
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <!-- CTA final -->
+  <section style="background-color: #F8F8F8;">
+    <div class="mx-auto max-w-5xl px-6 pb-20">
+      <div class="rounded-2xl border-2 border-white bg-white p-8 shadow-md md:p-12 text-center">
+        <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-black text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+          </svg>
+        </div>
+        <h2 class="mb-3 text-xl font-semibold tracking-[-0.03em] md:text-2xl">
+          ¿Listo para empezar?
+        </h2>
+        <p class="mb-6 text-gray-600">
+          Cuéntame tu idea y te propongo alcance, plazos y precio.
+        </p>
+        <a
+          href="mailto:meerazo7@hotmail.com"
+          class="inline-flex items-center gap-2 rounded-full bg-black px-5 py-2.5 font-medium text-white transition-colors hover:bg-zinc-800"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+          Contactar
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

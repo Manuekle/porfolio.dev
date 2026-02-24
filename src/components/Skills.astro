@@ -4,12 +4,24 @@ import ReactIcon from '../assets/icons/ReactIcon.astro'
 import NextIcon from '../assets/icons/NextIcon.astro'
 import AstroIcon from '../assets/icons/AstroIcon.astro'
 import TailwindIcon from '../assets/icons/TailwindIcon.astro'
+import GeminiIcon from '../assets/icons/GeminiIcon.astro'
+import OpenAIIcon from '../assets/icons/OpenAIIcon.astro'
+import AnthropicIcon from '../assets/icons/AnthropicIcon.astro'
+import MCPIcon from '../assets/icons/MCPIcon.astro'
+import N8nIcon from '../assets/icons/N8nIcon.astro'
+import MarkdownIcon from '../assets/icons/MarkdownIcon.astro'
 
 const skills = [
   { name: 'React', icon: ReactIcon },
   { name: 'Next.js', icon: NextIcon },
   { name: 'Astro', icon: AstroIcon },
   { name: 'Tailwind', icon: TailwindIcon },
+  { name: 'Markdown', icon: MarkdownIcon },
+  { name: 'OpenAI', icon: OpenAIIcon },
+  { name: 'Anthropic', icon: AnthropicIcon },
+  { name: 'Gemini', icon: GeminiIcon },
+  { name: 'MCP', icon: MCPIcon },
+  { name: 'n8n', icon: N8nIcon },
 ]
 ---
 
@@ -24,5 +36,7 @@ const skills = [
       ))
     }
   </div>
-  <p class="text-muted-foreground mt-4 text-xs">+ many more (TypeScript, Prisma, Flutter...)</p>
+  <p class="text-muted-foreground mt-4 text-xs">
+    + many more (TypeScript, Prisma, Flutter, LangChain, RAG assistants...)
+  </p>
 </BentoItem>

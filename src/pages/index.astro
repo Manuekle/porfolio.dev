@@ -26,9 +26,15 @@ import JavascriptIcon from '../assets/icons/JavascriptIcon.astro'
 import MySQLIcon from '../assets/icons/MySQLIcon.astro'
 import PostmanIcon from '../assets/icons/PostmanIcon.astro'
 import VercelIcon from '../assets/icons/VercelIcon.astro'
+import OpenAIIcon from '../assets/icons/OpenAIIcon.astro'
+import GeminiIcon from '../assets/icons/GeminiIcon.astro'
+import AnthropicIcon from '../assets/icons/AnthropicIcon.astro'
+import MCPIcon from '../assets/icons/MCPIcon.astro'
+import N8nIcon from '../assets/icons/N8nIcon.astro'
+import MarkdownIcon from '../assets/icons/MarkdownIcon.astro'
 
 const name = 'Manuel Erazo'
-const title = 'Web Developer | React & Next.js Applications'
+const title = 'Web & AI Developer | React, Next.js & LLM Integrations'
 
 const experience = [
   {
@@ -246,6 +252,10 @@ const projects = [
                     <DartIcon class="h-4 w-4" />
                     <span class="text-[10px] text-black">Dart</span>
                   </div>
+                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                    <MarkdownIcon class="h-4 w-4" />
+                    <span class="text-[10px] text-black">Markdown</span>
+                  </div>
                 </div>
               </div>
 
@@ -313,6 +323,33 @@ const projects = [
                   </div>
                 </div>
               </div>
+
+              <!-- AI & LLMs -->
+              <div>
+                <div class="mb-2 text-[10px] font-semibold text-gray-400 uppercase">AI & LLMs</div>
+                <div class="flex flex-wrap gap-2">
+                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                    <OpenAIIcon class="h-4 w-4" />
+                    <span class="text-[10px] text-black">OpenAI</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                    <GeminiIcon class="h-4 w-4" />
+                    <span class="text-[10px] text-black">Gemini</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                    <AnthropicIcon class="h-4 w-4" />
+                    <span class="text-[10px] text-black">Anthropic</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                    <MCPIcon class="h-4 w-4" />
+                    <span class="text-[10px] text-black">MCP</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                    <N8nIcon class="h-4 w-4" />
+                    <span class="text-[10px] text-black">n8n</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <!-- Fade effect bottom -->
@@ -359,7 +396,7 @@ const projects = [
               class="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center"
             >
               <div class="mb-1 text-4xl font-bold tracking-wider text-white">POPAYÁN</div>
-              <div class="text-sm text-white/90">COLOMBIA</div>
+              <div class="text-xs text-white/90">COLOMBIA</div>
             </div>
           </div>
         </BentoCard>
