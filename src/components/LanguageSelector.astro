@@ -1,10 +1,13 @@
 ---
 const currentPath = Astro.url.pathname
 const isEnglish = currentPath.startsWith('/en') && (currentPath.length === 3 || currentPath.startsWith('/en/'))
+const isSpanish = currentPath.startsWith('/es') && (currentPath.length === 3 || currentPath.startsWith('/es/'))
 const otherLang = isEnglish ? 'es' : 'en'
 
 let newPath: string
+
 if (isEnglish) {
+  // Currently on English, switch to Spanish
   if (currentPath === '/en') {
     newPath = '/'
   } else if (currentPath.startsWith('/en/')) {
@@ -12,13 +15,21 @@ if (isEnglish) {
   } else {
     newPath = '/'
   }
-} else {
-  if (currentPath === '/') {
+} else if (isSpanish) {
+  // Currently on Spanish, switch to English
+  if (currentPath === '/es') {
     newPath = '/en'
-  } else if (currentPath.startsWith('/')) {
-    newPath = '/en' + currentPath
+  } else if (currentPath.startsWith('/es/')) {
+    newPath = currentPath.replace('/es', '/en')
   } else {
     newPath = '/en'
+  }
+} else {
+  // Root path or other pages without language prefix
+  if (currentPath === '/') {
+    newPath = '/en'
+  } else {
+    newPath = '/en' + currentPath
   }
 }
 

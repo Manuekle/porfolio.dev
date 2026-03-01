@@ -36,6 +36,15 @@ import AnthropicIcon from '../assets/icons/AnthropicIcon.astro'
 import MCPIcon from '../assets/icons/MCPIcon.astro'
 import N8nIcon from '../assets/icons/N8nIcon.astro'
 import MarkdownIcon from '../assets/icons/MarkdownIcon.astro'
+import RedisIcon from '../assets/icons/RedisIcon.astro'
+import MistralIcon from '../assets/icons/MistralIcon.astro'
+import ClaudeIcon from '../assets/icons/ClaudeIcon.astro'
+import KimiIcon from '../assets/icons/KimiIcon.astro'
+import MercadoPagoIcon from '../assets/icons/MercadoPagoIcon.astro'
+import GoogleCloudIcon from '../assets/icons/GoogleCloudIcon.astro'
+import MetaAdsIcon from '../assets/icons/MetaAdsIcon.astro'
+import BunIcon from '../assets/icons/BunIcon.astro'
+import MotionIcon from '../assets/icons/MotionIcon.astro'
 
 const name = 'Manuel Erazo'
 const title = 'Web & AI Developer | React, Next.js & LLM Integrations'
@@ -45,6 +54,11 @@ const experience = [
     year: '2025',
     title: lang === 'es' ? 'Desarrollador Web' : 'Web Developer',
     organization: 'Smurfit Kappa Cartón Colombia',
+  },
+  {
+    year: 'Feb 2026',
+    title: lang === 'es' ? 'Participante - Mistral Worldwide Hackathon' : 'Participant - Mistral Worldwide Hackathon',
+    organization: 'Mistral AI x Weights & Biases x NVIDIA',
   },
   {
     year: lang === 'es' ? '2023 - Presente' : '2023 - Present',
@@ -120,7 +134,7 @@ const projects = [
 ---
 
 <Layout title="Manuel Erazo - Web Developer" lang={lang}>
-  <TopBar nav={{ home: t.nav.home, services: t.nav.services }} />
+  <TopBar nav={{ home: t.nav.home, services: t.nav.services }} lang="es" />
 
   <Hero name={name} title={title} photoUrl="/placeholder.jpeg" t={t.hero} />
 
@@ -136,7 +150,7 @@ const projects = [
           >
             {t.experience.title}
           </h3>
-          <div class="space-y-4">
+          <div class="space-y-4 overflow-y-auto overflow-x-hidden max-h-[280px] pr-2 scrollbar-hide">
             {
               experience.map((exp) => (
                 <div class="flex items-start gap-3">
@@ -189,7 +203,7 @@ const projects = [
             {t.techStack.title}
           </h3>
 
-          <div class="space-y-4 overflow-y-auto max-h-[280px] pr-2 scrollbar-hide">
+          <div class="space-y-4 overflow-y-auto overflow-x-hidden max-h-[280px] pr-2 scrollbar-hide">
             <style>
               .scrollbar-hide::-webkit-scrollbar { display: none; }
             </style>
@@ -220,7 +234,7 @@ const projects = [
                   <FlutterIcon class="h-4 w-4" /><span class="text-[10px] text-black">Flutter</span>
                 </span>
                 <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                  <DartIcon class="h-4 w-4" /><span class="text-[10px] text-black">Dart</span>
+                  <MotionIcon class="h-4 w-4" /><span class="text-[10px] text-black">Motion</span>
                 </span>
               </div>
             </div>
@@ -234,6 +248,9 @@ const projects = [
                 </span>
                 <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
                   <PythonIcon class="h-6 w-6" /><span class="text-[10px] text-black">Python</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <BunIcon class="h-4 w-4" /><span class="text-[10px] text-black">Bun</span>
                 </span>
               </div>
             </div>
@@ -276,6 +293,18 @@ const projects = [
                 <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
                   <VercelIcon class="h-4 w-4" /><span class="text-[10px] text-black">Vercel</span>
                 </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <RedisIcon class="h-4 w-4" /><span class="text-[10px] text-black">Redis</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <MercadoPagoIcon class="h-4 w-4" /><span class="text-[10px] text-black">MercadoPago</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <GoogleCloudIcon class="h-4 w-4" /><span class="text-[10px] text-black">Google Cloud</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <MetaAdsIcon class="h-4 w-4" /><span class="text-[10px] text-black">Meta Ads</span>
+                </span>
               </div>
             </div>
 
@@ -291,6 +320,15 @@ const projects = [
                 </span>
                 <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
                   <AnthropicIcon class="h-4 w-4" /><span class="text-[10px] text-black">Anthropic</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <MistralIcon class="h-4 w-4" /><span class="text-[10px] text-black">Mistral</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <ClaudeIcon class="h-4 w-4" /><span class="text-[10px] text-black">Claude</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <KimiIcon class="h-4 w-4" /><span class="text-[10px] text-black">Kimi</span>
                 </span>
                 <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
                   <MCPIcon class="h-4 w-4" /><span class="text-[10px] text-black">MCP</span>
@@ -455,6 +493,13 @@ const projects = [
             class="text-xs text-gray-600 hover:text-black"
           >
             {t.footer.linkedin}
+          </a>
+          <a
+            href="https://instagram.com/manudev.jsx"
+            target="_blank"
+            class="text-xs text-gray-600 hover:text-black"
+          >
+            Instagram
           </a>
           <a href="mailto:meerazo7@hotmail.com" class="text-xs text-gray-600 hover:text-black">
             {t.footer.email}
