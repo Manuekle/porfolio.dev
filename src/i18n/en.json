@@ -1,0 +1,165 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About",
+    "work": "Work",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "hero": {
+    "hi": "Hi, I'm",
+    "subtitle": "Web Developer",
+    "at": "at",
+    "freelance": "Freelance Projects",
+    "openToWork": "Open to work",
+    "cta": "Book a call",
+    "ctaDescription": "Feel free to explore my portfolio and reach out—I'd love to connect!"
+  },
+  "experience": {
+    "title": "What I've Done",
+    "present": "Present"
+  },
+  "projects": {
+    "title": "Things I've Built",
+    "clickToView": "projects · Click to view details"
+  },
+  "techStack": {
+    "title": "Tools I Use",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "database": "Database",
+    "tools": "Tools",
+    "ai_llms": "AI & LLMs"
+  },
+  "location": {
+    "map": "Map"
+  },
+  "howIWork": {
+    "title": "How I Work",
+    "step1": "Discovery Call",
+    "step1Desc": "In the first stage, we'll have a Discovery Call to discuss your goals, needs, and project requirements.",
+    "step2": "Proposal & Planning",
+    "step2Desc": "I'll create a detailed proposal outlining the project scope, timeline, and deliverables.",
+    "step3": "Design & Development",
+    "step3Desc": "This is where the magic happens! I'll design and build your project with attention to detail.",
+    "step4": "Testing & Review",
+    "step4Desc": "Rigorous testing ensures everything works perfectly. We'll review together before launch.",
+    "step5": "Launch & Support",
+    "step5Desc": "Your project goes live! I'll provide support during the launch and be available for any questions."
+  },
+  "footer": {
+    "copyright": "©",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "email": "Email"
+  },
+  "projectDialog": {
+    "features": "Features",
+    "techStack": "Tech Stack",
+    "visit": "Visit",
+    "code": "Code",
+    "close": "Close"
+  },
+  "services": {
+    "heroTitle": "Everything you need",
+    "heroSubtitle": "to take your product to the next level.",
+    "heroDescription": "Web development, AI integrations, and custom applications. Clean code, clear deliveries, and focus on what matters.",
+    "ctaPackages": "View packages",
+    "ctaContact": "Contact",
+    "technologies": "Technologies I work with",
+    "sectionTitle": "How I can help you",
+    "web": {
+      "title": "Web Development",
+      "description": "Sites and applications with React, Next.js and Astro.",
+      "items": [
+        "SPAs and landing pages",
+        "Dashboards and panels",
+        "APIs and backend",
+        "Responsive and accessible"
+      ]
+    },
+    "ai": {
+      "title": "AI & LLMs",
+      "description": "Integrations with language models and AI flows.",
+      "items": [
+        "Chatbots and assistants",
+        "OpenAI, Gemini, Anthropic",
+        "RAG and vector databases",
+        "Automation with n8n"
+      ]
+    },
+    "ux": {
+      "title": "Product & UX",
+      "description": "From idea to deployment.",
+      "items": [
+        "Flow design",
+        "Forms and validation",
+        "Auth and protected routes",
+        "Clean and documented code"
+      ]
+    },
+    "packages": {
+      "title": "Packages",
+      "subtitle": "Indicative prices. Each project is quoted based on scope and timelines.",
+      "recommended": "Recommended",
+      "cta": "Inquire",
+      "landing": {
+        "name": "Landing / MVP",
+        "price": "From $250 USD / COP $1.100.000",
+        "description": "Ideal for validating your idea or web presence.",
+        "features": [
+          "Landing page or static site",
+          "Contact form",
+          "Responsive design",
+          "Deployment (Vercel or other)"
+        ]
+      },
+      "webapp": {
+        "name": "Web App",
+        "price": "From $500 USD / COP $2.200.000",
+        "description": "Application with auth, data and dashboard.",
+        "features": [
+          "Next.js or Astro",
+          "Authentication",
+          "Database (Prisma + PostgreSQL)",
+          "Basic panel or dashboard"
+        ]
+      },
+      "ai": {
+        "name": "Custom AI",
+        "price": "From $400 USD / COP $1.800.000",
+        "description": "LLM and AI flow integration.",
+        "features": [
+          "Chatbot or assistant",
+          "OpenAI / Gemini / Claude integration",
+          "RAG or semantic search",
+          "API or n8n integration"
+        ]
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "questions": [
+        {
+          "q": "How do we work?",
+          "a": "We define scope and timelines via email or call. I work by project or hourly, whatever you need."
+        },
+        {
+          "q": "What technologies do you use?",
+          "a": "Mainly React, Next.js, Astro, TypeScript, Tailwind and Prisma. For AI: OpenAI, Gemini, Anthropic and tools like n8n."
+        },
+        {
+          "q": "Do you offer maintenance?",
+          "a": "Yes, I can offer support and ongoing improvements once the project is delivered."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to get started?",
+      "description": "Tell me your idea and I'll propose scope, timeline and price.",
+      "button": "Contact"
+    },
+    "moreQuestions": "More questions? Write me at"
+  }
+}

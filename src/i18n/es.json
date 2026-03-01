@@ -1,0 +1,165 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "about": "Sobre mí",
+    "work": "Trabajos",
+    "skills": "Habilidades",
+    "contact": "Contactar"
+  },
+  "hero": {
+    "hi": "¡Hola, soy",
+    "subtitle": "Desarrollador Web",
+    "at": "en",
+    "freelance": "Proyectos Freelance",
+    "openToWork": "Disponible para trabajar",
+    "cta": "Agendar llamada",
+    "ctaDescription": "Explora mi portafolio y contáctame, ¡me encantaría conectar!"
+  },
+  "experience": {
+    "title": "Lo que he hecho",
+    "present": "Presente"
+  },
+  "projects": {
+    "title": "Proyectos que he creado",
+    "clickToView": "proyectos · Click para ver detalles"
+  },
+  "techStack": {
+    "title": "Herramientas que uso",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "database": "Base de datos",
+    "tools": "Herramientas",
+    "ai_llms": "IA y LLMs"
+  },
+  "location": {
+    "map": "Mapa"
+  },
+  "howIWork": {
+    "title": "Cómo trabajo",
+    "step1": "Llamada de descubrimiento",
+    "step1Desc": "En la primera etapa, tendremos una llamada para discutir tus objetivos, necesidades y requisitos del proyecto.",
+    "step2": "Propuesta y planificación",
+    "step2Desc": "Crearé una propuesta detallada con el alcance, cronograma y entregables. Refinaremos el plan juntos.",
+    "step3": "Diseño y desarrollo",
+    "step3Desc": "¡Aquí ocurre la magia! Diseñaré y construiré tu proyecto con atención al detalle.",
+    "step4": "Pruebas y revisión",
+    "step4Desc": "Pruebas rigurosas aseguran que todo funcione perfectamente. Revisaremos juntos antes del lanzamiento.",
+    "step5": "Lanzamiento y soporte",
+    "step5Desc": "¡Tu proyecto sale al aire! Brindaré soporte durante el lanzamiento y estaré disponible para cualquier duda."
+  },
+  "footer": {
+    "copyright": "©",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "email": "Email"
+  },
+  "projectDialog": {
+    "features": "Características",
+    "techStack": "Tecnologías",
+    "visit": "Visitar",
+    "code": "Código",
+    "close": "Cerrar"
+  },
+  "services": {
+    "heroTitle": "Todo lo que necesitas",
+    "heroSubtitle": "para llevar tu producto al siguiente nivel.",
+    "heroDescription": "Desarrollo web, integraciones con IA y aplicaciones a medida. Código limpio, entregas claras y enfoque en lo que importa.",
+    "ctaPackages": "Ver paquetes",
+    "ctaContact": "Contactar",
+    "technologies": "Tecnologías con las que trabajo",
+    "sectionTitle": "Con qué te puedo ayudar",
+    "web": {
+      "title": "Desarrollo Web",
+      "description": "Sitios y aplicaciones con React, Next.js y Astro.",
+      "items": [
+        "SPAs y landing pages",
+        "Dashboards y paneles",
+        "APIs y backend",
+        "Responsive y accesible"
+      ]
+    },
+    "ai": {
+      "title": "IA y LLMs",
+      "description": "Integraciones con modelos de lenguaje y flujos de IA.",
+      "items": [
+        "Chatbots y asistentes",
+        "OpenAI, Gemini, Anthropic",
+        "RAG y bases vectoriales",
+        "Automatización con n8n"
+      ]
+    },
+    "ux": {
+      "title": "Producto y UX",
+      "description": "Desde la idea hasta el despliegue.",
+      "items": [
+        "Diseño de flujos",
+        "Formularios y validación",
+        "Auth y rutas protegidas",
+        "Código limpio y documentado"
+      ]
+    },
+    "packages": {
+      "title": "Paquetes",
+      "subtitle": "Precios orientativos. Cada proyecto se cotiza según alcance y plazos.",
+      "recommended": "Recomendado",
+      "cta": "Consultar",
+      "landing": {
+        "name": "Landing / MVP",
+        "price": "Desde $250 USD / $1.100.000 COP",
+        "description": "Ideal para validar tu idea o presencia web.",
+        "features": [
+          "Landing page o sitio estático",
+          "Formulario de contacto",
+          "Diseño responsive",
+          "Despliegue (Vercel u otro)"
+        ]
+      },
+      "webapp": {
+        "name": "Web App",
+        "price": "Desde $500 USD / $2.200.000 COP",
+        "description": "Aplicación con auth, datos y panel.",
+        "features": [
+          "Next.js o Astro",
+          "Autenticación",
+          "Base de datos (Prisma + PostgreSQL)",
+          "Panel básico o dashboard"
+        ]
+      },
+      "ai": {
+        "name": "IA a medida",
+        "price": "Desde $400 USD / $1.800.000 COP",
+        "description": "Integración de LLMs y flujos de IA.",
+        "features": [
+          "Chatbot o asistente",
+          "Integración OpenAI / Gemini / Claude",
+          "RAG o búsqueda semántica",
+          "API o integración n8n"
+        ]
+      }
+    },
+    "faq": {
+      "title": "Preguntas frecuentes",
+      "questions": [
+        {
+          "q": "¿Cómo trabajamos?",
+          "a": "Definimos alcance y plazos por correo o llamada. Trabajo por proyecto o por horas, según lo que necesites."
+        },
+        {
+          "q": "¿Qué tecnologías usas?",
+          "a": "Principalmente React, Next.js, Astro, TypeScript, Tailwind y Prisma. Para IA: OpenAI, Gemini, Anthropic y herramientas como n8n."
+        },
+        {
+          "q": "¿Ofreces mantenimiento?",
+          "a": "Sí, puedo ofrecer soporte y mejoras continuas una vez entregado el proyecto."
+        }
+      ]
+    },
+    "cta": {
+      "title": "¿Listo para empezar?",
+      "description": "Cuéntame tu idea y te propongo alcance, plazos y precio.",
+      "button": "Contactar"
+    },
+    "moreQuestions": "¿Más dudas? Escríbeme a"
+  }
+}

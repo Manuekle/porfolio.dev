@@ -1,0 +1,52 @@
+---
+const currentPath = Astro.url.pathname
+const isEnglish = currentPath.startsWith('/en') && (currentPath.length === 3 || currentPath.startsWith('/en/'))
+const otherLang = isEnglish ? 'es' : 'en'
+
+let newPath: string
+if (isEnglish) {
+  if (currentPath === '/en') {
+    newPath = '/'
+  } else if (currentPath.startsWith('/en/')) {
+    newPath = currentPath.replace('/en', '')
+  } else {
+    newPath = '/'
+  }
+} else {
+  if (currentPath === '/') {
+    newPath = '/en'
+  } else if (currentPath.startsWith('/')) {
+    newPath = '/en' + currentPath
+  } else {
+    newPath = '/en'
+  }
+}
+
+if (newPath === '') newPath = '/'
+---
+
+<a
+  href={newPath}
+  class="flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1.5 text-xs font-medium text-black transition-colors hover:bg-gray-100 border border-zinc-200"
+  aria-label="Toggle language"
+>
+  <span class="uppercase">{otherLang}</span>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="m5 8 6 6"/>
+    <path d="m4 14 6-6 2-3"/>
+    <path d="M2 5h12"/>
+    <path d="M7 2h1"/>
+    <path d="m22 22-5-10-5 10"/>
+    <path d="M14 18h6"/>
+  </svg>
+</a>

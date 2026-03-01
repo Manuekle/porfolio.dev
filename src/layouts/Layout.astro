@@ -1,16 +1,21 @@
 ---
 import '../styles/global.css'
+import LanguageSelector from '../components/LanguageSelector.astro'
+import { getTranslations, type Language } from '../i18n/translations'
+import 'aos/dist/aos.css'
 
 interface Props {
   title: string
   description?: string
+  lang?: Language
 }
 
-const { title = 'Portfolio', description = 'Portfolio personal de Manuel Erazo' } = Astro.props
+const { title = 'Portfolio', description = 'Portfolio personal de Manuel Erazo', lang = 'es' } = Astro.props
+const t = getTranslations(lang)
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -34,7 +39,7 @@ const { title = 'Portfolio', description = 'Portfolio personal de Manuel Erazo' 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content="https://manudev.vercel.app/placeholder.jpeg" />
-    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
     <meta property="og:site_name" content={title} />
 
     <meta name="twitter:card" content="summary_large_image" />
@@ -49,5 +54,14 @@ const { title = 'Portfolio', description = 'Portfolio personal de Manuel Erazo' 
     >
       <slot />
     </main>
+    <script>
+      import AOS from 'aos'
+      AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 100,
+      })
+    </script>
   </body>
 </html>

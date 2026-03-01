@@ -11,9 +11,15 @@ interface Props {
     status?: string
   }
   isOpen: boolean
+  t?: {
+    techStack: string
+    features: string
+    visit: string
+    code: string
+  }
 }
 
-const { project, isOpen } = Astro.props
+const { project, isOpen, t } = Astro.props
 ---
 
 <div
@@ -22,12 +28,11 @@ const { project, isOpen } = Astro.props
   data-open={isOpen}
 >
   <div
-    class="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border-4 border-white bg-[#F8F8F8] p-6 shadow-2xl backdrop-blur-md md:p-8"
+    class="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border-4 border-white bg-surface p-6 shadow-2xl backdrop-blur-md md:p-8"
   >
-    <!-- Close Button -->
     <button
       class="close-dialog absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-600 transition-colors hover:bg-gray-200"
-      aria-label="Close dialog"
+      aria-label={t?.features || 'Close'}
     >
       <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path
@@ -38,12 +43,10 @@ const { project, isOpen } = Astro.props
       </svg>
     </button>
 
-    <!-- Project Image -->
     <div class="mb-6 overflow-hidden rounded-lg">
       <img src={project.image} alt={project.title} class="h-48 w-full object-cover" />
     </div>
 
-    <!-- Project Title -->
     <div class="mb-4 flex items-center gap-3">
       <h2 class="text-3xl font-bold tracking-[-0.02em]">{project.title}</h2>
       {
@@ -55,12 +58,10 @@ const { project, isOpen } = Astro.props
       }
     </div>
 
-    <!-- Project Description -->
     <p class="mb-6 tracking-[-0.02em] text-gray-600">{project.description}</p>
 
-    <!-- Tech Stack -->
     <div class="mb-6">
-      <h3 class="mb-3 text-xs font-semibold text-gray-500 uppercase">Tech Stack</h3>
+      <h3 class="mb-3 text-xs font-semibold text-gray-500 uppercase">{t?.techStack || 'Tech Stack'}</h3>
       <div class="flex flex-wrap gap-2">
         {
           project.techStack.map((tech) => (
@@ -72,9 +73,8 @@ const { project, isOpen } = Astro.props
       </div>
     </div>
 
-    <!-- Features -->
     <div class="mb-6">
-      <h3 class="mb-3 text-xs font-semibold text-gray-500 uppercase">Key Features</h3>
+      <h3 class="mb-3 text-xs font-semibold text-gray-500 uppercase">{t?.features || 'Key Features'}</h3>
       <ul class="space-y-2">
         {
           project.features.map((feature) => (
@@ -99,7 +99,6 @@ const { project, isOpen } = Astro.props
       </ul>
     </div>
 
-    <!-- Links -->
     <div class="flex flex-wrap gap-3">
       {
         project.webLink && (
@@ -117,7 +116,7 @@ const { project, isOpen } = Astro.props
                 d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
               />
             </svg>
-            View Live Demo
+            {t?.visit || 'View Live Demo'}
           </a>
         )
       }
@@ -136,7 +135,7 @@ const { project, isOpen } = Astro.props
                 clip-rule="evenodd"
               />
             </svg>
-            View on GitHub
+            {t?.code || 'View on GitHub'}
           </a>
         )
       }
@@ -145,26 +144,22 @@ const { project, isOpen } = Astro.props
 </div>
 
 <script>
-  // Dialog functionality
   document.addEventListener('DOMContentLoaded', () => {
     const dialogs = document.querySelectorAll('.project-dialog')
 
     dialogs.forEach((dialog) => {
       const closeBtn = dialog.querySelector('.close-dialog')
 
-      // Close on button click
       closeBtn?.addEventListener('click', () => {
         dialog.classList.add('opacity-0', 'pointer-events-none')
       })
 
-      // Close on backdrop click
       dialog.addEventListener('click', (e) => {
         if (e.target === dialog) {
           dialog.classList.add('opacity-0', 'pointer-events-none')
         }
       })
 
-      // Close on Escape key
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
           dialog.classList.add('opacity-0', 'pointer-events-none')

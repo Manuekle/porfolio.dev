@@ -1,19 +1,19 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import TopBar from '../components/TopBar.astro'
-import BentoCard from '../components/BentoCard.astro'
-import { getTranslations, type Language } from '../i18n/translations'
-import ReactIcon from '../assets/icons/ReactIcon.astro'
-import NextIcon from '../assets/icons/NextIcon.astro'
-import AstroIcon from '../assets/icons/AstroIcon.astro'
-import GeminiIcon from '../assets/icons/GeminiIcon.astro'
-import OpenAIIcon from '../assets/icons/OpenAIIcon.astro'
-import N8nIcon from '../assets/icons/N8nIcon.astro'
-import FigmaIcon from '../assets/icons/FigmaIcon.astro'
-import VercelIcon from '../assets/icons/VercelIcon.astro'
-import PrismaIcon from '../assets/icons/PrismaIcon.astro'
+import Layout from '../../layouts/Layout.astro'
+import TopBar from '../../components/TopBar.astro'
+import BentoCard from '../../components/BentoCard.astro'
+import { getTranslations, type Language } from '../../i18n/translations'
+import ReactIcon from '../../assets/icons/ReactIcon.astro'
+import NextIcon from '../../assets/icons/NextIcon.astro'
+import AstroIcon from '../../assets/icons/AstroIcon.astro'
+import GeminiIcon from '../../assets/icons/GeminiIcon.astro'
+import OpenAIIcon from '../../assets/icons/OpenAIIcon.astro'
+import N8nIcon from '../../assets/icons/N8nIcon.astro'
+import FigmaIcon from '../../assets/icons/FigmaIcon.astro'
+import VercelIcon from '../../assets/icons/VercelIcon.astro'
+import PrismaIcon from '../../assets/icons/PrismaIcon.astro'
 
-const lang: Language = 'es'
+const lang: Language = 'en'
 const t = getTranslations(lang)
 
 const serviceIcons = {
@@ -93,15 +93,15 @@ const faqs = t.services.faq.questions
   <section class="bg-surface">
     <div class="mx-auto max-w-5xl px-6 py-16 md:py-24">
       <div class="max-w-3xl">
-        <h1 class="mb-4 text-4xl font-bold tracking-[-0.04em] text-black md:text-5xl">
+        <h1 class="mb-4 text-4xl font-bold tracking-[-0.04em] text-black md:text-5xl" data-aos="fade-up" data-aos-delay="0">
           {t.services.heroTitle}
           <br />
           <span class="italic text-accent">{t.services.heroSubtitle}</span>
         </h1>
-        <p class="mb-8 text-lg text-gray-600 tracking-[-0.02em]">
+        <p class="mb-8 text-lg text-gray-600 tracking-[-0.02em]" data-aos="fade-up" data-aos-delay="100">
           {t.services.heroDescription}
         </p>
-        <div class="flex flex-wrap gap-3">
+        <div class="flex flex-wrap gap-3" data-aos="fade-up" data-aos-delay="200">
           <a
             href="#pricing"
             class="inline-flex items-center rounded-full bg-black px-4 py-2 text-xs font-medium text-white transition-colors hover:bg-zinc-800"
@@ -115,8 +115,8 @@ const faqs = t.services.faq.questions
             {t.services.ctaContact}
           </a>
         </div>
-        <p class="mt-10 text-xs font-medium uppercase tracking-wider text-gray-400">{t.services.technologies}</p>
-        <div class="mt-3 flex flex-wrap items-center gap-4">
+        <p class="mt-10 text-xs font-medium uppercase tracking-wider text-gray-400" data-aos="fade-up" data-aos-delay="300">{t.services.technologies}</p>
+        <div class="mt-3 flex flex-wrap items-center gap-4" data-aos="fade-up" data-aos-delay="400">
           <ReactIcon class="h-7 w-7 opacity-70" />
           <NextIcon class="h-7 w-7 opacity-70" />
           <AstroIcon class="h-7 w-7 opacity-70" />
@@ -131,17 +131,17 @@ const faqs = t.services.faq.questions
   </section>
 
   <!-- Qué ofrezco -->
-  <div class="pb-12" class="bg-surface">
+  <div class="pb-12 bg-surface">
     <div class="mx-auto max-w-5xl px-6">
-      <h2 class="mb-8 text-2xl font-semibold tracking-[-0.03em] text-black md:text-3xl">
+      <h2 class="mb-8 text-2xl font-semibold tracking-[-0.03em] text-black md:text-3xl" data-aos="fade-up">
         {t.services.sectionTitle}
       </h2>
       <div class="grid gap-6 md:grid-cols-3">
         {
-          services.map((s) => {
+          services.map((s, index) => {
             const ServiceIcon = serviceIcons[s.icon]
             return (
-              <BentoCard>
+              <BentoCard data-aos="fade-up" data-aos-delay={index * 100}>
                 <div class="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-white shadow-sm">
                   <ServiceIcon class="h-7 w-7" />
                 </div>
@@ -166,20 +166,20 @@ const faqs = t.services.faq.questions
   </div>
 
   <!-- Paquetes / Pricing -->
-  <div class="pb-20" class="bg-surface">
+  <div class="pb-20 bg-surface">
     <div class="mx-auto max-w-5xl px-6">
-      <h2 class="mb-2 text-2xl font-semibold tracking-[-0.03em] text-black md:text-3xl" id="pricing">
+      <h2 class="mb-2 text-2xl font-semibold tracking-[-0.03em] text-black md:text-3xl" id="pricing" data-aos="fade-up">
         {t.services.packages.title}
       </h2>
-      <p class="mb-10 text-gray-600">
+      <p class="mb-10 text-gray-600" data-aos="fade-up">
         {t.services.packages.subtitle}
       </p>
       <div class="grid gap-6 md:grid-cols-3">
         {
-          packages.map((pkg) => {
+          packages.map((pkg, index) => {
             const PkgIcon = packageIcons[pkg.icon]
             return (
-              <BentoCard class={pkg.highlight ? 'ring-2 ring-black' : ''}>
+              <BentoCard class={pkg.highlight ? 'ring-2 ring-black' : ''} data-aos="fade-up" data-aos-delay={index * 100}>
                 {pkg.highlight && (
                   <span class="mb-3 inline-block rounded-full bg-black px-2 py-0.5 text-[10px] font-medium text-white">
                     {t.services.packages.recommended}
@@ -225,15 +225,15 @@ const faqs = t.services.faq.questions
   </div>
 
   <!-- FAQ -->
-  <div class="pb-20" class="bg-surface">
+  <div class="pb-20 bg-surface">
     <div class="mx-auto max-w-3xl px-6">
-      <h2 class="mb-8 text-2xl font-semibold tracking-[-0.03em] text-black md:text-3xl">
+      <h2 class="mb-8 text-2xl font-semibold tracking-[-0.03em] text-black md:text-3xl" data-aos="fade-up">
         {t.services.faq.title}
       </h2>
       <div class="space-y-4">
         {
-          faqs.map((faq) => (
-            <BentoCard>
+          faqs.map((faq, index) => (
+            <BentoCard data-aos="fade-up" data-aos-delay={index * 100}>
               <div class="flex items-start gap-3">
                 <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-black text-white">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
@@ -261,7 +261,7 @@ const faqs = t.services.faq.questions
   <!-- CTA final -->
   <section class="bg-surface">
     <div class="mx-auto max-w-5xl px-6 pb-20">
-      <div class="rounded-2xl border-2 border-white bg-white p-8 shadow-md md:p-12 text-center">
+      <div class="rounded-2xl border-2 border-white bg-white p-8 shadow-md md:p-12 text-center" data-aos="fade-up">
         <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-black text-white">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />

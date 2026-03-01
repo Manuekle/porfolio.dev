@@ -1,8 +1,17 @@
 ---
+import LanguageSelector from './LanguageSelector.astro'
 
+interface Props {
+  nav?: {
+    home: string
+    services: string
+  }
+}
+
+const { nav } = Astro.props
 ---
 
-<header style="background-color: #F8F8F8;">
+<header class="bg-surface">
   <div class="mx-auto max-w-5xl px-6 py-4">
     <div class="flex items-center justify-between">
       <!-- Nav + Name -->
@@ -11,18 +20,21 @@
           Manuel Erazo
         </a>
         <nav class="flex items-center gap-4">
-          <a href="/" class="text-xs text-gray-600 transition-colors hover:text-black">Inicio</a>
-          <a href="/servicios" class="text-xs text-gray-600 transition-colors hover:text-black">Servicios</a>
+          <a href="/" class="text-xs text-gray-600 transition-colors hover:text-black">{nav?.home || 'Inicio'}</a>
+          <a href="/servicios" class="text-xs text-gray-600 transition-colors hover:text-black">{nav?.services || 'Servicios'}</a>
         </nav>
       </div>
 
-      <!-- Contact -->
-      <a
-        href="mailto:meerazo7@hotmail.com"
-        class="text-xs text-gray-600 transition-colors hover:text-black"
-      >
-        meerazo7@hotmail.com
-      </a>
+      <!-- Contact + Language -->
+      <div class="flex items-center gap-4">
+        <LanguageSelector />
+        <a
+          href="mailto:meerazo7@hotmail.com"
+          class="text-xs text-gray-600 transition-colors hover:text-black"
+        >
+          meerazo7@hotmail.com
+        </a>
+      </div>
     </div>
   </div>
 </header>
