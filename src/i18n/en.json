@@ -46,7 +46,8 @@
     "step4": "Testing & Review",
     "step4Desc": "Rigorous testing ensures everything works perfectly. We'll review together before launch.",
     "step5": "Launch & Support",
-    "step5Desc": "Your project goes live! I'll provide support during the launch and be available for any questions."
+    "step5Desc": "Your project goes live! I'll provide support during the launch and be available for any questions.",
+    "stepButton": "Step"
   },
   "footer": {
     "copyright": "©",

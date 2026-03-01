@@ -46,7 +46,8 @@
     "step4": "Pruebas y revisión",
     "step4Desc": "Pruebas rigurosas aseguran que todo funcione perfectamente. Revisaremos juntos antes del lanzamiento.",
     "step5": "Lanzamiento y soporte",
-    "step5Desc": "¡Tu proyecto sale al aire! Brindaré soporte durante el lanzamiento y estaré disponible para cualquier duda."
+    "step5Desc": "¡Tu proyecto sale al aire! Brindaré soporte durante el lanzamiento y estaré disponible para cualquier duda.",
+    "stepButton": "Paso"
   },
   "footer": {
     "copyright": "©",

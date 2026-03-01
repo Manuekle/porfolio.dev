@@ -52,6 +52,11 @@ const experience = [
     organization: lang === 'es' ? 'Proyectos Freelance / Académicos' : 'Freelance / Academic Projects',
   },
   {
+    year: lang === 'es' ? '2024 - Presente' : '2024 - Present',
+    title: lang === 'es' ? 'CEO & Fundador de GymRat+' : 'CEO & Founder of GymRat+',
+    organization: 'GymRat+ - SaaS para Gimnasios',
+  },
+  {
     year: lang === 'es' ? '2021 - 2026' : '2021 - 2026',
     title: lang === 'es' ? 'Estudiante de Ingeniería de Sistemas' : 'Computer Science Student',
     organization: 'Fundación Universitaria de Popayán',
@@ -131,43 +136,20 @@ const projects = [
           >
             {t.experience.title}
           </h3>
-          <div class="relative">
-            <!-- Fade effect top -->
-            <div
-              class="pointer-events-none absolute top-0 right-0 left-0 z-10 h-8 bg-gradient-to-b from-[#F8F8F8] to-transparent"
-            >
-            </div>
-
-            <!-- Scrollable content -->
-            <div
-              class="scrollbar-hide max-h-[200px] space-y-4 overflow-y-auto pr-2"
-              style="scrollbar-width: none; -ms-overflow-style: none;"
-            >
-              <style>
-                .scrollbar-hide::-webkit-scrollbar {
-                  display: none;
-                }
-              </style>
-              {
-                experience.map((exp) => (
-                  <div class="flex items-start gap-3">
-                    <div class="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-black" />
-                    <div>
-                      <div class="text-xs font-semibold">{exp.title}</div>
-                      <div class="text-xs text-gray-600">
-                        {exp.year} · {exp.organization}
-                      </div>
+          <div class="space-y-4">
+            {
+              experience.map((exp) => (
+                <div class="flex items-start gap-3">
+                  <div class="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-black" />
+                  <div>
+                    <div class="text-xs font-semibold">{exp.title}</div>
+                    <div class="text-xs text-gray-600">
+                      {exp.year} · {exp.organization}
                     </div>
                   </div>
-                ))
-              }
-            </div>
-
-            <!-- Fade effect bottom -->
-            <div
-              class="pointer-events-none absolute right-0 bottom-0 left-0 z-10 h-8 bg-gradient-to-t from-[#F8F8F8] to-transparent"
-            >
-            </div>
+                </div>
+              ))
+            }
           </div>
         </BentoCard>
 
@@ -207,164 +189,116 @@ const projects = [
             {t.techStack.title}
           </h3>
 
-          <div class="relative">
-            <!-- Fade effect top -->
-            <div
-              class="pointer-events-none absolute top-0 right-0 left-0 z-10 h-8 bg-gradient-to-b from-[#F8F8F8] to-transparent"
-            >
-            </div>
-
-            <!-- Scrollable content -->
-            <div
-              class="scrollbar-hide max-h-[200px] space-y-4 overflow-y-auto pr-2"
-              style="scrollbar-width: none; -ms-overflow-style: none;"
-            >
-              <style>
-                .scrollbar-hide::-webkit-scrollbar {
-                  display: none;
-                }
-              </style>
-
-              <!-- Frontend -->
-              <div>
-                <div class="mb-2 text-[10px] font-semibold text-gray-400 uppercase">{t.techStack.frontend}</div>
-                <div class="flex flex-wrap gap-2">
-                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                    <ReactIcon class="h-4 w-4" />
-                    <span class="text-[10px] text-black">React</span>
-                  </div>
-                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                    <NextIcon class="h-4 w-4" />
-                    <span class="text-[10px] text-black">Next.js</span>
-                  </div>
-                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                    <AstroIcon class="h-4 w-4" />
-                    <span class="text-[10px] text-black">Astro</span>
-                  </div>
-                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                    <TypescriptIcon class="h-4 w-4" />
-                    <span class="text-[10px] text-black">TypeScript</span>
-                  </div>
-                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                    <JavascriptIcon class="h-4 w-4" />
-                    <span class="text-[10px] text-black">JavaScript</span>
-                  </div>
-                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                    <TailwindIcon class="h-4 w-4" />
-                    <span class="text-[10px] text-black">Tailwind</span>
-                  </div>
-                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                    <FlutterIcon class="h-4 w-4" />
-                    <span class="text-[10px] text-black">Flutter</span>
-                  </div>
-                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                    <DartIcon class="h-4 w-4" />
-                    <span class="text-[10px] text-black">Dart</span>
-                  </div>
-                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                    <MarkdownIcon class="h-4 w-4" />
-                    <span class="text-[10px] text-black">Markdown</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Backend -->
-              <div>
-                <div class="mb-2 text-[10px] font-semibold text-gray-400 uppercase">{t.techStack.backend}</div>
-                <div class="flex flex-wrap gap-2">
-                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                    <NodeIcon class="h-4 w-4" />
-                    <span class="text-[10px] text-black">Node.js</span>
-                  </div>
-                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                    <PythonIcon class="h-6 w-6" />
-                    <span class="text-[10px] text-black">Python</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Database -->
-              <div>
-                <div class="mb-2 text-[10px] font-semibold text-gray-400 uppercase">{t.techStack.database}</div>
-                <div class="flex flex-wrap gap-2">
-                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                    <PostgreIcon class="h-4 w-4" />
-                    <span class="text-[10px] text-black">PostgreSQL</span>
-                  </div>
-                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                    <MySQLIcon class="h-4 w-4" />
-                    <span class="text-[10px] text-black">MySQL</span>
-                  </div>
-                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                    <PrismaIcon class="h-4 w-4" />
-                    <span class="text-[10px] text-black">Prisma</span>
-                  </div>
-                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                    <MongoIcon class="h-4 w-4" />
-                    <span class="text-[10px] text-black">MongoDB</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Tools -->
-              <div>
-                <div class="mb-2 text-[10px] font-semibold text-gray-400 uppercase">{t.techStack.tools}</div>
-                <div class="flex flex-wrap gap-2">
-                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                    <GitIcon class="h-4 w-4" />
-                    <span class="text-[10px] text-black">Git</span>
-                  </div>
-                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                    <FigmaIcon class="h-4 w-4" />
-                    <span class="text-[10px] text-black">Figma</span>
-                  </div>
-                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                    <DockerIcon class="h-4 w-4" />
-                    <span class="text-[10px] text-black">Docker</span>
-                  </div>
-                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                    <PostmanIcon class="h-4 w-4" />
-                    <span class="text-[10px] text-black">Postman</span>
-                  </div>
-                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                    <VercelIcon class="h-4 w-4" />
-                    <span class="text-[10px] text-black">Vercel</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- AI & LLMs -->
-              <div>
-                <div class="mb-2 text-[10px] font-semibold text-gray-400 uppercase">{t.techStack.ai_llms}</div>
-                <div class="flex flex-wrap gap-2">
-                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                    <OpenAIIcon class="h-4 w-4" />
-                    <span class="text-[10px] text-black">OpenAI</span>
-                  </div>
-                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                    <GeminiIcon class="h-4 w-4" />
-                    <span class="text-[10px] text-black">Gemini</span>
-                  </div>
-                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                    <AnthropicIcon class="h-4 w-4" />
-                    <span class="text-[10px] text-black">Anthropic</span>
-                  </div>
-                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                    <MCPIcon class="h-4 w-4" />
-                    <span class="text-[10px] text-black">MCP</span>
-                  </div>
-                  <div class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
-                    <N8nIcon class="h-4 w-4" />
-                    <span class="text-[10px] text-black">n8n</span>
-                  </div>
-                </div>
+          <div class="space-y-4 overflow-y-auto max-h-[280px] pr-2 scrollbar-hide">
+            <style>
+              .scrollbar-hide::-webkit-scrollbar { display: none; }
+            </style>
+            
+            <!-- Frontend -->
+            <div data-aos="fade-left" data-aos-delay="0">
+              <div class="mb-2 text-[10px] font-semibold text-gray-400 uppercase">{t.techStack.frontend}</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <ReactIcon class="h-4 w-4" /><span class="text-[10px] text-black">React</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <NextIcon class="h-4 w-4" /><span class="text-[10px] text-black">Next.js</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <AstroIcon class="h-4 w-4" /><span class="text-[10px] text-black">Astro</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <TypescriptIcon class="h-4 w-4" /><span class="text-[10px] text-black">TypeScript</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <JavascriptIcon class="h-4 w-4" /><span class="text-[10px] text-black">JavaScript</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <TailwindIcon class="h-4 w-4" /><span class="text-[10px] text-black">Tailwind</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <FlutterIcon class="h-4 w-4" /><span class="text-[10px] text-black">Flutter</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <DartIcon class="h-4 w-4" /><span class="text-[10px] text-black">Dart</span>
+                </span>
               </div>
             </div>
 
-            <!-- Fade effect bottom -->
-            <div
-              class="pointer-events-none absolute right-0 bottom-0 left-0 z-10 h-8 bg-gradient-to-t from-[#F8F8F8] to-transparent"
-            >
+            <!-- Backend -->
+            <div data-aos="fade-left" data-aos-delay="100">
+              <div class="mb-2 text-[10px] font-semibold text-gray-400 uppercase">{t.techStack.backend}</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <NodeIcon class="h-4 w-4" /><span class="text-[10px] text-black">Node.js</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <PythonIcon class="h-6 w-6" /><span class="text-[10px] text-black">Python</span>
+                </span>
+              </div>
+            </div>
+
+            <!-- Database -->
+            <div data-aos="fade-left" data-aos-delay="200">
+              <div class="mb-2 text-[10px] font-semibold text-gray-400 uppercase">{t.techStack.database}</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <PostgreIcon class="h-4 w-4" /><span class="text-[10px] text-black">PostgreSQL</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <MySQLIcon class="h-4 w-4" /><span class="text-[10px] text-black">MySQL</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <PrismaIcon class="h-4 w-4" /><span class="text-[10px] text-black">Prisma</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <MongoIcon class="h-4 w-4" /><span class="text-[10px] text-black">MongoDB</span>
+                </span>
+              </div>
+            </div>
+
+            <!-- Tools -->
+            <div data-aos="fade-left" data-aos-delay="300">
+              <div class="mb-2 text-[10px] font-semibold text-gray-400 uppercase">{t.techStack.tools}</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <GitIcon class="h-4 w-4" /><span class="text-[10px] text-black">Git</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <FigmaIcon class="h-4 w-4" /><span class="text-[10px] text-black">Figma</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <DockerIcon class="h-4 w-4" /><span class="text-[10px] text-black">Docker</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <PostmanIcon class="h-4 w-4" /><span class="text-[10px] text-black">Postman</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <VercelIcon class="h-4 w-4" /><span class="text-[10px] text-black">Vercel</span>
+                </span>
+              </div>
+            </div>
+
+            <!-- AI & LLMs -->
+            <div data-aos="fade-left" data-aos-delay="400">
+              <div class="mb-2 text-[10px] font-semibold text-gray-400 uppercase">{t.techStack.ai_llms}</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <OpenAIIcon class="h-4 w-4" /><span class="text-[10px] text-black">OpenAI</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <GeminiIcon class="h-4 w-4" /><span class="text-[10px] text-black">Gemini</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <AnthropicIcon class="h-4 w-4" /><span class="text-[10px] text-black">Anthropic</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <MCPIcon class="h-4 w-4" /><span class="text-[10px] text-black">MCP</span>
+                </span>
+                <span class="flex items-center gap-1.5 rounded-full bg-white px-2 py-1">
+                  <N8nIcon class="h-4 w-4" /><span class="text-[10px] text-black">n8n</span>
+                </span>
+              </div>
             </div>
           </div>
         </BentoCard>
@@ -468,31 +402,31 @@ const projects = [
               class="work-step-btn active flex-shrink-0 rounded-full bg-black px-3 py-1.5 text-[10px] font-medium text-white transition-colors"
               data-step="1"
             >
-              Step 1
+              {t.howIWork.stepButton} 1
             </button>
             <button
               class="work-step-btn flex-shrink-0 rounded-full bg-gray-200 px-3 py-1.5 text-[10px] font-medium text-gray-600 transition-colors"
               data-step="2"
             >
-              Step 2
+              {t.howIWork.stepButton} 2
             </button>
             <button
               class="work-step-btn flex-shrink-0 rounded-full bg-gray-200 px-3 py-1.5 text-[10px] font-medium text-gray-600 transition-colors"
               data-step="3"
             >
-              Step 3
+              {t.howIWork.stepButton} 3
             </button>
             <button
               class="work-step-btn flex-shrink-0 rounded-full bg-gray-200 px-3 py-1.5 text-[10px] font-medium text-gray-600 transition-colors"
               data-step="4"
             >
-              Step 4
+              {t.howIWork.stepButton} 4
             </button>
             <button
               class="work-step-btn flex-shrink-0 rounded-full bg-gray-200 px-3 py-1.5 text-[10px] font-medium text-gray-600 transition-colors"
               data-step="5"
             >
-              Step 5
+              {t.howIWork.stepButton} 5
             </button>
           </div>
         </BentoCard>
