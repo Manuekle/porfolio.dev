@@ -9,12 +9,12 @@
   },
   "hero": {
     "hi": "Hi, I'm",
-    "subtitle": "Web Developer",
-    "at": "at",
-    "freelance": "Freelance Projects",
+    "subtitle": "Web & AI Developer",
+    "at": "focused on",
+    "freelance": "Freelance & SaaS",
     "openToWork": "Open to work",
-    "cta": "Book a call",
-    "ctaDescription": "Feel free to explore my portfolio and reach out—I'd love to connect!"
+    "cta": "Get in touch",
+    "ctaDescription": "Building products that are fast, beautiful, and built to last. Let's create something great together."
   },
   "experience": {
     "title": "What I've Done",
@@ -22,7 +22,7 @@
   },
   "projects": {
     "title": "Things I've Built",
-    "clickToView": "projects · Click to view details"
+    "clickToView": "projects · click to explore"
   },
   "techStack": {
     "title": "Tools I Use",

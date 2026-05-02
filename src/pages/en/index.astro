@@ -82,33 +82,85 @@ const projects = [
   {
     title: 'GymRat+',
     description:
-      lang === 'es' 
-        ? 'Una aplicación integral de seguimiento de fitness diseñada para ayudar a los usuarios a monitorear sus entrenamientos, rastrear el progreso y alcanzar sus objetivos de condición física con una interfaz intuitiva.'
-        : 'A comprehensive fitness tracking application designed to help users monitor their workouts, track progress, and achieve their fitness goals with an intuitive interface.',
+      lang === 'es'
+        ? 'SaaS para la gestión integral de gimnasios. Administra membresías, monitorea asistencia, procesa pagos con MercadoPago y accede a un panel de métricas en tiempo real. Construido pensando en los operadores de gimnasios modernos.'
+        : 'A SaaS platform for comprehensive gym management. Handle memberships, monitor attendance, process payments via MercadoPago, and access a real-time metrics dashboard — built for modern gym operators.',
     image: 'https://manudev.vercel.app/gym-banner.png',
-    techStack: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Tailwind CSS'],
+    techStack: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'MercadoPago'],
     features: [
-      lang === 'es' ? 'Seguimiento de entrenamientos e historial' : 'Workout tracking and history',
-      lang === 'es' ? 'Visualización de progreso con gráficos' : 'Progress visualization with charts',
-      lang === 'es' ? 'Biblioteca de ejercicios personalizada' : 'Custom exercise library',
-      lang === 'es' ? 'Notificaciones en tiempo real' : 'Real-time notifications',
-      lang === 'es' ? 'Diseño responsivo para móvil y web' : 'Responsive design for mobile and web',
+      lang === 'es' ? 'Gestión de membresías y planes' : 'Membership and plan management',
+      lang === 'es' ? 'Control de asistencia y acceso' : 'Attendance and access control',
+      lang === 'es' ? 'Pagos integrados con MercadoPago' : 'Integrated payments via MercadoPago',
+      lang === 'es' ? 'Panel de métricas en tiempo real' : 'Real-time analytics dashboard',
+      lang === 'es' ? 'Notificaciones automáticas' : 'Automated notifications',
     ],
     webLink: 'https://gymratplus.vercel.app/',
+    githubLink: 'https://github.com/Manuekle/gymratplus',
+  },
+  {
+    title: 'sira',
+    description:
+      lang === 'es'
+        ? 'Asistente de IA conversacional impulsado por OpenAI y modelos de última generación. Gestiona contexto de conversación, soporta múltiples flujos y permite integrar herramientas externas mediante MCP para automatizar tareas complejas.'
+        : 'A conversational AI assistant powered by OpenAI and cutting-edge models. Manages conversation context, supports multiple flows, and connects external tools via MCP to automate complex tasks.',
+    image: '/placeholder.jpeg',
+    techStack: ['Next.js', 'TypeScript', 'OpenAI', 'MCP', 'Tailwind CSS'],
+    features: [
+      lang === 'es' ? 'Conversaciones contextuales con memoria' : 'Context-aware conversations with memory',
+      lang === 'es' ? 'Integración con OpenAI, Claude y Gemini' : 'Integration with OpenAI, Claude, and Gemini',
+      lang === 'es' ? 'Soporte para herramientas via MCP' : 'Tool support via MCP protocol',
+      lang === 'es' ? 'Streaming de respuestas en tiempo real' : 'Real-time response streaming',
+      lang === 'es' ? 'Interfaz limpia y minimalista' : 'Clean and minimalist interface',
+    ],
+    githubLink: 'https://github.com/Manuekle/sira',
+  },
+  {
+    title: 'hinomaru',
+    description:
+      lang === 'es'
+        ? 'Sistema integral de gestión para negocios con módulos de inventario, facturación, clientes y reportes. Diseñado para ser rápido de adoptar y fácil de operar, con una interfaz moderna y fluida.'
+        : 'A comprehensive business management system with modules for inventory, invoicing, customers, and reporting. Designed for fast onboarding and effortless daily operation with a modern, fluid interface.',
+    image: '/placeholder.jpeg',
+    techStack: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Tailwind CSS'],
+    features: [
+      lang === 'es' ? 'Gestión de inventario en tiempo real' : 'Real-time inventory management',
+      lang === 'es' ? 'Facturación y pagos integrados' : 'Integrated billing and payments',
+      lang === 'es' ? 'CRM básico con historial de clientes' : 'Basic CRM with customer history',
+      lang === 'es' ? 'Reportes y analítica de negocio' : 'Business reports and analytics',
+      lang === 'es' ? 'Multi-sucursal y roles de usuario' : 'Multi-branch and user roles',
+    ],
+    githubLink: 'https://github.com/Manuekle/hinomaru',
+  },
+  {
+    title: 'heyMed',
+    description:
+      lang === 'es'
+        ? 'Plataforma digital de salud que conecta pacientes con profesionales médicos para consultas virtuales, gestión de citas y seguimiento de historial clínico. Diseñada con los más altos estándares de privacidad de datos.'
+        : 'A digital health platform connecting patients with medical professionals for virtual consultations, appointment management, and clinical history tracking — built with the highest data privacy standards.',
+    image: '/placeholder.jpeg',
+    techStack: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Tailwind CSS'],
+    features: [
+      lang === 'es' ? 'Consultas virtuales con videollamada' : 'Virtual consultations with video call',
+      lang === 'es' ? 'Gestión de citas y recordatorios' : 'Appointment management and reminders',
+      lang === 'es' ? 'Historial clínico seguro del paciente' : 'Secure patient clinical history',
+      lang === 'es' ? 'Panel de control para médicos' : 'Doctor control panel',
+      lang === 'es' ? 'Notificaciones y alertas automáticas' : 'Automated notifications and alerts',
+    ],
+    githubLink: 'https://github.com/Manuekle/heyMed',
   },
   {
     title: 'ButterflyAR',
     description:
       lang === 'es'
-        ? 'Una aplicación educativa innovadora de realidad aumentada que trae a la vida las especies de mariposas, permitiendo a los usuarios explorar y aprender sobre diferentes mariposas en un entorno 3D interactivo.'
-        : 'An innovative augmented reality educational app that brings butterfly species to life, allowing users to explore and learn about different butterflies in an interactive 3D environment.',
+        ? 'Aplicación educativa de realidad aumentada que da vida a las especies de mariposas en 3D. Combina ARCore y ARKit para una experiencia inmersiva cross-platform que une aprendizaje y tecnología.'
+        : 'An educational augmented reality app that brings butterfly species to life in 3D. Combines ARCore and ARKit for an immersive cross-platform experience that merges learning and technology.',
     image: 'https://manudev.vercel.app/butterfly-banner.png',
     techStack: ['Flutter', 'ARCore', 'ARKit', 'Dart'],
     features: [
       lang === 'es' ? 'Visualización AR de especies de mariposas' : 'AR visualization of butterfly species',
-      lang === 'es' ? 'Modelos 3D interactivos' : 'Interactive 3D models',
-      lang === 'es' ? 'Contenido educativo y datos' : 'Educational content and facts',
-      lang === 'es' ? 'Identificación de especies' : 'Species identification',
+      lang === 'es' ? 'Modelos 3D interactivos de alta fidelidad' : 'High-fidelity interactive 3D models',
+      lang === 'es' ? 'Contenido educativo con datos y curiosidades' : 'Educational content with facts and trivia',
+      lang === 'es' ? 'Identificación de especies por cámara' : 'Species identification via camera',
       lang === 'es' ? 'Soporte multiplataforma (iOS y Android)' : 'Cross-platform support (iOS & Android)',
     ],
     githubLink: 'https://github.com/Manuekle/butterflyar-mobile',
@@ -117,15 +169,15 @@ const projects = [
     title: 'QR Attendance',
     description:
       lang === 'es'
-        ? 'Un moderno sistema de gestión de asistencia usando códigos QR para check-ins rápidos y eficientes de estudiantes, diseñado para instituciones educativas para optimizar el seguimiento de asistencia.'
-        : 'A modern attendance management system using QR codes for quick and efficient student check-ins, designed for educational institutions to streamline attendance tracking.',
+        ? 'Sistema de gestión de asistencia con códigos QR para check-ins rápidos en instituciones educativas. Ofrece seguimiento en tiempo real, paneles diferenciados para alumnos y profesores, y reportes exportables.'
+        : 'An attendance management system using QR codes for quick check-ins in educational institutions. Offers real-time tracking, separate dashboards for students and teachers, and exportable reports.',
     image: 'https://manudev.vercel.app/edutrack-banner.png',
     techStack: ['Next.js', 'React', 'Node.js', 'MongoDB', 'QR Code API'],
     features: [
-      lang === 'es' ? 'Generación de códigos QR para clases' : 'QR code generation for classes',
+      lang === 'es' ? 'Generación de códigos QR por clase' : 'QR code generation per class',
       lang === 'es' ? 'Seguimiento de asistencia en tiempo real' : 'Real-time attendance tracking',
-      lang === 'es' ? 'Paneles de estudiantes y profesores' : 'Student and teacher dashboards',
-      lang === 'es' ? 'Reportes y análisis de asistencia' : 'Attendance reports and analytics',
+      lang === 'es' ? 'Paneles diferenciados para alumnos y docentes' : 'Separate dashboards for students and teachers',
+      lang === 'es' ? 'Reportes y análisis exportables' : 'Exportable reports and analytics',
       lang === 'es' ? 'Notificaciones por correo electrónico' : 'Email notifications',
     ],
     webLink: 'https://edutrack-fup.vercel.app/',
@@ -147,7 +199,7 @@ const projects = [
         <!-- My Experience -->
         <BentoCard data-aos="fade-up" data-aos-delay="100">
           <h3
-            class="mb-4 w-fit rounded-full bg-white px-3 py-1 text-xs font-semibold tracking-[-0.02em] text-zinc-500"
+            class="mb-4 w-fit rounded-full bg-zinc-100 px-3 py-1 text-xs font-semibold tracking-[-0.02em] text-zinc-500"
           >
             {t.experience.title}
           </h3>
@@ -171,15 +223,15 @@ const projects = [
         <!-- My Projects -->
         <BentoCard data-aos="fade-up" data-aos-delay="200">
           <h3
-            class="mb-4 w-fit rounded-full bg-white px-3 py-1 text-xs font-semibold tracking-[-0.02em] text-zinc-500"
+            class="mb-4 w-fit rounded-full bg-zinc-100 px-3 py-1 text-xs font-semibold tracking-[-0.02em] text-zinc-500"
           >
             {t.projects.title}
           </h3>
-          <div class="grid grid-cols-3 gap-2">
+          <div class="grid grid-cols-3 gap-1.5">
             {
               projects.map((project) => (
                 <button
-                  class="open-project-dialog aspect-square overflow-hidden rounded-lg transition-all hover:scale-105 hover:shadow-lg"
+                  class="open-project-dialog group relative aspect-square overflow-hidden rounded-xl transition-all hover:scale-105"
                   data-project={project.title.toLowerCase().replace(/\s+/g, '-')}
                 >
                   <Image
@@ -187,19 +239,23 @@ const projects = [
                     alt={project.title}
                     width={100}
                     height={100}
-                    class="h-full w-full object-cover"
+                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                   />
+                  <div class="absolute inset-0 bg-black/40 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+                  <span class="absolute inset-x-0 bottom-0 truncate px-1.5 py-1 text-[8px] font-medium text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                    {project.title}
+                  </span>
                 </button>
               ))
             }
           </div>
-          <div class="mt-3 text-xs text-gray-600">3 {t.projects.clickToView}</div>
+          <div class="mt-3 text-xs text-gray-500">{projects.length} {t.projects.clickToView}</div>
         </BentoCard>
 
         <!-- Tech Stack -->
         <BentoCard data-aos="fade-up" data-aos-delay="300">
           <h3
-            class="mb-4 w-fit rounded-full bg-white px-3 py-1 text-xs font-semibold tracking-[-0.02em] text-zinc-500"
+            class="mb-4 w-fit rounded-full bg-zinc-100 px-3 py-1 text-xs font-semibold tracking-[-0.02em] text-zinc-500"
           >
             {t.techStack.title}
           </h3>
@@ -392,7 +448,7 @@ const projects = [
         <!-- How I work -->
         <BentoCard data-aos="fade-up" data-aos-delay="500">
           <h3
-            class="mb-4 w-fit rounded-full bg-white px-3 py-1 text-xs font-semibold tracking-[-0.02em] text-zinc-500"
+            class="mb-4 w-fit rounded-full bg-zinc-100 px-3 py-1 text-xs font-semibold tracking-[-0.02em] text-zinc-500"
           >
             {t.howIWork.title}
           </h3>

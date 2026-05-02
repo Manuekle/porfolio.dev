@@ -16,101 +16,86 @@ export interface ProjectProps {
   technologies: Technology[]
 }
 
-const { title, description, image, webLink, technologies } = Astro.props
+const { title, description, image, webLink, githubLink, technologies } = Astro.props
 ---
 
-<div class="project-card group">
-  <a href={webLink || '#'} target={webLink ? '_blank' : '_self'} class="block h-full">
+<div
+  class="group overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/[0.04] transition-all duration-300 hover:shadow-md"
+>
+  <!-- Image -->
+  <div class="relative aspect-[16/10] overflow-hidden">
+    <Image
+      src={image}
+      alt={title}
+      width={800}
+      height={500}
+      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+    />
     <div
-      class="relative h-full overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-1 backdrop-blur-sm transition-all duration-500 hover:border-purple-500/50"
+      class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
     >
-      <!-- Gradient border on hover -->
-      <div
-        class="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100"
-      >
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="p-5">
+    <h3 class="mb-2 text-base font-semibold tracking-tight">{title}</h3>
+    <p class="mb-4 text-sm leading-relaxed text-gray-500">{description}</p>
+
+    <div class="flex items-center justify-between">
+      <!-- Tech stack -->
+      <div class="flex flex-wrap gap-1.5">
+        {
+          technologies.slice(0, 3).map((tech) => (
+            <span class="rounded-full bg-gray-50 px-2.5 py-1 text-[10px] text-gray-500">
+              {tech.name}
+            </span>
+          ))
+        }
       </div>
 
-      <div class="relative h-full overflow-hidden rounded-xl bg-black/40 backdrop-blur-sm">
-        <!-- Image -->
-        <div class="relative aspect-[16/10] overflow-hidden">
-          <div
-            class="absolute inset-0 z-10 bg-gradient-to-t from-black/80 via-black/20 to-transparent"
-          >
-          </div>
-          <Image
-            src={image}
-            alt={title}
-            width={800}
-            height={500}
-            class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-          />
-        </div>
-
-        <!-- Content -->
-        <div class="relative z-20 p-6">
-          <h3
-            class="mb-3 text-2xl font-bold text-white transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 group-hover:bg-clip-text group-hover:text-transparent"
-          >
-            {title}
-          </h3>
-          <p class="mb-4 leading-relaxed text-gray-400">
-            {description}
-          </p>
-
-          <!-- Tech stack -->
-          <div class="flex flex-wrap gap-2">
-            {
-              technologies
-                .slice(0, 3)
-                .map((tech) => (
-                  <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-gray-300">
-                    {tech.name}
-                  </span>
-                ))
-            }
-          </div>
-        </div>
+      <!-- Links -->
+      <div class="flex gap-3">
+        {
+          webLink && (
+            <a
+              href={webLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-1 text-[10px] font-medium text-gray-400 transition-colors hover:text-black"
+            >
+              <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+              Live
+            </a>
+          )
+        }
+        {
+          githubLink && (
+            <a
+              href={githubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-1 text-[10px] font-medium text-gray-400 transition-colors hover:text-black"
+            >
+              <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Code
+            </a>
+          )
+        }
       </div>
     </div>
-  </a>
+  </div>
 </div>
-
-<style>
-  .project-card {
-    perspective: 1000px;
-  }
-
-  .project-card:hover > a > div {
-    transform: rotateY(5deg) rotateX(5deg);
-  }
-
-  @media (hover: hover) {
-    .project-card {
-      transition: transform 0.1s ease-out;
-    }
-  }
-</style>
-
-<script>
-  document.querySelectorAll('.project-card').forEach((card) => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect()
-      const x = e.clientX - rect.left
-      const y = e.clientY - rect.top
-
-      const centerX = rect.width / 2
-      const centerY = rect.height / 2
-
-      const rotateX = (y - centerY) / 20
-      const rotateY = (centerX - x) / 20
-
-      const cardInner = card.querySelector('a > div')
-      cardInner.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`
-    })
-
-    card.addEventListener('mouseleave', () => {
-      const cardInner = card.querySelector('a > div')
-      cardInner.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)'
-    })
-  })
-</script>

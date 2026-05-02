@@ -9,12 +9,12 @@
   },
   "hero": {
     "hi": "¡Hola, soy",
-    "subtitle": "Desarrollador Web",
-    "at": "en",
-    "freelance": "Proyectos Freelance",
+    "subtitle": "Desarrollador Web & IA",
+    "at": "enfocado en",
+    "freelance": "Freelance & SaaS",
     "openToWork": "Disponible para trabajar",
-    "cta": "Agendar llamada",
-    "ctaDescription": "Explora mi portafolio y contáctame, ¡me encantaría conectar!"
+    "cta": "Contáctame",
+    "ctaDescription": "Construyo productos rápidos, atractivos y escalables. Hablemos de tu próximo proyecto."
   },
   "experience": {
     "title": "Lo que he hecho",
@@ -22,7 +22,7 @@
   },
   "projects": {
     "title": "Proyectos que he creado",
-    "clickToView": "proyectos · Click para ver detalles"
+    "clickToView": "proyectos · click para explorar"
   },
   "techStack": {
     "title": "Herramientas que uso",
