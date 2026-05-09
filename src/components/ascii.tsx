@@ -55,6 +55,16 @@ export const ASCII_ART: Record<ProjectArt, string[]> = {
     "  ▓▓▓ ▓ ▓ ▓ ▓ ▓▓▓  ",
     "                    ",
   ],
+  inv: [
+    "                    ",
+    "  ▮         ▮▮      ",
+    "  ▮     ▮   ▮▮      ",
+    "  ▮  ▮  ▮▮  ▮▮      ",
+    "  ▮  ▮  ▮▮  ▮▮  ▮   ",
+    "  ▮  ▮  ▮▮  ▮▮  ▮   ",
+    "  ────────────────  ",
+    "  Q1  Q2  Q3  Q4    ",
+  ],
 };
 
 export function AsciiArt({ kind, dim = false }: { kind: ProjectArt; dim?: boolean }) {

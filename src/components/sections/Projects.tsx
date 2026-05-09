@@ -15,7 +15,7 @@ export function Projects({ lang, onOpen }: { lang: Lang; onOpen: (p: Project) =>
 
         <div className="projects-grid" style={{ display: "grid", gridTemplateColumns: "repeat(12, 1fr)", gap: 18 }}>
           {PROJECTS.map((p, i) => {
-            const colSpan = p.big ? 7 : i === 1 ? 5 : 4;
+            const colSpan = p.big ? 7 : i === 1 ? 5 : 6;
             return (
               <button
                 key={p.id}

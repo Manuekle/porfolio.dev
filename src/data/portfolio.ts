@@ -164,6 +164,15 @@ export const EXPERIENCE: ExperienceEntry[] = [
   },
   {
     when: "2025", whenJp: "二〇二五",
+    role: { en: "Participant", es: "Participante" },
+    org: "Reto Hackatón 2025 · FUP",
+    note: {
+      en: "Inventory and sales analytics solution.",
+      es: "Solución de análisis de inventario y ventas.",
+    },
+  },
+  {
+    when: "2025", whenJp: "二〇二五",
     role: { en: "Web Developer", es: "Desarrollador Web" },
     org: "Smurfit Kappa Cartón Colombia",
     note: { en: "Internal tools and reporting dashboards.", es: "Herramientas internas y dashboards de reportes." },
@@ -188,7 +197,7 @@ export const EXPERIENCE: ExperienceEntry[] = [
   },
 ];
 
-export type ProjectArt = "gym" | "sira" | "qr" | "hino" | "med" | "butter";
+export type ProjectArt = "gym" | "sira" | "qr" | "hino" | "med" | "butter" | "inv";
 
 export type Project = {
   id: string;
@@ -257,6 +266,20 @@ export const PROJECTS: Project[] = [
     stack: ["Flutter", "AR Core"],
     art: "butter",
     sourceUrl: "https://github.com/Manuekle/butterflyar-mobile",
+  },
+  {
+    id: "retohackaton2025fup",
+    name: "Reto Hackatón 2025 FUP",
+    year: "2025",
+    type: { en: "Hackathon · Inventory & Sales", es: "Hackatón · Inventario y Ventas" },
+    blurb: {
+      en: "Inventory and sales analytics solution built for FUP's 2025 hackathon challenge.",
+      es: "Solución de análisis de inventario y ventas construida para el reto hackatón 2025 de la FUP.",
+    },
+    stack: ["Next.js", "TypeScript", "PostgreSQL", "Charts"],
+    art: "inv",
+    liveUrl: "https://retohackaton2025fup.vercel.app/",
+    sourceUrl: "https://github.com/Manuekle/retohackaton2025fup",
   },
 ];
 
