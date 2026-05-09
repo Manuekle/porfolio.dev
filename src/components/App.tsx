@@ -56,10 +56,16 @@ export function App() {
   }, [lang, paperTone, hydrated]);
 
   useEffect(() => {
-    const els = document.querySelectorAll(
+    const els = document.querySelectorAll<HTMLElement>(
       ".section-head, .bento > .card, .stack-row, .services-grid > .card, .testi-grid > .card, .projects-grid > button, .exp-row, .now-strip, .method-card",
     );
-    els.forEach((el) => el.classList.add("reveal"));
+    const vh = window.innerHeight;
+    els.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      const aboveFold = rect.top < vh && rect.bottom > 0;
+      el.classList.add("reveal");
+      if (aboveFold) el.classList.add("in");
+    });
     if (!("IntersectionObserver" in window)) {
       els.forEach((el) => el.classList.add("in"));
       return;
@@ -75,7 +81,9 @@ export function App() {
       },
       { threshold: 0.08, rootMargin: "0px 0px -40px 0px" },
     );
-    els.forEach((el) => io.observe(el));
+    els.forEach((el) => {
+      if (!el.classList.contains("in")) io.observe(el);
+    });
     return () => io.disconnect();
   }, [lang]);
 

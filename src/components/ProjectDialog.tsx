@@ -91,14 +91,20 @@ export function ProjectDialog({
                 </span>
               ))}
             </div>
-            <div style={{ marginTop: 28, display: "flex", gap: 12 }}>
-              <button className="btn">
-                {lang === "en" ? "Visit live" : "Ver en vivo"} <span className="arrow">↗</span>
-              </button>
-              <button className="btn btn-ghost">
-                {lang === "en" ? "Source" : "Código"} <span className="arrow">→</span>
-              </button>
-            </div>
+            {(project.liveUrl || project.sourceUrl) && (
+              <div style={{ marginTop: 28, display: "flex", gap: 12, flexWrap: "wrap" }}>
+                {project.liveUrl && (
+                  <a className="btn" href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                    {lang === "en" ? "Visit live" : "Ver en vivo"} <span className="arrow">↗</span>
+                  </a>
+                )}
+                {project.sourceUrl && (
+                  <a className="btn btn-ghost" href={project.sourceUrl} target="_blank" rel="noopener noreferrer">
+                    {lang === "en" ? "Source" : "Código"} <span className="arrow">→</span>
+                  </a>
+                )}
+              </div>
+            )}
           </div>
           <div
             style={{

@@ -173,7 +173,7 @@ export function Hero({ lang, onContact }: { lang: Lang; onContact: () => void })
                   letterSpacing: ".15em",
                 }}
               >
-                <span>FILE ／ self_portrait.jpg</span>
+                <span>FILE ／ self_portrait.webp</span>
                 <span>2026 ／ NO.001</span>
               </div>
               <div
@@ -289,9 +289,6 @@ export function Hero({ lang, onContact }: { lang: Lang; onContact: () => void })
             padding: "18px 0",
             borderTop: "1px solid var(--rule)",
             borderBottom: "1px solid var(--rule)",
-            display: "flex",
-            gap: 56,
-            alignItems: "center",
             fontFamily: "var(--serif)",
             fontSize: 22,
             fontWeight: 500,
@@ -300,15 +297,23 @@ export function Hero({ lang, onContact }: { lang: Lang; onContact: () => void })
             overflow: "hidden",
           }}
         >
-          {(lang === "en"
-            ? ["Web Apps", "AI Integrations", "SaaS Products", "Landing Pages", "Custom Tooling", "Developer Experience"]
-            : ["Web Apps", "Integraciones IA", "SaaS", "Landing Pages", "Herramientas a medida", "Developer Experience"]
-          ).map((w, i) => (
-            <span key={i} style={{ display: "inline-flex", alignItems: "center", gap: 56 }}>
-              <span>{w}</span>
-              <span style={{ fontFamily: "var(--mono)", fontSize: 14, color: "var(--ink-4)" }}>／</span>
-            </span>
-          ))}
+          <div className="marquee-track">
+            {Array.from({ length: 2 }).flatMap((_, dup) =>
+              (lang === "en"
+                ? ["Web Apps", "AI Integrations", "SaaS Products", "Landing Pages", "Custom Tooling", "Developer Experience"]
+                : ["Web Apps", "Integraciones IA", "SaaS", "Landing Pages", "Herramientas a medida", "Developer Experience"]
+              ).map((w, i) => (
+                <span
+                  key={`${dup}-${i}`}
+                  aria-hidden={dup === 1 ? "true" : undefined}
+                  style={{ display: "inline-flex", alignItems: "center", gap: 56 }}
+                >
+                  <span>{w}</span>
+                  <span style={{ fontFamily: "var(--mono)", fontSize: 14, color: "var(--ink-4)" }}>／</span>
+                </span>
+              )),
+            )}
+          </div>
         </div>
       </div>
     </section>

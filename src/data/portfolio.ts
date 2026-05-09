@@ -199,6 +199,8 @@ export type Project = {
   stack: string[];
   big?: boolean;
   art: ProjectArt;
+  liveUrl?: string;
+  sourceUrl?: string;
 };
 
 export const PROJECTS: Project[] = [
@@ -332,8 +334,8 @@ export const STACK: StackGroup[] = [
 ];
 
 export const SOCIALS = [
-  { label: "GitHub", handle: "@manudev", url: "https://github.com" },
-  { label: "LinkedIn", handle: "/in/manuel-erazo", url: "https://linkedin.com" },
-  { label: "Instagram", handle: "@manu.dev", url: "https://instagram.com" },
-  { label: "Email", handle: "hello@manuelerazo.dev", url: "mailto:hello@manuelerazo.dev" },
+  { label: "GitHub", handle: "@Manuekle", url: "https://github.com/Manuekle" },
+  { label: "LinkedIn", handle: "/in/manuekle", url: "https://linkedin.com/in/manuekle" },
+  { label: "Instagram", handle: "@manudev.jsx", url: "https://instagram.com/manudev.jsx" },
+  { label: "Email", handle: "meeerazo7@hotmail.com", url: "mailto:meeerazo7@hotmail.com" },
 ];

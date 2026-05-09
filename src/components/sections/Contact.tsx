@@ -44,7 +44,7 @@ export function Contact({ lang }: { lang: Lang }) {
             }}
           >
             <a
-              href="mailto:hello@manuelerazo.dev"
+              href="mailto:meeerazo7@hotmail.com"
               className="btn"
               style={{ background: "var(--paper)", color: "var(--ink)", textDecoration: "none" }}
             >
@@ -63,7 +63,7 @@ export function Contact({ lang }: { lang: Lang }) {
               {lang === "en" ? "Download CV" : "Descargar CV"} <span className="arrow">↓</span>
             </a>
             <a
-              href="mailto:hello@manuelerazo.dev"
+              href="mailto:meeerazo7@hotmail.com"
               className="btn btn-ghost"
               style={{
                 color: "var(--on-contrast)",
@@ -71,7 +71,7 @@ export function Contact({ lang }: { lang: Lang }) {
                 textDecoration: "none",
               }}
             >
-              hello@manuelerazo.dev
+              meeerazo7@hotmail.com
             </a>
           </div>
         </div>
