@@ -34,7 +34,7 @@ function NavBar({ lang }: { lang: Lang }) {
 export function Hero({ lang, onContact }: { lang: Lang; onContact: () => void }) {
   const t = COPY[lang].hero;
   return (
-    <section style={{ paddingTop: 32, paddingBottom: 60 }} data-screen-label="00 Hero">
+    <section className="hero-section" style={{ paddingTop: 32, paddingBottom: 60 }} data-screen-label="00 Hero">
       <div className="container-x">
         <div
           className="hero-topbar"

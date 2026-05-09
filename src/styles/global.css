@@ -287,10 +287,20 @@ dialog {
   .section-head h2 { font-size: 32px; }
   .section-head .jp-tag { padding-bottom: 0; }
 
+  .hero-section { padding-top: 72px !important; }
   .hero-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
   .hero-name { font-size: clamp(48px, 13vw, 84px) !important; }
   .hero-sub { font-size: 18px !important; }
-  .hero-topbar { flex-wrap: wrap; gap: 12px; }
+  .hero-topbar {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-right: 0 !important;
+  }
+  .hero-topbar > div:first-child {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px !important;
+  }
   .hero-topbar nav { display: none !important; }
   .hero-marquee { gap: 28px !important; font-size: 16px !important; padding: 14px 0 !important; }
   .hero-cta-row { flex-direction: column; align-items: stretch !important; }
