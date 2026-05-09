@@ -52,7 +52,7 @@ export function ProjectDialog({
             position: "fixed",
             inset: 0,
             zIndex: 100,
-            background: "color-mix(in oklab, var(--ink) 70%, transparent)",
+            background: "rgba(8, 8, 10, 0.62)",
             backdropFilter: "blur(6px)",
             WebkitBackdropFilter: "blur(6px)",
             display: "flex",
