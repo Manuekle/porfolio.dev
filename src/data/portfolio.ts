@@ -213,6 +213,7 @@ export const PROJECTS: Project[] = [
     stack: ["Next.js", "Prisma", "PostgreSQL", "MercadoPago"],
     big: true,
     art: "gym",
+    liveUrl: "https://gymratplus.com/",
   },
   {
     id: "sira",
@@ -222,6 +223,8 @@ export const PROJECTS: Project[] = [
     blurb: { en: "Sistema Integrado de Registro de Asistencia — QR-based class attendance built for FUP.", es: "Sistema Integrado de Registro de Asistencia con códigos QR — desarrollado para la FUP." },
     stack: ["React", "Express", "PostgreSQL", "QR"],
     art: "qr",
+    liveUrl: "https://sira-fup.online/",
+    sourceUrl: "https://github.com/Manuekle/sira",
   },
   {
     id: "hinomaru",
@@ -231,6 +234,8 @@ export const PROJECTS: Project[] = [
     blurb: { en: "Japanese learning app — kana, vocabulary and SRS reviews.", es: "App para aprender japonés — kana, vocabulario y repaso espaciado." },
     stack: ["React Native", "TypeScript", "SQLite"],
     art: "hino",
+    liveUrl: "https://hinomaru.vercel.app/",
+    sourceUrl: "https://github.com/Manuekle/hinomaru",
   },
   {
     id: "heymed",
@@ -240,6 +245,8 @@ export const PROJECTS: Project[] = [
     blurb: { en: "Digital platform for virtual medical consultations.", es: "Plataforma digital para consultas médicas virtuales." },
     stack: ["React", "Node.js", "MongoDB"],
     art: "med",
+    liveUrl: "https://heymed.fun/",
+    sourceUrl: "https://github.com/Manuekle/heyMed",
   },
   {
     id: "butterflyar",
@@ -249,6 +256,7 @@ export const PROJECTS: Project[] = [
     blurb: { en: "Augmented reality app teaching butterfly species.", es: "App de RA educativa sobre mariposas." },
     stack: ["Flutter", "AR Core"],
     art: "butter",
+    sourceUrl: "https://github.com/Manuekle/butterflyar-mobile",
   },
 ];
 
