@@ -189,7 +189,7 @@ export function Hero({ lang, onContact }: { lang: Lang; onContact: () => void })
                 }}
               >
                 <img
-                  src="/assets/avatar.jpg"
+                  src="/assets/avatar.webp"
                   alt="Manuel illustration"
                   className="hero-avatar"
                   style={{
@@ -197,7 +197,6 @@ export function Hero({ lang, onContact }: { lang: Lang; onContact: () => void })
                     maxWidth: "85%",
                     objectFit: "contain",
                     filter: "drop-shadow(0 16px 24px #00000020)",
-                    mixBlendMode: "multiply",
                   }}
                 />
                 <span
