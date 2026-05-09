@@ -1,0 +1,183 @@
+import { COPY, type Lang } from "../../data/portfolio";
+import { SectionHead } from "../ascii";
+
+export function AboutBento({ lang }: { lang: Lang }) {
+  const c = COPY[lang];
+  return (
+    <section style={{ padding: "0 0 40px" }}>
+      <div className="container-x">
+        <SectionHead
+          idx={c.sections.about[1]}
+          title={c.sections.about[0]}
+          jp={c.sections.about[2]}
+          sub={c.sections.about[3]}
+        />
+
+        <div
+          className="bento"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(12, 1fr)",
+            gridAutoRows: "minmax(140px, auto)",
+            gap: 18,
+          }}
+        >
+          <div
+            className="card"
+            style={{
+              gridColumn: "span 7",
+              gridRow: "span 2",
+              padding: 36,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            <div className="label">／ ABOUT ／ 概要</div>
+            <p
+              style={{
+                fontFamily: "var(--serif)",
+                fontSize: 28,
+                lineHeight: 1.35,
+                margin: "20px 0 0",
+                color: "var(--ink)",
+              }}
+            >
+              {c.aboutCopy}
+            </p>
+            <div style={{ display: "flex", gap: 14, alignItems: "center", marginTop: 28, flexWrap: "wrap" }}>
+              {["React", "Next.js", "TypeScript", "LLMs"].map((t) => (
+                <span key={t} className="pill">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div
+            className="card"
+            style={{ gridColumn: "span 5", padding: 28, display: "flex", flexDirection: "column" }}
+          >
+            <div className="label">／ {c.locationLabel.toUpperCase()} ／ 場所</div>
+            <pre
+              style={{
+                margin: "16px 0 0",
+                fontFamily: "var(--mono)",
+                fontSize: 11,
+                lineHeight: 1.15,
+                color: "var(--ink-2)",
+                flex: 1,
+              }}
+            >
+{`         ╱─╲      ╱──╲
+        ╱   ╲────╱    ╲
+   ────╱   ▲ COLOMBIA  ╲────
+       ╲    ╲           ╱
+        ╲    ●  ←  Popayán
+         ╲   ╱──────╱
+          ╲ ╱
+           ▼`}
+            </pre>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginTop: 12,
+                fontFamily: "var(--mono)",
+                fontSize: 11,
+                color: "var(--ink-3)",
+              }}
+            >
+              <span>POPAYÁN, CO</span>
+              <span>{lang === "en" ? "AGE 24" : "EDAD 24"}</span>
+              <span>UTC−5</span>
+            </div>
+          </div>
+
+          <div
+            className="card"
+            style={{
+              gridColumn: "span 4",
+              padding: 28,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            <div className="label">／ {c.yearsLabel.toUpperCase()}</div>
+            <div
+              className="stat-num"
+              style={{ fontFamily: "var(--serif)", fontSize: 96, fontWeight: 700, lineHeight: 1, letterSpacing: "-0.04em" }}
+            >
+              05
+              <span style={{ fontSize: 24, color: "var(--ink-3)", marginLeft: 8, fontFamily: "var(--mono)" }}>yrs</span>
+            </div>
+            <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--ink-3)" }}>
+              {lang === "en" ? "since 2021 ─ ─ ─" : "desde 2021 ─ ─ ─"}
+            </div>
+          </div>
+
+          <div
+            className="card dark"
+            style={{
+              gridColumn: "span 4",
+              padding: 28,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            <div className="label">／ {c.shippedLabel.toUpperCase()}</div>
+            <div
+              className="stat-num"
+              style={{ fontFamily: "var(--serif)", fontSize: 96, fontWeight: 700, lineHeight: 1, letterSpacing: "-0.04em" }}
+            >
+              22
+              <span style={{ fontSize: 24, color: "var(--on-contrast-3)", marginLeft: 8, fontFamily: "var(--mono)" }}>+</span>
+            </div>
+            <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--on-contrast-2)" }}>
+              {lang === "en" ? "shipped ─ ─ ─" : "lanzados ─ ─ ─"}
+            </div>
+          </div>
+
+          <div
+            className="card"
+            style={{
+              gridColumn: "span 4",
+              padding: 24,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              background: "var(--paper-2)",
+            }}
+          >
+            <div
+              style={{
+                writingMode: "vertical-rl",
+                fontFamily: "Shippori Mincho, serif",
+                fontWeight: 600,
+                fontSize: 28,
+                letterSpacing: "0.4em",
+                color: "var(--ink)",
+              }}
+            >
+              一行ずつ・丁寧に
+            </div>
+            <div
+              style={{
+                writingMode: "vertical-rl",
+                fontFamily: "var(--mono)",
+                fontSize: 11,
+                letterSpacing: "0.2em",
+                color: "var(--ink-3)",
+                marginLeft: 16,
+              }}
+            >
+              {lang === "en" ? "LINE BY LINE / WITH CARE" : "LÍNEA POR LÍNEA / CON CUIDADO"}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
