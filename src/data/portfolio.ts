@@ -338,17 +338,17 @@ export type StackGroup = {
 export const STACK: StackGroup[] = [
   {
     id: "frontend",
-    label: { en: "Frontend", es: "Frontend" }, jp: "前端",
+    label: { en: "Frontend", es: "Frontend" }, jp: "フロントエンド",
     items: ["React", "Next.js", "Astro", "TypeScript", "JavaScript", "Tailwind CSS", "Flutter", "Motion"],
   },
   {
     id: "backend",
-    label: { en: "Backend", es: "Backend" }, jp: "後端",
+    label: { en: "Backend", es: "Backend" }, jp: "バックエンド",
     items: ["Node.js", "Python", "Bun"],
   },
   {
     id: "database",
-    label: { en: "Database", es: "Base de Datos" }, jp: "資料",
+    label: { en: "Database", es: "Base de Datos" }, jp: "データベース",
     items: ["PostgreSQL", "MySQL", "Prisma", "MongoDB"],
   },
   {
