@@ -90,16 +90,24 @@ export function Services({ lang }: { lang: Lang }) {
                   </div>
                 ))}
               </div>
-              <button
+              <a
                 className="btn"
+                href={`mailto:meeerazo7@hotmail.com?subject=${encodeURIComponent(
+                  (lang === "en" ? "Brief: " : "Brief: ") + title,
+                )}&body=${encodeURIComponent(
+                  lang === "en"
+                    ? `Hi Manuel,\n\nI'd like to start a brief for: ${title} (${time}, ${price}).\n\nProject context:\n\nGoals:\n\nTimeline:\n\nThanks!`
+                    : `Hola Manuel,\n\nMe gustaría iniciar un brief para: ${title} (${time}, ${price}).\n\nContexto del proyecto:\n\nObjetivos:\n\nCronograma:\n\nGracias!`,
+                )}`}
                 style={{
                   marginTop: "auto",
                   background: recommended ? "var(--paper)" : "var(--ink)",
                   color: recommended ? "var(--ink)" : "var(--paper)",
+                  textDecoration: "none",
                 }}
               >
                 {lang === "en" ? "Start brief" : "Iniciar brief"} <span className="arrow">→</span>
-              </button>
+              </a>
             </div>
           ))}
         </div>
