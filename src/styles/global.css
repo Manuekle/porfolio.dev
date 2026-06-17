@@ -68,9 +68,9 @@
   --on-contrast-line: rgba(246, 242, 231, 0.18);
   --on-contrast-fill: rgba(246, 242, 231, 0.08);
   --card-hl: rgba(255, 255, 255, 0.5);
-  --serif: 'Shippori Mincho', 'Noto Serif JP', ui-serif, Georgia, serif;
+  --serif: 'Racleys', 'Shippori Mincho', 'Noto Serif JP', ui-serif, Georgia, serif;
   --display: 'Racleys', 'Shippori Mincho', 'Noto Serif JP', ui-serif, Georgia, serif;
-  --sans: 'Inter', system-ui, sans-serif;
+  --sans: 'Racleys', 'Inter', system-ui, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
 }
 
