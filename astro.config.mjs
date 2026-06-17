@@ -6,6 +6,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
+  // Production URL — used to build absolute canonical / OG image URLs.
+  site: 'https://manudev.vercel.app',
   integrations: [react()],
 
   vite: {

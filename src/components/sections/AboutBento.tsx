@@ -62,7 +62,7 @@ export function AboutBento({ lang }: { lang: Lang }) {
             <pre
               style={{
                 margin: "16px 0 0",
-                fontFamily: "var(--mono)",
+                fontFamily: "var(--mono-art)",
                 fontSize: 11,
                 lineHeight: 1.15,
                 color: "var(--ink-2)",
@@ -97,7 +97,7 @@ export function AboutBento({ lang }: { lang: Lang }) {
           <div
             className="card"
             style={{
-              gridColumn: "span 4",
+              gridColumn: "span 5",
               padding: 28,
               display: "flex",
               flexDirection: "column",
@@ -118,50 +118,26 @@ export function AboutBento({ lang }: { lang: Lang }) {
           </div>
 
           <div
-            className="card dark"
+            className="card dark about-shipped"
             style={{
-              gridColumn: "span 4",
-              padding: 28,
+              gridColumn: "span 12",
+              padding: "28px 36px",
               display: "flex",
-              flexDirection: "column",
+              alignItems: "center",
               justifyContent: "space-between",
+              gap: 24,
             }}
           >
             <div className="label">／ {c.shippedLabel.toUpperCase()}</div>
             <div
               className="stat-num"
-              style={{ fontFamily: "var(--serif)", fontSize: 96, fontWeight: 700, lineHeight: 1, letterSpacing: "-0.04em" }}
+              style={{ fontFamily: "var(--serif)", fontSize: 72, fontWeight: 700, lineHeight: 1, letterSpacing: "-0.04em" }}
             >
               22
               <span style={{ fontSize: 24, color: "var(--on-contrast-3)", marginLeft: 8, fontFamily: "var(--mono)" }}>+</span>
             </div>
             <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--on-contrast-2)" }}>
               {lang === "en" ? "shipped ─ ─ ─" : "lanzados ─ ─ ─"}
-            </div>
-          </div>
-
-          <div
-            className="card"
-            style={{
-              gridColumn: "span 4",
-              padding: 24,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              background: "var(--paper-2)",
-            }}
-          >
-            <div
-              style={{
-                writingMode: "vertical-rl",
-                fontFamily: "var(--display)",
-                fontWeight: 600,
-                fontSize: 26,
-                letterSpacing: "0.3em",
-                color: "var(--ink)",
-              }}
-            >
-              {lang === "en" ? "LINE BY LINE · WITH CARE" : "LÍNEA POR LÍNEA · CON CUIDADO"}
             </div>
           </div>
         </div>

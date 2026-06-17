@@ -1,0 +1,13 @@
+{
+  "name": "Manuel Erazo — Web & AI Developer",
+  "short_name": "Manuel Erazo",
+  "description": "Web & AI developer based in Popayán, Colombia. Building fast, beautiful, scalable products.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#13141a",
+  "theme_color": "#13141a",
+  "icons": [
+    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

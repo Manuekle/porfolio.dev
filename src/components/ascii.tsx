@@ -97,7 +97,7 @@ export function AsciiArt({ kind, dim = false }: { kind: ProjectArt; dim?: boolea
     <pre
       style={{
         margin: 0,
-        fontFamily: "var(--mono)",
+        fontFamily: "var(--mono-art)",
         fontSize: 12,
         lineHeight: 1.2,
         color: dim ? "var(--ink-4)" : "var(--ink-2)",

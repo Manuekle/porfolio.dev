@@ -244,6 +244,8 @@ export const PROJECTS: Project[] = [
     stack: ["Azure AI Foundry", "Next.js", "TypeScript", "Multi-agent"],
     big: true,
     art: "forge",
+    liveUrl: "https://forgems.vercel.app/",
+    sourceUrl: "https://github.com/Manuekle/Forge",
   },
   {
     id: "gymrat",

@@ -114,12 +114,13 @@ export function ProjectDialog({
                     background: "transparent",
                     border: "none",
                     fontFamily: "var(--mono)",
-                    fontSize: 18,
+                    fontSize: 24,
+                    lineHeight: 1,
                     color: "var(--ink-2)",
                     padding: 8,
                   }}
                 >
-                  ×  {lang === "en" ? "close" : "cerrar"}
+                  ×
                 </button>
               </div>
 

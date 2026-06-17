@@ -51,6 +51,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Geist Pixel";
+  src: url("/assets/font/GeistPixel-Square.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --paper: #efe9dc;
   --paper-2: #e8e0cf;
@@ -71,7 +79,8 @@
   --serif: 'Racleys', 'Shippori Mincho', 'Noto Serif JP', ui-serif, Georgia, serif;
   --display: 'Racleys', 'Shippori Mincho', 'Noto Serif JP', ui-serif, Georgia, serif;
   --sans: 'Racleys', 'Inter', system-ui, sans-serif;
-  --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  --mono: 'Geist Pixel', 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  --mono-art: 'JetBrains Mono', ui-monospace, Menlo, monospace;
 }
 
 [data-paper="cool"] {
@@ -376,6 +385,7 @@ dialog {
   .bento { grid-template-columns: 1fr !important; }
   .bento > .card { grid-column: span 1 !important; grid-row: auto !important; }
   .bento .stat-num { font-size: 72px !important; }
+  .about-shipped { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
 
   .now-strip { grid-template-columns: 1fr !important; gap: 12px !important; padding: 16px 20px !important; }
 
