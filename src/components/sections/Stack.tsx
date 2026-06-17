@@ -30,17 +30,19 @@ export function Stack({ lang }: { lang: Lang }) {
                 <div style={{ fontFamily: "var(--serif)", fontSize: 28, fontWeight: 700, letterSpacing: "-0.01em" }}>
                   {g.label[lang]}
                 </div>
-                <div
-                  style={{
-                    fontFamily: "Noto Serif JP, serif",
-                    fontSize: 13,
-                    color: g.highlight ? "var(--on-contrast-2)" : "var(--ink-3)",
-                    letterSpacing: ".25em",
-                    marginTop: 4,
-                  }}
-                >
-                  {g.jp}
-                </div>
+                {g.jp && (
+                  <div
+                    style={{
+                      fontFamily: "var(--mono)",
+                      fontSize: 13,
+                      color: g.highlight ? "var(--on-contrast-2)" : "var(--ink-3)",
+                      letterSpacing: ".25em",
+                      marginTop: 4,
+                    }}
+                  >
+                    {g.jp}
+                  </div>
+                )}
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                 {g.items.map((t) => (

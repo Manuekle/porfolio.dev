@@ -40,7 +40,7 @@ export function NowStrip({ lang }: { lang: Lang }) {
                 fontWeight: 600,
               }}
             >
-              {lang === "en" ? "NOW ／ 現在" : "AHORA ／ 現在"}
+              {lang === "en" ? "NOW" : "AHORA"}
             </span>
           </div>
           <div style={{ display: "flex", gap: 0, flexWrap: "wrap", alignItems: "center" }}>

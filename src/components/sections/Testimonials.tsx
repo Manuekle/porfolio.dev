@@ -9,7 +9,7 @@ export function Testimonials({ lang }: { lang: Lang }) {
         <SectionHead
           idx="—"
           title={lang === "en" ? "Words" : "Palabras"}
-          jp="言葉"
+          jp=""
           sub={lang === "en" ? "What clients have said" : "Lo que han dicho clientes"}
         />
         <div className="testi-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 18 }}>

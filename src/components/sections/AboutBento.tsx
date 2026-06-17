@@ -33,7 +33,7 @@ export function AboutBento({ lang }: { lang: Lang }) {
               justifyContent: "space-between",
             }}
           >
-            <div className="label">／ ABOUT ／ 概要</div>
+            <div className="label">／ ABOUT</div>
             <p
               style={{
                 fontFamily: "var(--serif)",
@@ -58,7 +58,7 @@ export function AboutBento({ lang }: { lang: Lang }) {
             className="card"
             style={{ gridColumn: "span 5", padding: 28, display: "flex", flexDirection: "column" }}
           >
-            <div className="label">／ {c.locationLabel.toUpperCase()} ／ 場所</div>
+            <div className="label">／ {c.locationLabel.toUpperCase()}</div>
             <pre
               style={{
                 margin: "16px 0 0",
@@ -154,26 +154,14 @@ export function AboutBento({ lang }: { lang: Lang }) {
             <div
               style={{
                 writingMode: "vertical-rl",
-                fontFamily: "Shippori Mincho, serif",
+                fontFamily: "var(--display)",
                 fontWeight: 600,
-                fontSize: 28,
-                letterSpacing: "0.4em",
+                fontSize: 26,
+                letterSpacing: "0.3em",
                 color: "var(--ink)",
               }}
             >
-              一行ずつ・丁寧に
-            </div>
-            <div
-              style={{
-                writingMode: "vertical-rl",
-                fontFamily: "var(--mono)",
-                fontSize: 11,
-                letterSpacing: "0.2em",
-                color: "var(--ink-3)",
-                marginLeft: 16,
-              }}
-            >
-              {lang === "en" ? "LINE BY LINE / WITH CARE" : "LÍNEA POR LÍNEA / CON CUIDADO"}
+              {lang === "en" ? "LINE BY LINE · WITH CARE" : "LÍNEA POR LÍNEA · CON CUIDADO"}
             </div>
           </div>
         </div>

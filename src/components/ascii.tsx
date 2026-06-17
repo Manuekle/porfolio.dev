@@ -31,7 +31,7 @@ export const ASCII_ART: Record<ProjectArt, string[]> = {
     "   │      ████     │   ",
     "   │               │   ",
     "   ╰───────────────╯   ",
-    "        日  本  語     ",
+    "                       ",
   ],
   med: [
     "                       ",
@@ -62,6 +62,19 @@ export const ASCII_ART: Record<ProjectArt, string[]> = {
     "   ▓ ▓ ▓ ▓ ▓▓ ▓ ▓ ▓     ",
     "   ▓   ▓ ▓ ▓  ▓   ▓     ",
     "   ▓▓▓▓▓ ▓ ▓▓ ▓▓▓▓▓     ",
+    "                       ",
+  ],
+  forge: [
+    "                       ",
+    "    ◯   ◯   ◯          ",
+    "    │   │   │          ",
+    "    ╰─┬─┴─┬─╯          ",
+    "   ╭──┴───┴──╮         ",
+    "   │  FORGE  │         ",
+    "   ╰──┬───┬──╯         ",
+    "    ╭─┴─┬─┴─╮          ",
+    "    │   │   │          ",
+    "    ◯   ◯   ◯          ",
     "                       ",
   ],
   inv: [
@@ -108,7 +121,7 @@ export function SectionHead({ idx, title, jp, sub }: { idx: string; title: strin
           <div style={{ fontFamily: "var(--mono)", fontSize: 12, color: "var(--ink-3)", marginTop: 8 }}>{sub}</div>
         )}
       </div>
-      <div className="jp-tag">{jp}</div>
+      {jp && <div className="jp-tag">{jp}</div>}
     </div>
   );
 }

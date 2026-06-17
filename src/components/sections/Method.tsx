@@ -2,8 +2,6 @@ import { useState } from "react";
 import { COPY, type Lang } from "../../data/portfolio";
 import { SectionHead } from "../ascii";
 
-const PHASE_JP = ["第一段階", "第二段階", "第三段階", "第四段階", "第五段階"];
-
 export function Method({ lang }: { lang: Lang }) {
   const c = COPY[lang];
   const [active, setActive] = useState(0);
@@ -87,8 +85,8 @@ export function Method({ lang }: { lang: Lang }) {
             >
               {String(active + 1).padStart(2, "0")}
             </div>
-            <div style={{ fontFamily: "Noto Serif JP, serif", fontSize: 14, color: "var(--ink-3)", marginTop: 8 }}>
-              {PHASE_JP[active]}
+            <div style={{ fontFamily: "var(--mono)", fontSize: 12, color: "var(--ink-4)", marginTop: 8, letterSpacing: ".15em" }}>
+              {`PHASE ${String(active + 1).padStart(2, "0")} / ${String(steps.length).padStart(2, "0")}`}
             </div>
           </div>
           <div>

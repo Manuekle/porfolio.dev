@@ -9,9 +9,14 @@ const overlayVariants = {
 };
 
 const panelVariants = {
-  hidden: { opacity: 0, y: 24, scale: 0.96 },
-  visible: { opacity: 1, y: 0, scale: 1 },
-  exit: { opacity: 0, y: 12, scale: 0.97 },
+  hidden: { opacity: 0, y: 28, scale: 0.94 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { type: "spring" as const, stiffness: 360, damping: 30, mass: 0.9, opacity: { duration: 0.2 } },
+  },
+  exit: { opacity: 0, y: 16, scale: 0.96, transition: { duration: 0.18, ease: [0.4, 0, 1, 1] as const } },
 };
 
 export function ProjectDialog({
@@ -67,7 +72,6 @@ export function ProjectDialog({
             initial="hidden"
             animate="visible"
             exit="exit"
-            transition={{ duration: 0.32, ease: [0.2, 0.7, 0.2, 1] }}
             onClick={(e) => e.stopPropagation()}
             role="dialog"
             aria-modal="true"
@@ -93,9 +97,9 @@ export function ProjectDialog({
                     className="dialog-title"
                     style={{
                       margin: 0,
-                      fontFamily: "var(--serif)",
+                      fontFamily: "var(--display)",
                       fontSize: 56,
-                      fontWeight: 700,
+                      fontWeight: 800,
                       letterSpacing: "-0.03em",
                       lineHeight: 1,
                     }}

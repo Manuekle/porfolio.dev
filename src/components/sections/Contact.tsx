@@ -21,8 +21,8 @@ export function Contact({ lang }: { lang: Lang }) {
           <h2
             style={{
               margin: 0,
-              fontFamily: "var(--serif)",
-              fontWeight: 700,
+              fontFamily: "var(--display)",
+              fontWeight: 800,
               fontSize: "clamp(48px, 7vw, 96px)",
               letterSpacing: "-0.04em",
               lineHeight: 1,
@@ -91,17 +91,6 @@ export function Contact({ lang }: { lang: Lang }) {
               <div style={{ fontFamily: "var(--serif)", fontSize: 40, fontWeight: 700, letterSpacing: "-0.02em" }}>
                 Manuel Erazo
               </div>
-              <div
-                style={{
-                  fontFamily: "Noto Serif JP, serif",
-                  fontSize: 16,
-                  color: "var(--ink-3)",
-                  marginTop: 4,
-                  letterSpacing: ".2em",
-                }}
-              >
-                マヌエル・エラソ
-              </div>
               <p style={{ marginTop: 16, color: "var(--ink-3)", fontSize: 14, maxWidth: 320 }}>{c.footerNote}</p>
             </div>
             <div className="socials" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 18 }}>
@@ -153,7 +142,7 @@ export function Contact({ lang }: { lang: Lang }) {
               {lang === "en" ? "Hand-coded ／ no template ／ ver. 2.0" : "Hecho a mano ／ sin plantilla ／ ver. 2.0"}
             </span>
             <span>
-              {lang === "en" ? "BUILT IN POPAYÁN ／ コロンビア" : "HECHO EN POPAYÁN ／ コロンビア"}
+              {lang === "en" ? "BUILT IN POPAYÁN" : "HECHO EN POPAYÁN"}
             </span>
           </div>
         </footer>

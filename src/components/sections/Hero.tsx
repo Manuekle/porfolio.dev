@@ -59,9 +59,6 @@ export function Hero({ lang, onContact }: { lang: Lang; onContact: () => void })
             >
               MANUEL ／ ERAZO
             </div>
-            <span style={{ fontFamily: "Noto Serif JP, serif", fontSize: 13, color: "var(--ink-3)" }}>
-              マヌエル・エラソ
-            </span>
           </div>
           <NavBar lang={lang} />
         </div>
@@ -79,8 +76,8 @@ export function Hero({ lang, onContact }: { lang: Lang; onContact: () => void })
               <h1
                 className="hero-name"
                 style={{
-                  fontFamily: "var(--serif)",
-                  fontWeight: 700,
+                  fontFamily: "var(--display)",
+                  fontWeight: 800,
                   fontSize: "clamp(56px, 9vw, 132px)",
                   lineHeight: 0.92,
                   letterSpacing: "-0.045em",
@@ -247,21 +244,6 @@ export function Hero({ lang, onContact }: { lang: Lang; onContact: () => void })
                 >
                   ＋
                 </span>
-
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 24,
-                    right: 28,
-                    writingMode: "vertical-rl",
-                    fontFamily: "Noto Serif JP, serif",
-                    fontSize: 15,
-                    color: "var(--ink-3)",
-                    letterSpacing: "0.3em",
-                  }}
-                >
-                  開発者・マヌエル
-                </div>
               </div>
               <div
                 style={{

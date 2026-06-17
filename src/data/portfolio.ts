@@ -53,14 +53,14 @@ export const COPY: Record<Lang, CopyShape> = {
       since: "Shipping since 2021",
     },
     sections: {
-      about: ["About", "01", "概要", "A short introduction"],
-      experience: ["Experience", "02", "経歴", "What I've been doing"],
-      projects: ["Projects", "03", "作品", "Things I've shipped"],
-      stack: ["Stack", "04", "道具", "Tools I use"],
-      method: ["Method", "05", "方法", "How I work"],
-      services: ["Services", "06", "業務", "Freelance offerings"],
-      faq: ["FAQ", "07", "質問", "Common questions"],
-      contact: ["Contact", "08", "連絡", "Let's build something"],
+      about: ["About", "01", "", "A short introduction"],
+      experience: ["Experience", "02", "", "What I've been doing"],
+      projects: ["Projects", "03", "", "Things I've shipped"],
+      stack: ["Stack", "04", "", "Tools I use"],
+      method: ["Method", "05", "", "How I work"],
+      services: ["Services", "06", "", "Freelance offerings"],
+      faq: ["FAQ", "07", "", "Common questions"],
+      contact: ["Contact", "08", "", "Let's build something"],
     },
     aboutCopy:
       "I design and build web products with a focus on speed, polish, and craft. I work mostly with React, Next.js and modern LLM tooling — from landing pages to full SaaS, with a soft spot for AI integrations that actually make a product better.",
@@ -102,14 +102,14 @@ export const COPY: Record<Lang, CopyShape> = {
       since: "Enviando desde 2021",
     },
     sections: {
-      about: ["Sobre mí", "01", "概要", "Una breve presentación"],
-      experience: ["Experiencia", "02", "経歴", "Lo que he hecho"],
-      projects: ["Proyectos", "03", "作品", "Cosas que he creado"],
-      stack: ["Stack", "04", "道具", "Herramientas que uso"],
-      method: ["Método", "05", "方法", "Cómo trabajo"],
-      services: ["Servicios", "06", "業務", "Trabajos freelance"],
-      faq: ["FAQ", "07", "質問", "Preguntas frecuentes"],
-      contact: ["Contacto", "08", "連絡", "Construyamos algo"],
+      about: ["Sobre mí", "01", "", "Una breve presentación"],
+      experience: ["Experiencia", "02", "", "Lo que he hecho"],
+      projects: ["Proyectos", "03", "", "Cosas que he creado"],
+      stack: ["Stack", "04", "", "Herramientas que uso"],
+      method: ["Método", "05", "", "Cómo trabajo"],
+      services: ["Servicios", "06", "", "Trabajos freelance"],
+      faq: ["FAQ", "07", "", "Preguntas frecuentes"],
+      contact: ["Contacto", "08", "", "Construyamos algo"],
     },
     aboutCopy:
       "Diseño y construyo productos web con foco en velocidad, detalle y oficio. Trabajo con React, Next.js y herramientas modernas de LLM — desde landings hasta SaaS completos, con una debilidad por integraciones de IA que realmente mejoran el producto.",
@@ -150,20 +150,39 @@ export type ExperienceEntry = {
 
 export const EXPERIENCE: ExperienceEntry[] = [
   {
-    when: "Apr 2026", whenJp: "二〇二六",
+    when: "Apr 2026", whenJp: "",
     role: { en: "Participant", es: "Participante" },
     org: "Claude Code Hackathon 2026 · Anthropic",
     note: { en: "Built an autonomous coding agent in 48h. Top 20.", es: "Agente autónomo de código en 48h. Top 20." },
     highlight: true,
   },
   {
-    when: "Feb 2026", whenJp: "二〇二六",
+    when: "Feb 2026", whenJp: "",
     role: { en: "Participant", es: "Participante" },
     org: "Mistral Worldwide Hackathon",
     note: { en: "Multi-agent retrieval pipeline using Mistral models.", es: "Pipeline multi-agente con modelos Mistral." },
   },
   {
-    when: "2025", whenJp: "二〇二五",
+    when: "2026", whenJp: "",
+    role: { en: "Participant", es: "Participante" },
+    org: "Microsoft AI Agents Hackathon",
+    note: {
+      en: "Built forge on Azure AI Foundry — six AI agents debate, vote and generate PRDs, backlogs, architecture and roadmaps.",
+      es: "Construí forge sobre Azure AI Foundry — seis agentes de IA debaten, votan y generan PRDs, backlogs, arquitectura y roadmaps.",
+    },
+  },
+  {
+    when: "Apr — Oct 2025", whenJp: "",
+    role: { en: "Software Engineer · Intern", es: "Software Engineer · Pasantía" },
+    org: "Gymshark · Remote (SF Bay Area)",
+    note: {
+      en: "Contributed to performance-, scalability- and UX-focused web apps for products used by thousands of users worldwide, working with cross-functional teams.",
+      es: "Contribuí a apps web enfocadas en rendimiento, escalabilidad y UX para productos usados por miles de usuarios a nivel global, junto a equipos multidisciplinarios.",
+    },
+    highlight: true,
+  },
+  {
+    when: "2025", whenJp: "",
     role: { en: "Participant", es: "Participante" },
     org: "Reto Hackatón 2025 · FUP",
     note: {
@@ -172,32 +191,32 @@ export const EXPERIENCE: ExperienceEntry[] = [
     },
   },
   {
-    when: "2025", whenJp: "二〇二五",
+    when: "2025", whenJp: "",
     role: { en: "Web Developer", es: "Desarrollador Web" },
     org: "Smurfit Kappa Cartón Colombia",
     note: { en: "Internal tools and reporting dashboards.", es: "Herramientas internas y dashboards de reportes." },
   },
   {
-    when: "2024 — now", whenJp: "二〇二四—",
+    when: "2024 — now", whenJp: "",
     role: { en: "CEO & Founder", es: "CEO & Fundador" },
     org: "GymRat+ — SaaS for gyms",
     note: { en: "End-to-end product, billing, and onboarding.", es: "Producto, facturación y onboarding end-to-end." },
   },
   {
-    when: "2023 — now", whenJp: "二〇二三—",
+    when: "2023 — now", whenJp: "",
     role: { en: "Freelance Web Developer", es: "Desarrollador Web Freelance" },
     org: "Independent",
     note: { en: "Twelve client projects across LATAM and EU.", es: "Doce proyectos para clientes en LATAM y UE." },
   },
   {
-    when: "2021 — 2026", whenJp: "二〇二一—",
+    when: "2021 — 2026", whenJp: "",
     role: { en: "Systems Engineering", es: "Ingeniería de Sistemas" },
     org: "Fundación Universitaria de Popayán",
     note: { en: "B.Sc. — graduating 2026.", es: "Pregrado — graduación 2026." },
   },
 ];
 
-export type ProjectArt = "gym" | "sira" | "qr" | "hino" | "med" | "butter" | "inv";
+export type ProjectArt = "gym" | "sira" | "qr" | "hino" | "med" | "butter" | "inv" | "forge";
 
 export type Project = {
   id: string;
@@ -214,13 +233,25 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
+    id: "forge",
+    name: "forge",
+    year: "2026",
+    type: { en: "Hackathon · Microsoft · AI Agents", es: "Hackatón · Microsoft · Agentes IA" },
+    blurb: {
+      en: "Six specialized AI agents debate, vote and generate PRDs, backlogs, architecture and roadmaps — just like a real product team. Built on Azure AI Foundry.",
+      es: "Seis agentes de IA especializados debaten, votan y generan PRDs, backlogs, arquitectura y roadmaps — como un equipo de producto real. Construido sobre Azure AI Foundry.",
+    },
+    stack: ["Azure AI Foundry", "Next.js", "TypeScript", "Multi-agent"],
+    big: true,
+    art: "forge",
+  },
+  {
     id: "gymrat",
     name: "GymRat+",
     year: "2024 —",
     type: { en: "SaaS · Active", es: "SaaS · Activo" },
     blurb: { en: "Full SaaS for gyms — members, plans, payments.", es: "SaaS integral para gimnasios — miembros, planes, pagos." },
     stack: ["Next.js", "Prisma", "PostgreSQL", "MercadoPago"],
-    big: true,
     art: "gym",
     liveUrl: "https://gymratplus.com/",
   },
@@ -311,7 +342,7 @@ export const ACHIEVEMENTS = [
   { num: "22+", labelEn: "Projects shipped", labelEs: "Proyectos lanzados" },
   { num: "05", labelEn: "Years coding", labelEs: "Años codeando" },
   { num: "12", labelEn: "Freelance clients", labelEs: "Clientes freelance" },
-  { num: "02", labelEn: "Hackathons '26", labelEs: "Hackathons '26" },
+  { num: "03", labelEn: "Hackathons '26", labelEs: "Hackathons '26" },
 ];
 
 export const NOW: Record<Lang, string[]> = {
@@ -338,27 +369,27 @@ export type StackGroup = {
 export const STACK: StackGroup[] = [
   {
     id: "frontend",
-    label: { en: "Frontend", es: "Frontend" }, jp: "フロントエンド",
+    label: { en: "Frontend", es: "Frontend" }, jp: "",
     items: ["React", "Next.js", "Astro", "TypeScript", "JavaScript", "Tailwind CSS", "Flutter", "Motion"],
   },
   {
     id: "backend",
-    label: { en: "Backend", es: "Backend" }, jp: "バックエンド",
+    label: { en: "Backend", es: "Backend" }, jp: "",
     items: ["Node.js", "Python", "Bun"],
   },
   {
     id: "database",
-    label: { en: "Database", es: "Base de Datos" }, jp: "データベース",
+    label: { en: "Database", es: "Base de Datos" }, jp: "",
     items: ["PostgreSQL", "MySQL", "Prisma", "MongoDB"],
   },
   {
     id: "tools",
-    label: { en: "Tools", es: "Herramientas" }, jp: "道具",
+    label: { en: "Tools", es: "Herramientas" }, jp: "",
     items: ["Git", "Figma", "Docker", "Postman", "Vercel", "Redis", "MercadoPago", "GCP", "Meta Ads"],
   },
   {
     id: "ai",
-    label: { en: "AI & LLMs", es: "IA & LLMs" }, jp: "人工知能",
+    label: { en: "AI & LLMs", es: "IA & LLMs" }, jp: "",
     items: ["OpenAI", "Gemini", "Anthropic", "Mistral", "Claude", "Kimi", "MCP", "n8n", "Ollama"],
     highlight: true,
   },

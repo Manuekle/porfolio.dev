@@ -36,16 +36,18 @@ export function Experience({ lang }: { lang: Lang }) {
                 <div style={{ fontFamily: "var(--mono)", fontSize: 13, fontWeight: 500, color: "var(--ink-2)" }}>
                   {e.when}
                 </div>
-                <div
-                  style={{
-                    fontFamily: "Noto Serif JP, serif",
-                    fontSize: 11,
-                    color: "var(--ink-4)",
-                    letterSpacing: ".15em",
-                  }}
-                >
-                  {e.whenJp}
-                </div>
+                {e.whenJp && (
+                  <div
+                    style={{
+                      fontFamily: "var(--mono)",
+                      fontSize: 11,
+                      color: "var(--ink-4)",
+                      letterSpacing: ".15em",
+                    }}
+                  >
+                    {e.whenJp}
+                  </div>
+                )}
               </div>
               <div
                 className="exp-marker"
@@ -61,7 +63,7 @@ export function Experience({ lang }: { lang: Lang }) {
               <div>
                 <div style={{ display: "flex", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
                   <span
-                    style={{ fontFamily: "var(--serif)", fontSize: 24, fontWeight: 600, letterSpacing: "-0.01em" }}
+                    style={{ fontFamily: "var(--display)", fontSize: 24, fontWeight: 700, letterSpacing: "-0.01em" }}
                   >
                     {e.role[lang]}
                   </span>
