@@ -7,13 +7,17 @@ const sharp = require(path.join(__dirname, "../node_modules/.pnpm/sharp@0.34.5/n
 
 const root = path.join(__dirname, "..");
 
-// Icon: strip <svg> wrapper, recolor -> black for the white card.
+// Icon: keep only the logo <path>s (drop the white circle + inner <g> wrapper),
+// recolor everything black for the white card.
 let icon = fs.readFileSync(path.join(root, "public/favicon.svg"), "utf8");
 icon = icon
   .replace(/<\?xml[\s\S]*?\?>/g, "")
   .replace(/<svg[^>]*>/, "")
   .replace(/<\/svg>/, "")
-  .replace(/#000000|#ffffff/gi, "#0a0a0a");
+  .replace(/<circle[^>]*\/>/gi, "")
+  .replace(/<g[^>]*>/gi, "")
+  .replace(/<\/g>/gi, "")
+  .replace(/#000000|#ffffff|#0a0a0a/gi, "#0a0a0a");
 
 const W = 1200;
 const H = 630;

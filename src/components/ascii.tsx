@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import type { ProjectArt } from "../data/portfolio";
 
 // Cute, premium kaomoji creatures — no text.
@@ -53,10 +54,45 @@ export const ASCII_ART: Record<ProjectArt, string[]> = {
   ],
 };
 
+// Blink frames — same art, eyes closed. Eyes line gets swapped briefly.
+const BLINK_LINE: Partial<Record<ProjectArt, [number, string]>> = {
+  forge: [1, "   {-.-}   "],
+  gym: [1, " ( -ᴥ- )  "],
+  sira: [1, " ( -ᴥ- )  "],
+  hino: [1, " ( -ᴥ- )  "],
+  med: [1, "  (-ᴥ-)   "],
+  inv: [1, "  (-ᴥ-)   "],
+  butter: [1, "  (-ω-)>  "],
+};
+
 export function AsciiArt({ kind, dim = false }: { kind: ProjectArt; dim?: boolean }) {
-  const lines = ASCII_ART[kind] || ASCII_ART.qr;
+  const base = ASCII_ART[kind] || ASCII_ART.qr;
+  const [blink, setBlink] = useState(false);
+
+  useEffect(() => {
+    if (!BLINK_LINE[kind]) return;
+    let t: ReturnType<typeof setTimeout>;
+    const loop = () => {
+      setBlink(true);
+      t = setTimeout(() => {
+        setBlink(false);
+        t = setTimeout(loop, 2600 + Math.random() * 2600);
+      }, 150);
+    };
+    t = setTimeout(loop, 1200 + Math.random() * 2000);
+    return () => clearTimeout(t);
+  }, [kind]);
+
+  let lines = base;
+  const swap = BLINK_LINE[kind];
+  if (blink && swap) {
+    lines = base.slice();
+    lines[swap[0]] = swap[1];
+  }
+
   return (
     <pre
+      className="ascii-bob"
       style={{
         margin: 0,
         fontFamily: "var(--mono-art)",
