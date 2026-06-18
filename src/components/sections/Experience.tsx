@@ -81,7 +81,7 @@ export function Experience({ lang }: { lang: Lang }) {
                         letterSpacing: ".15em",
                       }}
                     >
-                      {lang === "en" ? "FEATURED" : "DESTACADO"}
+                      {lang === "en" ? "featured" : "destacado"}
                     </span>
                   )}
                 </div>

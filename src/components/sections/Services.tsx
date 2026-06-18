@@ -35,7 +35,7 @@ export function Services({ lang }: { lang: Lang }) {
                     letterSpacing: ".15em",
                   }}
                 >
-                  {lang === "en" ? "RECOMMENDED" : "RECOMENDADO"}
+                  {lang === "en" ? "recommended" : "recomendado"}
                 </div>
               )}
               <div>

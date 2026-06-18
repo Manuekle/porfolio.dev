@@ -47,7 +47,7 @@ export function Projects({ lang, onOpen }: { lang: Lang; onOpen: (p: Project) =>
                     letterSpacing: ".14em",
                   }}
                 >
-                  <span>NO.{String(i + 1).padStart(3, "0")}</span>
+                  <span>no.{String(i + 1).padStart(3, "0")}</span>
                   <span>{p.year}</span>
                 </div>
 

@@ -70,7 +70,7 @@ export function Hero({ lang, onContact }: { lang: Lang; onContact: () => void })
           <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", paddingTop: 12 }}>
             <div>
               <div className="label" style={{ marginBottom: 18 }}>
-                ／ {t.hello.toUpperCase()} ／ ／ {lang === "en" ? "PORTFOLIO 2026" : "PORTAFOLIO 2026"}
+                ／ {t.hello.toLowerCase()} ／ ／ {lang === "en" ? "portfolio 2026" : "portafolio 2026"}
               </div>
 
               <h1
@@ -170,8 +170,8 @@ export function Hero({ lang, onContact }: { lang: Lang; onContact: () => void })
                   letterSpacing: ".15em",
                 }}
               >
-                <span>FILE ／ self_portrait.webp</span>
-                <span>2026 ／ NO.001</span>
+                <span>file ／ self_portrait.webp</span>
+                <span>2026 ／ no.001</span>
               </div>
               <div
                 style={{
@@ -257,8 +257,8 @@ export function Hero({ lang, onContact }: { lang: Lang; onContact: () => void })
                   justifyContent: "space-between",
                 }}
               >
-                <span>POPAYÁN ／ -2.4448° / -76.6147°</span>
-                <span>EST. {t.since.replace(/\D/g, "")}</span>
+                <span>popayán ／ -2.4448° / -76.6147°</span>
+                <span>est. {t.since.replace(/\D/g, "")}</span>
               </div>
             </div>
           </div>

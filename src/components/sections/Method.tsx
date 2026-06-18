@@ -86,7 +86,7 @@ export function Method({ lang }: { lang: Lang }) {
               {String(active + 1).padStart(2, "0")}
             </div>
             <div style={{ fontFamily: "var(--mono)", fontSize: 12, color: "var(--ink-4)", marginTop: 8, letterSpacing: ".15em" }}>
-              {`PHASE ${String(active + 1).padStart(2, "0")} / ${String(steps.length).padStart(2, "0")}`}
+              {`phase ${String(active + 1).padStart(2, "0")} / ${String(steps.length).padStart(2, "0")}`}
             </div>
           </div>
           <div>

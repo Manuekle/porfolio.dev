@@ -157,7 +157,7 @@ export function App() {
                 letterSpacing: ".15em",
               }}
             >
-              {L.toUpperCase()}
+              {L}
             </button>
           ))}
         </div>

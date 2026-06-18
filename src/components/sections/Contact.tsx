@@ -16,7 +16,7 @@ export function Contact({ lang }: { lang: Lang }) {
           }}
         >
           <div className="label" style={{ color: "var(--on-contrast-2)", marginBottom: 24 }}>
-            ／ {c.sections.contact[2]} ／ LET'S TALK ／
+            ／ let's talk ／
           </div>
           <h2
             style={{
@@ -142,7 +142,7 @@ export function Contact({ lang }: { lang: Lang }) {
               {lang === "en" ? "Hand-coded ／ no template ／ ver. 2.0" : "Hecho a mano ／ sin plantilla ／ ver. 2.0"}
             </span>
             <span>
-              {lang === "en" ? "BUILT IN POPAYÁN" : "HECHO EN POPAYÁN"}
+              {lang === "en" ? "built in popayán" : "hecho en popayán"}
             </span>
           </div>
         </footer>

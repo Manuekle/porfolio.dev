@@ -33,7 +33,7 @@ export function AboutBento({ lang }: { lang: Lang }) {
               justifyContent: "space-between",
             }}
           >
-            <div className="label">／ ABOUT</div>
+            <div className="label">／ about</div>
             <p
               style={{
                 fontFamily: "var(--serif)",
@@ -58,26 +58,25 @@ export function AboutBento({ lang }: { lang: Lang }) {
             className="card"
             style={{ gridColumn: "span 5", padding: 28, display: "flex", flexDirection: "column" }}
           >
-            <div className="label">／ {c.locationLabel.toUpperCase()}</div>
-            <pre
-              style={{
-                margin: "16px 0 0",
-                fontFamily: "var(--mono-art)",
-                fontSize: 11,
-                lineHeight: 1.15,
-                color: "var(--ink-2)",
-                flex: 1,
-              }}
-            >
-{`         ╱─╲      ╱──╲
-        ╱   ╲────╱    ╲
-   ────╱   ▲ COLOMBIA  ╲────
-       ╲    ╲           ╱
-        ╲    ●  ←  Popayán
-         ╲   ╱──────╱
-          ╲ ╱
-           ▼`}
-            </pre>
+            <div className="label">／ {c.locationLabel.toLowerCase()}</div>
+            <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <pre
+                style={{
+                  margin: "12px 0",
+                  fontFamily: "var(--mono-art)",
+                  fontSize: 13,
+                  lineHeight: 1.25,
+                  color: "var(--ink-2)",
+                }}
+              >
+{`          .─.
+        ╱     ╲___
+      ╱   ●       ╲
+     │             │
+      ╲___________╱
+         ╲╲  ╱╱       `}
+              </pre>
+            </div>
             <div
               style={{
                 display: "flex",
@@ -88,9 +87,9 @@ export function AboutBento({ lang }: { lang: Lang }) {
                 color: "var(--ink-3)",
               }}
             >
-              <span>POPAYÁN, CO</span>
-              <span>{lang === "en" ? "AGE 24" : "EDAD 24"}</span>
-              <span>UTC−5</span>
+              <span>popayán, co</span>
+              <span>{lang === "en" ? "age 24" : "edad 24"}</span>
+              <span>utc−5</span>
             </div>
           </div>
 
@@ -104,7 +103,7 @@ export function AboutBento({ lang }: { lang: Lang }) {
               justifyContent: "space-between",
             }}
           >
-            <div className="label">／ {c.yearsLabel.toUpperCase()}</div>
+            <div className="label">／ {c.yearsLabel.toLowerCase()}</div>
             <div
               className="stat-num"
               style={{ fontFamily: "var(--serif)", fontSize: 96, fontWeight: 700, lineHeight: 1, letterSpacing: "-0.04em" }}
@@ -128,7 +127,7 @@ export function AboutBento({ lang }: { lang: Lang }) {
               gap: 24,
             }}
           >
-            <div className="label">／ {c.shippedLabel.toUpperCase()}</div>
+            <div className="label">／ {c.shippedLabel.toLowerCase()}</div>
             <div
               className="stat-num"
               style={{ fontFamily: "var(--serif)", fontSize: 72, fontWeight: 700, lineHeight: 1, letterSpacing: "-0.04em" }}

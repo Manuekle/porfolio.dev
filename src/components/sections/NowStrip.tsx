@@ -4,8 +4,7 @@ import { NOW, type Lang } from "../../data/portfolio";
 export function NowStrip({ lang }: { lang: Lang }) {
   const items = NOW[lang];
   const updated = new Date()
-    .toLocaleDateString(lang === "en" ? "en-US" : "es-CO", { month: "short", year: "numeric" })
-    .toUpperCase();
+    .toLocaleDateString(lang === "en" ? "en-US" : "es-CO", { month: "short", year: "numeric" });
   return (
     <section style={{ padding: "0 0 24px" }}>
       <div className="container-x">
@@ -40,7 +39,7 @@ export function NowStrip({ lang }: { lang: Lang }) {
                 fontWeight: 600,
               }}
             >
-              {lang === "en" ? "NOW" : "AHORA"}
+              {lang === "en" ? "now" : "ahora"}
             </span>
           </div>
           <div style={{ display: "flex", gap: 0, flexWrap: "wrap", alignItems: "center" }}>
