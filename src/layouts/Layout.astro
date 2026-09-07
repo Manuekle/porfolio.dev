@@ -9,8 +9,9 @@ interface Props {
 }
 
 const {
-  title = "Manuel Erazo — Web & AI Developer",
-  description = "Web & AI developer based in Popayán, Colombia. Building fast, beautiful, scalable products — focused on freelance & SaaS.",
+  title = "Manuel Erazo — Desarrollador Full-Stack & IA",
+  description =
+    "Desarrollador Full-Stack & IA en Bogotá, Colombia. Next.js, TypeScript y LLMs — de la idea a producción.",
   lang = "es",
   image = "/og-banner.png",
 } = Astro.props;
@@ -22,7 +23,7 @@ const ogLocale = lang === "es" ? "es_CO" : "en_US";
 ---
 
 <!doctype html>
-<html lang={lang} data-paper="ink">
+<html lang={lang} data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -31,19 +32,35 @@ const ogLocale = lang === "es" ? "es_CO" : "en_US";
     <meta name="author" content="Manuel Erazo" />
     <meta
       name="keywords"
-      content="Manuel Erazo, web developer, AI developer, React, Next.js, TypeScript, LLM, SaaS, freelance, Popayán, Colombia"
+      content="Manuel Erazo, desarrollador full-stack, desarrollador IA, React, Next.js, TypeScript, LLM, SaaS, freelance, Bogotá, Colombia"
     />
     <meta name="robots" content="index, follow" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#13141a" />
+    <meta name="theme-color" content="#e9e7de" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#131311" media="(prefers-color-scheme: dark)" />
     <link rel="canonical" href={canonical} />
 
     <!-- Icons / manifest -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Self-hosted type -->
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/assets/font/inter/InterVariable.woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/assets/font/cooper/CooperLtBT_400-s.p.0ayak-z9t8l45.woff2"
+      crossorigin
+    />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -55,21 +72,28 @@ const ogLocale = lang === "es" ? "es_CO" : "en_US";
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Manuel Erazo — Web & AI Developer" />
+    <meta property="og:image:alt" content="Manuel Erazo — Desarrollador Full-Stack & IA" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:image:alt" content="Manuel Erazo — Web & AI Developer" />
+    <meta name="twitter:image:alt" content="Manuel Erazo — Desarrollador Full-Stack & IA" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <script is:inline>
+      // Apply the stored theme before first paint to avoid a flash.
+      try {
+        const raw = localStorage.getItem("portfolio.prefs");
+        const prefs = raw ? JSON.parse(raw) : null;
+        if (prefs && (prefs.theme === "dark" || prefs.theme === "light")) {
+          document.documentElement.dataset.theme = prefs.theme;
+        }
+        if (prefs && (prefs.lang === "es" || prefs.lang === "en")) {
+          document.documentElement.lang = prefs.lang;
+        }
+      } catch {}
+    </script>
   </head>
   <body>
     <slot />

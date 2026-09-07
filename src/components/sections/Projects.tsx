@@ -1,96 +1,53 @@
-import { useEffect, useMemo, useState } from "react";
-import { motion } from "motion/react";
-import { COPY, PROJECTS, type Lang, type Project } from "../../data/portfolio";
-import { AsciiArt, SectionHead } from "../ascii";
+import { BRANDS } from "../../data/brands";
+import { COPY, PROJECTS, type Lang } from "../../data/portfolio";
+import { BrandMark, LogoTile } from "../Mark";
+import { Section } from "../Section";
 
-// One filler tile keeps the square grid full (7 projects + 1 filler = 4×2, no gaps).
-const SLOTS = PROJECTS.length + 1; // 8
-const FILLER = SLOTS - 1; // index used to mark the filler tile
-
-function shuffle<T>(arr: T[]): T[] {
-  const a = arr.slice();
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
-const spring = { type: "spring" as const, stiffness: 240, damping: 28, mass: 0.9 };
-
-export function Projects({ lang, onOpen }: { lang: Lang; onOpen: (p: Project) => void }) {
+export function Projects({ lang }: { lang: Lang }) {
   const c = COPY[lang];
-  // order = list of tile ids (0..6 = projects, 7 = filler) in their current positions
-  const initial = useMemo(() => Array.from({ length: SLOTS }, (_, i) => i), []);
-  const [order, setOrder] = useState<number[]>(initial);
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const t = setInterval(() => {
-      setOrder((prev) => {
-        let next = shuffle(prev);
-        // avoid a no-op shuffle
-        if (next.every((v, i) => v === prev[i])) next = shuffle(prev);
-        return next;
-      });
-    }, 30000);
-    return () => clearInterval(t);
-  }, []);
-
   return (
-    <section id="projects" style={{ padding: "0 0 40px" }}>
-      <div className="container-x">
-        <SectionHead
-          idx={c.sections.projects[1]}
-          title={c.sections.projects[0]}
-          jp={c.sections.projects[2]}
-          sub={c.sections.projects[3]}
-        />
+    <Section id="projects" title={c.sections.projects.title} sub={c.sections.projects.sub} idx="03">
+      {PROJECTS.map((p) => (
+        <article key={p.id} className="entry">
+          <LogoTile size={30} file={p.logo} name={p.name} />
 
-        <div className="projects-grid">
-          {order.map((id) => {
-            if (id === FILLER) {
-              return (
-                <motion.div
-                  key="filler"
-                  layout
-                  transition={spring}
-                  className="card flat project-tile filler-tile"
-                  aria-hidden="true"
-                >
-                  <AsciiArt kind="qr" dim />
-                  <span className="filler-note">{lang === "en" ? "more soon" : "más pronto"}</span>
-                </motion.div>
-              );
-            }
-            const p = PROJECTS[id];
-            return (
-              <motion.button
-                key={p.id}
-                layout
-                transition={spring}
-                whileHover={{ y: -3 }}
-                onClick={() => onOpen(p)}
-                className="card flat project-tile project-card"
-              >
-                <div className="tile-meta">
-                  <span>no.{String(id + 1).padStart(3, "0")}</span>
-                  <span>{p.year}</span>
-                </div>
+          <div style={{ minWidth: 0 }}>
+            <h3 className="entry-title">{p.name}</h3>
+            <div className="entry-org">{p.tagline[lang]}</div>
 
-                <div className="tile-art">
-                  <AsciiArt kind={p.art} dim />
-                </div>
+            <p className="entry-body">{p.blurb[lang]}</p>
 
-                <div className="tile-foot">
-                  <h3>{p.name}</h3>
-                  <span className="project-open">{lang === "en" ? "open" : "abrir"} →</span>
-                </div>
-              </motion.button>
-            );
-          })}
-        </div>
-      </div>
-    </section>
+            <div className="entry-stack">
+              {p.stack
+                .filter((slug) => BRANDS[slug])
+                .map((slug) => (
+                  <span key={slug} title={BRANDS[slug].title}>
+                    <BrandMark slug={slug} size={14} />
+                  </span>
+                ))}
+            </div>
+
+            {(p.liveUrl || p.sourceUrl) && (
+              <div className="project-links">
+                {p.liveUrl && (
+                  <a href={p.liveUrl} target="_blank" rel="noreferrer noopener">
+                    {c.live}
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                )}
+                {p.sourceUrl && (
+                  <a href={p.sourceUrl} target="_blank" rel="noreferrer noopener">
+                    {c.source}
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                )}
+              </div>
+            )}
+          </div>
+
+          <div className="entry-date">{p.year}</div>
+        </article>
+      ))}
+    </Section>
   );
 }

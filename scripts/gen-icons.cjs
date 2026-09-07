@@ -1,10 +1,10 @@
-// Regenerates raster app icons from public/favicon.svg (white circle + black logo).
+// Regenerates the app icons from public/new-icon.png (the portfolio mark).
 // Run: node scripts/gen-icons.cjs
 const path = require("path");
 const sharp = require(path.join(__dirname, "../node_modules/.pnpm/sharp@0.34.5/node_modules/sharp"));
 
 const root = path.join(__dirname, "..");
-const src = path.join(root, "public/favicon.svg");
+const src = path.join(root, "public/new-icon.png");
 
 const targets = [
   ["android-chrome-192x192.png", 192],
@@ -16,10 +16,7 @@ const targets = [
 
 (async () => {
   for (const [name, size] of targets) {
-    await sharp(src, { density: 384 })
-      .resize(size, size)
-      .png()
-      .toFile(path.join(root, "public", name));
+    await sharp(src).resize(size, size, { fit: "cover" }).png().toFile(path.join(root, "public", name));
     console.log(name, size + "px");
   }
 })();
