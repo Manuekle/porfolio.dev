@@ -333,18 +333,7 @@ export const HACKATHONS: Hackathon[] = [
       en: "Forge on Azure AI Foundry — six AI agents that debate, vote and generate PRDs, backlogs, architecture and roadmaps.",
     },
   },
-  {
-    id: "fup",
-    name: "Hackathon Challenge 2025",
-    org: "Fundación Universitaria de Popayán",
-    logo: null,
-    logoFile: "/assets/logos/orgs/fup.png",
-    date: { es: "2025", en: "2025" },
-    note: {
-      es: "Solución de inventario y análisis de ventas para la competencia interna de la universidad.",
-      en: "Inventory and sales analytics solution for the university's internal competition.",
-    },
-  },
+
 ];
 
 /* --------------------------------------------------------------- projects */
@@ -377,8 +366,8 @@ export const PROJECTS: Project[] = [
     liveUrl: "https://creagent.fun",
   },
   {
-    id: "steve",
-    name: "steve",
+    id: "senka",
+    name: "Senka",
     year: "2026",
     logo: "/assets/logos/projects/steve.png",
     tagline: { es: "Atención al cliente con IA", en: "AI customer support" },
@@ -387,7 +376,7 @@ export const PROJECTS: Project[] = [
       en: "Unifies WhatsApp, Instagram and Meta Ads in a single inbox. AI agents answer from your own knowledge bases, book appointments and take payments.",
     },
     stack: ["nextdotjs", "postgresql", "docker", "stripe", "whatsapp"],
-    liveUrl: "https://steve-manudev.vercel.app",
+    liveUrl: "https://senka-ai-lab.vercel.app",
   },
   {
     id: "forge",
@@ -584,6 +573,7 @@ export const CERTIFICATIONS: Certification[] = [
     name: { es: "Agents League — Reasoning Agents", en: "Agents League — Reasoning Agents" },
     issuer: "Global AI Community",
     logo: null,
+    logoFile: "/assets/logos/orgs/microsoft.svg",
   },
   {
     name: {
@@ -605,5 +595,6 @@ export const CERTIFICATIONS: Certification[] = [
     name: { es: "Google UX Design (especialización)", en: "Google UX Design (specialization)" },
     issuer: "Coursera · Google",
     logo: "google",
+    logoFile: "/assets/logos/orgs/google.svg",
   },
 ];

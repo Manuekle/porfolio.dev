@@ -31,7 +31,9 @@ export function Sidebar({ lang }: { lang: Lang }) {
     <aside className="aside">
       <div className="aside-grid">
         <div>
-          <img className="avatar" src="/assets/avatar.png" alt={PROFILE.name} width={80} height={80} />
+          <div className="avatar-frame">
+            <img className="avatar" src="/assets/avatar.png" alt={PROFILE.name} width={104} height={104} />
+          </div>
 
           <h1
             className="title"

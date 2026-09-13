@@ -1,15 +1,16 @@
+import { useState } from "react";
 import { BRANDS } from "../../data/brands";
 import { COPY, PROJECTS, type Lang } from "../../data/portfolio";
-import { BrandMark, LogoTile } from "../Mark";
+import { BrandMark } from "../Mark";
 import { Section } from "../Section";
 
 export function Projects({ lang }: { lang: Lang }) {
   const c = COPY[lang];
-  return (
-    <Section id="projects" title={c.sections.projects.title} sub={c.sections.projects.sub} idx="03">
-      {PROJECTS.map((p) => (
-        <article key={p.id} className="entry">
-          <LogoTile size={30} file={p.logo} name={p.name} />
+  const [expanded, setExpanded] = useState(false);
+  const featured = ["gymrat", "senka", "creagent"];
+  const renderProject = (p: (typeof PROJECTS)[number]) => (
+
+        <article key={p.id} className="entry project-entry">
 
           <div style={{ minWidth: 0 }}>
             <h3 className="entry-title">{p.name}</h3>
@@ -47,7 +48,24 @@ export function Projects({ lang }: { lang: Lang }) {
 
           <div className="entry-date">{p.year}</div>
         </article>
-      ))}
+  );
+  return (
+    <Section id="projects" title={c.sections.projects.title} sub={c.sections.projects.sub} idx="03">
+      {featured.map((id) => PROJECTS.find((p) => p.id === id)!).map(renderProject)}
+      <button
+        className="btn btn-ghost projects-toggle"
+        aria-expanded={expanded}
+        aria-controls="more-projects"
+        onClick={() => setExpanded(!expanded)}
+      >
+        {lang === "es" ? (expanded ? "Ver menos" : "Ver más") : (expanded ? "Show less" : "Show more")}
+        <span aria-hidden="true">{expanded ? "−" : "+"}</span>
+      </button>
+      <div id="more-projects" className="projects-more" data-open={expanded} inert={!expanded} aria-hidden={!expanded}>
+        <div className="projects-more-inner">
+          {PROJECTS.filter((p) => !featured.includes(p.id)).map(renderProject)}
+        </div>
+      </div>
     </Section>
   );
 }
