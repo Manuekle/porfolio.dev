@@ -87,6 +87,29 @@
   --accent: #d3714f;
 }
 
+[data-theme="blueprint"] {
+  --paper: #1f56d8;
+  --sheet: #2e6fff;
+  --sheet-2: #4480ff;
+
+  --ink: #f5f8ff;
+  --ink-2: #d9e4ff;
+  --ink-3: #b4c8ff;
+  --ink-4: #8aa6f2;
+
+  --rule: rgba(245, 248, 255, 0.3);
+  --rule-soft: rgba(245, 248, 255, 0.16);
+  --accent: #ffffff;
+}
+
+html[data-theme="blueprint"] body {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48' fill='none'%3E%3Cg opacity='0.14'%3E%3Cpath d='M48 23.5H0' stroke='%23F5F8FF'/%3E%3Cpath d='M48 47.5001H0' stroke='%23F5F8FF'/%3E%3Cpath d='M23.5 0V48' stroke='%23F5F8FF'/%3E%3Cpath d='M47.5 0V48' stroke='%23F5F8FF'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+html[data-theme="blueprint"] .status-dot {
+  background: #7cf5a3;
+}
+
 /* ------------------------------------------------------------------- base */
 
 *,
@@ -113,13 +136,20 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 1.65;
-  background: var(--paper);
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   font-feature-settings: "cv11", "ss01";
   overflow-x: hidden;
+  background-color: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48' fill='none'%3E%3Cg opacity='0.07'%3E%3Cpath d='M48 23.5H0' stroke='%231C1F21'/%3E%3Cpath d='M48 47.5001H0' stroke='%231C1F21'/%3E%3Cpath d='M23.5 0V48' stroke='%231C1F21'/%3E%3Cpath d='M47.5 0V48' stroke='%231C1F21'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 48px 48px;
+  background-attachment: fixed;
+}
+
+html[data-theme="dark"] body {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48' fill='none'%3E%3Cg opacity='0.06'%3E%3Cpath d='M48 23.5H0' stroke='%23ECEAE2'/%3E%3Cpath d='M48 47.5001H0' stroke='%23ECEAE2'/%3E%3Cpath d='M23.5 0V48' stroke='%23ECEAE2'/%3E%3Cpath d='M47.5 0V48' stroke='%23ECEAE2'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 /* No bold, no uppercase anywhere — hierarchy comes from size and colour. */
@@ -165,6 +195,30 @@ ul {
 ::selection {
   background: var(--ink);
   color: var(--paper);
+}
+
+/* Scrollbar hidden everywhere — scroll still works, no visual bar. */
+html,
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+*,
+*::before,
+*::after {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+*::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 :focus-visible {
@@ -245,14 +299,12 @@ ul {
   align-self: start;
   max-height: 100vh;
   overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--ink-4) transparent;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 .aside::-webkit-scrollbar {
-  width: 5px;
-}
-.aside::-webkit-scrollbar-thumb {
-  background: var(--rule);
+  display: none;
+  width: 0;
 }
 
 .main {
@@ -287,8 +339,9 @@ ul {
   display: flex;
   align-items: center;
   gap: 20px;
-  font-family: var(--sans);
+  font-family: "InterVar", system-ui, -apple-system, "Helvetica Neue", sans-serif;
   font-size: 12.5px;
+  font-weight: 500;
   letter-spacing: -0.01em;
   color: var(--ink-3);
 }
@@ -356,8 +409,9 @@ ul {
   justify-content: center;
   gap: 8px;
   padding: 10px 16px;
-  font-family: var(--sans);
+  font-family: "InterVar", system-ui, -apple-system, "Helvetica Neue", sans-serif;
   font-size: 13px;
+  font-weight: 500;
   letter-spacing: -0.01em;
   background: var(--ink);
   color: var(--sheet);
@@ -598,6 +652,18 @@ ul {
 
 }
 
+.avatar-btn {
+  display: block;
+  cursor: zoom-in;
+}
+
+.avatar-pop {
+  width: min(78vw, 400px);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+}
+
 .aside-meta {
   display: flex;
   flex-direction: column;
@@ -775,4 +841,869 @@ ul {
   .project-entry .entry-date {
     grid-column: 1 / -1;
   }
+}
+
+/* apply modal ------------------------------------------------------------ */
+
+/* Transitions.dev — Modal open / close */
+
+/*
+  Usage:
+    <div class="t-modal" role="dialog">…</div>
+
+  State:
+    - Add `.is-open` to open (scales up from --modal-scale).
+    - On close, swap `.is-open` for `.is-closing`, then remove
+      `.is-closing` after --modal-close-dur.
+*/
+
+:root {
+  --modal-open-dur: 250ms;
+  --modal-close-dur: 150ms;
+  --modal-scale: 0.96;
+  --modal-scale-close: 0.96;
+  --modal-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.t-modal {
+  transform-origin: center;
+  transform: scale(var(--modal-scale));
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform var(--modal-open-dur) var(--modal-ease),
+    opacity   var(--modal-open-dur) var(--modal-ease);
+  will-change: transform, opacity;
+}
+.t-modal.is-open {
+  transform: scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+.t-modal.is-closing {
+  transform: scale(var(--modal-scale-close));
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform var(--modal-close-dur) var(--modal-ease),
+    opacity   var(--modal-close-dur) var(--modal-ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .t-modal { transition: none !important; }
+}
+
+.apply-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(26, 25, 23, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity var(--modal-open-dur) var(--modal-ease);
+}
+.apply-overlay.is-open {
+  opacity: 1;
+}
+.apply-overlay.is-closing {
+  opacity: 0;
+  transition: opacity var(--modal-close-dur) var(--modal-ease);
+}
+
+.apply-card {
+  width: min(560px, 100%);
+  max-height: min(88dvh, 720px);
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18);
+  padding: 24px;
+}
+.apply-card::-webkit-scrollbar {
+  display: none;
+  width: 0;
+}
+
+.apply-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--rule);
+}
+.apply-head-text {
+  min-width: 0;
+}
+.apply-title {
+  font-size: 21px;
+  color: var(--ink);
+}
+.apply-sub {
+  margin-top: 6px;
+}
+.apply-close {
+  flex: none;
+  padding: 8px 9px;
+}
+
+.apply-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 12px;
+  min-width: 0;
+}
+
+.apply-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.apply-grid .apply-field {
+  margin-top: 10px;
+}
+
+.apply-field label {
+  font-family: "InterVar", system-ui, -apple-system, sans-serif;
+  font-size: 12px;
+  color: var(--ink-2);
+}
+
+.apply-field input {
+  width: 100%;
+  font-family: "InterVar", system-ui, -apple-system, sans-serif;
+  font-size: 13.5px;
+  line-height: 1.4;
+  padding: 10px 11px;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+.apply-field input::placeholder {
+  color: var(--ink-4);
+}
+.apply-field input:focus {
+  border-color: var(--ink);
+}
+
+.apply-preview-label {
+  margin-top: 16px;
+  margin-bottom: 6px;
+}
+
+.apply-preview {
+  max-height: 168px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 12px;
+  background: var(--sheet-2);
+  border: 1px solid var(--rule-soft);
+  font-family: "InterVar", system-ui, -apple-system, sans-serif;
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: var(--ink-2);
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+.apply-preview::-webkit-scrollbar {
+  display: none;
+  width: 0;
+}
+.apply-preview-subject {
+  color: var(--ink);
+}
+.apply-preview-body {
+  margin-top: 8px;
+}
+
+.apply-actions {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 8px;
+  margin-top: 14px;
+}
+.apply-actions .btn {
+  width: 100%;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.apply-cv {
+  width: 100%;
+  margin-top: 8px;
+}
+.apply-hint {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+@media (max-width: 620px) {
+  .apply-overlay {
+    padding: 12px;
+    align-items: flex-end;
+  }
+  .apply-card {
+    padding: 18px;
+    max-height: 92dvh;
+  }
+  .apply-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .apply-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Transitions.dev — Texts reveal */
+
+/*
+  Usage:
+    <div class="t-stagger">
+      <strong class="t-stagger-line t-stagger-line--1">…</strong>
+      <span class="t-stagger-line t-stagger-line--2">…</span>
+    </div>
+
+  State:
+    - Add `.is-shown` to play the staggered entrance.
+    - Add `.is-hiding` (and remove `.is-shown`) to fade
+      out in place over a short 200ms — independent of the
+      entrance timing so the exit doesn't replay the stagger.
+
+  Add more lines by adding `.t-stagger-line--N` with
+  `transition-delay: calc(var(--stagger-stagger) * (N - 1))`.
+*/
+
+:root {
+  --stagger-dur: 500ms;
+  --stagger-distance: 12px;
+  --stagger-stagger: 40ms;
+  --stagger-blur: 3px;
+  --stagger-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Lines start translated down + blurred + invisible; .is-shown
+   on the parent flips them to their resting state. The second
+   line's transition-delay holds it back by --stagger-stagger
+   so the eye lands on the headline first. */
+.t-stagger-line {
+  display: block;
+  opacity: 0;
+  transform: translateY(var(--stagger-distance));
+  filter: blur(var(--stagger-blur));
+  transition:
+    opacity   var(--stagger-dur) var(--stagger-ease),
+    transform var(--stagger-dur) var(--stagger-ease),
+    filter    var(--stagger-dur) var(--stagger-ease);
+  will-change: transform, opacity, filter;
+}
+.t-stagger-line--2 { transition-delay: var(--stagger-stagger); }
+.t-stagger-line--3 { transition-delay: calc(var(--stagger-stagger) * 2); }
+
+.t-stagger.is-shown .t-stagger-line {
+  opacity: 1;
+  transform: translateY(0);
+  filter: none;
+}
+/* Exit decouples from the stagger: same fade for every line,
+   no Y return, no blur — so the disappearance reads as a
+   single quiet fade instead of a reverse reveal. */
+.t-stagger.is-hiding .t-stagger-line {
+  opacity: 0;
+  transform: translateY(0);
+  filter: blur(0);
+  transition:
+    opacity 200ms ease,
+    transform 0s linear,
+    filter 0s linear;
+  transition-delay: 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .t-stagger-line { transition: none !important; }
+}
+
+/* Transitions.dev — Shimmer text */
+
+/*
+  Usage:
+    <!-- Duplicate the visible string into data-text so the
+         ::before layer can mask the gradient onto the same
+         glyphs. Keep them in sync if the text changes. -->
+    <span class="t-shimmer" data-text="Planning next moves">
+      Planning next moves
+    </span>
+
+  Pure CSS — no JS, no class toggling. Tune --shimmer-base /
+  --shimmer-highlight in your own theme rules so the colors
+  follow light / dark mode.
+*/
+
+:root {
+  --shimmer-dur: 2000ms;
+  --shimmer-base: #7c7c7c;
+  --shimmer-highlight: #0d0d0d;
+  --shimmer-band: 400%;
+  --shimmer-ease: linear;
+}
+
+html[data-theme="dark"] {
+  --shimmer-base: #7a756a;
+  --shimmer-highlight: #eceae2;
+}
+
+html[data-theme="blueprint"] {
+  --shimmer-base: #cfddff;
+  --shimmer-highlight: #8fb2ff;
+}
+
+/* Two-layer construction:
+   1. The base text renders normally in --shimmer-base.
+   2. ::before duplicates it via content: attr(data-text),
+      paints a transparent → highlight → transparent gradient
+      onto it, and clips that gradient to the glyphs via
+      background-clip: text. Animating background-position
+      sweeps the band across the text. */
+.t-shimmer {
+  position: relative;
+  display: inline-block;
+  color: var(--shimmer-base);
+}
+.t-shimmer::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(
+    90deg,
+    transparent          0%,
+    transparent         40%,
+    var(--shimmer-highlight) 50%,
+    transparent         60%,
+    transparent        100%
+  );
+  background-size: var(--shimmer-band) 100%;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: t-shimmer var(--shimmer-dur) var(--shimmer-ease) infinite;
+}
+@keyframes t-shimmer {
+  0%   { background-position: 100% 0; }
+  100% { background-position: 0% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .t-shimmer::before { animation: none !important; }
+}
+
+/* Transitions.dev — Spinning counter */
+
+/*
+  Usage:
+    <div class="t-reel"></div>  <!-- reels built in JS -->
+
+  Build one .t-reel-col per digit, each clipping a strip
+  (.t-reel-strip) of 0-9 cells; translate the strip up by
+  (spins*10 + digit) cells to spin then land. A directional
+  (vertical-only) SVG feGaussianBlur stdDeviation="0 Y" gives
+  the motion streak (CSS blur() would smear sideways); decay it
+  to 0 per column as each reel settles.
+*/
+
+:root {
+  --reel-dur: 1400ms;
+  --reel-cell: 30px;
+  --reel-spin-blur: 3px;
+  --reel-stagger: 90ms;
+  --reel-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.t-reel { display: inline-flex; align-items: center; height: var(--reel-cell); font-variant-numeric: tabular-nums; }
+.t-reel-col {
+  position: relative; height: var(--reel-cell); overflow: hidden;
+}
+/* Edge fade only while spinning — at rest digits stay fully crisp. */
+.t-reel-col.is-spinning {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%);
+}
+.t-reel-strip { display: flex; flex-direction: column; will-change: transform, filter; }
+.t-reel-digit { height: var(--reel-cell); display: flex; align-items: center; justify-content: center; }
+/* JS drives the tween: strip.style.transition =
+     'transform var(--reel-dur) var(--reel-ease) ' + (col*var(--reel-stagger)) + 'ms';
+   and decays each column's feGaussianBlur stdDeviation from
+   var(--reel-spin-blur) to 0 over its own window. */
+
+@media (prefers-reduced-motion: reduce) {
+  .t-reel-strip { transition: none !important; filter: none !important; }
+}
+
+/* hero stats ------------------------------------------------------------- */
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  flex-wrap: wrap;
+  margin-top: 36px;
+}
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.hero-stat-num {
+  display: flex;
+  align-items: center;
+  font-family: var(--serif);
+  font-size: 25px;
+  letter-spacing: var(--track-title);
+  line-height: 1;
+  color: var(--ink);
+}
+.hero-stat-suffix {
+  margin-left: 1px;
+}
+
+.offer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--rule-soft);
+}
+.offer-card {
+  padding: 18px 16px 16px 0;
+  background: var(--sheet);
+}
+.offer-card:nth-child(even) {
+  padding-left: 16px;
+}
+
+.price-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--rule-soft);
+  align-items: start;
+}
+.price-row:last-of-type {
+  border-bottom: 1px solid var(--rule-soft);
+}
+.price-tag {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  padding-top: 2px;
+  white-space: nowrap;
+}
+.price-usd {
+  font-family: var(--serif);
+  font-size: 22px;
+  letter-spacing: var(--track-title);
+  line-height: 1.1;
+  color: var(--ink);
+}
+.price-cadence {
+  font-family: var(--text);
+  font-size: 13px;
+  letter-spacing: 0;
+  color: var(--ink-3);
+  margin-left: 4px;
+}
+
+.quote-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 8px;
+}
+.quote-opt {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  padding: 11px 12px;
+  text-align: left;
+  background: transparent;
+  border: 1px solid var(--rule);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.quote-opt:hover {
+  border-color: color-mix(in srgb, var(--ink) 40%, transparent);
+}
+.quote-opt.active {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+.quote-opt.active .quote-opt-name {
+  color: var(--sheet);
+}
+.quote-opt.active .meta {
+  color: var(--sheet);
+  opacity: 0.75;
+}
+.quote-opt-name {
+  font-family: "InterVar", system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.quote-chip {
+  cursor: pointer;
+}
+.quote-chip.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--sheet);
+}
+
+.quote-report {
+  margin-top: 22px;
+  padding: 20px;
+  background: var(--sheet-2);
+  border: 1px solid var(--rule);
+}
+.quote-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--rule);
+}
+.quote-usd {
+  font-family: var(--serif);
+  font-size: clamp(34px, 6vw, 44px);
+  letter-spacing: var(--track-title);
+  line-height: 1.05;
+  color: var(--ink);
+}
+.quote-time {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  color: var(--ink-2);
+}
+.quote-rows {
+  display: flex;
+  flex-direction: column;
+}
+.quote-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  padding: 11px 0 9px;
+  border-bottom: 1px solid var(--rule-soft);
+  position: relative;
+}
+.quote-dot {
+  width: 6px;
+  height: 6px;
+  flex: none;
+  border-radius: 50%;
+  background: #0cce6b;
+}
+.quote-row-label {
+  font-family: "InterVar", system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  color: var(--ink-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.quote-row-amount {
+  font-family: "InterVar", system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.quote-bar {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--ink);
+  opacity: 0.55;
+  transition: width 300ms var(--resize-ease);
+}
+
+@media (max-width: 620px) {
+  .offer-grid {
+    grid-template-columns: 1fr;
+  }
+  .offer-card:nth-child(even) {
+    padding-left: 0;
+  }
+  .price-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .price-tag {
+    align-items: flex-start;
+  }
+}
+
+/* Transitions.dev — Card resize */
+
+/*
+  Usage:
+    <div class="t-resize">…</div>
+
+  Put `.t-resize` on any element and change its width/height
+  (directly, or via a state class such as `.is-small`). The
+  transition will tween the two sizes.
+*/
+
+:root {
+  --resize-dur: 300ms;
+  --resize-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.t-resize {
+  transition:
+    width  var(--resize-dur) var(--resize-ease),
+    height var(--resize-dur) var(--resize-ease);
+  will-change: width, height;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .t-resize { transition: none !important; }
+}
+
+/* project shots — small asymmetric fan ---------------------------------------- */
+
+.project-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 140px;
+  gap: 18px;
+  align-items: start;
+  margin-top: 12px;
+}
+
+.shots {
+  position: relative;
+  width: 100%;
+  height: 112px;
+  margin-top: 2px;
+}
+
+.shot-card {
+  position: absolute;
+  left: 50%;
+  top: 4px;
+  width: 84px;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--sheet-2);
+  cursor: pointer;
+  transition:
+    transform 350ms var(--resize-ease),
+    scale 300ms var(--resize-ease),
+    opacity 350ms ease-out,
+    filter 350ms ease-out;
+}
+.shot-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+}
+.shot-card:hover,
+.shot-card:focus-visible {
+  scale: 1.06;
+}
+
+.shot-pos-0 {
+  z-index: 1;
+  transform: translateX(-50%) translateX(-20%) rotate(-8deg) translateY(7px) scale(0.9);
+  filter: saturate(0.8) brightness(0.93);
+  opacity: 0.55;
+}
+.shot-pos-1 {
+  z-index: 3;
+  transform: translateX(-50%) rotate(2deg) scale(1);
+  box-shadow: 0 12px 28px rgba(10, 10, 12, 0.28);
+}
+.shot-pos-2 {
+  z-index: 2;
+  transform: translateX(-50%) translateX(20%) rotate(7deg) translateY(-4px) scale(0.9);
+  filter: saturate(0.8) brightness(0.93);
+  opacity: 0.55;
+}
+
+.shots:hover .shot-pos-0,
+.shots:focus-within .shot-pos-0 {
+  transform: translateX(-50%) translateX(-38%) rotate(-8deg) translateY(7px) scale(0.9);
+  filter: saturate(1);
+  opacity: 1;
+}
+.shots:hover .shot-pos-2,
+.shots:focus-within .shot-pos-2 {
+  transform: translateX(-50%) translateX(38%) rotate(7deg) translateY(-4px) scale(0.9);
+  filter: saturate(1);
+  opacity: 1;
+}
+
+/* shots viewer — fullscreen ------------------------------------------------- */
+
+.viewer-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 72px 20px 96px;
+  overflow: hidden;
+  background: rgba(6, 7, 10, 0.96);
+  opacity: 0;
+  transition: opacity var(--modal-open-dur) var(--modal-ease);
+}
+.viewer-overlay.is-open {
+  opacity: 1;
+}
+.viewer-overlay.is-closing {
+  opacity: 0;
+  transition: opacity var(--modal-close-dur) var(--modal-ease);
+}
+
+.viewer-shell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.viewer-stage {
+  width: min(92vw, 1200px);
+  max-height: calc(100dvh - 168px);
+  overflow: hidden;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.viewer-img {
+  max-width: 100%;
+  max-height: calc(100dvh - 168px);
+  object-fit: contain;
+  cursor: zoom-in;
+  transform: scale(0.94);
+  opacity: 0;
+  transition:
+    transform var(--modal-open-dur) var(--modal-ease),
+    opacity var(--modal-open-dur) var(--modal-ease);
+  will-change: transform, opacity;
+}
+.viewer-overlay.is-open .viewer-img {
+  transform: scale(1);
+  opacity: 1;
+}
+.viewer-overlay.is-closing .viewer-img {
+  transform: scale(0.96);
+  opacity: 0;
+  transition:
+    transform var(--modal-close-dur) var(--modal-ease),
+    opacity var(--modal-close-dur) var(--modal-ease);
+}
+
+/* Zoomed state is transform-only: overlay layout never moves. */
+.viewer-img.zoomed {
+  cursor: zoom-out;
+}
+.viewer-img.dragging {
+  cursor: grabbing;
+}
+
+.viewer-close {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 10px;
+  font-family: "InterVar", system-ui, -apple-system, sans-serif;
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition: border-color 0.2s ease, opacity 0.2s ease;
+}
+.viewer-close:hover {
+  border-color: #fff;
+}
+
+.viewer-bar {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.viewer-btn {
+  min-width: 38px;
+  padding: 8px 12px;
+  font-family: "InterVar", system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.viewer-btn:hover {
+  border-color: #fff;
+}
+.viewer-btn.active {
+  background: #fff;
+  border-color: #fff;
+  color: #0a0b0e;
+}
+
+@media (max-width: 620px) {
+  .project-main {
+    grid-template-columns: 1fr;
+  }
+  .shots {
+    width: min(200px, 100%);
+    margin: 4px auto 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shot-card { transition: none !important; }
+  .viewer-img { transition: none !important; }
 }

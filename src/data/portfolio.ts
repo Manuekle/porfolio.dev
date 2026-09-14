@@ -33,7 +33,13 @@ export const SOCIALS: { label: string; handle: string; url: string; slug: string
 
 export type CopyShape = {
   nav: { about: string; experience: string; projects: string; stack: string; education: string };
-  hero: { title: string; sub: string; cta: string; status: string };
+  hero: {
+    title: string;
+    sub: string;
+    cta: string;
+    status: string;
+    stats: { years: string; projects: string; hackathons: string };
+  };
   sections: Record<
     "about" | "experience" | "projects" | "stack" | "hackathons" | "education" | "certifications" | "contact",
     { title: string; sub: string }
@@ -43,10 +49,56 @@ export type CopyShape = {
   contactCta: string;
   downloadCv: string;
   contactMe: string;
+  apply: {
+    button: string;
+    title: string;
+    sub: string;
+    toLabel: string;
+    toPlaceholder: string;
+    companyLabel: string;
+    companyPlaceholder: string;
+    positionLabel: string;
+    positionPlaceholder: string;
+    previewLabel: string;
+    openMail: string;
+    copy: string;
+    copied: string;
+    attachCv: string;
+    cvHint: string;
+    close: string;
+  };
   live: string;
   source: string;
   footer: string;
   present: string;
+  avatarPop: { open: string; close: string };
+  quote: {
+    title: string;
+    sub: string;
+    step1: string;
+    step2: string;
+    step3: string;
+    base: string;
+    priorityFee: string;
+    total: string;
+    time: string;
+    send: string;
+    restart: string;
+    note: string;
+  };
+  hireServices: string;
+  services: {
+    title: string;
+    sub: string;
+    intro: string;
+    offerTitle: string;
+    offerSub: string;
+    priceTitle: string;
+    priceSub: string;
+    note: string;
+    back: string;
+    cta: string;
+  };
 };
 
 export const COPY: Record<Lang, CopyShape> = {
@@ -63,6 +115,11 @@ export const COPY: Record<Lang, CopyShape> = {
       sub: "Construyo productos web con arquitectura escalable, herramientas modernas y una experiencia de usuario cuidada.",
       cta: "Ver experiencia",
       status: "Disponible para proyectos",
+      stats: {
+        years: "Años de experiencia",
+        projects: "Proyectos entregados",
+        hackathons: "Hackathones",
+      },
     },
     sections: {
       about: { title: "Sobre mí", sub: "Una breve presentación" },
@@ -80,10 +137,57 @@ export const COPY: Record<Lang, CopyShape> = {
     contactCta: "Escríbeme",
     downloadCv: "Descargar CV",
     contactMe: "Contáctame",
+    apply: {
+      button: "Redactar postulación",
+      title: "Postularme a un trabajo",
+      sub: "Llena 3 campos y abre tu correo con el mensaje listo. Solo adjunta tu CV.",
+      toLabel: "Correo destino (opcional)",
+      toPlaceholder: "empleos@empresa.com",
+      companyLabel: "Empresa",
+      companyPlaceholder: "Ej. Gymshark",
+      positionLabel: "Puesto",
+      positionPlaceholder: "Ej. Frontend Developer",
+      previewLabel: "Vista previa",
+      openMail: "Abrir en mi correo",
+      copy: "Copiar texto",
+      copied: "¡Copiado!",
+      attachCv: "Descargar CV para adjuntar",
+      cvHint: "El correo no puede adjuntar el CV solo. Descárgalo y adjúntalo antes de enviar.",
+      close: "Cerrar",
+    },
     live: "Sitio",
     source: "Código",
     footer: "Diseñado y construido por Manuel Erazo",
     present: "Presente",
+    avatarPop: { open: "Ver foto en grande", close: "Cerrar" },
+    quote: {
+      title: "Cotizador instantáneo",
+      sub: "Elige, suma y recibe tu estimado al momento",
+      step1: "Tipo de proyecto",
+      step2: "Extras",
+      step3: "Ritmo",
+      base: "Base",
+      priorityFee: "Prioritario",
+      total: "Tu estimado",
+      time: "Tiempo estimado",
+      send: "Enviar esta cotización",
+      restart: "Empezar de nuevo",
+      note: "USD · estimado automático según tu selección. La cifra final se confirma por correo.",
+    },
+    hireServices: "Contratar mis servicios",
+    services: {
+      title: "Servicios",
+      sub: "Qué puedo construir para ti",
+      intro:
+        "Diseño y desarrollo productos web de la idea a producción. Next.js, TypeScript, Node.js e integración de LLMs — con una interfaz cuidada y arquitectura que escala.",
+      offerTitle: "Qué desarrollo",
+      offerSub: "El tipo de trabajo que tomo",
+      priceTitle: "Precios",
+      priceSub: "Montos de partida en USD. El alcance define la cifra final.",
+      note: "Los precios son desde, en dólares estadounidenses. Incluyen diseño, desarrollo y puesta en producción. No incluyen copywriting extenso ni anuncios pagos. Un proyecto a medida se cotiza aparte.",
+      back: "Volver al portafolio",
+      cta: "Pedir una cotización",
+    },
   },
   en: {
     nav: {
@@ -98,6 +202,11 @@ export const COPY: Record<Lang, CopyShape> = {
       sub: "I build web products with scalable architecture, modern tooling and a thoughtful user experience.",
       cta: "View experience",
       status: "Available for projects",
+      stats: {
+        years: "Years of experience",
+        projects: "Projects delivered",
+        hackathons: "Hackathons",
+      },
     },
     sections: {
       about: { title: "About", sub: "A short introduction" },
@@ -115,10 +224,57 @@ export const COPY: Record<Lang, CopyShape> = {
     contactCta: "Get in touch",
     downloadCv: "Download CV",
     contactMe: "Contact me",
+    apply: {
+      button: "Draft application",
+      title: "Apply for a job",
+      sub: "Fill 3 fields and open your mail app with the message ready. Just attach your CV.",
+      toLabel: "Recipient email (optional)",
+      toPlaceholder: "jobs@company.com",
+      companyLabel: "Company",
+      companyPlaceholder: "E.g. Gymshark",
+      positionLabel: "Position",
+      positionPlaceholder: "E.g. Frontend Developer",
+      previewLabel: "Preview",
+      openMail: "Open in my mail app",
+      copy: "Copy text",
+      copied: "Copied!",
+      attachCv: "Download CV to attach",
+      cvHint: "Email can't attach the CV by itself. Download it and attach it before sending.",
+      close: "Close",
+    },
     live: "Live",
     source: "Source",
     footer: "Designed and built by Manuel Erazo",
     present: "Present",
+    avatarPop: { open: "View large photo", close: "Close" },
+    quote: {
+      title: "Instant quote",
+      sub: "Pick, add up and get your estimate right away",
+      step1: "Project type",
+      step2: "Add-ons",
+      step3: "Pace",
+      base: "Base",
+      priorityFee: "Priority",
+      total: "Your estimate",
+      time: "Estimated time",
+      send: "Send this quote",
+      restart: "Start over",
+      note: "USD · automatic estimate from your selection. Final figure confirmed by email.",
+    },
+    hireServices: "Hire my services",
+    services: {
+      title: "Services",
+      sub: "What I can build for you",
+      intro:
+        "I design and ship web products from idea to production. Next.js, TypeScript, Node.js and LLM integration — with a careful interface and architecture that scales.",
+      offerTitle: "What I build",
+      offerSub: "The kind of work I take on",
+      priceTitle: "Pricing",
+      priceSub: "Starting amounts in USD. Scope sets the final figure.",
+      note: "Prices are starting amounts, in US dollars. They cover design, development and launch. They don't cover extensive copywriting or paid ads. Custom work is quoted separately.",
+      back: "Back to the portfolio",
+      cta: "Request a quote",
+    },
   },
 };
 
@@ -344,6 +500,8 @@ export type Project = {
   year: string;
   /** Optional path to a real logo file, e.g. "/assets/logos/projects/steve.svg". */
   logo?: string;
+  /** Exactly 3 screenshots for the fan gallery, e.g. "/assets/shots/gymrat-1.jpg". */
+  shots?: string[];
   tagline: Bilingual;
   blurb: Bilingual;
   stack: string[];
@@ -357,6 +515,7 @@ export const PROJECTS: Project[] = [
     name: "creagent",
     year: "2026",
     logo: "/assets/logos/projects/creagent.png",
+    shots: ["/assets/screenshots/agent01.png", "/assets/screenshots/agent02.png", "/assets/screenshots/agent03.png"],
     tagline: { es: "Plataforma open-source de agentes", en: "Open-source agent platform" },
     blurb: {
       es: "Compone agentes de IA a partir de un catálogo de skills reutilizables y los exporta a Claude Code, Cursor, Codex o Gemini CLI, o los sirve directo vía MCP.",
@@ -370,6 +529,7 @@ export const PROJECTS: Project[] = [
     name: "Senka",
     year: "2026",
     logo: "/assets/logos/projects/steve.png",
+    shots: ["/assets/screenshots/senka01.png", "/assets/screenshots/senka02.png", "/assets/screenshots/senka03.png"],
     tagline: { es: "Atención al cliente con IA", en: "AI customer support" },
     blurb: {
       es: "Unifica WhatsApp, Instagram y Meta Ads en una sola bandeja. Agentes de IA responden desde bases de conocimiento propias, agendan citas y procesan pagos.",
@@ -397,6 +557,7 @@ export const PROJECTS: Project[] = [
     name: "GymRat+",
     year: "2024 —",
     logo: "/assets/logos/projects/gymrat.png",
+    shots: ["/assets/screenshots/gym01.png", "/assets/screenshots/gym02.png", "/assets/screenshots/gym03.png"],
     tagline: { es: "SaaS de gestión de gimnasios", en: "Gym management SaaS" },
     blurb: {
       es: "SaaS multi-tenant para gestión integral de gimnasios: miembros, planes, facturación con MercadoPago, onboarding y panel de administración.",
@@ -596,5 +757,156 @@ export const CERTIFICATIONS: Certification[] = [
     issuer: "Coursera · Google",
     logo: "google",
     logoFile: "/assets/logos/orgs/google.svg",
+  },
+];
+
+/* ----------------------------------------------------------------- services */
+
+export type Capability = { title: Bilingual; blurb: Bilingual };
+
+export const CAPABILITIES: Capability[] = [
+  {
+    title: { es: "Productos web", en: "Web products" },
+    blurb: {
+      es: "Sitios y aplicaciones con Next.js, TypeScript y una interfaz precisa. De la landing al producto en producción.",
+      en: "Sites and apps with Next.js, TypeScript and a precise interface. From a landing to a product in production.",
+    },
+  },
+  {
+    title: { es: "SaaS multi-tenant", en: "Multi-tenant SaaS" },
+    blurb: {
+      es: "Plataformas con auth, billing, onboarding y panel de admin. El mismo tipo de sistema detrás de GymRat+.",
+      en: "Platforms with auth, billing, onboarding and an admin panel. The same kind of system behind GymRat+.",
+    },
+  },
+  {
+    title: { es: "Agentes IA y LLMs", en: "AI agents and LLMs" },
+    blurb: {
+      es: "Agentes, MCP, RAG y flujos de trabajo con modelos. No demos: herramientas que la gente usa de verdad.",
+      en: "Agents, MCP, RAG and model workflows. Not demos: tools people actually use.",
+    },
+  },
+  {
+    title: { es: "Pagos e integraciones", en: "Payments and integrations" },
+    blurb: {
+      es: "Stripe, MercadoPago, WhatsApp, APIs y automatización. El producto conectado al negocio.",
+      en: "Stripe, MercadoPago, WhatsApp, APIs and automation. The product wired into the business.",
+    },
+  },
+  {
+    title: { es: "Diseño de interfaz", en: "Interface design" },
+    blurb: {
+      es: "UI clara, tipografía y motion contenidos. Diseño y frontend en la misma mano, sin handoff roto.",
+      en: "Clear UI, type and contained motion. Design and frontend in the same hands, no broken handoff.",
+    },
+  },
+  {
+    title: { es: "Móvil y AR", en: "Mobile and AR" },
+    blurb: {
+      es: "Apps en Flutter o React Native, y experiencias de realidad aumentada cuando el proyecto lo pide.",
+      en: "Flutter or React Native apps, and augmented reality when the project calls for it.",
+    },
+  },
+];
+
+export type Addon = { id: string; label: Bilingual; usd: number };
+
+export const ADDONS: Addon[] = [
+  { id: "lang", label: { es: "Segundo idioma", en: "Second language" }, usd: 450 },
+  { id: "cms", label: { es: "Blog / CMS", en: "Blog / CMS" }, usd: 600 },
+  { id: "pay", label: { es: "Pagos online", en: "Online payments" }, usd: 700 },
+  { id: "ai", label: { es: "Chatbot con IA", en: "AI chatbot" }, usd: 1200 },
+  { id: "wa", label: { es: "Integración WhatsApp", en: "WhatsApp integration" }, usd: 450 },
+  { id: "motion", label: { es: "Motion premium", en: "Premium motion" }, usd: 500 },
+  { id: "seo", label: { es: "SEO avanzado", en: "Advanced SEO" }, usd: 400 },
+  { id: "care", label: { es: "Mes extra de soporte", en: "Extra support month" }, usd: 600 },
+];
+
+export type Speed = { id: string; label: Bilingual; note: Bilingual; mult: number };
+
+export const SPEEDS: Speed[] = [
+  {
+    id: "std",
+    label: { es: "Estándar", en: "Standard" },
+    note: { es: "Ritmo normal", en: "Normal pace" },
+    mult: 1,
+  },
+  {
+    id: "fast",
+    label: { es: "Prioritario", en: "Priority" },
+    note: { es: "Salto la fila", en: "Skip the line" },
+    mult: 1.25,
+  },
+];
+
+export type ServicePackage = {
+  id: string;
+  name: Bilingual;
+  from: string;
+  cadence?: Bilingual;
+  time: Bilingual;
+  includes: Bilingual[];
+};
+
+export const PACKAGES: ServicePackage[] = [
+  {
+    id: "landing",
+    name: { es: "Landing o sitio", en: "Landing or site" },
+    from: "1,800",
+    time: { es: "1–2 semanas", en: "1–2 weeks" },
+    includes: [
+      { es: "Diseño y frontend", en: "Design and frontend" },
+      { es: "Hasta 5 secciones", en: "Up to 5 sections" },
+      { es: "Responsive y SEO básico", en: "Responsive and basic SEO" },
+      { es: "Deploy en Vercel", en: "Deploy on Vercel" },
+    ],
+  },
+  {
+    id: "mvp",
+    name: { es: "Producto web / MVP", en: "Web product / MVP" },
+    from: "4,500",
+    time: { es: "3–6 semanas", en: "3–6 weeks" },
+    includes: [
+      { es: "Auth, dashboard y CRUD", en: "Auth, dashboard and CRUD" },
+      { es: "API y base de datos", en: "API and database" },
+      { es: "UI completa", en: "Full UI" },
+      { es: "Puesta en producción", en: "Launch to production" },
+    ],
+  },
+  {
+    id: "saas",
+    name: { es: "SaaS / plataforma", en: "SaaS / platform" },
+    from: "8,500",
+    time: { es: "6–12 semanas", en: "6–12 weeks" },
+    includes: [
+      { es: "Multi-tenant y billing", en: "Multi-tenant and billing" },
+      { es: "Onboarding y admin", en: "Onboarding and admin" },
+      { es: "Arquitectura lista para crecer", en: "Architecture ready to grow" },
+      { es: "Pagos (Stripe o MercadoPago)", en: "Payments (Stripe or MercadoPago)" },
+    ],
+  },
+  {
+    id: "ai",
+    name: { es: "Agente IA / LLM", en: "AI agent / LLM" },
+    from: "2,800",
+    time: { es: "2–4 semanas", en: "2–4 weeks" },
+    includes: [
+      { es: "Diseño del flujo y el prompt", en: "Flow and prompt design" },
+      { es: "Integración con APIs de modelos", en: "Model API integration" },
+      { es: "Interfaz para usarlo", en: "An interface to use it" },
+      { es: "Evaluación básica de calidad", en: "Basic quality evaluation" },
+    ],
+  },
+  {
+    id: "retainer",
+    name: { es: "Acompañamiento", en: "Retainer" },
+    from: "1,200",
+    cadence: { es: "/ mes", en: "/ month" },
+    time: { es: "Mensual, renovable", en: "Monthly, renewable" },
+    includes: [
+      { es: "Mejoras y features", en: "Improvements and features" },
+      { es: "Soporte de producto", en: "Product support" },
+      { es: "Prioridad en el calendario", en: "Calendar priority" },
+    ],
   },
 ];

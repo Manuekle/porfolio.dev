@@ -1,0 +1,20 @@
+# Manuel Erazo
+
+Full-Stack & AI Developer in Bogotá, Colombia.
+
+Site: https://manudev.vercel.app
+Email: meerazo7@hotmail.com
+GitHub: https://github.com/manuekle
+LinkedIn: https://linkedin.com/in/manuekle
+
+Builds web products from idea to production with Next.js, TypeScript, Node.js and LLMs.
+Founder of GymRat+, a multi-tenant SaaS for gym management.
+
+## Projects
+- GymRat+ — gym management SaaS — https://gymratplus.com
+- Senka — AI customer support — https://senka-ai-lab.vercel.app
+- creagent — open-source agent platform — https://creagent.fun
+- forge — multi-agent product strategy — https://forgems.vercel.app
+- SIRA — QR attendance — https://sira-fup.online
+- heyMed — virtual medical consultation — https://heymed-manudev.vercel.app
+- hinomaru — learn Japanese — https://hinomaru.vercel.app

@@ -9,9 +9,9 @@ interface Props {
 }
 
 const {
-  title = "Manuel Erazo — Desarrollador Full-Stack & IA",
+  title = "Manuel Erazo — Full-Stack & AI Developer",
   description =
-    "Desarrollador Full-Stack & IA en Bogotá, Colombia. Next.js, TypeScript y LLMs — de la idea a producción.",
+    "Full-Stack & AI developer in Bogotá, Colombia. I ship products with Next.js, TypeScript and LLMs — from idea to production. Founder of GymRat+.",
   lang = "es",
   image = "/og-banner.png",
 } = Astro.props;
@@ -20,6 +20,49 @@ const siteUrl = Astro.site ?? new URL("https://manudev.vercel.app");
 const canonical = new URL(Astro.url.pathname, siteUrl);
 const ogImage = new URL(image, siteUrl);
 const ogLocale = lang === "es" ? "es_CO" : "en_US";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://manudev.vercel.app/#website",
+      url: "https://manudev.vercel.app/",
+      name: "Manuel Erazo",
+      inLanguage: ["es", "en"],
+      publisher: { "@id": "https://manudev.vercel.app/#person" },
+    },
+    {
+      "@type": "Person",
+      "@id": "https://manudev.vercel.app/#person",
+      name: "Manuel Esteban Erazo Medina",
+      alternateName: ["Manuel Erazo", "Manuekle"],
+      url: "https://manudev.vercel.app/",
+      image: "https://manudev.vercel.app/assets/avatar.png",
+      jobTitle: "Full-Stack & AI Developer",
+      email: "mailto:meerazo7@hotmail.com",
+      telephone: "+57-311-271-1242",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Bogotá",
+        addressCountry: "CO",
+      },
+      sameAs: [
+        "https://github.com/manuekle",
+        "https://linkedin.com/in/manuekle",
+        "https://instagram.com/manudev.jsx",
+      ],
+      knowsAbout: [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Node.js",
+        "LLMs",
+        "SaaS",
+        "Product design",
+      ],
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -32,9 +75,9 @@ const ogLocale = lang === "es" ? "es_CO" : "en_US";
     <meta name="author" content="Manuel Erazo" />
     <meta
       name="keywords"
-      content="Manuel Erazo, desarrollador full-stack, desarrollador IA, React, Next.js, TypeScript, LLM, SaaS, freelance, Bogotá, Colombia"
+      content="Manuel Erazo, full-stack developer, AI developer, React, Next.js, TypeScript, LLM, SaaS, freelance, Bogotá, Colombia"
     />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#e9e7de" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#131311" media="(prefers-color-scheme: dark)" />
@@ -66,28 +109,36 @@ const ogLocale = lang === "es" ? "es_CO" : "en_US";
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Manuel Erazo" />
     <meta property="og:locale" content={ogLocale} />
+    <meta property="og:locale:alternate" content={lang === "es" ? "en_US" : "es_CO"} />
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Manuel Erazo — Desarrollador Full-Stack & IA" />
+    <meta property="og:image:alt" content="Manuel Erazo — Full-Stack & AI Developer" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:image:alt" content="Manuel Erazo — Desarrollador Full-Stack & IA" />
+    <meta name="twitter:image:alt" content="Manuel Erazo — Full-Stack & AI Developer" />
+
+    <link rel="me" href="https://github.com/manuekle" />
+    <link rel="me" href="https://linkedin.com/in/manuekle" />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
     <script is:inline>
       // Apply the stored theme before first paint to avoid a flash.
       try {
         const raw = localStorage.getItem("portfolio.prefs");
         const prefs = raw ? JSON.parse(raw) : null;
-        if (prefs && (prefs.theme === "dark" || prefs.theme === "light")) {
+        if (prefs && (prefs.theme === "dark" || prefs.theme === "light" || prefs.theme === "blueprint")) {
           document.documentElement.dataset.theme = prefs.theme;
+          const color = prefs.theme === "dark" ? "#131311" : prefs.theme === "blueprint" ? "#2e6fff" : "#e9e7de";
+          document.querySelectorAll('meta[name="theme-color"]').forEach((el) => el.setAttribute("content", color));
         }
         if (prefs && (prefs.lang === "es" || prefs.lang === "en")) {
           document.documentElement.lang = prefs.lang;

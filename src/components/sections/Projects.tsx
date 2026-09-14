@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BRANDS } from "../../data/brands";
 import { COPY, PROJECTS, type Lang } from "../../data/portfolio";
 import { BrandMark } from "../Mark";
+import { ProjectGallery } from "../ProjectGallery";
 import { Section } from "../Section";
 
 export function Projects({ lang }: { lang: Lang }) {
@@ -16,9 +17,11 @@ export function Projects({ lang }: { lang: Lang }) {
             <h3 className="entry-title">{p.name}</h3>
             <div className="entry-org">{p.tagline[lang]}</div>
 
-            <p className="entry-body">{p.blurb[lang]}</p>
+            <div className={p.shots && p.shots.length > 0 ? "project-main" : undefined}>
+              <div style={{ minWidth: 0 }}>
+                <p className="entry-body" style={{ marginTop: 9 }}>{p.blurb[lang]}</p>
 
-            <div className="entry-stack">
+                <div className="entry-stack">
               {p.stack
                 .filter((slug) => BRANDS[slug])
                 .map((slug) => (
@@ -44,6 +47,12 @@ export function Projects({ lang }: { lang: Lang }) {
                 )}
               </div>
             )}
+              </div>
+
+              {p.shots && p.shots.length > 0 && (
+                <ProjectGallery shots={p.shots} name={p.name} lang={lang} />
+              )}
+            </div>
           </div>
 
           <div className="entry-date">{p.year}</div>

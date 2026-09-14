@@ -1,5 +1,7 @@
 import { COPY, PROFILE, SOCIALS, type Lang } from "../data/portfolio";
 import { BrandMark } from "./Mark";
+import { ApplyCta, MailIcon } from "./Apply";
+import { AvatarPop } from "./AvatarPop";
 
 function Glyph({ d, size = 12 }: { d: string; size?: number }) {
   return (
@@ -31,9 +33,7 @@ export function Sidebar({ lang }: { lang: Lang }) {
     <aside className="aside">
       <div className="aside-grid">
         <div>
-          <div className="avatar-frame">
-            <img className="avatar" src="/assets/avatar.png" alt={PROFILE.name} width={104} height={104} />
-          </div>
+          <AvatarPop lang={lang} />
 
           <h1
             className="title"
@@ -68,7 +68,9 @@ export function Sidebar({ lang }: { lang: Lang }) {
             </div>
             <div>
               <span className="status-dot" />
-              <span>{c.hero.status}</span>
+              <span className="t-shimmer" data-text={c.hero.status}>
+                {c.hero.status}
+              </span>
             </div>
           </div>
 
@@ -105,11 +107,11 @@ export function Sidebar({ lang }: { lang: Lang }) {
               title={c.contactCta}
               style={{ padding: "10px 12px" }}
             >
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1" aria-hidden="true">
-                <path d="M1.5 3.5h13v9h-13zM1.5 4l6.5 4.6L14.5 4" />
-              </svg>
+              <MailIcon size={14} />
             </a>
           </div>
+
+          <ApplyCta lang={lang} variant="ghost" style={{ width: "100%", marginTop: 8 }} />
         </div>
       </div>
     </aside>

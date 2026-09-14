@@ -1,5 +1,6 @@
 import { COPY, PROFILE, SOCIALS, type Lang } from "../../data/portfolio";
 import { BrandMark } from "../Mark";
+import { ApplyCta } from "../Apply";
 import { Section } from "../Section";
 
 export function Contact({ lang }: { lang: Lang }) {
@@ -32,6 +33,17 @@ export function Contact({ lang }: { lang: Lang }) {
         ))}
       </div>
 
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 22 }}>
+        <ApplyCta lang={lang} variant="primary" />
+        <a
+          className="btn btn-ghost"
+          href={`/assets/CV_Manuel_Erazo_${lang.toUpperCase()}.pdf`}
+          download
+        >
+          {c.downloadCv}
+        </a>
+      </div>
+
       <footer
         style={{
           marginTop: 44,
@@ -44,6 +56,9 @@ export function Contact({ lang }: { lang: Lang }) {
         }}
       >
         <span className="meta">{c.footer}</span>
+        <a className="meta link-underline" href="/services">
+          {c.hireServices}
+        </a>
         <span className="meta">© {new Date().getFullYear()}</span>
       </footer>
     </Section>
