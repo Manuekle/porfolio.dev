@@ -2,6 +2,8 @@ import { COPY, PROFILE, SOCIALS, type Lang } from "../data/portfolio";
 import { BrandMark } from "./Mark";
 import { ApplyCta, MailIcon } from "./Apply";
 import { AvatarPop } from "./AvatarPop";
+import { CvButton } from "./CvPreview";
+import { Signature } from "./Signature";
 
 function Glyph({ d, size = 12 }: { d: string; size?: number }) {
   return (
@@ -48,6 +50,8 @@ export function Sidebar({ lang }: { lang: Lang }) {
           <p className="body" style={{ margin: "16px 0 0", fontSize: 12.5, lineHeight: 1.65 }}>
             {PROFILE.bio[lang]}
           </p>
+
+          <Signature width={84} style={{ marginTop: 12, transform: "rotate(-3deg)" }} />
         </div>
 
         <div>
@@ -92,14 +96,7 @@ export function Sidebar({ lang }: { lang: Lang }) {
           </div>
 
           <div style={{ display: "flex", gap: 8, marginTop: 18 }}>
-            <a
-              className="btn"
-              href={`/assets/CV_Manuel_Erazo_${lang.toUpperCase()}.pdf`}
-              download
-              style={{ flex: 1 }}
-            >
-              {c.downloadCv}
-            </a>
+            <CvButton lang={lang} style={{ flex: 1 }} />
             <a
               className="btn btn-ghost"
               href={`mailto:${PROFILE.email}`}

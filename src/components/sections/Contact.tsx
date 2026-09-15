@@ -1,7 +1,9 @@
 import { COPY, PROFILE, SOCIALS, type Lang } from "../../data/portfolio";
 import { BrandMark } from "../Mark";
 import { ApplyCta } from "../Apply";
+import { CvButton } from "../CvPreview";
 import { Section } from "../Section";
+import { Signature } from "../Signature";
 
 export function Contact({ lang }: { lang: Lang }) {
   const c = COPY[lang];
@@ -35,13 +37,7 @@ export function Contact({ lang }: { lang: Lang }) {
 
       <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 22 }}>
         <ApplyCta lang={lang} variant="primary" />
-        <a
-          className="btn btn-ghost"
-          href={`/assets/CV_Manuel_Erazo_${lang.toUpperCase()}.pdf`}
-          download
-        >
-          {c.downloadCv}
-        </a>
+        <CvButton lang={lang} className="btn btn-ghost" />
       </div>
 
       <footer
@@ -51,6 +47,7 @@ export function Contact({ lang }: { lang: Lang }) {
           borderTop: "1px solid var(--rule)",
           display: "flex",
           justifyContent: "space-between",
+          alignItems: "flex-end",
           gap: 12,
           flexWrap: "wrap",
         }}
@@ -59,7 +56,10 @@ export function Contact({ lang }: { lang: Lang }) {
         <a className="meta link-underline" href="/services">
           {c.hireServices}
         </a>
-        <span className="meta">© {new Date().getFullYear()}</span>
+        <span style={{ display: "inline-flex", flexDirection: "column", alignItems: "flex-end", gap: 4 }}>
+          <Signature width={64} />
+          <span className="meta">© {new Date().getFullYear()}</span>
+        </span>
       </footer>
     </Section>
   );

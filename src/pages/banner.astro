@@ -1,0 +1,184 @@
+---
+/* Hidden OG-banner design stage. Not linked anywhere, noindex, not in sitemap. */
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>OG Banner — hidden stage</title>
+    <style>
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        padding: 40px 20px;
+        background: #111110;
+      }
+      .og-stage {
+        width: 1200px;
+        height: 630px;
+        flex: none;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 340px;
+        gap: 40px;
+        align-items: center;
+        padding: 72px 80px;
+        background-color: #1f56d8;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48' fill='none'%3E%3Cg opacity='0.14'%3E%3Cpath d='M48 23.5H0' stroke='%23F5F8FF'/%3E%3Cpath d='M48 47.5001H0' stroke='%23F5F8FF'/%3E%3Cpath d='M23.5 0V48' stroke='%23F5F8FF'/%3E%3Cpath d='M47.5 0V48' stroke='%23F5F8FF'/%3E%3C/g%3E%3C/svg%3E");
+        background-size: 48px 48px;
+        border: 1px solid rgba(245, 248, 255, 0.3);
+        color: #f5f8ff;
+        overflow: hidden;
+      }
+      .og-brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 30px;
+      }
+      .og-brand-mark {
+        width: 46px;
+        height: 43px;
+        object-fit: contain;
+        filter: invert(1);
+      }
+      .og-brand span {
+        font-family: "InterVar", system-ui, sans-serif;
+        font-size: 21px;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        color: #d9e4ff;
+      }
+      .og-name {
+        font-family: "Cooper", ui-serif, Georgia, serif;
+        font-size: 104px;
+        line-height: 0.98;
+        letter-spacing: -0.05em;
+        margin: 0;
+      }
+      .og-role {
+        font-family: "InterVar", system-ui, sans-serif;
+        font-size: 31px;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        color: #d9e4ff;
+        margin: 18px 0 0;
+      }
+      .og-meta {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 26px;
+        font-family: "InterVar", system-ui, sans-serif;
+        font-size: 21px;
+        color: #b4c8ff;
+      }
+      .og-dot {
+        width: 7px;
+        height: 7px;
+        flex: none;
+        background: #7cf5a3;
+      }
+      .og-side {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+      }
+      .og-avatar-frame {
+        position: relative;
+        width: 268px;
+        height: 268px;
+      }
+      .og-avatar-glow {
+        position: absolute;
+        inset: 3px;
+        width: calc(100% - 6px);
+        height: calc(100% - 6px);
+        object-fit: cover;
+        filter: blur(16px) saturate(1.35);
+        opacity: 0.55;
+        transform: translateY(5px) scale(1.08);
+        pointer-events: none;
+      }
+      .og-avatar {
+        position: relative;
+        width: 268px;
+        height: 268px;
+        object-fit: cover;
+        border: 1px solid rgba(245, 248, 255, 0.35);
+      }
+      .og-sign {
+        width: 190px;
+        height: auto;
+        opacity: 0.92;
+        transform: rotate(-3deg);
+        filter: invert(1);
+      }
+      .og-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .og-download {
+        font-family: "InterVar", system-ui, sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 12px 20px;
+        background: #f5f8ff;
+        color: #1f56d8;
+        border: 0;
+        cursor: pointer;
+      }
+      .og-download:hover {
+        opacity: 0.88;
+      }
+      .og-download:disabled {
+        opacity: 0.6;
+        cursor: wait;
+      }
+      .og-hint {
+        font-family: ui-monospace, monospace;
+        font-size: 13px;
+        color: #8a877f;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="og-stage">
+      <div>
+        <div class="og-brand">
+          <img class="og-brand-mark" src="/assets/mark.png" alt="" />
+          <span>manudev.vercel.app</span>
+        </div>
+        <h1 class="og-name">Manuel<br />Erazo</h1>
+        <p class="og-role">Full-Stack &amp; AI Developer</p>
+        <div class="og-meta">
+          <span class="og-dot"></span>
+          <span>Disponible para proyectos · Bogotá, Colombia</span>
+        </div>
+      </div>
+      <div class="og-side">
+        <div class="og-avatar-frame">
+          <img class="og-avatar-glow" src="/assets/avatar.png" alt="" aria-hidden="true" />
+          <img class="og-avatar" src="/assets/avatar.png" alt="" />
+        </div>
+        <img class="og-sign" src="/assets/sign/sign.svg" alt="" />
+      </div>
+    </div>
+    <div class="og-actions">
+      <button id="og-download" class="og-download" type="button">Descargar PNG</button>
+      <p class="og-hint">1200 × 630 — se guarda como og-banner.png</p>
+    </div>
+
+    <script src="../scripts/og-download.ts"></script>
+  </body>
+</html>

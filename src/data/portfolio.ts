@@ -48,6 +48,7 @@ export type CopyShape = {
   skillsLabel: string;
   contactCta: string;
   downloadCv: string;
+  viewCv: string;
   contactMe: string;
   apply: {
     button: string;
@@ -136,6 +137,7 @@ export const COPY: Record<Lang, CopyShape> = {
     skillsLabel: "Habilidades clave",
     contactCta: "Escríbeme",
     downloadCv: "Descargar CV",
+    viewCv: "Ver CV",
     contactMe: "Contáctame",
     apply: {
       button: "Redactar postulación",
@@ -223,6 +225,7 @@ export const COPY: Record<Lang, CopyShape> = {
     skillsLabel: "Key skills",
     contactCta: "Get in touch",
     downloadCv: "Download CV",
+    viewCv: "View CV",
     contactMe: "Contact me",
     apply: {
       button: "Draft application",

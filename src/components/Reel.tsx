@@ -38,14 +38,12 @@ function ReelCol({
   const fid = `r${useId().replace(/[^a-zA-Z0-9]/g, "")}`;
   const blurRef = useRef<SVGFEGaussianBlurElement>(null);
   const [filterOn, setFilterOn] = useState(false);
-  const [maskOn, setMaskOn] = useState(false);
   const cells = cellsFor(digit);
   const finalIndex = SPINS * 10 + digit;
 
   useEffect(() => {
     if (!spinning || !animated) return;
     setFilterOn(true);
-    setMaskOn(true);
     const dur = cssMs("--reel-dur", 1400);
     const stagger = cssMs("--reel-stagger", 90);
     const peak = cssPx("--reel-spin-blur", 3);
@@ -55,7 +53,6 @@ function ReelCol({
       const el = blurRef.current;
       if (!el) {
         setFilterOn(false);
-        setMaskOn(false);
         return;
       }
       const start = performance.now();
@@ -66,7 +63,6 @@ function ReelCol({
           raf = requestAnimationFrame(tick);
         } else {
           setFilterOn(false);
-          setMaskOn(false);
         }
       };
       raf = requestAnimationFrame(tick);
@@ -78,10 +74,7 @@ function ReelCol({
   }, [spinning, animated, col]);
 
   return (
-    <span
-      className={`t-reel-col${maskOn ? " is-spinning" : ""}`}
-      aria-hidden="true"
-    >
+    <span className="t-reel-col" aria-hidden="true">
       <svg width="0" height="0" style={{ position: "absolute" }} aria-hidden="true">
         <filter id={fid} x="-20%" y="0%" width="140%" height="100%">
           <feGaussianBlur ref={blurRef} stdDeviation="0 3" />

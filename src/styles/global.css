@@ -483,6 +483,22 @@ body::-webkit-scrollbar {
   mask: url("/assets/mark.png") center / contain no-repeat;
 }
 
+/* handwritten signature — black strokes on transparency, inverted on dark */
+
+.signature {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  opacity: 0.92;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+html[data-theme="dark"] .signature,
+html[data-theme="blueprint"] .signature {
+  filter: invert(1);
+}
+
 /* entry rows ------------------------------------------------------------- */
 
 .entry {
@@ -1236,11 +1252,9 @@ html[data-theme="blueprint"] {
 .t-reel { display: inline-flex; align-items: center; height: var(--reel-cell); font-variant-numeric: tabular-nums; }
 .t-reel-col {
   position: relative; height: var(--reel-cell); overflow: hidden;
-}
-/* Edge fade only while spinning — at rest digits stay fully crisp. */
-.t-reel-col.is-spinning {
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%);
+  /* Soft-fade the window edges instead of hard-cropping. */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%);
 }
 .t-reel-strip { display: flex; flex-direction: column; will-change: transform, filter; }
 .t-reel-digit { height: var(--reel-cell); display: flex; align-items: center; justify-content: center; }
@@ -1642,6 +1656,82 @@ html[data-theme="blueprint"] {
 }
 .viewer-img.dragging {
   cursor: grabbing;
+}
+
+/* CV preview — custom pdf.js canvas viewer, no native chrome. */
+
+.viewer-stage-pdf {
+  width: min(94vw, 1200px);
+}
+
+.viewer-pdf-scroll {
+  position: relative;
+  max-width: min(94vw, 1200px);
+  max-height: calc(100dvh - 190px);
+  overflow: auto;
+  border-radius: 12px;
+  background: #fff;
+  transform: scale(0.94);
+  opacity: 0;
+  transition:
+    transform var(--modal-open-dur) var(--modal-ease),
+    opacity var(--modal-open-dur) var(--modal-ease);
+  will-change: transform, opacity;
+}
+.viewer-overlay.is-open .viewer-pdf-scroll {
+  transform: scale(1);
+  opacity: 1;
+}
+.viewer-overlay.is-closing .viewer-pdf-scroll {
+  transform: scale(0.96);
+  opacity: 0;
+  transition:
+    transform var(--modal-close-dur) var(--modal-ease),
+    opacity var(--modal-close-dur) var(--modal-ease);
+}
+
+.viewer-pdf-canvas {
+  display: block;
+  width: auto;
+  max-width: none;
+  height: auto;
+}
+
+.viewer-pdf-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-3);
+}
+
+.viewer-btn-static {
+  cursor: default;
+  font-variant-numeric: tabular-nums;
+}
+.viewer-pdf-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  max-width: min(92vw, 560px);
+  text-align: center;
+}
+.viewer-pdf-error-detail {
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+  overflow-wrap: anywhere;
+  margin: 0;
+}
+.viewer-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.viewer-bar a.viewer-btn {
+  text-decoration: none;
 }
 
 .viewer-close {
