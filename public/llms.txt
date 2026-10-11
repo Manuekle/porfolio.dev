@@ -1,20 +1,24 @@
 # Manuel Erazo
 
-Full-Stack & AI Developer in Bogotá, Colombia.
+Full Stack Developer in Bogotá, Colombia, open to international remote roles.
 
 Site: https://manudev.vercel.app
 Email: meerazo7@hotmail.com
 GitHub: https://github.com/manuekle
 LinkedIn: https://linkedin.com/in/manuekle
 
-Builds web products from idea to production with Next.js, TypeScript, Node.js and LLMs.
-Founder of GymRat+, a multi-tenant SaaS for gym management.
+Builds SaaS products, APIs and AI integrations with React, Next.js, TypeScript, Node.js and PostgreSQL.
+Systems Engineering graduate, Fundación Universitaria de Popayán, June 2026.
+Spanish native; English B1 intermediate.
+English portfolio: https://manudev.vercel.app/
+Spanish portfolio: https://manudev.vercel.app/es/
 
 ## Projects
-- GymRat+ — gym management SaaS — https://gymratplus.com
-- Senka — AI customer support — https://senka-ai-lab.vercel.app
-- creagent — open-source agent platform — https://creagent.fun
+- Oruka — AI customer support and sales in private beta, no users yet; previously Steve and Senka — https://www.oruka.si/en
+- GymRat+ — fitness and coaching platform with 60 users as confirmed in October 2026 — https://gymratplus.com
+- Frontier Lab10 — supervised computer-use agent; 45 of 56 hidden evaluation tasks completed on 11 October 2026, detailed scoring pending — https://manuekle.github.io/lab10-hack/
+- creagent — source-available agent composer under FSL-1.1-MIT with an MIT MCP server — https://creagent.fun/demo
+- Cetamed — hospital operations hackathon prototype using synthetic data and 19 allowed query intents, no clinical deployment — https://cetamed.vercel.app
 - forge — multi-agent product strategy — https://forgems.vercel.app
 - SIRA — QR attendance — https://sira-fup.online
-- heyMed — virtual medical consultation — https://heymed-manudev.vercel.app
 - hinomaru — learn Japanese — https://hinomaru.vercel.app

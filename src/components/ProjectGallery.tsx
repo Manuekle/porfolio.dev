@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import type { Lang } from "../data/portfolio";
 import { CloseIcon } from "./Apply";
 import { playViewerOpen } from "./sounds";
+import { useDialogFocus } from "./useDialogFocus";
 
 function Viewer({
   images,
@@ -27,6 +28,8 @@ function Viewer({
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [dragging, setDragging] = useState(false);
   const closeRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  useDialogFocus(dialogRef);
   const imgRef = useRef<HTMLImageElement>(null);
   const dragRef = useRef({ active: false, sx: 0, sy: 0, px: 0, py: 0, moved: false });
   const closeTimer = useRef<number | null>(null);
@@ -147,6 +150,7 @@ function Viewer({
     >
       <div
         className="viewer-shell"
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-label={`${name} — ${index + 1} / ${images.length}`}

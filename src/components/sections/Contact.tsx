@@ -1,6 +1,5 @@
 import { COPY, PROFILE, SOCIALS, type Lang } from "../../data/portfolio";
 import { BrandMark } from "../Mark";
-import { ApplyCta } from "../Apply";
 import { CvButton } from "../CvPreview";
 import { Section } from "../Section";
 import { Signature } from "../Signature";
@@ -36,7 +35,7 @@ export function Contact({ lang }: { lang: Lang }) {
       </div>
 
       <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 22 }}>
-        <ApplyCta lang={lang} variant="primary" />
+        <a className="btn" href={`mailto:${PROFILE.email}`}>{c.contactMe}</a>
         <CvButton lang={lang} className="btn btn-ghost" />
       </div>
 
@@ -53,7 +52,7 @@ export function Contact({ lang }: { lang: Lang }) {
         }}
       >
         <span className="meta">{c.footer}</span>
-        <a className="meta link-underline" href="/services">
+        <a className="meta link-underline" href={lang === "es" ? "/es/services/" : "/services/"}>
           {c.hireServices}
         </a>
         <span style={{ display: "inline-flex", flexDirection: "column", alignItems: "flex-end", gap: 4 }}>
