@@ -6,19 +6,19 @@ export type Bilingual = { es: string; en: string };
 export const PROFILE = {
   name: "Manuel Erazo",
   fullName: "Manuel Esteban Erazo Medina",
-  role: { es: "Desarrollador Full-Stack & IA", en: "Full-Stack & AI Developer" } as Bilingual,
+  role: { es: "Desarrollador Full Stack", en: "Full Stack Developer" } as Bilingual,
   location: { es: "Bogotá, Colombia", en: "Bogotá, Colombia" } as Bilingual,
   availability: {
-    es: "Disponible remoto y presencial",
-    en: "Open to remote and on-site work",
+    es: "Busco empleo remoto internacional",
+    en: "Open to international remote roles",
   } as Bilingual,
-  experience: { es: "5+ años construyendo producto", en: "5+ years shipping product" } as Bilingual,
+  experience: { es: "Ingeniero de Sistemas · 2026", en: "Systems Engineering graduate · 2026" } as Bilingual,
   email: "meerazo7@hotmail.com",
   phone: "+57 311 271 1242",
   site: "manudev.vercel.app",
   bio: {
-    es: "Construyo experiencias web simples, rápidas y bien diseñadas. Llevo productos de la idea a producción con Next.js, TypeScript y modelos de lenguaje.",
-    en: "I build web experiences that are simple, fast and carefully designed. I take products from idea to production with Next.js, TypeScript and language models.",
+    es: "Desarrollo productos SaaS con TypeScript, React, Next.js y PostgreSQL. Interfaces, APIs, datos e integración de IA.",
+    en: "I build SaaS products with TypeScript, React, Next.js and PostgreSQL, across interfaces, APIs, data and AI integrations.",
   } as Bilingual,
 };
 
@@ -112,14 +112,14 @@ export const COPY: Record<Lang, CopyShape> = {
       education: "Educación",
     },
     hero: {
-      title: "Desarrollador Full-Stack & IA",
-      sub: "Construyo productos web con arquitectura escalable, herramientas modernas y una experiencia de usuario cuidada.",
-      cta: "Ver experiencia",
-      status: "Disponible para proyectos",
+      title: "Desarrollador Full Stack",
+      sub: "Productos SaaS, APIs e integración de IA con TypeScript, React, Next.js y PostgreSQL. En Bogotá, buscando empleo remoto internacional.",
+      cta: "Ver proyectos",
+      status: "Disponible para empleo remoto",
       stats: {
-        years: "Años de experiencia",
-        projects: "Proyectos entregados",
-        hackathons: "Hackathones",
+        years: "Usuarios de GymRat+",
+        projects: "Tareas Lab10 completadas",
+        hackathons: "Casos destacados",
       },
     },
     sections: {
@@ -133,7 +133,7 @@ export const COPY: Record<Lang, CopyShape> = {
       contact: { title: "Contacto", sub: "Hablemos de tu próximo proyecto" },
     },
     about:
-      "Desarrollador Full-Stack & IA con mentalidad de founder. Llevo productos de la idea a producción con Next.js, TypeScript y Node.js, integrando modelos de lenguaje en flujos de trabajo reales. Fundador de GymRat+, un SaaS multi-tenant para gestión de gimnasios, con experiencia en hackathones internacionales, ingeniería frontend y ciberseguridad. Actualmente enfocado en desarrollo frontend y diseño de producto centrado en el usuario.",
+      "Soy desarrollador Full Stack en Bogotá, Colombia. Construyo productos SaaS con TypeScript, React, Next.js y PostgreSQL. Mis proyectos incluyen GymRat+, una plataforma de entrenamiento y coaching con 60 usuarios, y Oruka, una plataforma en etapa inicial para atención al cliente y ventas asistidas por IA. Trabajo en interfaces, APIs, modelos de datos y despliegue; mis proyectos recientes incluyen orquestación de agentes, herramientas MCP y automatización supervisada del uso del computador.",
     skillsLabel: "Habilidades clave",
     contactCta: "Escríbeme",
     downloadCv: "Descargar CV",
@@ -146,9 +146,9 @@ export const COPY: Record<Lang, CopyShape> = {
       toLabel: "Correo destino (opcional)",
       toPlaceholder: "empleos@empresa.com",
       companyLabel: "Empresa",
-      companyPlaceholder: "Ej. Gymshark",
+      companyPlaceholder: "Ej. Empresa",
       positionLabel: "Puesto",
-      positionPlaceholder: "Ej. Frontend Developer",
+      positionPlaceholder: "Ej. Full Stack Developer",
       previewLabel: "Vista previa",
       openMail: "Abrir en mi correo",
       copy: "Copiar texto",
@@ -200,14 +200,14 @@ export const COPY: Record<Lang, CopyShape> = {
       education: "Education",
     },
     hero: {
-      title: "Full-Stack & AI Developer",
-      sub: "I build web products with scalable architecture, modern tooling and a thoughtful user experience.",
-      cta: "View experience",
-      status: "Available for projects",
+      title: "Full Stack Developer",
+      sub: "SaaS products, APIs and AI integrations with TypeScript, React, Next.js and PostgreSQL. Based in Bogotá and open to international remote roles.",
+      cta: "View projects",
+      status: "Open to remote opportunities",
       stats: {
-        years: "Years of experience",
-        projects: "Projects delivered",
-        hackathons: "Hackathons",
+        years: "GymRat+ users",
+        projects: "Lab10 tasks completed",
+        hackathons: "Featured projects",
       },
     },
     sections: {
@@ -221,7 +221,7 @@ export const COPY: Record<Lang, CopyShape> = {
       contact: { title: "Contact", sub: "Let's talk about your next project" },
     },
     about:
-      "Full-Stack & AI developer with a founder mindset. I take products from idea to production with Next.js, TypeScript and Node.js, wiring language models into real workflows. Founder of GymRat+, a multi-tenant SaaS for gym management, with experience in international hackathons, frontend engineering and cybersecurity. Currently focused on frontend development and user-centred product design.",
+      "I am a Full Stack Developer based in Bogotá, Colombia, building SaaS products with TypeScript, React, Next.js and PostgreSQL. My work includes GymRat+, a fitness and coaching platform with 60 users, and Oruka, an early-stage platform for AI-assisted customer support and sales. I work across interfaces, APIs, data models and deployment, with recent projects in agent orchestration, MCP tooling and supervised computer-use automation.",
     skillsLabel: "Key skills",
     contactCta: "Get in touch",
     downloadCv: "Download CV",
@@ -323,125 +323,141 @@ export type Experience = {
 
 export const EXPERIENCE: Experience[] = [
   {
-    id: "gymrat",
-    role: { es: "Founder & Full-Stack Developer", en: "Founder & Full-Stack Developer" },
-    org: "GymRat+",
-    logo: null,
-    logoFile: "/assets/logos/orgs/gymrat.png",
-    kind: { es: "Tiempo completo", en: "Full-time" },
-    where: { es: "Bogotá, Colombia · Remoto", en: "Bogotá, Colombia · Remote" },
-    period: { es: "2024 — Presente", en: "2024 — Present" },
-    summary: {
-      es: "SaaS de gestión de gimnasios construido desde cero.",
-      en: "Gym management SaaS built from scratch.",
+    "id": "gymrat",
+    "role": {
+      "en": "Founder and Full Stack Developer",
+      "es": "Fundador y desarrollador Full Stack"
     },
-    bullets: [
+    "org": "GymRat+",
+    "logo": null,
+    "logoFile": "/assets/logos/orgs/gymrat.png",
+    "kind": {
+      "en": "Self-employed",
+      "es": "Independiente"
+    },
+    "where": {
+      "en": "Bogotá, Colombia · Remote",
+      "es": "Bogotá, Colombia · Remoto"
+    },
+    "period": {
+      "en": "2024 — Present",
+      "es": "2024 — Presente"
+    },
+    "summary": {
+      "en": "Fitness and coaching platform with 60 users.",
+      "es": "Plataforma de entrenamiento y coaching con 60 usuarios."
+    },
+    "bullets": [
       {
-        es: "Fundé y construí un SaaS multi-tenant para gimnasios, liderando arquitectura full-stack, estrategia de producto y visión de negocio.",
-        en: "Founded and built a multi-tenant SaaS for gyms, leading full-stack architecture, product strategy and business vision.",
+        "en": "Built training, nutrition and progress workflows, coach management, authentication, memberships and payments.",
+        "es": "Construí flujos de entrenamiento, nutrición y progreso, gestión de entrenadores, autenticación, membresías y pagos."
       },
       {
-        es: "Implementé facturación multi-tenant, pagos con MercadoPago, autenticación, onboarding end-to-end y panel de administración.",
-        en: "Shipped multi-tenant billing, MercadoPago payments, authentication, end-to-end onboarding and a full admin panel.",
-      },
-      {
-        es: "Stack: Next.js, TypeScript, Node.js, PostgreSQL, Prisma.",
-        en: "Stack: Next.js, TypeScript, Node.js, PostgreSQL, Prisma.",
-      },
-    ],
+        "en": "Own the web product from interface and API development to PostgreSQL data models and deployment.",
+        "es": "Desarrollo el producto web desde interfaces y APIs hasta modelos de datos en PostgreSQL y despliegue."
+      }
+    ]
   },
   {
-    id: "smurfit",
-    role: { es: "Mobile & Web Developer", en: "Mobile & Web Developer" },
-    org: "Smurfit Kappa Cartón Colombia",
-    logo: null,
-    logoFile: "/assets/logos/orgs/smurfitkappa.png",
-    kind: { es: "Contrato", en: "Contract" },
-    where: { es: "Colombia · Remoto", en: "Colombia · Remote" },
-    period: { es: "Ago — Nov 2025", en: "Aug — Nov 2025" },
-    summary: {
-      es: "Realidad aumentada educativa y herramientas internas.",
-      en: "Educational augmented reality and internal tooling.",
+    "id": "freelance",
+    "role": {
+      "en": "Full Stack Developer",
+      "es": "Desarrollador Full Stack"
     },
-    bullets: [
+    "org": "Independent",
+    "logo": null,
+    "logoFile": "/assets/mark.png",
+    "kind": {
+      "en": "Self-employed",
+      "es": "Independiente"
+    },
+    "where": {
+      "en": "Colombia · Remote",
+      "es": "Colombia · Remoto"
+    },
+    "period": {
+      "en": "2023 — Present",
+      "es": "2023 — Presente"
+    },
+    "summary": {
+      "en": "Web applications, APIs and AI integrations.",
+      "es": "Aplicaciones web, APIs e integración de IA."
+    },
+    "bullets": [
       {
-        es: "Desarrollé una aplicación móvil de realidad aumentada para un libro educativo sobre mariposas, con una experiencia de aprendizaje interactiva.",
-        en: "Built an augmented reality mobile app for an educational book about butterflies, delivering an interactive learning experience.",
+        "en": "Build products with React, Next.js, TypeScript and SQL/NoSQL databases, including identity, dashboards and deployment.",
+        "es": "Construyo productos con React, Next.js, TypeScript y bases de datos SQL/NoSQL, con identidad, dashboards y despliegue."
       },
       {
-        es: "Construí herramientas internas, dashboards de reportes y soluciones web empresariales, modernizando sistemas existentes.",
-        en: "Built internal tools, reporting dashboards and enterprise web solutions, modernizing existing systems.",
-      },
-    ],
+        "en": "Recent work includes Oruka and its customer provisioning tooling, agent orchestration and MCP integrations.",
+        "es": "Mi trabajo reciente incluye Oruka y sus herramientas de aprovisionamiento por cliente, orquestación de agentes e integración MCP."
+      }
+    ]
   },
   {
-    id: "gymshark",
-    role: { es: "Software Engineer", en: "Software Engineer" },
-    org: "Gymshark",
-    logo: null,
-    logoFile: "/assets/logos/orgs/gymshark.png",
-    kind: { es: "Pasantía", en: "Internship" },
-    where: { es: "Remoto · San Francisco Bay Area", en: "Remote · San Francisco Bay Area" },
-    period: { es: "Abr — Oct 2025", en: "Apr — Oct 2025" },
-    summary: {
-      es: "Aplicaciones web para productos usados por miles de personas.",
-      en: "Web applications for products used by thousands of people.",
+    "id": "smurfit",
+    "role": {
+      "en": "Mobile Application Developer",
+      "es": "Desarrollador de aplicaciones móviles"
     },
-    bullets: [
+    "org": "Smurfit Kappa Cartón Colombia",
+    "logo": null,
+    "logoFile": "/assets/logos/orgs/smurfitkappa.png",
+    "kind": {
+      "en": "Part-time",
+      "es": "Tiempo parcial"
+    },
+    "where": {
+      "en": "Colombia · Remote",
+      "es": "Colombia · Remoto"
+    },
+    "period": {
+      "en": "Aug — Nov 2025",
+      "es": "Ago — Nov 2025"
+    },
+    "summary": {
+      "en": "Educational augmented reality application.",
+      "es": "Aplicación educativa de realidad aumentada."
+    },
+    "bullets": [
       {
-        es: "Contribuí al desarrollo de aplicaciones web enfocadas en rendimiento, escalabilidad y experiencia de usuario, junto a equipos multidisciplinarios.",
-        en: "Contributed to web applications focused on performance, scalability and user experience, alongside cross-functional teams.",
-      },
-      {
-        es: "Diseñé, implementé y optimicé funcionalidades para productos usados por miles de usuarios en todo el mundo.",
-        en: "Designed, implemented and optimized features for products used by thousands of users worldwide.",
-      },
-    ],
+        "en": "Developed ButterflyAR in Flutter and Dart to connect a printed butterfly book with interactive mobile augmented reality content.",
+        "es": "Desarrollé ButterflyAR en Flutter y Dart para conectar un libro impreso sobre mariposas con contenido móvil interactivo de realidad aumentada."
+      }
+    ]
   },
   {
-    id: "freelance",
-    role: { es: "Full-Stack Developer", en: "Full-Stack Developer" },
-    org: "Freelance",
-    logo: null,
-    logoFile: "/assets/mark.png",
-    kind: { es: "Independiente", en: "Independent" },
-    where: { es: "Clientes en LATAM y Europa", en: "Clients across LATAM and Europe" },
-    period: { es: "2023 — Presente", en: "2023 — Present" },
-    summary: {
-      es: "Más de 12 proyectos entregados en distintas industrias.",
-      en: "More than 12 projects delivered across industries.",
+    "id": "sena",
+    "role": {
+      "en": "Software Developer",
+      "es": "Desarrollador de software"
     },
-    bullets: [
-      {
-        es: "Entregué más de 12 proyectos en distintas industrias, priorizando calidad y tiempos de entrega cortos.",
-        en: "Delivered more than 12 projects across industries, prioritizing quality and short delivery cycles.",
-      },
-      {
-        es: "Construí soluciones completas de frontend y backend con Next.js, React, Node.js y bases de datos SQL/NoSQL.",
-        en: "Built complete frontend and backend solutions with Next.js, React, Node.js and SQL/NoSQL databases.",
-      },
-    ],
-  },
-  {
-    id: "sena",
-    role: { es: "Software Developer", en: "Software Developer" },
-    org: "Servicio Nacional de Aprendizaje (SENA)",
-    logo: null,
-    logoFile: "/assets/logos/orgs/sena.png",
-    kind: { es: "Tiempo completo", en: "Full-time" },
-    where: { es: "Colombia · Remoto", en: "Colombia · Remote" },
-    period: { es: "Mar 2021 — Nov 2022", en: "Mar 2021 — Nov 2022" },
-    summary: {
-      es: "Sistema digital interno para la institución.",
-      en: "Internal digital system for the institution.",
+    "org": "Servicio Nacional de Aprendizaje (SENA)",
+    "logo": null,
+    "logoFile": "/assets/logos/orgs/sena.png",
+    "kind": {
+      "en": "Temporary contract",
+      "es": "Contrato temporal"
     },
-    bullets: [
+    "where": {
+      "en": "Colombia · Remote",
+      "es": "Colombia · Remoto"
+    },
+    "period": {
+      "en": "Mar 2021 — Nov 2022",
+      "es": "Mar 2021 — Nov 2022"
+    },
+    "summary": {
+      "en": "Internal digital system.",
+      "es": "Sistema digital interno."
+    },
+    "bullets": [
       {
-        es: "Colaboré en un equipo de desarrollo para construir y mantener un sistema digital interno, aportando lógica de backend y funcionalidades administrativas.",
-        en: "Worked within a development team to build and maintain an internal digital system, contributing backend logic and admin features.",
-      },
-    ],
-  },
+        "en": "Worked in a development team to build and maintain an internal system, contributing backend logic and administrative features.",
+        "es": "Colaboré en un equipo de desarrollo para construir y mantener un sistema interno, aportando lógica de backend y funcionalidades administrativas."
+      }
+    ]
+  }
 ];
 
 /* ------------------------------------------------------------- hackathons */
@@ -459,12 +475,28 @@ export type Hackathon = {
 
 export const HACKATHONS: Hackathon[] = [
   {
+    id: "frontier-lab10",
+    name: "Frontier Lab10",
+    org: "Frontier",
+    logo: null,
+    date: { es: "Octubre 2026", en: "October 2026" },
+    result: { es: "45 de 56 tareas", en: "45 of 56 tasks" },
+    note: { es: "Agente supervisado de uso del computador. Resultado de evaluación oculta al 11 de octubre; puntuación detallada pendiente.", en: "Supervised computer-use agent. Hidden evaluation result as of 11 October; detailed scoring pending." },
+  },
+  {
+    id: "cetamed-fup",
+    name: "Hackathon FUP 2026",
+    org: "Fundación Universitaria de Popayán",
+    logo: null,
+    date: { es: "Septiembre 2026", en: "September 2026" },
+    note: { es: "Cetamed: prototipo de consultas de operaciones hospitalarias por texto y voz sobre datos sintéticos.", en: "Cetamed: hospital operations query prototype using text, voice and synthetic data." },
+  },
+  {
     id: "claude-code",
     name: "Claude Code Hackathon 2026",
     org: "Anthropic",
     logo: "anthropic",
     date: { es: "Abril 2026", en: "April 2026" },
-    result: { es: "Top 20", en: "Top 20" },
     note: {
       es: "Agente de código autónomo construido en 48 horas, con razonamiento multi-paso y ejecución autónoma de tareas.",
       en: "Autonomous coding agent built in 48 hours, with multi-step reasoning and autonomous task execution.",
@@ -483,7 +515,7 @@ export const HACKATHONS: Hackathon[] = [
   },
   {
     id: "microsoft",
-    name: "Microsoft AI Agents Hackathon",
+    name: "Agents League at AI Summit 2026 — Reasoning Agents",
     org: "Microsoft",
     logo: "microsoftazure",
     date: { es: "2026", en: "2026" },
@@ -507,6 +539,8 @@ export type Project = {
   shots?: string[];
   tagline: Bilingual;
   blurb: Bilingual;
+  decision?: Bilingual;
+  result?: Bilingual;
   stack: string[];
   liveUrl?: string;
   sourceUrl?: string;
@@ -514,116 +548,259 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
-    id: "creagent",
-    name: "creagent",
-    year: "2026",
-    logo: "/assets/logos/projects/creagent.png",
-    shots: ["/assets/screenshots/agent01.png", "/assets/screenshots/agent02.png", "/assets/screenshots/agent03.png"],
-    tagline: { es: "Plataforma open-source de agentes", en: "Open-source agent platform" },
-    blurb: {
-      es: "Compone agentes de IA a partir de un catálogo de skills reutilizables y los exporta a Claude Code, Cursor, Codex o Gemini CLI, o los sirve directo vía MCP.",
-      en: "Composes AI agents from a catalog of reusable skills and exports them to Claude Code, Cursor, Codex or Gemini CLI, or serves them straight over MCP.",
+    "id": "oruka",
+    "name": "Oruka",
+    "year": "2026",
+    "logo": "/assets/logos/projects/oruka.svg",
+    "tagline": {
+      "en": "AI customer support and sales · Private beta",
+      "es": "Atención al cliente y ventas con IA · Beta privada"
     },
-    stack: ["nextdotjs", "typescript", "modelcontextprotocol", "anthropic"],
-    liveUrl: "https://creagent.fun",
+    "blurb": {
+      "en": "Built a unified WhatsApp and Instagram inbox with contacts, deals, knowledge-grounded AI agents and workflow automation. Previously named Steve and Senka.",
+      "es": "Construí una bandeja unificada de WhatsApp e Instagram con contactos, oportunidades, agentes de IA basados en conocimiento y automatización de flujos. Antes se llamó Steve y Senka."
+    },
+    "decision": {
+      "en": "Designed isolated customer deployments with PostgreSQL, resumable provisioning and staged releases in Oruka Fleet.",
+      "es": "Diseñé despliegues aislados por cliente con PostgreSQL, aprovisionamiento reanudable y releases por etapas en Oruka Fleet."
+    },
+    "result": {
+      "en": "Working private beta and provisioning tooling. Early stage, with no users yet.",
+      "es": "Beta privada funcional y herramientas de aprovisionamiento. Etapa inicial, todavía sin usuarios."
+    },
+    "stack": [
+      "nextdotjs",
+      "typescript",
+      "postgresql",
+      "docker",
+      "whatsapp"
+    ],
+    "liveUrl": "https://www.oruka.si/en"
   },
   {
-    id: "senka",
-    name: "Senka",
-    year: "2026",
-    logo: "/assets/logos/projects/steve.png",
-    shots: ["/assets/screenshots/senka01.png", "/assets/screenshots/senka02.png", "/assets/screenshots/senka03.png"],
-    tagline: { es: "Atención al cliente con IA", en: "AI customer support" },
-    blurb: {
-      es: "Unifica WhatsApp, Instagram y Meta Ads en una sola bandeja. Agentes de IA responden desde bases de conocimiento propias, agendan citas y procesan pagos.",
-      en: "Unifies WhatsApp, Instagram and Meta Ads in a single inbox. AI agents answer from your own knowledge bases, book appointments and take payments.",
+    "id": "gymrat",
+    "name": "GymRat+",
+    "year": "2024 —",
+    "logo": "/assets/logos/projects/gymrat.png",
+    "shots": [
+      "/assets/screenshots/gym01.webp",
+      "/assets/screenshots/gym02.webp",
+      "/assets/screenshots/gym03.webp"
+    ],
+    "tagline": {
+      "en": "Fitness and coaching platform · 60 users",
+      "es": "Plataforma de entrenamiento y coaching · 60 usuarios"
     },
-    stack: ["nextdotjs", "postgresql", "docker", "stripe", "whatsapp"],
-    liveUrl: "https://senka-ai-lab.vercel.app",
+    "blurb": {
+      "en": "Founded and built a platform for training plans, nutrition, athlete progress and coach management, including authentication, memberships and payments.",
+      "es": "Fundé y construí una plataforma de rutinas, nutrición, progreso de atletas y gestión de entrenadores, con autenticación, membresías y pagos."
+    },
+    "decision": {
+      "en": "Implemented the web application with Next.js, TypeScript, PostgreSQL and Drizzle; native mobile clients are in development.",
+      "es": "Implementé la aplicación web con Next.js, TypeScript, PostgreSQL y Drizzle; los clientes móviles nativos están en desarrollo."
+    },
+    "result": {
+      "en": "Launched at gymratplus.com with 60 users, as confirmed in October 2026.",
+      "es": "Publicado en gymratplus.com con 60 usuarios, confirmados en octubre de 2026."
+    },
+    "stack": [
+      "nextdotjs",
+      "typescript",
+      "postgresql",
+      "mercadopago"
+    ],
+    "liveUrl": "https://gymratplus.com"
   },
   {
-    id: "forge",
-    name: "forge",
-    year: "2026",
-    logo: "/assets/logos/projects/forge.png",
-    tagline: { es: "Estrategia de producto multi-agente", en: "Multi-agent product strategy" },
-    blurb: {
-      es: "Seis agentes de IA sobre Azure AI Foundry debaten, votan y generan PRDs, backlogs, arquitectura y roadmaps como un equipo de producto real.",
-      en: "Six AI agents on Azure AI Foundry debate, vote and generate PRDs, backlogs, architecture and roadmaps like a real product team.",
+    "id": "lab10",
+    "name": "Frontier Lab10",
+    "year": "2026",
+    "tagline": {
+      "en": "Supervised computer-use agent · 45 of 56 tasks",
+      "es": "Agente supervisado de uso del computador · 45 de 56 tareas"
     },
-    stack: ["microsoftazure", "nextdotjs", "typescript"],
-    liveUrl: "https://forgems.vercel.app",
-    sourceUrl: "https://github.com/Manuekle/Forge",
+    "blurb": {
+      "en": "Built a TypeScript agent that observes a remote desktop over VNC, plans actions with a multimodal model and executes them under a supervisor.",
+      "es": "Construí un agente en TypeScript que observa un escritorio remoto por VNC, planifica acciones con un modelo multimodal y las ejecuta con supervisión."
+    },
+    "decision": {
+      "en": "Added action budgets, timeout controls and SQLite traces so runs can be inspected and ambiguous actions can stop safely.",
+      "es": "Añadí presupuestos de acciones, límites de tiempo y trazas en SQLite para revisar ejecuciones y detener acciones ambiguas."
+    },
+    "result": {
+      "en": "Completed 45 of 56 hidden evaluation tasks in the Frontier panel on 11 October 2026. Detailed scoring pending.",
+      "es": "Completó 45 de 56 tareas de evaluación oculta en el panel de Frontier el 11 de octubre de 2026. Puntuación detallada pendiente."
+    },
+    "stack": [
+      "typescript",
+      "nodedotjs",
+      "sqlite"
+    ],
+    "liveUrl": "https://manuekle.github.io/lab10-hack/",
+    "sourceUrl": "https://github.com/Manuekle/lab10-hack"
   },
   {
-    id: "gymrat",
-    name: "GymRat+",
-    year: "2024 —",
-    logo: "/assets/logos/projects/gymrat.png",
-    shots: ["/assets/screenshots/gym01.png", "/assets/screenshots/gym02.png", "/assets/screenshots/gym03.png"],
-    tagline: { es: "SaaS de gestión de gimnasios", en: "Gym management SaaS" },
-    blurb: {
-      es: "SaaS multi-tenant para gestión integral de gimnasios: miembros, planes, facturación con MercadoPago, onboarding y panel de administración.",
-      en: "Multi-tenant SaaS for end-to-end gym management: members, plans, MercadoPago billing, onboarding and an admin panel.",
+    "id": "creagent",
+    "name": "creagent",
+    "year": "2026",
+    "logo": "/assets/logos/projects/creagent.png",
+    "shots": [
+      "/assets/screenshots/agent01.webp",
+      "/assets/screenshots/agent02.webp",
+      "/assets/screenshots/agent03.webp"
+    ],
+    "tagline": {
+      "en": "Agent composer and MCP tooling",
+      "es": "Composer de agentes y herramientas MCP"
     },
-    stack: ["nextdotjs", "postgresql", "prisma", "mercadopago"],
-    liveUrl: "https://gymratplus.com",
+    "blurb": {
+      "en": "Built a visual composer for AI agents with reusable skills and exports for Claude Code, Codex, Cursor and Gemini CLI.",
+      "es": "Construí un composer visual de agentes de IA con skills reutilizables y exportaciones para Claude Code, Codex, Cursor y Gemini CLI."
+    },
+    "decision": {
+      "en": "Separated agent specifications from clients and published an MCP server as @manudev.jsx/creagent.",
+      "es": "Separé las especificaciones de agentes de los clientes y publiqué un servidor MCP como @manudev.jsx/creagent."
+    },
+    "result": {
+      "en": "Public demo and npm package. The application is source-available under FSL-1.1-MIT; the MCP server uses MIT.",
+      "es": "Demo pública y paquete npm. La aplicación usa FSL-1.1-MIT con código disponible; el servidor MCP usa MIT."
+    },
+    "stack": [
+      "nextdotjs",
+      "typescript",
+      "modelcontextprotocol",
+      "anthropic"
+    ],
+    "liveUrl": "https://creagent.fun/demo",
+    "sourceUrl": "https://github.com/Manuekle/creagent"
   },
   {
-    id: "sira",
-    name: "SIRA",
-    year: "2024",
-    logo: "/assets/logos/projects/sira.png",
-    tagline: { es: "Registro de asistencia por QR", en: "QR attendance system" },
-    blurb: {
-      es: "Sistema de registro de asistencia por QR para la Fundación Universitaria de Popayán, con backend en Node.js y consultas en tiempo real.",
-      en: "QR-based attendance system for Fundación Universitaria de Popayán, with a Node.js backend and real-time queries.",
+    "id": "cetamed",
+    "name": "Cetamed",
+    "year": "2026",
+    "tagline": {
+      "en": "Hospital operations prototype",
+      "es": "Prototipo de operaciones hospitalarias"
     },
-    stack: ["react", "nodedotjs", "postgresql"],
-    liveUrl: "https://sira-fup.online",
-    sourceUrl: "https://github.com/Manuekle/sira",
+    "blurb": {
+      "en": "Hackathon prototype for querying synthetic hospital operations data through text and voice, with reports and role-based access.",
+      "es": "Prototipo de hackathon para consultar datos sintéticos de operaciones hospitalarias por texto y voz, con reportes y acceso por roles."
+    },
+    "decision": {
+      "en": "Mapped requests to 19 allowed intents and parameterized SQL with Turso/libSQL. Added access auditing and PDF reports.",
+      "es": "Mapeé solicitudes a 19 intenciones permitidas y SQL parametrizado con Turso/libSQL. Añadí auditoría de acceso y reportes PDF."
+    },
+    "result": {
+      "en": "MVP demonstrated for the FUP hospital hackathon. Uses synthetic data; no clinical deployment.",
+      "es": "MVP presentado en el hackathon hospitalario de la FUP. Usa datos sintéticos; sin despliegue clínico."
+    },
+    "stack": [
+      "nextdotjs",
+      "typescript",
+      "sqlite",
+      "openai"
+    ],
+    "liveUrl": "https://cetamed.vercel.app"
   },
   {
-    id: "heymed",
-    name: "heyMed",
-    year: "2023",
-    logo: "/assets/logos/projects/heymed.png",
-    tagline: { es: "Consulta médica virtual", en: "Virtual medical consultation" },
-    blurb: {
-      es: "Plataforma de consulta médica virtual con integración de IA, automatización de flujos clínicos e historiales de pacientes.",
-      en: "Virtual medical consultation platform with AI integration, clinical workflow automation and patient records.",
+    "id": "forge",
+    "name": "Forge",
+    "year": "2026",
+    "logo": "/assets/logos/projects/forge.png",
+    "tagline": {
+      "en": "Multi-agent product planning",
+      "es": "Planificación de producto con múltiples agentes"
     },
-    stack: ["react", "nodedotjs", "mongodb", "openai"],
-    liveUrl: "https://heymed-manudev.vercel.app",
-    sourceUrl: "https://github.com/Manuekle/heyMed",
+    "blurb": {
+      "en": "Six specialist agents and an orchestrator critique and vote on a product brief, producing versioned PRDs, architecture, backlogs and roadmaps.",
+      "es": "Seis agentes especialistas y un orquestador revisan y votan sobre un brief para generar PRDs, arquitectura, backlogs y roadmaps versionados."
+    },
+    "decision": {
+      "en": "Built with Next.js, PostgreSQL, Drizzle and Azure AI Foundry, with a deterministic demo fallback.",
+      "es": "Construido con Next.js, PostgreSQL, Drizzle y Azure AI Foundry, con un modo de demostración determinista."
+    },
+    "result": {
+      "en": "Public project and demo for Agents League at AI Summit 2026, Reasoning Agents.",
+      "es": "Proyecto y demo públicos para Agents League en AI Summit 2026, Reasoning Agents."
+    },
+    "stack": [
+      "microsoftazure",
+      "nextdotjs",
+      "typescript",
+      "postgresql"
+    ],
+    "liveUrl": "https://forgems.vercel.app",
+    "sourceUrl": "https://github.com/Manuekle/Forge"
   },
   {
-    id: "hinomaru",
-    name: "hinomaru",
-    year: "2024",
-    logo: "/assets/logos/projects/hinomaru.png",
-    tagline: { es: "Aprender japonés", en: "Learn Japanese" },
-    blurb: {
-      es: "Aplicación para aprender japonés con kana, vocabulario y repetición espaciada.",
-      en: "App for learning Japanese with kana, vocabulary and spaced repetition.",
+    "id": "sira",
+    "name": "SIRA",
+    "year": "2025 — 2026",
+    "logo": "/assets/logos/projects/sira.png",
+    "tagline": {
+      "en": "QR attendance and academic reporting",
+      "es": "Asistencia por QR y reportes académicos"
     },
-    stack: ["react", "typescript", "expo"],
-    liveUrl: "https://hinomaru.vercel.app",
-    sourceUrl: "https://github.com/Manuekle/hinomaru",
+    "blurb": {
+      "en": "Built QR attendance workflows, dynamic roles and PDF reporting for an academic application at Fundación Universitaria de Popayán.",
+      "es": "Construí flujos de asistencia por QR, roles dinámicos y reportes PDF para una aplicación académica de la Fundación Universitaria de Popayán."
+    },
+    "decision": {
+      "en": "Next.js, TypeScript, MongoDB, Prisma and NextAuth for identity and data access.",
+      "es": "Next.js, TypeScript, MongoDB, Prisma y NextAuth para identidad y acceso a datos."
+    },
+    "result": {
+      "en": "Public repository and deployed application.",
+      "es": "Repositorio público y aplicación desplegada."
+    },
+    "stack": [
+      "nextdotjs",
+      "typescript",
+      "mongodb",
+      "prisma"
+    ],
+    "liveUrl": "https://sira-fup.online",
+    "sourceUrl": "https://github.com/Manuekle/sira"
   },
   {
-    id: "butterflyar",
-    name: "ButterflyAR",
-    year: "2023",
-    logo: "/assets/logos/projects/butterflyar.png",
-    tagline: { es: "Realidad aumentada educativa", en: "Educational augmented reality" },
-    blurb: {
-      es: "Aplicación educativa de realidad aumentada sobre mariposas, construida para un libro impreso.",
-      en: "Educational augmented reality app about butterflies, built to accompany a printed book.",
+    "id": "hinomaru",
+    "name": "Hinomaru",
+    "year": "2026",
+    "logo": "/assets/logos/projects/hinomaru.png",
+    "tagline": {
+      "en": "Japanese learning with spaced repetition",
+      "es": "Aprendizaje de japonés con repetición espaciada"
     },
-    stack: ["flutter"],
-    sourceUrl: "https://github.com/Manuekle/butterflyar-mobile",
+    "blurb": {
+      "en": "Built kana and vocabulary practice with SM-2 spaced repetition and voice features using SvelteKit, Supabase and a FastAPI/VOICEVOX service.",
+      "es": "Construí práctica de kana y vocabulario con repetición espaciada SM-2 y voz con SvelteKit, Supabase y un servicio FastAPI/VOICEVOX."
+    },
+    "stack": [
+      "typescript",
+      "python",
+      "docker"
+    ],
+    "liveUrl": "https://hinomaru.vercel.app",
+    "sourceUrl": "https://github.com/Manuekle/hinomaru"
   },
+  {
+    "id": "butterflyar",
+    "name": "ButterflyAR",
+    "year": "2025",
+    "logo": "/assets/logos/projects/butterflyar.png",
+    "tagline": {
+      "en": "Educational augmented reality",
+      "es": "Realidad aumentada educativa"
+    },
+    "blurb": {
+      "en": "Developed a Flutter and Dart mobile application that adds interactive augmented reality content to a printed educational book about butterflies.",
+      "es": "Desarrollé una aplicación móvil con Flutter y Dart que añade contenido interactivo de realidad aumentada a un libro educativo impreso sobre mariposas."
+    },
+    "stack": [
+      "flutter"
+    ],
+    "sourceUrl": "https://github.com/Manuekle/butterflyar-mobile"
+  }
 ];
 
 /* ------------------------------------------------------------------ stack */
@@ -720,8 +897,8 @@ export const EDUCATION: Education[] = [
     school: "Fundación Universitaria de Popayán",
     logoFile: "/assets/logos/orgs/fup.png",
     degree: { es: "Ingeniería de Sistemas", en: "Systems Engineering" },
-    period: "2021 — 2026",
-    note: { es: "Énfasis en ingeniería de software", en: "Software engineering focus" },
+    period: "2026",
+    note: { es: "Graduado el 26 de junio de 2026", en: "Graduated 26 June 2026" },
   },
 ];
 
@@ -785,8 +962,8 @@ export const CAPABILITIES: Capability[] = [
   {
     title: { es: "Agentes IA y LLMs", en: "AI agents and LLMs" },
     blurb: {
-      es: "Agentes, MCP, RAG y flujos de trabajo con modelos. No demos: herramientas que la gente usa de verdad.",
-      en: "Agents, MCP, RAG and model workflows. Not demos: tools people actually use.",
+      es: "Agentes, MCP, RAG y flujos de trabajo con modelos, con validación y controles de ejecución.",
+      en: "Agents, MCP, RAG and model workflows with validation and execution controls.",
     },
   },
   {

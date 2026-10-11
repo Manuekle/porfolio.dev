@@ -4,6 +4,7 @@ import Confetti from "react-confetti";
 import { COPY, PROFILE, type Lang } from "../data/portfolio";
 import { CloseIcon } from "./Apply";
 import { playAvatarPop } from "./sounds";
+import { useDialogFocus } from "./useDialogFocus";
 
 export function AvatarPop({ lang }: { lang: Lang }) {
   const t = COPY[lang].avatarPop;
@@ -13,6 +14,8 @@ export function AvatarPop({ lang }: { lang: Lang }) {
   const [dims, setDims] = useState({ w: 0, h: 0 });
   const [party, setParty] = useState(false);
   const closeRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  useDialogFocus(dialogRef, open);
   const closeTimer = useRef<number | null>(null);
   const partyTimer = useRef<number | null>(null);
 
@@ -68,7 +71,7 @@ export function AvatarPop({ lang }: { lang: Lang }) {
   return (
     <>
       <button type="button" className="avatar-frame avatar-btn" onClick={fire} aria-label={t.open}>
-        <img className="avatar" src="/assets/avatar.png" alt={PROFILE.name} width={104} height={104} />
+        <img className="avatar" src="/assets/avatar-thumb.webp" alt={PROFILE.name} width={104} height={104} />
       </button>
 
       {open &&
@@ -93,7 +96,6 @@ export function AvatarPop({ lang }: { lang: Lang }) {
                   numberOfPieces={350}
                   initialVelocityY={8}
                   gravity={0.2}
-                  ticks={600}
                 />
               </div>
             )}
@@ -104,6 +106,7 @@ export function AvatarPop({ lang }: { lang: Lang }) {
             >
               <div
                 role="dialog"
+                ref={dialogRef}
                 aria-modal="true"
                 aria-label={PROFILE.name}
                 onClick={(e) => e.stopPropagation()}
@@ -120,7 +123,7 @@ export function AvatarPop({ lang }: { lang: Lang }) {
                 </button>
                 <img
                   className={`avatar-pop t-modal${visible ? " is-open" : " is-closing"}`}
-                  src="/assets/avatar.png"
+                  src="/assets/avatar.webp"
                   alt={PROFILE.name}
                 />
               </div>

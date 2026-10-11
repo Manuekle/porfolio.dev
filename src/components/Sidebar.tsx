@@ -1,6 +1,6 @@
 import { COPY, PROFILE, SOCIALS, type Lang } from "../data/portfolio";
 import { BrandMark } from "./Mark";
-import { ApplyCta, MailIcon } from "./Apply";
+import { MailIcon } from "./Apply";
 import { AvatarPop } from "./AvatarPop";
 import { CvButton } from "./CvPreview";
 import { Signature } from "./Signature";
@@ -108,7 +108,7 @@ export function Sidebar({ lang }: { lang: Lang }) {
             </a>
           </div>
 
-          <ApplyCta lang={lang} variant="ghost" style={{ width: "100%", marginTop: 8 }} />
+          <a className="btn btn-ghost" href={`/assets/CV_Manuel_Erazo_${lang.toUpperCase()}.pdf`} download style={{ width: "100%", marginTop: 8 }}>{c.downloadCv}</a>
         </div>
       </div>
     </aside>

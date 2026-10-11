@@ -8,7 +8,7 @@ import { Section } from "../Section";
 export function Projects({ lang }: { lang: Lang }) {
   const c = COPY[lang];
   const [expanded, setExpanded] = useState(false);
-  const featured = ["gymrat", "senka", "creagent"];
+  const featured = ["oruka", "gymrat", "lab10", "creagent"];
   const renderProject = (p: (typeof PROJECTS)[number]) => (
 
         <article key={p.id} className="entry project-entry">
@@ -20,6 +20,8 @@ export function Projects({ lang }: { lang: Lang }) {
             <div className={p.shots && p.shots.length > 0 ? "project-main" : undefined}>
               <div style={{ minWidth: 0 }}>
                 <p className="entry-body" style={{ marginTop: 9 }}>{p.blurb[lang]}</p>
+                {p.decision && <p className="entry-body" style={{ marginTop: 8 }}>{p.decision[lang]}</p>}
+                {p.result && <p className="entry-body" style={{ marginTop: 8, color: "var(--ink)" }}>{p.result[lang]}</p>}
 
                 <div className="entry-stack">
               {p.stack
@@ -61,6 +63,12 @@ export function Projects({ lang }: { lang: Lang }) {
   return (
     <Section id="projects" title={c.sections.projects.title} sub={c.sections.projects.sub} idx="03">
       {featured.map((id) => PROJECTS.find((p) => p.id === id)!).map(renderProject)}
+      <noscript>
+        <div className="entry-body">
+          <p>{lang === "es" ? "Otros proyectos" : "More projects"}</p>
+          <ul>{PROJECTS.filter((p) => !featured.includes(p.id)).map((p) => <li key={p.id}><a href={p.liveUrl || p.sourceUrl}>{p.name}</a> — {p.blurb[lang]}</li>)}</ul>
+        </div>
+      </noscript>
       <button
         className="btn btn-ghost projects-toggle"
         aria-expanded={expanded}

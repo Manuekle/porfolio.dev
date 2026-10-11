@@ -22,7 +22,7 @@ export function ServicesPage({ lang }: { lang: Lang }) {
           <a className="btn" href={quote}>
             {s.cta}
           </a>
-          <a className="btn btn-ghost" href="/">
+          <a className="btn btn-ghost" href={lang === "es" ? "/es/" : "/"}>
             {s.back}
           </a>
         </div>
@@ -87,7 +87,7 @@ export function ServicesPage({ lang }: { lang: Lang }) {
           flexWrap: "wrap",
         }}
       >
-        <a className="meta link-underline" href="/">
+        <a className="meta link-underline" href={lang === "es" ? "/es/" : "/"}>
           {s.back}
         </a>
         <span className="meta">© {new Date().getFullYear()}</span>

@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import workerUrl from "pdfjs-dist/build/pdf.worker.min.mjs?url";
 import { COPY, type Lang } from "../data/portfolio";
 import { CloseIcon } from "./Apply";
+import { useDialogFocus } from "./useDialogFocus";
 
 const MIN_ZOOM = 0.75;
 const MAX_ZOOM = 3;
@@ -17,6 +18,8 @@ function CvViewer({ file, lang, onRequestClose }: { file: string; lang: Lang; on
   const [failure, setFailure] = useState<string | null>(null);
   const [retryKey, setRetryKey] = useState(0);
   const closeRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  useDialogFocus(dialogRef);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const docRef = useRef<{
@@ -81,7 +84,7 @@ function CvViewer({ file, lang, onRequestClose }: { file: string; lang: Lang; on
     const doc = docRef.current;
     if (!canvas || !doc) return;
     const seq = ++renderSeq.current;
-    let task: { cancel: () => void } | null = null;
+    let task: { promise: Promise<void>; cancel: () => void } | null = null;
     (async () => {
       try {
         const pdfPage = (await doc.getPage(page)) as {
@@ -153,6 +156,7 @@ function CvViewer({ file, lang, onRequestClose }: { file: string; lang: Lang; on
     >
       <div
         className="viewer-shell"
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-label={c.viewCv}

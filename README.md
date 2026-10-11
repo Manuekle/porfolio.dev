@@ -1,7 +1,7 @@
 # manudev — portfolio
 
 Personal portfolio of Manuel Erazo. Minimal academic-journal layout: a fixed
-identity column beside a single reading column. Bilingual (ES / EN), light and
+identity column beside a single reading column. Bilingual (English / Spanish), light and
 dark paper.
 
 Built with [Astro](https://astro.build) + React islands + TypeScript + Tailwind v4.
@@ -20,7 +20,7 @@ These are deliberate and enforced in `src/styles/global.css`:
 ## Stack
 
 - **Astro 6** — static output.
-- **React 19** — the page shell (language + theme toggles, scroll spy, reveal).
+- **React 19** — the page shell (locale links, theme toggle, scroll spy, reveal).
 - **Tailwind v4** + CSS custom properties for the paper / ink palette.
 - Brand logos from [Simple Icons](https://simpleicons.org) (CC0-1.0), baked into
   `src/data/brands.ts` so nothing is fetched at runtime.
@@ -129,3 +129,9 @@ before first paint to avoid a flash.
 ## Deploy
 
 Static output. Drop `dist/` on Vercel / Netlify / Cloudflare Pages.
+
+## Professional content
+
+English is served at `/` and Spanish at `/es/`, with matching services routes, canonical URLs and hreflang links. The route determines the language; stored preferences retain the theme. Featured cases are Oruka, GymRat+, Frontier Lab10 and creagent. CV downloads are available in both languages.
+
+The approved content update and validation plan are recorded under `docs/superpowers/`. Private source repositories stay private.

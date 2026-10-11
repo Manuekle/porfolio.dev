@@ -148,6 +148,7 @@ export function Reel({
   return (
     <div className="hero-stat">
       <div className="hero-stat-num">
+        <noscript><span>{value}</span></noscript>
         <div className="t-reel" ref={ref} role="img" aria-label={`${value}${suffix ?? ""}`}>
           {digits.map((d, col) => (
             <ReelCol key={col} digit={d} col={col} spinning={spinning} animated={animated} />

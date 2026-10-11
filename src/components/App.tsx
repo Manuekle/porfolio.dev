@@ -42,7 +42,7 @@ function BlueprintIcon({ size = 13 }: { size?: number }) {
 }
 
 const STORAGE_KEY = "portfolio.prefs";
-const DEFAULTS = { lang: "es" as Lang, theme: "light" as Theme };
+const DEFAULTS = { lang: "en" as Lang, theme: "light" as Theme };
 
 function loadPrefs(): { lang: Lang; theme: Theme } {
   if (typeof window === "undefined") return DEFAULTS;
@@ -71,23 +71,22 @@ const NAV: [key: NavKey, href: string][] = [
 
 function TopBar({
   lang,
-  setLang,
   theme,
   setTheme,
   active,
   home,
 }: {
   lang: Lang;
-  setLang: (l: Lang) => void;
   theme: Theme;
   setTheme: (t: Theme) => void;
   active: string;
   home: boolean;
 }) {
   const c = COPY[lang];
+  const homeUrl = lang === "es" ? "/es/" : "/";
   return (
     <div className="topbar">
-      <a href={home ? "#top" : "/"} aria-label={PROFILE.name} style={{ display: "inline-flex" }}>
+      <a href={home ? "#top" : homeUrl} aria-label={PROFILE.name} style={{ display: "inline-flex" }}>
         <SiteLogo size={22} />
       </a>
 
@@ -95,7 +94,7 @@ function TopBar({
         {NAV.map(([k, href]) => (
           <a
             key={k}
-            href={home ? href : `/${href}`}
+            href={home ? href : `${homeUrl}${href}`}
             className={home && active === href.slice(1) ? "active" : undefined}
           >
             {c.nav[k]}
@@ -105,10 +104,10 @@ function TopBar({
 
       <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
         <div className="toggle" role="group" aria-label="Language">
-          {(["es", "en"] as Lang[]).map((L) => (
-            <button key={L} onClick={() => setLang(L)} aria-pressed={lang === L}>
+          {(["en", "es"] as Lang[]).map((L) => (
+            <a key={L} href={`${L === "es" ? "/es/" : "/"}${home ? "" : "services/"}`} hrefLang={L} lang={L} aria-current={lang === L ? "page" : undefined} className={lang === L ? "active" : undefined}>
               {L}
-            </button>
+            </a>
           ))}
         </div>
 
@@ -141,15 +140,14 @@ function TopBar({
   );
 }
 
-export function App({ page = "home" }: { page?: "home" | "services" }) {
-  const [lang, setLang] = useState<Lang>(DEFAULTS.lang);
+export function App({ page = "home", initialLang = "en" }: { page?: "home" | "services"; initialLang?: Lang }) {
+  const lang = initialLang;
   const [theme, setTheme] = useState<Theme>(DEFAULTS.theme);
   const [hydrated, setHydrated] = useState(false);
   const [active, setActive] = useState("about");
 
   useEffect(() => {
     const p = loadPrefs();
-    setLang(p.lang);
     setTheme(p.theme);
     setHydrated(true);
   }, []);
@@ -218,10 +216,9 @@ export function App({ page = "home" }: { page?: "home" | "services" }) {
     <div className="page">
       <Sidebar lang={lang} />
 
-      <main className="main">
+      <main className="main" id="main-content">
         <TopBar
           lang={lang}
-          setLang={setLang}
           theme={theme}
           setTheme={setTheme}
           active={active}

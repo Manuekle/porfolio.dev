@@ -721,22 +721,25 @@ html[data-theme="blueprint"] .signature {
   display: inline-flex;
   border: 1px solid var(--rule);
 }
-.toggle button {
+.toggle button, .toggle a {
   padding: 4px 8px;
   font-family: var(--text);
   font-size: 11px;
   color: var(--ink-3);
   transition: background 0.2s ease, color 0.2s ease;
 }
-.toggle button + button {
+.toggle button + button, .toggle a + a {
   border-left: 1px solid var(--rule);
 }
-.toggle button[aria-pressed="true"] {
+.toggle button[aria-pressed="true"], .toggle a[aria-current="page"] {
   background: var(--ink);
   color: var(--sheet);
 }
 
 /* ------------------------------------------------------------------ motion */
+
+.skip-link { position: absolute; left: 12px; top: -60px; z-index: 100; padding: 12px; color: var(--ink); background: var(--sheet); border: 1px solid var(--ink); }
+.skip-link:focus { top: 12px; }
 
 .reveal {
   opacity: 0;
