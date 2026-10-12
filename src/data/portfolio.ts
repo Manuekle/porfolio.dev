@@ -529,14 +529,24 @@ export const HACKATHONS: Hackathon[] = [
 
 /* --------------------------------------------------------------- projects */
 
+export type ProjectShot = {
+  src: string;
+  fullSrc?: string;
+  width: number;
+  height: number;
+  caption: Bilingual;
+};
+
+export const FEATURED_PROJECT_IDS = ["oruka", "gymrat", "lab10", "creagent", "kanago"];
+
 export type Project = {
   id: string;
   name: string;
   year: string;
   /** Optional path to a real logo file, e.g. "/assets/logos/projects/steve.svg". */
   logo?: string;
-  /** Exactly 3 screenshots for the fan gallery, e.g. "/assets/shots/gymrat-1.jpg". */
-  shots?: string[];
+  /** Responsive previews with separate original images for the viewer. */
+  shots?: ProjectShot[];
   tagline: Bilingual;
   blurb: Bilingual;
   decision?: Bilingual;
@@ -575,7 +585,19 @@ export const PROJECTS: Project[] = [
       "docker",
       "whatsapp"
     ],
-    "liveUrl": "https://www.oruka.si/en"
+    "liveUrl": "https://www.oruka.si/en",
+    "shots": [
+      {
+        "src": "/assets/screenshots/2026-10-12/oruka-web-thumb.webp",
+        "fullSrc": "/assets/screenshots/2026-10-12/oruka-web.jpg",
+        "width": 640,
+        "height": 360,
+        "caption": {
+          "en": "Public launch website",
+          "es": "Web pública de lanzamiento"
+        }
+      }
+    ]
   },
   {
     "id": "gymrat",
@@ -583,9 +605,16 @@ export const PROJECTS: Project[] = [
     "year": "2024 —",
     "logo": "/assets/logos/projects/gymrat.png",
     "shots": [
-      "/assets/screenshots/gym01.webp",
-      "/assets/screenshots/gym02.webp",
-      "/assets/screenshots/gym03.webp"
+      {
+        "src": "/assets/screenshots/2026-10-12/gymrat-web-thumb.webp",
+        "fullSrc": "/assets/screenshots/2026-10-12/gymrat-web.jpg",
+        "width": 640,
+        "height": 360,
+        "caption": {
+          "en": "Public product website",
+          "es": "Web pública del producto"
+        }
+      }
     ],
     "tagline": {
       "en": "Fitness and coaching platform · 60 users",
@@ -637,7 +666,29 @@ export const PROJECTS: Project[] = [
       "sqlite"
     ],
     "liveUrl": "https://manuekle.github.io/lab10-hack/",
-    "sourceUrl": "https://github.com/Manuekle/lab10-hack"
+    "sourceUrl": "https://github.com/Manuekle/lab10-hack",
+    "shots": [
+      {
+        "src": "/assets/screenshots/2026-10-12/lab10-web-thumb.webp",
+        "fullSrc": "/assets/screenshots/2026-10-12/lab10-web.jpg",
+        "width": 640,
+        "height": 360,
+        "caption": {
+          "en": "Systems design document",
+          "es": "Documento de diseño del sistema"
+        }
+      },
+      {
+        "src": "/assets/screenshots/2026-10-12/lab10-architecture-thumb.webp",
+        "fullSrc": "/assets/screenshots/2026-10-12/lab10-architecture.jpg",
+        "width": 640,
+        "height": 360,
+        "caption": {
+          "en": "Execution architecture and supervision",
+          "es": "Arquitectura y supervisión de la ejecución"
+        }
+      }
+    ]
   },
   {
     "id": "creagent",
@@ -645,9 +696,26 @@ export const PROJECTS: Project[] = [
     "year": "2026",
     "logo": "/assets/logos/projects/creagent.png",
     "shots": [
-      "/assets/screenshots/agent01.webp",
-      "/assets/screenshots/agent02.webp",
-      "/assets/screenshots/agent03.webp"
+      {
+        "src": "/assets/screenshots/2026-10-12/creagent-delegate-thumb.webp",
+        "fullSrc": "/assets/screenshots/2026-10-12/creagent-delegate.jpg",
+        "width": 640,
+        "height": 360,
+        "caption": {
+          "en": "Read-only demo — agent graph",
+          "es": "Demo de solo lectura — grafo de agentes"
+        }
+      },
+      {
+        "src": "/assets/screenshots/2026-10-12/creagent-export-thumb.webp",
+        "fullSrc": "/assets/screenshots/2026-10-12/creagent-export.jpg",
+        "width": 640,
+        "height": 360,
+        "caption": {
+          "en": "Read-only demo — agent exports",
+          "es": "Demo de solo lectura — exportaciones de agentes"
+        }
+      }
     ],
     "tagline": {
       "en": "Agent composer and MCP tooling",
@@ -675,6 +743,65 @@ export const PROJECTS: Project[] = [
     "sourceUrl": "https://github.com/Manuekle/creagent"
   },
   {
+    "id": "kanago",
+    "name": "KanaGO!",
+    "year": "2026",
+    "logo": "/assets/logos/projects/kanago.svg",
+    "tagline": {
+      "en": "Native Japanese learning for iPhone",
+      "es": "Aprendizaje de japonés nativo para iPhone"
+    },
+    "blurb": {
+      "en": "Built a native iOS 17+ app with SwiftUI for kana, vocabulary and JLPT practice, handwriting feedback, audio and learning routes.",
+      "es": "Construí una app nativa para iOS 17+ con SwiftUI para practicar kana, vocabulario y JLPT, con corrección de escritura, audio y rutas de aprendizaje."
+    },
+    "decision": {
+      "en": "Implemented SM-2 review and local JSON progress, with WidgetKit snapshots shared through an App Group. Built a separate bilingual launch website.",
+      "es": "Implementé repaso SM-2 y progreso local en JSON, con resúmenes para WidgetKit compartidos mediante un App Group. Construí una web bilingüe de lanzamiento independiente."
+    },
+    "result": {
+      "en": "Working native app and public launch website. App Store release pending; progress stays on the iPhone.",
+      "es": "App nativa funcional y web pública de lanzamiento. Publicación en App Store pendiente; el progreso permanece en el iPhone."
+    },
+    "stack": [
+      "swift"
+    ],
+    "liveUrl": "https://kanago.vercel.app/",
+    "sourceUrl": "https://github.com/Manuekle/kanago/tree/ios",
+    "shots": [
+      {
+        "src": "/assets/screenshots/2026-10-12/kanago-ios-home-thumb.webp",
+        "fullSrc": "/assets/screenshots/2026-10-12/kanago-ios-home.webp",
+        "width": 640,
+        "height": 1392,
+        "caption": {
+          "en": "Native iPhone app — home screen",
+          "es": "App nativa para iPhone — inicio"
+        }
+      },
+      {
+        "src": "/assets/screenshots/2026-10-12/kanago-web-thumb.webp",
+        "fullSrc": "/assets/screenshots/2026-10-12/kanago-web.jpg",
+        "width": 640,
+        "height": 360,
+        "caption": {
+          "en": "Bilingual launch website",
+          "es": "Web bilingüe de lanzamiento"
+        }
+      },
+      {
+        "src": "/assets/screenshots/2026-10-12/kanago-ios-path-thumb.webp",
+        "fullSrc": "/assets/screenshots/2026-10-12/kanago-ios-path.webp",
+        "width": 640,
+        "height": 1392,
+        "caption": {
+          "en": "Native iPhone app — learning route",
+          "es": "App nativa para iPhone — ruta de aprendizaje"
+        }
+      }
+    ]
+  },
+  {
     "id": "cetamed",
     "name": "Cetamed",
     "year": "2026",
@@ -700,7 +827,19 @@ export const PROJECTS: Project[] = [
       "sqlite",
       "openai"
     ],
-    "liveUrl": "https://cetamed.vercel.app"
+    "liveUrl": "https://cetamed.vercel.app",
+    "shots": [
+      {
+        "src": "/assets/screenshots/2026-10-12/cetamed-web-thumb.webp",
+        "fullSrc": "/assets/screenshots/2026-10-12/cetamed-web.jpg",
+        "width": 640,
+        "height": 360,
+        "caption": {
+          "en": "Public prototype website",
+          "es": "Web pública del prototipo"
+        }
+      }
+    ]
   },
   {
     "id": "forge",
@@ -730,7 +869,19 @@ export const PROJECTS: Project[] = [
       "postgresql"
     ],
     "liveUrl": "https://forgems.vercel.app",
-    "sourceUrl": "https://github.com/Manuekle/Forge"
+    "sourceUrl": "https://github.com/Manuekle/Forge",
+    "shots": [
+      {
+        "src": "/assets/screenshots/2026-10-12/forge-web-thumb.webp",
+        "fullSrc": "/assets/screenshots/2026-10-12/forge-web.jpg",
+        "width": 640,
+        "height": 360,
+        "caption": {
+          "en": "Public product website and demo",
+          "es": "Web pública del producto y demo"
+        }
+      }
+    ]
   },
   {
     "id": "sira",
@@ -750,8 +901,8 @@ export const PROJECTS: Project[] = [
       "es": "Next.js, TypeScript, MongoDB, Prisma y NextAuth para identidad y acceso a datos."
     },
     "result": {
-      "en": "Public repository and deployed application.",
-      "es": "Repositorio público y aplicación desplegada."
+      "en": "Public repository. The live demo could not be reached during the review on 12 October 2026.",
+      "es": "Repositorio público. No se pudo acceder a la demo durante la revisión del 12 de octubre de 2026."
     },
     "stack": [
       "nextdotjs",
@@ -759,29 +910,19 @@ export const PROJECTS: Project[] = [
       "mongodb",
       "prisma"
     ],
-    "liveUrl": "https://sira-fup.online",
-    "sourceUrl": "https://github.com/Manuekle/sira"
-  },
-  {
-    "id": "hinomaru",
-    "name": "Hinomaru",
-    "year": "2026",
-    "logo": "/assets/logos/projects/hinomaru.png",
-    "tagline": {
-      "en": "Japanese learning with spaced repetition",
-      "es": "Aprendizaje de japonés con repetición espaciada"
-    },
-    "blurb": {
-      "en": "Built kana and vocabulary practice with SM-2 spaced repetition and voice features using SvelteKit, Supabase and a FastAPI/VOICEVOX service.",
-      "es": "Construí práctica de kana y vocabulario con repetición espaciada SM-2 y voz con SvelteKit, Supabase y un servicio FastAPI/VOICEVOX."
-    },
-    "stack": [
-      "typescript",
-      "python",
-      "docker"
-    ],
-    "liveUrl": "https://hinomaru.vercel.app",
-    "sourceUrl": "https://github.com/Manuekle/hinomaru"
+    "sourceUrl": "https://github.com/Manuekle/sira",
+    "shots": [
+      {
+        "src": "/assets/screenshots/2026-10-12/sira-repository-thumb.webp",
+        "fullSrc": "/assets/screenshots/2026-10-12/sira-repository.jpg",
+        "width": 475,
+        "height": 720,
+        "caption": {
+          "en": "Public README — live demo unavailable",
+          "es": "README público — demo no disponible"
+        }
+      }
+    ]
   },
   {
     "id": "butterflyar",
@@ -799,7 +940,19 @@ export const PROJECTS: Project[] = [
     "stack": [
       "flutter"
     ],
-    "sourceUrl": "https://github.com/Manuekle/butterflyar-mobile"
+    "sourceUrl": "https://github.com/Manuekle/butterflyar-mobile",
+    "shots": [
+      {
+        "src": "/assets/screenshots/2026-10-12/butterflyar-repository-thumb.webp",
+        "fullSrc": "/assets/screenshots/2026-10-12/butterflyar-repository.jpg",
+        "width": 475,
+        "height": 880,
+        "caption": {
+          "en": "Public README — native Flutter application",
+          "es": "README público — aplicación nativa Flutter"
+        }
+      }
+    ]
   }
 ];
 
@@ -820,6 +973,9 @@ export const STACK: StackGroup[] = [
       { name: "JavaScript", slug: "javascript" },
       { name: "Tailwind CSS", slug: "tailwindcss" },
       { name: "Flutter", slug: "flutter" },
+      { name: "Swift", slug: "swift" },
+      { name: "SwiftUI", slug: "swift" },
+      { name: "WidgetKit", slug: "swift" },
       { name: "Motion", slug: "framer" },
     ],
   },

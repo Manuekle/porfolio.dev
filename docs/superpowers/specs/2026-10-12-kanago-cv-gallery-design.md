@@ -1,0 +1,15 @@
+# Kanago, Harvard resume and project screenshots
+
+Continue the user's approved visual direction: Cooper/Saans/Inter, cream grid and theme choices. This request explicitly adds KanaGO!, asks for a Harvard-style ATS-friendly resume, fixes project-image defects and requests current project screenshots. Do not tune motion timings.
+
+KanaGO! is a native iOS 17+ Japanese-learning app built with SwiftUI, SM-2 review, local JSON progress, speech features and WidgetKit. Its public bilingual launch website says App Store availability is coming soon. Link native source to the existing ios branch. Do not claim downloads, customers or an App Store release.
+
+GitHub resolves the old Manuekle/hinomaru repository to Manuekle/kanago, so consolidate that portfolio case into KanaGO! rather than duplicating the same repository. The old Hinomaru demo returns DEPLOYMENT_NOT_FOUND. SIRA's demo could not be reached; keep its public source reference and show a README screenshot clearly labeled as documentation. ButterflyAR also uses a public README screenshot because no running native app is available here. Exclude owner-only GitHub controls and security notices from those captures.
+
+Keep the existing fullscreen gallery interaction. Desktop pointer verification found that the old overlapping fan can open image 2 when image 1's button is clicked. Replace overlapping click targets with separate thumbnails below the description, retaining the existing hover durations. Show complete images without square cropping, center single-image galleries and retain original capture quality for the full-size viewer. Keep failed-image handling stable when the visible image list changes. Use current captures from public demo pages; do not expose authenticated user data. Keep native app screenshots distinguishable from website captures.
+
+Create English and Spanish Harvard-style resumes with a centered name/contact block in the document body, Times New Roman, one column, standard section names, reverse chronological experience and action-oriented bullet points. No photos, icons, tables, text boxes, repeated headers or footers. Use the verified corrections from 11 October, rather than restoring the inaccurate claims in the older PDF supplied today. Add KanaGO! and Swift/SwiftUI/WidgetKit. Aim for one readable page per language; never reduce body text below 11 pt to force a page count. Archive original files before replacing the requested Docs CV paths.
+
+Validate PDF text extraction with two parsers, section order, names, contact details, dates, technical keywords, embedded fonts and file size. This checks machine readability, not guaranteed selection by a specific employer. Base presentation on Harvard MCS's official bullet-point template and parsing precautions on Greenhouse's official documentation.
+
+Verify Astro checking/build, fresh screenshots, complete image loading, single/multiple-image opening, navigation, zoom, closing and focus restoration, English/Spanish pages, mobile overflow, and both CV downloads. Publish through a branch and pull request, with successful deployment verification.
