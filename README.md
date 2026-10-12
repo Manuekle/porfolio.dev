@@ -6,6 +6,12 @@ dark paper.
 
 Built with [Astro](https://astro.build) + React islands + TypeScript + Tailwind v4.
 
+Featured projects: Oruka, GymRat+, KanaGO! and Cetamed, in that order, with one
+landing-page preview each. Blank, Frontier Lab10, creagent, Forge, SIRA and
+ButterflyAR appear as simple entries under Show more. The Lab10 observatory
+link requires team access. Project previews are stored with their original
+landing captures in `public/assets/screenshots/2026-10-12/`.
+
 ## Design rules
 
 These are deliberate and enforced in `src/styles/global.css`:

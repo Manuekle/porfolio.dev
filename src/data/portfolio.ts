@@ -537,7 +537,7 @@ export type ProjectShot = {
   caption: Bilingual;
 };
 
-export const FEATURED_PROJECT_IDS = ["oruka", "gymrat", "lab10", "creagent", "kanago"];
+export const FEATURED_PROJECT_IDS = ["oruka", "gymrat", "kanago", "cetamed"];
 
 export type Project = {
   id: string;
@@ -553,6 +553,7 @@ export type Project = {
   result?: Bilingual;
   stack: string[];
   liveUrl?: string;
+  liveLabel?: Bilingual;
   sourceUrl?: string;
 };
 
@@ -641,6 +642,26 @@ export const PROJECTS: Project[] = [
     "liveUrl": "https://gymratplus.com"
   },
   {
+    "id": "blank",
+    "name": "Blank",
+    "year": "2026",
+    "tagline": {
+      "en": "React component editor",
+      "es": "Editor de componentes React"
+    },
+    "blurb": {
+      "en": "Built a React component editor with editable TSX and CSS, themed visual controls, isolated previews and file exports.",
+      "es": "Construí un editor de componentes React con TSX y CSS editables, controles visuales por tema, vista previa aislada y exportación de archivos."
+    },
+    "stack": [
+      "react",
+      "nextdotjs",
+      "typescript"
+    ],
+    "liveUrl": "https://blank-manudev.vercel.app/",
+    "sourceUrl": "https://github.com/Manuekle/blank"
+  },
+  {
     "id": "lab10",
     "name": "Frontier Lab10",
     "year": "2026",
@@ -665,58 +686,18 @@ export const PROJECTS: Project[] = [
       "nodedotjs",
       "sqlite"
     ],
-    "liveUrl": "https://manuekle.github.io/lab10-hack/",
+    "liveUrl": "https://agent-production-2577.up.railway.app/ui#/tareas/d83bb9d0-a988-4338-8739-5e64661193de",
     "sourceUrl": "https://github.com/Manuekle/lab10-hack",
-    "shots": [
-      {
-        "src": "/assets/screenshots/2026-10-12/lab10-web-thumb.webp",
-        "fullSrc": "/assets/screenshots/2026-10-12/lab10-web.jpg",
-        "width": 640,
-        "height": 360,
-        "caption": {
-          "en": "Systems design document",
-          "es": "Documento de diseño del sistema"
-        }
-      },
-      {
-        "src": "/assets/screenshots/2026-10-12/lab10-architecture-thumb.webp",
-        "fullSrc": "/assets/screenshots/2026-10-12/lab10-architecture.jpg",
-        "width": 640,
-        "height": 360,
-        "caption": {
-          "en": "Execution architecture and supervision",
-          "es": "Arquitectura y supervisión de la ejecución"
-        }
-      }
-    ]
+    "liveLabel": {
+      "en": "Observatory · team access",
+      "es": "Observatorio · acceso de equipo"
+    }
   },
   {
     "id": "creagent",
     "name": "creagent",
     "year": "2026",
     "logo": "/assets/logos/projects/creagent.png",
-    "shots": [
-      {
-        "src": "/assets/screenshots/2026-10-12/creagent-delegate-thumb.webp",
-        "fullSrc": "/assets/screenshots/2026-10-12/creagent-delegate.jpg",
-        "width": 640,
-        "height": 360,
-        "caption": {
-          "en": "Read-only demo — agent graph",
-          "es": "Demo de solo lectura — grafo de agentes"
-        }
-      },
-      {
-        "src": "/assets/screenshots/2026-10-12/creagent-export-thumb.webp",
-        "fullSrc": "/assets/screenshots/2026-10-12/creagent-export.jpg",
-        "width": 640,
-        "height": 360,
-        "caption": {
-          "en": "Read-only demo — agent exports",
-          "es": "Demo de solo lectura — exportaciones de agentes"
-        }
-      }
-    ],
     "tagline": {
       "en": "Agent composer and MCP tooling",
       "es": "Composer de agentes y herramientas MCP"
@@ -770,16 +751,6 @@ export const PROJECTS: Project[] = [
     "sourceUrl": "https://github.com/Manuekle/kanago/tree/ios",
     "shots": [
       {
-        "src": "/assets/screenshots/2026-10-12/kanago-ios-home-thumb.webp",
-        "fullSrc": "/assets/screenshots/2026-10-12/kanago-ios-home.webp",
-        "width": 640,
-        "height": 1392,
-        "caption": {
-          "en": "Native iPhone app — home screen",
-          "es": "App nativa para iPhone — inicio"
-        }
-      },
-      {
         "src": "/assets/screenshots/2026-10-12/kanago-web-thumb.webp",
         "fullSrc": "/assets/screenshots/2026-10-12/kanago-web.jpg",
         "width": 640,
@@ -787,16 +758,6 @@ export const PROJECTS: Project[] = [
         "caption": {
           "en": "Bilingual launch website",
           "es": "Web bilingüe de lanzamiento"
-        }
-      },
-      {
-        "src": "/assets/screenshots/2026-10-12/kanago-ios-path-thumb.webp",
-        "fullSrc": "/assets/screenshots/2026-10-12/kanago-ios-path.webp",
-        "width": 640,
-        "height": 1392,
-        "caption": {
-          "en": "Native iPhone app — learning route",
-          "es": "App nativa para iPhone — ruta de aprendizaje"
         }
       }
     ]
@@ -869,19 +830,7 @@ export const PROJECTS: Project[] = [
       "postgresql"
     ],
     "liveUrl": "https://forgems.vercel.app",
-    "sourceUrl": "https://github.com/Manuekle/Forge",
-    "shots": [
-      {
-        "src": "/assets/screenshots/2026-10-12/forge-web-thumb.webp",
-        "fullSrc": "/assets/screenshots/2026-10-12/forge-web.jpg",
-        "width": 640,
-        "height": 360,
-        "caption": {
-          "en": "Public product website and demo",
-          "es": "Web pública del producto y demo"
-        }
-      }
-    ]
+    "sourceUrl": "https://github.com/Manuekle/Forge"
   },
   {
     "id": "sira",
@@ -910,19 +859,7 @@ export const PROJECTS: Project[] = [
       "mongodb",
       "prisma"
     ],
-    "sourceUrl": "https://github.com/Manuekle/sira",
-    "shots": [
-      {
-        "src": "/assets/screenshots/2026-10-12/sira-repository-thumb.webp",
-        "fullSrc": "/assets/screenshots/2026-10-12/sira-repository.jpg",
-        "width": 475,
-        "height": 720,
-        "caption": {
-          "en": "Public README — live demo unavailable",
-          "es": "README público — demo no disponible"
-        }
-      }
-    ]
+    "sourceUrl": "https://github.com/Manuekle/sira"
   },
   {
     "id": "butterflyar",
@@ -940,19 +877,7 @@ export const PROJECTS: Project[] = [
     "stack": [
       "flutter"
     ],
-    "sourceUrl": "https://github.com/Manuekle/butterflyar-mobile",
-    "shots": [
-      {
-        "src": "/assets/screenshots/2026-10-12/butterflyar-repository-thumb.webp",
-        "fullSrc": "/assets/screenshots/2026-10-12/butterflyar-repository.jpg",
-        "width": 475,
-        "height": 880,
-        "caption": {
-          "en": "Public README — native Flutter application",
-          "es": "README público — aplicación nativa Flutter"
-        }
-      }
-    ]
+    "sourceUrl": "https://github.com/Manuekle/butterflyar-mobile"
   }
 ];
 
