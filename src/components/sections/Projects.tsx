@@ -9,60 +9,54 @@ export function Projects({ lang }: { lang: Lang }) {
   const c = COPY[lang];
   const [expanded, setExpanded] = useState(false);
   const featured = FEATURED_PROJECT_IDS;
-  const renderProject = (p: (typeof PROJECTS)[number]) => (
-
-        <article key={p.id} className="entry project-entry">
-
-          <div style={{ minWidth: 0 }}>
-            <h3 className="entry-title">{p.name}</h3>
-            <div className="entry-org">{p.tagline[lang]}</div>
-
-            <div className={p.shots && p.shots.length > 0 ? "project-main" : undefined}>
-              <div style={{ minWidth: 0 }}>
-                <p className="entry-body" style={{ marginTop: 9 }}>{p.blurb[lang]}</p>
-                {p.decision && <p className="entry-body" style={{ marginTop: 8 }}>{p.decision[lang]}</p>}
-                {p.result && <p className="entry-body" style={{ marginTop: 8, color: "var(--ink)" }}>{p.result[lang]}</p>}
-
-                <div className="entry-stack">
-              {p.stack
-                .filter((slug) => BRANDS[slug])
-                .map((slug) => (
-                  <span key={slug} title={BRANDS[slug].title}>
-                    <BrandMark slug={slug} size={14} />
-                  </span>
-                ))}
-            </div>
-
-            {(p.liveUrl || p.sourceUrl) && (
-              <div className="project-links">
-                {p.liveUrl && (
-                  <a href={p.liveUrl} target="_blank" rel="noreferrer noopener">
-                    {c.live}
-                    <span aria-hidden="true">↗</span>
-                  </a>
-                )}
-                {p.sourceUrl && (
-                  <a href={p.sourceUrl} target="_blank" rel="noreferrer noopener">
-                    {c.source}
-                    <span aria-hidden="true">↗</span>
-                  </a>
-                )}
+  const renderProject = (p: (typeof PROJECTS)[number], compact = false) => {
+    const hasShot = !compact && p.shots && p.shots.length > 0;
+    return (
+      <article key={p.id} className="entry project-entry">
+        <div style={{ minWidth: 0 }}>
+          <h3 className="entry-title">{p.name}</h3>
+          <div className="entry-org">{p.tagline[lang]}</div>
+          <div className={hasShot ? "project-main" : undefined}>
+            <div style={{ minWidth: 0 }}>
+              <p className="entry-body" style={{ marginTop: 9 }}>{p.blurb[lang]}</p>
+              {!compact && p.decision && <p className="entry-body" style={{ marginTop: 8 }}>{p.decision[lang]}</p>}
+              {!compact && p.result && <p className="entry-body" style={{ marginTop: 8, color: "var(--ink)" }}>{p.result[lang]}</p>}
+              <div className="entry-stack">
+                {p.stack
+                  .filter((slug) => BRANDS[slug])
+                  .map((slug) => (
+                    <span key={slug} title={BRANDS[slug].title}>
+                      <BrandMark slug={slug} size={14} />
+                    </span>
+                  ))}
               </div>
-            )}
-              </div>
-
-              {p.shots && p.shots.length > 0 && (
-                <ProjectGallery shots={p.shots} name={p.name} lang={lang} />
+              {(p.liveUrl || p.sourceUrl) && (
+                <div className="project-links">
+                  {p.liveUrl && (
+                    <a href={p.liveUrl} target="_blank" rel="noreferrer noopener">
+                      {p.liveLabel?.[lang] || c.live}
+                      <span aria-hidden="true">↗</span>
+                    </a>
+                  )}
+                  {p.sourceUrl && (
+                    <a href={p.sourceUrl} target="_blank" rel="noreferrer noopener">
+                      {c.source}
+                      <span aria-hidden="true">↗</span>
+                    </a>
+                  )}
+                </div>
               )}
             </div>
+            {hasShot && <ProjectGallery shots={p.shots} name={p.name} lang={lang} />}
           </div>
-
-          <div className="entry-date">{p.year}</div>
-        </article>
-  );
+        </div>
+        <div className="entry-date">{p.year}</div>
+      </article>
+    );
+  };
   return (
     <Section id="projects" title={c.sections.projects.title} sub={c.sections.projects.sub} idx="03">
-      {featured.map((id) => PROJECTS.find((p) => p.id === id)!).map(renderProject)}
+      {featured.map((id) => PROJECTS.find((p) => p.id === id)!).map((p) => renderProject(p))}
       <noscript>
         <div className="entry-body">
           <p>{lang === "es" ? "Otros proyectos" : "More projects"}</p>
@@ -80,7 +74,7 @@ export function Projects({ lang }: { lang: Lang }) {
       </button>
       <div id="more-projects" className="projects-more" data-open={expanded} inert={!expanded} aria-hidden={!expanded}>
         <div className="projects-more-inner">
-          {PROJECTS.filter((p) => !featured.includes(p.id)).map(renderProject)}
+          {PROJECTS.filter((p) => !featured.includes(p.id)).map((p) => renderProject(p, true))}
         </div>
       </div>
     </Section>

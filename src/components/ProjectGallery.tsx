@@ -125,8 +125,8 @@ function Viewer({
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
-      if (e.key === "ArrowRight") go((index + 1) % images.length);
-      if (e.key === "ArrowLeft") go((index - 1 + images.length) % images.length);
+      if (images.length > 1 && e.key === "ArrowRight") go((index + 1) % images.length);
+      if (images.length > 1 && e.key === "ArrowLeft") go((index - 1 + images.length) % images.length);
     };
     document.addEventListener("keydown", onKey);
     const prev = document.body.style.overflow;
@@ -155,7 +155,7 @@ function Viewer({
         ref={dialogRef}
         role="dialog"
         aria-modal="true"
-        aria-label={`${name} — ${index + 1} / ${images.length}`}
+        aria-label={images.length === 1 ? name : `${name} — ${index + 1} / ${images.length}`}
         onClick={(e) => e.stopPropagation()}
       >
         <button ref={closeRef} type="button" className="viewer-close" onClick={close} aria-label={closeLabel}>
@@ -186,7 +186,8 @@ function Viewer({
           />
         </div>
 
-        <div className="viewer-bar" role="group" aria-label={`${index + 1} / ${images.length}`}>
+        <div className="viewer-bar" role="group" aria-label={lang === "es" ? "Controles de imagen" : "Image controls"}>
+          {images.length > 1 && <>
           <button
             type="button"
             className="viewer-btn"
@@ -215,6 +216,7 @@ function Viewer({
           >
             {">"}
           </button>
+          </>}
           <button
             type="button"
             className="viewer-btn"
@@ -261,7 +263,7 @@ export function ProjectGallery({
               type="button"
               className="shot-card"
               onClick={() => setOpenSrc(shot.src)}
-              aria-label={`${openLabel} ${i + 1} — ${name}`}
+              aria-label={`${openLabel}${valid.length > 1 ? ` ${i + 1}` : ""} — ${name}`}
               title={shot.caption[lang]}
             >
               <img

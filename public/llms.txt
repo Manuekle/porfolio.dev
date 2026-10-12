@@ -16,9 +16,11 @@ Spanish portfolio: https://manudev.vercel.app/es/
 ## Projects
 - Oruka — AI customer support and sales in private beta, no users yet; previously Steve and Senka — https://www.oruka.si/en
 - GymRat+ — fitness and coaching platform with 60 users as confirmed in October 2026 — https://gymratplus.com
-- Frontier Lab10 — supervised computer-use agent; 45 of 56 hidden evaluation tasks completed on 11 October 2026, detailed scoring pending — https://manuekle.github.io/lab10-hack/
-- creagent — source-available agent composer under FSL-1.1-MIT with an MIT MCP server — https://creagent.fun/demo
+- KanaGO! — native iOS 17+ Japanese learning app with SwiftUI, SM-2 review, local progress and WidgetKit; App Store release pending — https://kanago.vercel.app/
 - Cetamed — hospital operations hackathon prototype using synthetic data and 19 allowed query intents, no clinical deployment — https://cetamed.vercel.app
+- Blank — React component editor with editable TSX/CSS, themed visual controls, isolated previews and file exports — https://blank-manudev.vercel.app/
+- Frontier Lab10 — supervised computer-use agent; 45 of 56 hidden evaluation tasks completed on 11 October 2026, detailed scoring pending. Observatory requires a team token — https://agent-production-2577.up.railway.app/ui#/tareas/d83bb9d0-a988-4338-8739-5e64661193de
+- creagent — source-available agent composer under FSL-1.1-MIT with an MIT MCP server — https://creagent.fun/demo
 - forge — multi-agent product strategy — https://forgems.vercel.app
 - SIRA — QR attendance and academic reporting; live demo unavailable during the 12 October 2026 review — https://github.com/Manuekle/sira
-- KanaGO! — native iOS 17+ Japanese learning app with SwiftUI, SM-2 review, local progress and WidgetKit; App Store release pending — https://kanago.vercel.app/
+- ButterflyAR — Flutter and Dart educational augmented reality application — https://github.com/Manuekle/butterflyar-mobile
