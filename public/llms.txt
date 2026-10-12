@@ -20,5 +20,5 @@ Spanish portfolio: https://manudev.vercel.app/es/
 - creagent — source-available agent composer under FSL-1.1-MIT with an MIT MCP server — https://creagent.fun/demo
 - Cetamed — hospital operations hackathon prototype using synthetic data and 19 allowed query intents, no clinical deployment — https://cetamed.vercel.app
 - forge — multi-agent product strategy — https://forgems.vercel.app
-- SIRA — QR attendance — https://sira-fup.online
-- hinomaru — learn Japanese — https://hinomaru.vercel.app
+- SIRA — QR attendance and academic reporting; live demo unavailable during the 12 October 2026 review — https://github.com/Manuekle/sira
+- KanaGO! — native iOS 17+ Japanese learning app with SwiftUI, SM-2 review, local progress and WidgetKit; App Store release pending — https://kanago.vercel.app/

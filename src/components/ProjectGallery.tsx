@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import type { Lang } from "../data/portfolio";
+import type { Lang, ProjectShot } from "../data/portfolio";
 import { CloseIcon } from "./Apply";
 import { playViewerOpen } from "./sounds";
 import { useDialogFocus } from "./useDialogFocus";
 
 function Viewer({
   images,
+  captions,
   index,
   name,
   lang,
@@ -14,6 +15,7 @@ function Viewer({
   onRequestClose,
 }: {
   images: string[];
+  captions: string[];
   index: number;
   name: string;
   lang: Lang;
@@ -116,6 +118,7 @@ function Viewer({
     return () => {
       cancelAnimationFrame(raf);
       window.clearTimeout(t);
+      if (closeTimer.current) window.clearTimeout(closeTimer.current);
     };
   }, []);
 
@@ -131,7 +134,6 @@ function Viewer({
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = prev;
-      if (closeTimer.current) window.clearTimeout(closeTimer.current);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index, images.length]);
@@ -165,7 +167,8 @@ function Viewer({
             ref={imgRef}
             className={`viewer-img${zoomed ? " zoomed" : ""}${dragging ? " dragging" : ""}`}
             src={images[index]}
-            alt={`${name} — ${index + 1} / ${images.length}`}
+            alt={`${name} — ${captions[index]}`}
+            decoding="async"
             onClick={onImgClick}
             onPointerDown={onImgPointerDown}
             onPointerMove={onImgPointerMove}
@@ -222,6 +225,7 @@ function Viewer({
             {zoomed ? "–" : "+"}
           </button>
         </div>
+        <p className="viewer-caption">{captions[index]}</p>
       </div>
     </div>,
     document.body,
@@ -233,52 +237,58 @@ export function ProjectGallery({
   name,
   lang,
 }: {
-  shots?: string[];
+  shots?: ProjectShot[];
   name: string;
   lang: Lang;
 }) {
-  const [failed, setFailed] = useState<number[]>([]);
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [failed, setFailed] = useState<string[]>([]);
+  const [openSrc, setOpenSrc] = useState<string | null>(null);
 
   if (!shots.length) return null;
-  const valid = shots.filter((_, i) => !failed.includes(i));
+  const valid = shots.filter((shot) => !failed.includes(shot.src));
+  const openIndex = valid.findIndex((shot) => shot.src === openSrc);
   if (!valid.length && failed.length >= shots.length && shots.length > 0) return null;
 
   const openLabel = lang === "es" ? "Abrir imagen" : "Open image";
 
   return (
     <>
-      <div className="shots">
-        {shots.map((src, i) => {
-          if (failed.includes(i)) return null;
-          const validIndex = valid.indexOf(src);
+      <div className="shots" data-count={valid.length}>
+        {valid.map((shot, i) => {
           return (
+            <figure key={shot.src} className="shot">
             <button
-              key={src}
               type="button"
-              className={`shot-card shot-pos-${i % 3}`}
-              onClick={() => setOpenIndex(validIndex)}
-              aria-label={`${openLabel} ${validIndex + 1} — ${name}`}
+              className="shot-card"
+              onClick={() => setOpenSrc(shot.src)}
+              aria-label={`${openLabel} ${i + 1} — ${name}`}
+              title={shot.caption[lang]}
             >
               <img
-                src={src}
-                alt={`${name} — ${validIndex + 1}`}
+                src={shot.src}
+                alt={`${name} — ${shot.caption[lang]}`}
+                width={shot.width}
+                height={shot.height}
                 loading="lazy"
-                onError={() => setFailed((f) => (f.includes(i) ? f : [...f, i]))}
+                decoding="async"
+                onError={() => setFailed((f) => (f.includes(shot.src) ? f : [...f, shot.src]))}
               />
             </button>
+            <figcaption>{shot.caption[lang]}</figcaption>
+            </figure>
           );
         })}
       </div>
 
-      {openIndex !== null && valid[openIndex] && (
+      {openIndex >= 0 && valid[openIndex] && (
         <Viewer
-          images={valid}
+          images={valid.map((shot) => shot.fullSrc || shot.src)}
+          captions={valid.map((shot) => shot.caption[lang])}
           index={openIndex}
           name={name}
           lang={lang}
-          onNav={setOpenIndex}
-          onRequestClose={() => setOpenIndex(null)}
+          onNav={(index) => setOpenSrc(valid[index].src)}
+          onRequestClose={() => setOpenSrc(null)}
         />
       )}
     </>

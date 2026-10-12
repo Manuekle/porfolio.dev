@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BRANDS } from "../../data/brands";
-import { COPY, PROJECTS, type Lang } from "../../data/portfolio";
+import { COPY, FEATURED_PROJECT_IDS, PROJECTS, type Lang } from "../../data/portfolio";
 import { BrandMark } from "../Mark";
 import { ProjectGallery } from "../ProjectGallery";
 import { Section } from "../Section";
@@ -8,7 +8,7 @@ import { Section } from "../Section";
 export function Projects({ lang }: { lang: Lang }) {
   const c = COPY[lang];
   const [expanded, setExpanded] = useState(false);
-  const featured = ["oruka", "gymrat", "lab10", "creagent"];
+  const featured = FEATURED_PROJECT_IDS;
   const renderProject = (p: (typeof PROJECTS)[number]) => (
 
         <article key={p.id} className="entry project-entry">

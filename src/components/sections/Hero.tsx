@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { COPY, PROFILE, type Lang } from "../../data/portfolio";
+import { COPY, FEATURED_PROJECT_IDS, PROFILE, type Lang } from "../../data/portfolio";
 import { Reel } from "../Reel";
 
 export function Hero({ lang }: { lang: Lang }) {
@@ -54,7 +54,7 @@ export function Hero({ lang }: { lang: Lang }) {
       <div className="hero-stats">
         <Reel value={60} label={t.stats.years} />
         <Reel value={45} suffix="/56" label={t.stats.projects} />
-        <Reel value={4} label={t.stats.hackathons} />
+        <Reel value={FEATURED_PROJECT_IDS.length} label={t.stats.hackathons} />
       </div>
 
       <hr className="rule" style={{ marginTop: 52 }} />
