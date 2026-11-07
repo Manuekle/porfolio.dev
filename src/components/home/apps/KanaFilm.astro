@@ -1,0 +1,103 @@
+---
+/* KanaGO!'s tour, ported from its own site (Manuekle/kanago, branch `web`):
+   - markup + CSS: app/index.html (#story .stage: .glyphs, .device .phone .screens, .buddy) and
+     app/assets/styles.css (.phone, .screens, .screen, .glyph, .buddy, .pet)
+   - steps:        app/assets/site.js, moodFor = hello, happy, wow, happy, meh, hello, happy
+   - media:        the real app screens (assets/shots/mobile, English and Spanish), the 18 Pro
+                   frame (iphone-frame.svg) and Kana-chan (assets/kana)
+   On the site the tour follows the scroll; here it advances on a timer while the card is on screen. */
+import type { Lang } from "../../../data/portfolio";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const K = "/assets/works/kanago";
+const shot = (name: string) => `${K}/shots/${lang === "es" ? "es/" : ""}${name}.webp`;
+
+const STEPS = [
+  { screen: "home", glyph: "あ", mood: "hello" },
+  { screen: "path", glyph: "道", mood: "happy" },
+  { screen: "lesson", glyph: "音", mood: "wow" },
+  { screen: "kana", glyph: "字", mood: "happy" },
+  { screen: "exam", glyph: "試", mood: "meh" },
+  { screen: "read", glyph: "話", mood: "hello" },
+  { screen: "result", glyph: "毎日", mood: "happy" },
+];
+const PETS = [
+  ["hello", 1164, 1061],
+  ["wow", 1130, 911],
+  ["happy", 1190, 867],
+  ["meh", 1105, 1016],
+] as const;
+---
+
+<div class="kg" aria-hidden="true" data-kana-film data-moods={STEPS.map((s) => s.mood).join(",")}>
+  <div class="kg-glyphs">
+    {STEPS.map((s, i) => <span class:list={["kg-glyph", { "is-active": i === 0 }]}>{s.glyph}</span>)}
+  </div>
+  <div class="kg-device">
+    <div class="kg-phone">
+      <div class="kg-screens">
+        {
+          STEPS.map((s, i) => (
+            <img class:list={["kg-screen", { "is-current": i === 0 }]} src={shot(s.screen)} width="600" height="1305" alt="" loading="lazy" decoding="async" />
+          ))
+        }
+      </div>
+    </div>
+    <div class="kg-buddy" data-mood="hello">
+      {PETS.map(([m, w, h]) => <img class="kg-pet" data-m={m} src={`${K}/kana/pet-${m}.svg`} width={w} height={h} alt="" loading="lazy" />)}
+    </div>
+  </div>
+</div>
+
+<script>
+  /* site.js, the tour's step change: the next screen fades in over the current
+     one, the background glyph and Kana-chan's mood follow, she sways a little. */
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  document.querySelectorAll<HTMLElement>("[data-kana-film]").forEach((film) => {
+    if (reduce) return;
+    const screens = [...film.querySelectorAll<HTMLImageElement>(".kg-screen")];
+    const glyphs = [...film.querySelectorAll<HTMLElement>(".kg-glyph")];
+    const buddy = film.querySelector<HTMLElement>(".kg-buddy")!;
+    const moods = (film.dataset.moods ?? "").split(",");
+    let step = 0;
+    let timer = 0;
+    let swayFrame = 0;
+
+    const show = (next: number) => {
+      const current = screens[step];
+      const target = screens[next];
+      target.classList.add("is-incoming");
+      requestAnimationFrame(() => target.classList.add("is-revealed"));
+      setTimeout(() => {
+        current.classList.remove("is-current");
+        target.classList.remove("is-incoming", "is-revealed");
+        target.classList.add("is-current");
+      }, 260);
+      glyphs[step].classList.remove("is-active");
+      glyphs[next].classList.add("is-active");
+      buddy.dataset.mood = moods[next] || "hello";
+      step = next;
+    };
+    const sway = (t: number) => {
+      buddy.style.setProperty("--sway", `${(Math.sin((t / 1600) * Math.PI) * 5).toFixed(2)}deg`);
+      swayFrame = requestAnimationFrame(sway);
+    };
+    new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting && !timer) {
+          timer = window.setInterval(() => show((step + 1) % screens.length), 2600);
+          swayFrame = requestAnimationFrame(sway);
+        } else if (!e.isIntersecting && timer) {
+          clearInterval(timer);
+          cancelAnimationFrame(swayFrame);
+          timer = 0;
+        }
+      },
+      { threshold: 0.2 },
+    ).observe(film);
+  });
+</script>

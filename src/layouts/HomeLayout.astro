@@ -1,0 +1,130 @@
+---
+import "../styles/home.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  lang?: string;
+  image?: string;
+}
+
+const {
+  title = "Manuel Erazo — Full Stack Developer",
+  description =
+    "Full Stack Developer in Bogotá. TypeScript, React, Next.js and PostgreSQL. SaaS products, APIs and AI integrations. Open to international remote roles.",
+  lang = "en",
+  image = "/og-banner.png",
+} = Astro.props;
+
+const siteUrl = Astro.site ?? new URL("https://manudev.vercel.app");
+const canonical = new URL(Astro.url.pathname, siteUrl);
+const ogImage = new URL(image, siteUrl);
+const ogLocale = lang === "es" ? "es_CO" : "en_US";
+const route = Astro.url.pathname.replace(/^\/es\/?/, "/").replace(/\/$/, "");
+const englishUrl = new URL(`${route || ""}/`, siteUrl);
+const spanishUrl = new URL(`/es${route}/`, siteUrl);
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://manudev.vercel.app/#website",
+      url: "https://manudev.vercel.app/",
+      name: "Manuel Erazo",
+      inLanguage: ["es", "en"],
+      publisher: { "@id": "https://manudev.vercel.app/#person" },
+    },
+    {
+      "@type": "Person",
+      "@id": "https://manudev.vercel.app/#person",
+      name: "Manuel Esteban Erazo Medina",
+      alternateName: ["Manuel Erazo", "Manuekle"],
+      url: "https://manudev.vercel.app/",
+      image: "https://manudev.vercel.app/assets/avatar.png",
+      jobTitle: "Full Stack Developer",
+      email: "mailto:meerazo7@hotmail.com",
+      telephone: "+57-311-271-1242",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Bogotá",
+        addressCountry: "CO",
+      },
+      sameAs: [
+        "https://github.com/manuekle",
+        "https://linkedin.com/in/manuekle",
+        "https://instagram.com/manudev.jsx",
+      ],
+      knowsAbout: [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Node.js",
+        "PostgreSQL",
+        "LLMs",
+        "SaaS",
+        "Product design",
+      ],
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Manuel Erazo" />
+    <meta
+      name="keywords"
+      content="Manuel Erazo, full-stack developer, AI developer, React, Next.js, TypeScript, LLM, SaaS, freelance, Bogotá, Colombia"
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#fff8f4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#151311" media="(prefers-color-scheme: dark)" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={englishUrl} />
+    <link rel="alternate" hreflang="es" href={spanishUrl} />
+    <link rel="alternate" hreflang="x-default" href={englishUrl} />
+
+    <!-- Icons / manifest -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Self-hosted type -->
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/Natadecoco-gothic.woff2" crossorigin />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Manuel Erazo" />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:locale:alternate" content={lang === "es" ? "en_US" : "es_CO"} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Manuel Erazo — Full Stack Developer" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="Manuel Erazo — Full Stack Developer" />
+
+    <link rel="me" href="https://github.com/manuekle" />
+    <link rel="me" href="https://linkedin.com/in/manuekle" />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

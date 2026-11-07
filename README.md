@@ -1,143 +1,100 @@
 # manudev — portfolio
 
-Personal portfolio of Manuel Erazo. Minimal academic-journal layout: a fixed
-identity column beside a single reading column. Bilingual (English / Spanish), light and
-dark paper.
+Personal portfolio of Manuel Erazo. One quiet column: intro, project cards that
+stack while you scroll, experience, activity and links. Bilingual (English at
+`/`, Spanish at `/es/`), light and dark from the system setting.
 
-Built with [Astro](https://astro.build) + React islands + TypeScript + Tailwind v4.
+Built with [Astro](https://astro.build) as plain `.astro` components: no UI
+framework, no CSS framework, and only two small inline scripts (the video
+reduced-motion guard and the services quote calculator).
 
-Featured projects: Oruka, GymRat+, KanaGO! and Cetamed, in that order, with one
-landing-page preview each. Blank, Frontier Lab10, creagent, Forge, SIRA and
-ButterflyAR appear as simple entries under Show more. The Lab10 observatory
-link requires team access. Project previews are stored with their original
-landing captures in `public/assets/screenshots/2026-10-12/`.
+## Pages
 
-## Design rules
+| Route | What it is |
+| :---- | :--------- |
+| `/`, `/es/` | Home: intro, works, more work, experience, activity, links |
+| `/services/`, `/es/services/` | What I build, pricing and the instant quote |
+| `/banner` | Hidden stage for rendering `public/og-banner.png` (noindex) |
 
-These are deliberate and enforced in `src/styles/global.css`:
+## Design
 
-- **No bold.** Every weight is `400`; hierarchy comes from size, colour and rules.
-- **No uppercase.** Sentence case everywhere.
-- **Nothing rounded.** `border-radius: 0` is set on `*`.
-- **Titles and subtitles track at `-0.05em`** (`--track-title`).
-- **Type:** Cooper (serif) for titles and subtitles, Saans for UI titles and
-  navigation, Inter for body copy. All self-hosted from `public/assets/font/`.
+- **Type:** Natadecoco for everything, one weight (`400`). It only covers ASCII,
+  so accents, `ñ`, `¿ ¡` and dashes fall back to the Inter subset through
+  `unicode-range`. Both live in `public/fonts/`.
+- **Colour:** warm Material 3 surfaces as CSS custom properties in
+  `src/styles/home.css`, swapped under `prefers-color-scheme: dark`.
+- **Shape:** large outer corners (`--radius: 28px`) and 3px gaps between joined
+  pieces (contact buttons, link pills, rows, tiles). Corners morph on press.
+- **Motion:** state layers on hover and press, a short fade on the intro and
+  the sticky card stack. Everything respects `prefers-reduced-motion`.
 
-## Stack
+## Works
 
-- **Astro 6** — static output.
-- **React 19** — the page shell (locale links, theme toggle, scroll spy, reveal).
-- **Tailwind v4** + CSS custom properties for the paper / ink palette.
-- Brand logos from [Simple Icons](https://simpleicons.org) (CC0-1.0), baked into
-  `src/data/brands.ts` so nothing is fetched at runtime.
+The card list is `WORK_CARDS` in `src/data/home.ts`; project facts (name, logo,
+links) come from `PROJECTS` in `src/data/portfolio.ts`. Every other project is a
+text row under "More" (`MORE_WORK`).
 
-## Commands
+Each card shows a live part of its app, ported from that app's own source, in
+`src/components/home/apps/`:
 
-| Command            | Action                        |
-| :----------------- | :---------------------------- |
-| `pnpm install`     | Install dependencies          |
-| `pnpm dev`         | Dev server at `localhost:4321`|
-| `pnpm build`       | Build to `./dist/`            |
-| `pnpm preview`     | Preview prod build locally    |
-| `pnpm astro check` | TypeScript + Astro diagnostics|
+| Card | Component | Ported from |
+| :--- | :-------- | :---------- |
+| Oruka | `OrukaPhone.astro` | the Instagram comment-automation preview (comment sheet, then DM) in the iPhone 17 frame |
+| Cue | `CueMac.astro` | the hero of Cue's site: MacBook, Meet call and the notch prompter with its 3-2-1 loop |
+| Focus | `FocusDemo.astro` | the Rotoscope demo (character, reference video, result) |
+| KanaGO! | `KanaFilm.astro` | the tour on KanaGO!'s site: real app screens, kanji and Kana-chan |
+
+Their media and app icons live in `public/assets/works/<project>/`. Focus's
+Rotoscope media (Reze, *Chainsaw Man*) and the Porkys font are used with
+permission for non-commercial demonstration only.
 
 ## Structure
 
 ```
 src/
-├── components/
-│   ├── App.tsx           root state (lang, theme, scroll spy, reveal)
-│   ├── Sidebar.tsx       identity column
-│   ├── Mark.tsx          BrandMark, Monogram, LogoTile, SiteLogo
-│   ├── Section.tsx       shared section header
-│   └── sections/         Hero, About, Experience, Projects, Stack,
-│                         Hackathons, Education, Contact
+├── components/home/
+│   ├── Home.astro        home page
+│   ├── Scene.astro       picks a card's live app part
+│   ├── Services.astro    services page and quote calculator
+│   └── apps/             OrukaPhone, CueMac, FocusDemo, KanaFilm
 ├── data/
-│   ├── portfolio.ts      bilingual copy, experience, projects, stack, education
-│   └── brands.ts         generated brand logo paths
-├── layouts/Layout.astro
-├── pages/index.astro
-└── styles/global.css
+│   ├── home.ts           home copy, work cards, timelines
+│   ├── portfolio.ts      profile, projects, experience, services and pricing
+│   └── brands.ts         generated Simple Icons paths (CC0-1.0)
+├── layouts/HomeLayout.astro   head, SEO, Open Graph, JSON-LD
+├── pages/                index, services, es/*, banner
+├── scripts/og-download.ts     PNG export for /banner
+└── styles/home.css
 public/
+├── fonts/                Natadecoco, Inter subset
 ├── new-icon.png          the portfolio mark (source for every icon)
 └── assets/
-    ├── mark.png          transparent mark, used as a CSS mask
-    ├── avatar.png        square portrait, cropped from pic.PNG
-    ├── font/             cooper, saans, inter
+    ├── works/            card media and app icons
+    ├── logos/            org and project marks used in data
+    ├── font/             Cooper and Inter, used only by /banner
     └── CV_Manuel_Erazo_{ES,EN}.pdf
 ```
 
-## Logos
+## Commands
 
-Tool and company logos are real brand marks, drawn from `src/data/brands.ts` and
-tinted with `currentColor`. Regenerate the set after editing the slug list:
-
-```bash
-node scripts/gen-logos.mjs
-```
-
-Anything Simple Icons does not carry — employers, schools and the projects
-themselves — is generated by `scripts/gen-marks.cjs`, which reduces each piece
-of artwork to a single ink silhouette on a transparent field:
-
-```bash
-node scripts/gen-marks.cjs
-```
-
-The reduction matters. App icons arrive as colour artwork on rounded plates and
-circles, which is exactly what this design does not use — dropped straight in
-they read as stickers pasted onto the page. Keying the glyph out of its plate
-leaves a mark the page can tint, sized and weighted like every other mark in the
-column. Each entry points at its file through `logoFile` (companies) or `logo`
-(projects); anything without one falls back to a serif monogram.
-
-Sources live in `public/assets/experience/`. Two of them are vendored copies of
-a published icon rather than original artwork, because their hosts are
-unreliable; the remaining two marks are still fetched, and the script keeps
-whatever is already on disk if a fetch fails.
-
-| File | Source | How the glyph is keyed |
-| :--- | :----- | :--------------------- |
-| `orgs/gymrat.png` | `experience/gymratplus.png` | light glyph off a dark plate |
-| `orgs/gymshark.png` | `experience/gymshark.png` | dark glyph off a light plate |
-| `orgs/smurfitkappa.png` | `experience/smurtfit.jpeg` | light glyph off a dark plate |
-| `orgs/sena.png` | sena.edu.co (fetched) | mid tone, figure knocked out |
-| `orgs/fup.png` | fup.edu.co (fetched) | already a silhouette |
-| `projects/creagent.png` | `experience/creagent.png` | opaque and not white, halftone smoothed |
-| `projects/steve.png` | `experience/steve.svg` | dark glyph off a light plate |
-| `projects/forge.png` | `experience/forge.png` | low saturation — the star is a gradient |
-| `projects/gymrat.png` | `experience/gymratplus.png` | light glyph off a dark plate |
-| `projects/sira.png` | `experience/sira-app.png` | dark glyph off a light plate |
-| `projects/heymed.png` | `experience/heymed.png` | light glyph, trace thickened |
-| `projects/hinomaru.png` | `experience/hinomaru.png` | dark glyph off a light plate |
-| `projects/butterflyar.png` | `experience/butterfly.png` | already a silhouette |
-
-Note that `experience/sira.png` is the university crest, not SIRA's own mark —
-`experience/sira-app.png` is the one the project uses, so the two entries do not
-print the same crest twice.
+| Command            | Action                         |
+| :----------------- | :----------------------------- |
+| `pnpm install`     | Install dependencies           |
+| `pnpm dev`         | Dev server at `localhost:4321` |
+| `pnpm build`       | Build to `./dist/`             |
+| `pnpm preview`     | Preview prod build locally     |
+| `pnpm astro check` | TypeScript + Astro diagnostics |
 
 ## Assets
 
-Every app icon derives from `public/new-icon.png`:
-
 ```bash
-node scripts/gen-icons.cjs   # favicons + apple-touch + android-chrome
-node scripts/gen-site-mark.cjs  # public/assets/mark.png (transparent mask)
-node scripts/gen-og.cjs      # public/og-banner.png
-node scripts/gen-avatar.cjs  # public/assets/avatar.png
+node scripts/gen-logos.mjs      # src/data/brands.ts from Simple Icons
+node scripts/gen-icons.cjs      # favicons + apple-touch + android-chrome
+node scripts/gen-site-mark.cjs  # public/assets/mark.png
+node scripts/gen-og.cjs         # public/og-banner.png from the mark
+node scripts/gen-avatar.cjs     # public/assets/avatar.png
 ```
-
-## Theme + lang
-
-Persisted in `localStorage` under `portfolio.prefs`. `Layout.astro` reads it
-before first paint to avoid a flash.
 
 ## Deploy
 
-Static output. Drop `dist/` on Vercel / Netlify / Cloudflare Pages.
-
-## Professional content
-
-English is served at `/` and Spanish at `/es/`, with matching services routes, canonical URLs and hreflang links. The route determines the language; stored preferences retain the theme. Featured cases are Oruka, GymRat+, Frontier Lab10 and creagent. CV downloads are available in both languages.
-
-The approved content update and validation plan are recorded under `docs/superpowers/`. Private source repositories stay private.
+Static output. Drop `dist/` on Vercel, Netlify or Cloudflare Pages.

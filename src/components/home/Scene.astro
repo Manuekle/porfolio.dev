@@ -1,0 +1,22 @@
+---
+/* The visual of a work card: a live part of the app, ported from its own
+   source (components/home/apps). */
+import type { WorkCard } from "../../data/home";
+import type { Lang } from "../../data/portfolio";
+import OrukaPhone from "./apps/OrukaPhone.astro";
+import CueMac from "./apps/CueMac.astro";
+import FocusDemo from "./apps/FocusDemo.astro";
+import KanaFilm from "./apps/KanaFilm.astro";
+
+interface Props {
+  card: WorkCard;
+  lang: Lang;
+}
+const { card, lang } = Astro.props;
+const LIVE = { oruka: OrukaPhone, cue: CueMac, focus: FocusDemo, kanago: KanaFilm } as const;
+const Live = LIVE[card.id as keyof typeof LIVE];
+---
+
+<div class:list={["scene", `scene-${card.layout}`]} aria-hidden="true">
+  {Live && <Live lang={lang} />}
+</div>

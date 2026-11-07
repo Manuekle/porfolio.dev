@@ -475,6 +475,17 @@ export type Hackathon = {
 
 export const HACKATHONS: Hackathon[] = [
   {
+    id: "meta",
+    name: "Meta Global AI Developer Hackathon 2026",
+    org: "Meta",
+    logo: "meta",
+    date: { es: "Octubre 2026", en: "October 2026" },
+    note: {
+      es: "Focus: editor de video con IA que sigue al sujeto cuadro a cuadro con Muse Spark, Muse Image y SAM 3.1.",
+      en: "Focus: an AI video editor that tracks the subject frame by frame with Muse Spark, Muse Image and SAM 3.1.",
+    },
+  },
+  {
     id: "frontier-lab10",
     name: "Frontier Lab10",
     org: "Frontier",
@@ -529,15 +540,6 @@ export const HACKATHONS: Hackathon[] = [
 
 /* --------------------------------------------------------------- projects */
 
-export type ProjectShot = {
-  src: string;
-  fullSrc?: string;
-  width: number;
-  height: number;
-  caption: Bilingual;
-};
-
-export const FEATURED_PROJECT_IDS = ["oruka", "gymrat", "kanago", "cetamed"];
 
 export type Project = {
   id: string;
@@ -545,8 +547,6 @@ export type Project = {
   year: string;
   /** Optional path to a real logo file, e.g. "/assets/logos/projects/steve.svg". */
   logo?: string;
-  /** Responsive previews with separate original images for the viewer. */
-  shots?: ProjectShot[];
   tagline: Bilingual;
   blurb: Bilingual;
   decision?: Bilingual;
@@ -562,7 +562,7 @@ export const PROJECTS: Project[] = [
     "id": "oruka",
     "name": "Oruka",
     "year": "2026",
-    "logo": "/assets/logos/projects/oruka.svg",
+    "logo": "/assets/works/oruka/icon.webp",
     "tagline": {
       "en": "AI customer support and sales · Private beta",
       "es": "Atención al cliente y ventas con IA · Beta privada"
@@ -586,37 +586,13 @@ export const PROJECTS: Project[] = [
       "docker",
       "whatsapp"
     ],
-    "liveUrl": "https://www.oruka.si/en",
-    "shots": [
-      {
-        "src": "/assets/screenshots/2026-10-12/oruka-web-thumb.webp",
-        "fullSrc": "/assets/screenshots/2026-10-12/oruka-web.jpg",
-        "width": 640,
-        "height": 360,
-        "caption": {
-          "en": "Public launch website",
-          "es": "Web pública de lanzamiento"
-        }
-      }
-    ]
+    "liveUrl": "https://www.oruka.si/en"
   },
   {
     "id": "gymrat",
     "name": "GymRat+",
     "year": "2024 —",
-    "logo": "/assets/logos/projects/gymrat.png",
-    "shots": [
-      {
-        "src": "/assets/screenshots/2026-10-12/gymrat-web-thumb.webp",
-        "fullSrc": "/assets/screenshots/2026-10-12/gymrat-web.jpg",
-        "width": 640,
-        "height": 360,
-        "caption": {
-          "en": "Public product website",
-          "es": "Web pública del producto"
-        }
-      }
-    ],
+    "logo": "/assets/works/gymrat/icon.webp",
     "tagline": {
       "en": "Fitness and coaching platform · 60 users",
       "es": "Plataforma de entrenamiento y coaching · 60 usuarios"
@@ -640,6 +616,81 @@ export const PROJECTS: Project[] = [
       "mercadopago"
     ],
     "liveUrl": "https://gymratplus.com"
+  },
+  {
+    "id": "cue",
+    "name": "Cue",
+    "year": "2026",
+    "logo": "/assets/works/cue/icon.png",
+    "tagline": {
+      "en": "Teleprompter for Mac, iPhone and iPad",
+      "es": "Teleprompter para Mac, iPhone y iPad"
+    },
+    "blurb": {
+      "en": "Built a native teleprompter that lives under the MacBook notch, starts itself when any app turns on the camera and stays out of screen sharing.",
+      "es": "Construí un teleprompter nativo que vive bajo el notch del MacBook, arranca solo cuando una app enciende la cámara y no aparece al compartir pantalla."
+    },
+    "decision": {
+      "en": "Added a call Copilot: WhisperKit transcribes both sides on the Mac, and Apple Intelligence, Ollama or a cloud model with the user's own key suggests the next reply.",
+      "es": "Añadí un Copilot para llamadas: WhisperKit transcribe ambos lados en el Mac, y Apple Intelligence, Ollama o un modelo en la nube con la clave del usuario sugiere la siguiente respuesta."
+    },
+    "result": {
+      "en": "Public website and Mac download. Previously named Pronter.",
+      "es": "Web pública y descarga para Mac. Antes se llamó Pronter."
+    },
+    "stack": ["swift", "ollama", "openai"],
+    "liveUrl": "https://manuekle.github.io/cue/",
+    "sourceUrl": "https://github.com/Manuekle/cue"
+  },
+  {
+    "id": "focus",
+    "name": "Focus",
+    "year": "2026",
+    "logo": "/assets/works/focus/icon.webp",
+    "tagline": {
+      "en": "AI video and animation studio · Meta hackathon",
+      "es": "Estudio de video y animación con IA · Hackathon de Meta"
+    },
+    "blurb": {
+      "en": "Built a local-first studio where one sentence edits a video: Muse Spark plans the edit, SAM 3.1 tracks the subject frame by frame and a deterministic compositor renders the MP4.",
+      "es": "Construí un estudio local donde una frase edita un video: Muse Spark planifica la edición, SAM 3.1 sigue al sujeto cuadro a cuadro y un compositor determinista renderiza el MP4."
+    },
+    "decision": {
+      "en": "Kept it as one Next.js 16 process with state on local disk. Follow-up edits return a Zod-validated settings patch and re-render from saved masks without another SAM pass.",
+      "es": "Lo mantuve como un solo proceso de Next.js 16 con estado en disco local. Las ediciones posteriores devuelven un parche de ajustes validado con Zod y se re-renderizan desde máscaras guardadas, sin otra pasada de SAM."
+    },
+    "result": {
+      "en": "Built during the Meta Global AI Developer Hackathon 2026. Public repository and live demo.",
+      "es": "Construido durante el Meta Global AI Developer Hackathon 2026. Repositorio y demo públicos."
+    },
+    "stack": ["nextdotjs", "typescript", "meta"],
+    "liveUrl": "https://focusmeta.up.railway.app/",
+    "sourceUrl": "https://github.com/Manuekle/focus"
+  },
+  {
+    "id": "shift",
+    "name": "Shift",
+    "year": "2026",
+    "logo": "/assets/works/shift/icon.svg",
+    "tagline": {
+      "en": "DJ workstation that runs on your machine",
+      "es": "Estación de DJ que corre en tu equipo"
+    },
+    "blurb": {
+      "en": "Built a two-deck DJ workstation in the browser with Demucs stem separation, tempo, key and loudness analysis, and automatic transition planning.",
+      "es": "Construí una estación de DJ de dos decks en el navegador con separación de stems con Demucs, análisis de tempo, tonalidad y volumen, y planificación automática de transiciones."
+    },
+    "decision": {
+      "en": "Audio runs on the Web Audio API, and a local Ollama model gives a second opinion on each transition. No accounts, analytics or cloud services.",
+      "es": "El audio corre sobre Web Audio API y un modelo local en Ollama da una segunda opinión sobre cada transición. Sin cuentas, analítica ni servicios en la nube."
+    },
+    "result": {
+      "en": "Open source under MIT. Runs with Docker Compose and as a Mac app.",
+      "es": "Código abierto con licencia MIT. Corre con Docker Compose y como app para Mac."
+    },
+    "stack": ["nextdotjs", "typescript", "ollama", "docker"],
+    "liveUrl": "https://manuekle.github.io/shift/",
+    "sourceUrl": "https://github.com/Manuekle/shift"
   },
   {
     "id": "blank",
@@ -727,7 +778,7 @@ export const PROJECTS: Project[] = [
     "id": "kanago",
     "name": "KanaGO!",
     "year": "2026",
-    "logo": "/assets/logos/projects/kanago.svg",
+    "logo": "/assets/works/kanago/icon.webp",
     "tagline": {
       "en": "Native Japanese learning for iPhone",
       "es": "Aprendizaje de japonés nativo para iPhone"
@@ -748,24 +799,13 @@ export const PROJECTS: Project[] = [
       "swift"
     ],
     "liveUrl": "https://kanago.vercel.app/",
-    "sourceUrl": "https://github.com/Manuekle/kanago/tree/ios",
-    "shots": [
-      {
-        "src": "/assets/screenshots/2026-10-12/kanago-web-thumb.webp",
-        "fullSrc": "/assets/screenshots/2026-10-12/kanago-web.jpg",
-        "width": 640,
-        "height": 360,
-        "caption": {
-          "en": "Bilingual launch website",
-          "es": "Web bilingüe de lanzamiento"
-        }
-      }
-    ]
+    "sourceUrl": "https://github.com/Manuekle/kanago/tree/ios"
   },
   {
     "id": "cetamed",
     "name": "Cetamed",
     "year": "2026",
+    "logo": "/assets/works/cetamed/icon.webp",
     "tagline": {
       "en": "Hospital operations prototype",
       "es": "Prototipo de operaciones hospitalarias"
@@ -788,19 +828,32 @@ export const PROJECTS: Project[] = [
       "sqlite",
       "openai"
     ],
-    "liveUrl": "https://cetamed.vercel.app",
-    "shots": [
-      {
-        "src": "/assets/screenshots/2026-10-12/cetamed-web-thumb.webp",
-        "fullSrc": "/assets/screenshots/2026-10-12/cetamed-web.jpg",
-        "width": 640,
-        "height": 360,
-        "caption": {
-          "en": "Public prototype website",
-          "es": "Web pública del prototipo"
-        }
-      }
-    ]
+    "liveUrl": "https://cetamed.vercel.app"
+  },
+  {
+    "id": "blindem",
+    "name": "Blindem",
+    "year": "2026",
+    "logo": "/assets/works/blindem/icon.webp",
+    "tagline": {
+      "en": "Colombian payroll settlements, explained",
+      "es": "Liquidaciones laborales en Colombia, explicadas"
+    },
+    "blurb": {
+      "en": "Built a labor management app that calculates severance, interest, bonus, vacation, indemnity and contributions with each year's legal parameters, and exports to Excel.",
+      "es": "Construí una app de gestión laboral que calcula cesantías, intereses, prima, vacaciones, indemnización y aportes con la vigencia legal de cada año, y exporta a Excel."
+    },
+    "decision": {
+      "en": "Every saved settlement is an immutable snapshot. A local Ollama assistant explains each figure and answers questions citing the law.",
+      "es": "Cada liquidación guardada es un registro inmutable. Un asistente local con Ollama explica cada cifra y responde preguntas citando la norma."
+    },
+    "result": {
+      "en": "Public repository and live demo. Laravel 12, PostgreSQL and 101 PHPUnit tests.",
+      "es": "Repositorio y demo públicos. Laravel 12, PostgreSQL y 101 pruebas PHPUnit."
+    },
+    "stack": ["postgresql", "docker", "ollama"],
+    "liveUrl": "https://blindem-liquidaciones.onrender.com",
+    "sourceUrl": "https://github.com/Manuekle/blindem-liquidaciones"
   },
   {
     "id": "forge",
