@@ -1,6 +1,5 @@
 ---
 /* Hidden OG-banner design stage. Not linked anywhere, noindex, not in sitemap. */
-import "../styles/global.css";
 ---
 
 <!doctype html>
@@ -11,6 +10,19 @@ import "../styles/global.css";
     <meta name="robots" content="noindex, nofollow" />
     <title>OG Banner — hidden stage</title>
     <style>
+      @font-face {
+        font-family: "Cooper";
+        src: url("/assets/font/cooper/CooperLtBT_400-s.p.0ayak-z9t8l45.woff2") format("woff2");
+        font-weight: 400;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "InterVar";
+        src: url("/assets/font/inter/InterVariable.woff2") format("woff2");
+        font-weight: 100 900;
+        font-display: swap;
+      }
+      * { box-sizing: border-box; }
       body {
         min-height: 100vh;
         display: flex;

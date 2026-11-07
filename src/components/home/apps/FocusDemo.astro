@@ -1,0 +1,67 @@
+---
+/* Focus's Rotoscope demo, ported from the app:
+   - markup + CSS: focus/app/_editor/flipbook-demo.tsx and flipbook-demo.module.css (dark theme tokens
+     from styles/focus-theme.css: --foreground #f5f5f5, --muted-foreground #a3a3a3, --accent-foreground #b7c7ff)
+   - media:        focus/public/demo/rotoscope, the real run "reze dance" (148/148 frames approved)
+   - doodle font:  Porkys (focus/public/fonts/porkys)
+   The copy is the app's own, which is English only. The play and sound controls are drawn but
+   inert: the whole card is a link. Rights: see focus/README.md, "Rights and attribution". */
+const R = "/assets/works/focus/rotoscope";
+const PLAY =
+  '<path d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"/>';
+const MUTE =
+  '<path d="M18 14.8135V9.18646C18 6.04126 18 4.46866 17.074 4.0773C16.1481 3.68593 15.0583 4.79793 12.8787 7.02192C11.7499 8.17365 11.1059 8.42869 9.5 8.42869C8.3879 8.42869 7.02749 8.28131 6.33706 9.33566C6 9.85038 6 10.5669 6 12C6 13.4331 6 14.1496 6.33706 14.6643C7.02749 15.7187 8.3879 15.5713 9.5 15.5713C11.106 15.5713 11.7499 15.8264 12.8787 16.9781C15.0583 19.2021 16.1481 20.3141 17.074 19.9227C18 19.5313 18 17.9587 18 14.8135Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>';
+---
+
+<figure class="fd" aria-hidden="true" data-focus-demo>
+  <div class="fd-scene">
+    <div class="fd-reference">
+      <div class="fd-photo">
+        <span class="fd-paper"><img src={`${R}/character.jpg`} alt="" width="512" height="768" loading="lazy" /></span>
+      </div>
+      <span class="fd-label">It starts with a character.</span>
+    </div>
+    <div class="fd-reference">
+      <div class="fd-clip">
+        <video data-reference src={`${R}/reference.mp4`} poster={`${R}/reference.jpg`} muted loop playsinline preload="metadata"></video>
+      </div>
+      <span class="fd-label">And a video to follow.</span>
+    </div>
+    <div class="fd-doodle">
+      <span>comes alive</span>
+      <svg width="72" height="48" viewBox="0 0 72 48" fill="none"><path d="M5 9C16 35 48 39 65 17M51 19l15-4-1 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </div>
+    <div class="fd-result">
+      <div class="fd-player">
+        <video data-result src={`${R}/result.mp4`} poster={`${R}/result.jpg`} muted loop playsinline preload="metadata"></video>
+        <span class="fd-control fd-play"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" set:html={PLAY} /></span>
+        <span class="fd-control fd-sound"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" set:html={MUTE} /></span>
+      </div>
+    </div>
+  </div>
+</figure>
+
+<script>
+  /* flipbook-demo.tsx: the result leads (and plays only on screen), the
+     reference follows it so the two never drift more than 0.12 s apart. */
+  const DRIFT_SECONDS = 0.12;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  document.querySelectorAll<HTMLElement>("[data-focus-demo]").forEach((demo) => {
+    const result = demo.querySelector<HTMLVideoElement>("[data-result]")!;
+    const reference = demo.querySelector<HTMLVideoElement>("[data-reference]")!;
+    const follow = (action: "play" | "pause" | "seek") => {
+      if (action === "pause") return reference.pause();
+      if (Math.abs(reference.currentTime - result.currentTime) > DRIFT_SECONDS) reference.currentTime = result.currentTime;
+      if (action === "play") reference.play().catch(() => undefined);
+    };
+    result.addEventListener("play", () => follow("play"));
+    result.addEventListener("pause", () => follow("pause"));
+    result.addEventListener("seeked", () => follow("seek"));
+    result.addEventListener("timeupdate", () => follow("seek"));
+    new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) result.pause();
+      else if (!reduce) result.play().catch(() => undefined);
+    }).observe(result);
+  });
+</script>

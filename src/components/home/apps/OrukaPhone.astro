@@ -1,0 +1,232 @@
+---
+/* Oruka's Instagram comment-automation preview, ported from the app:
+   - screens: oruka/app/(app)/automations/_components/instagram-phone-preview.tsx (CommentScreen,
+              then DmScreen: the comment that triggers the automation and the chat it opens)
+   - glyphs:  oruka/app/(app)/automations/_components/instagram-glyphs.tsx
+   - frame:   oruka/components/phone-frame.tsx (PhoneFrame, PhoneStatusBar) + public/frames/iphone17.png
+   - copy:    oruka/lib/i18n/dictionary-product-{es,en}.ts (igComments.*), the automation's defaults
+   Sizes are the app's own points on a 402pt-wide screen, scaled to the frame. */
+import type { Lang } from "../../../data/portfolio";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+const COPY = {
+  es: {
+    businessChat: "Chat de empresa",
+    accountKind: "Cuenta de Instagram",
+    viewProfile: "Ver perfil",
+    context: "{account} te escribió por un comentario que hiciste en su publicación.",
+    seePost: "Ver publicación",
+    message: "Mensaje…",
+    opening: "¡Hola! Gracias por comentar. Tocá el botón y te paso la demo.",
+    button: "Quiero la demo",
+    follow: "Para recibirla, primero seguinos y después tocá el botón.",
+    followButton: "Ya los sigo",
+    final: "¡Acá la tenés! https://",
+    posts: "Publicaciones",
+    caption: "Comenta {keyword}",
+    comments: "Comentarios",
+    user: "tu.cliente",
+    time: "1 min",
+    reply: "Responder",
+    addComment: "Agrega un comentario para {account}",
+    publicReply: "¡Listo! Te escribí por mensaje privado.",
+  },
+  en: {
+    businessChat: "Business chat",
+    accountKind: "Instagram account",
+    viewProfile: "View profile",
+    context: "{account} messaged you about a comment you made on their post.",
+    seePost: "See post",
+    message: "Message…",
+    opening: "Hi! Thanks for commenting. Tap the button and I'll send you the demo.",
+    button: "Send me the demo",
+    follow: "To get it, follow us first and then tap the button.",
+    followButton: "I follow you now",
+    final: "Here it is! https://",
+    posts: "Posts",
+    caption: "Comment {keyword}",
+    comments: "Comments",
+    user: "your.customer",
+    time: "1m",
+    reply: "Reply",
+    addComment: "Add a comment for {account}",
+    publicReply: "Done! I sent you a private message.",
+  },
+}[lang];
+
+/* The account as the commenter sees it; the business logo stands in for the
+   profile picture, as the app does when the account has none. */
+const account = { handle: "oruka", picture: "/assets/works/oruka/icon.webp" };
+const [contextBefore, contextAfter] = COPY.context.split("{account}");
+const [finalText, finalLink] = COPY.final.split(/(https?:\/\/\S*)/);
+/* The automation's defaults: keyword DEMO, the first public reply. */
+const KEYWORD = "DEMO";
+const REACTIONS = ["❤️", "🙌", "🔥", "👏", "😢", "😍", "😮", "😂"];
+/* Instagram's grey default avatar (DefaultAvatar). */
+const defaultAvatar = (size: number) =>
+  `<span class="ig-default" style="width:${size}px;height:${size}px"><svg width="${size}" height="${size}" viewBox="0 0 40 40" fill="#c7c9cc"><circle cx="20" cy="15.5" r="7"/><ellipse cx="20" cy="37" rx="14" ry="11"/></svg></span>`;
+
+/* Instagram's own iOS glyphs on a 24pt grid (instagram-glyphs.tsx). */
+const G = {
+  back: '<path fill="currentColor" stroke="none" d="M6.293 11.312C5.902 11.702 5.902 12.336 6.293 12.726C6.327 12.761 6.364 12.792 6.402 12.82C6.428 12.855 6.458 12.889 6.49 12.921L13.293 19.726C13.683 20.117 14.316 20.117 14.707 19.726C15.098 19.336 15.098 18.703 14.707 18.312L8.415 12.018L14.976 5.457C15.367 5.067 15.367 4.433 14.976 4.043C14.586 3.652 13.952 3.652 13.562 4.043L6.293 11.312Z"/>',
+  call: '<path d="M7.4 3.5H5.3a1.9 1.9 0 0 0-1.9 2.05C3.9 13.2 10.8 20.1 18.45 20.6a1.9 1.9 0 0 0 2.05-1.9v-2.1a1.9 1.9 0 0 0-1.42-1.84l-2.6-.68a1.9 1.9 0 0 0-1.86.5l-1.1 1.1a13.2 13.2 0 0 1-5.6-5.6l1.1-1.1a1.9 1.9 0 0 0 .5-1.86l-.68-2.6A1.9 1.9 0 0 0 7.4 3.5Z"/>',
+  video: '<rect x="2.5" y="5.5" width="13.5" height="13" rx="3"/><path d="m16 10.2 4.3-2.6a.8.8 0 0 1 1.2.7v7.4a.8.8 0 0 1-1.2.7L16 13.8"/>',
+  tag: '<path d="M5 3h6a2 2 0 0 1 1.41.59l8 8a2 2 0 0 1 0 2.82l-6 6a2 2 0 0 1-2.82 0l-8-8A2 2 0 0 1 3 11V5a2 2 0 0 1 2-2Z"/><circle cx="7.6" cy="7.6" r="1.1" fill="currentColor" stroke="none"/>',
+  camera: '<path fill="currentColor" stroke="none" fill-rule="evenodd" clip-rule="evenodd" d="M9.932 2C9.324 2 8.849 2.249 8.496 2.53C8.18 2.782 7.915 3.1 7.722 3.33L7.698 3.359C7.475 3.627 7.331 3.793 7.19 3.905C7.072 3.999 7.023 4 7 4L6.942 4C6.534 4 6.255 4 6.01 4.024C3.636 4.258 1.758 6.136 1.524 8.51C1.5 8.755 1.5 9.034 1.5 9.442L1.5 14.604C1.5 15.706 1.5 16.594 1.56 17.314C1.621 18.055 1.751 18.705 2.063 19.305C2.537 20.218 3.282 20.963 4.195 21.437C4.795 21.749 5.445 21.879 6.186 21.94C6.906 22 7.794 22 8.896 22H15.104C16.206 22 17.094 22 17.814 21.94C18.555 21.879 19.205 21.749 19.805 21.437C20.718 20.963 21.463 20.218 21.937 19.305C22.249 18.705 22.379 18.055 22.44 17.314C22.5 16.594 22.5 15.706 22.5 14.604L22.5 9.442C22.5 9.034 22.5 8.756 22.476 8.51C22.242 6.136 20.364 4.258 17.99 4.024C17.745 4 17.466 4 17.058 4L16.997 4C16.99 3.996 16.963 3.983 16.914 3.94C16.799 3.837 16.68 3.682 16.482 3.411L16.46 3.38C16.293 3.151 16.056 2.825 15.762 2.565C15.429 2.269 14.962 2 14.349 2H9.932ZM6.5 12.5C6.5 15.538 8.962 18 12 18C15.038 18 17.5 15.538 17.5 12.5C17.5 9.462 15.038 7 12 7C8.962 7 6.5 9.462 6.5 12.5ZM8.5 12.5C8.5 10.567 10.067 9 12 9C13.933 9 15.5 10.567 15.5 12.5C15.5 14.433 13.933 16 12 16C10.067 16 8.5 14.433 8.5 12.5Z"/>',
+  mic: '<rect x="8.75" y="2.75" width="6.5" height="11.5" rx="3.25"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5v3.75M8.75 21.25h6.5"/>',
+  gallery: '<path fill="currentColor" stroke="none" fill-rule="evenodd" clip-rule="evenodd" d="M9.396 2H14.604C15.706 2 16.594 2 17.314 2.06C18.055 2.121 18.705 2.251 19.305 2.563C20.218 3.037 20.963 3.782 21.437 4.695C21.749 5.295 21.879 5.945 21.94 6.686C22 7.406 22 8.294 22 9.396V14.604C22 15.706 22 16.594 21.94 17.314C21.879 18.055 21.749 18.705 21.437 19.305C20.963 20.218 20.218 20.963 19.305 21.437C18.705 21.749 18.055 21.879 17.314 21.94C16.594 22 15.706 22 14.604 22H9.396C8.294 22 7.406 22 6.686 21.94C5.945 21.879 5.295 21.749 4.695 21.437C3.782 20.963 3.037 20.218 2.563 19.305C2.251 18.705 2.121 18.055 2.06 17.314C2 16.594 2 15.706 2 14.604V9.396C2 8.294 2 7.406 2.06 6.686C2.121 5.945 2.251 5.295 2.563 4.695C3.037 3.782 3.782 3.037 4.695 2.563C5.295 2.251 5.945 2.121 6.686 2.06C7.406 2 8.294 2 9.396 2ZM6.852 4.053C6.237 4.104 5.884 4.199 5.617 4.338C5.069 4.622 4.622 5.069 4.338 5.617C4.199 5.884 4.104 6.237 4.053 6.852C4.001 7.479 4 8.284 4 9.44V14.56C4 15.716 4.001 16.521 4.053 17.148C4.104 17.763 4.199 18.116 4.338 18.383C4.622 18.931 5.069 19.378 5.617 19.662C5.884 19.801 6.237 19.896 6.852 19.947C7.479 19.999 8.284 20 9.44 20H14.56C15.716 20 16.521 19.999 17.148 19.947C17.763 19.896 18.116 19.801 18.383 19.662C18.931 19.378 19.378 18.931 19.662 18.383C19.801 18.116 19.896 17.763 19.947 17.148C19.999 16.521 20 15.716 20 14.56V9.44C20 8.284 19.999 7.479 19.947 6.852C19.896 6.237 19.801 5.884 19.662 5.617C19.378 5.069 18.931 4.622 18.383 4.338C18.116 4.199 17.763 4.104 17.148 4.053C16.521 4.001 15.716 4 14.56 4H9.44C8.284 4 7.479 4.001 6.852 4.053Z"/><path fill="currentColor" stroke="none" fill-rule="evenodd" clip-rule="evenodd" d="M17 11C17.265 11 17.52 11.105 17.707 11.293L21.914 15.5L20.5 16.914L17 13.414L11.707 18.707C11.511 18.903 11.243 19.009 10.967 18.999C10.69 18.99 10.43 18.867 10.247 18.659L7.458 15.471L4.007 18.993C3.621 19.387 2.987 19.394 2.593 19.007C2.199 18.621 2.192 17.987 2.579 17.593L6.786 13.3C6.981 13.101 7.25 12.993 7.528 13C7.807 13.008 8.069 13.132 8.253 13.341L11.049 16.537L16.293 11.293C16.481 11.105 16.735 11 17 11Z"/><path fill="currentColor" stroke="none" d="M9 7.5C9 8.328 8.328 9 7.5 9C6.672 9 6 8.328 6 7.5C6 6.672 6.672 6 7.5 6C8.328 6 9 6.672 9 7.5Z"/>',
+  chatDots: '<path d="M6.5 3.5h11a3.5 3.5 0 0 1 3.5 3.5v7.5a3.5 3.5 0 0 1-3.5 3.5h-3.9L12 20.6 10.4 18H6.5A3.5 3.5 0 0 1 3 14.5V7a3.5 3.5 0 0 1 3.5-3.5Z"/><g fill="currentColor" stroke="none"><circle cx="8" cy="10.75" r="1.2"/><circle cx="12" cy="10.75" r="1.2"/><circle cx="16" cy="10.75" r="1.2"/></g>',
+  addCircle: '<circle cx="12" cy="12" r="9.25"/><path d="M12 7.5v9M7.5 12h9"/>',
+  heart: '<path fill="currentColor" stroke="none" d="M11.951 21.003C11.691 21.003 11.431 20.943 11.211 20.773C8.551 18.833 5.781 16.693 3.731 13.753C3.011 12.713 2.041 11.103 2.001 9.063C1.951 6.613 3.341 4.363 5.461 3.443C7.591 2.523 10.121 3.063 11.911 4.823L11.991 4.903C12.071 4.823 12.151 4.743 12.231 4.673C14.231 2.853 17.021 2.493 19.151 3.773C21.361 5.103 22.441 7.843 21.801 10.453C21.231 12.743 19.831 14.483 18.531 15.893C16.751 17.813 14.671 19.413 12.871 20.723C12.651 20.883 12.301 21.013 11.941 21.013L11.951 21.003ZM7.621 5.003C7.151 5.003 6.691 5.093 6.261 5.283C4.881 5.883 3.971 7.383 4.001 9.023C4.021 10.173 4.451 11.283 5.371 12.613C7.141 15.163 9.601 17.113 12.001 18.883C13.721 17.623 15.511 16.223 17.071 14.533C18.251 13.253 19.411 11.813 19.871 9.973C20.311 8.213 19.591 6.373 18.131 5.493C16.741 4.653 14.951 4.913 13.581 6.163C13.391 6.333 13.211 6.533 13.041 6.723L12.051 7.763L10.511 6.263C9.681 5.453 8.631 5.013 7.611 5.013L7.621 5.003Z"/>',
+  send: '<path fill="currentColor" stroke="none" fill-rule="evenodd" clip-rule="evenodd" d="M2.324 5.095C1.64 4.338 2.101 3 3.245 3L21 3C21.355 3 21.683 3.188 21.863 3.494C22.042 3.8 22.046 4.178 21.873 4.488L12.995 20.362C12.446 21.344 11.026 21.144 10.719 20.105L8.205 11.598L2.324 5.095ZM10.278 11.558L12.128 17.816L18.304 6.772L10.278 11.558ZM17.37 5L4.935 5L9.291 9.818L17.37 5Z"/>',
+  menu: '<path d="M3.5 8.5h17M3.5 15.5h12"/>',
+  gif: '<rect x="3" y="3" width="18" height="18" rx="4"/><text x="12" y="15.4" text-anchor="middle" font-size="8.2" font-weight="800" fill="currentColor" stroke="none" font-family="system-ui, sans-serif">GIF</text>',
+} as const;
+/* PhoneStatusBar: Apple's 9:41, cellular, wifi and battery (phone-frame.tsx). */
+const STATUS = `<span>9:41</span>
+      <span class="ig-status-icons">
+        <svg width="17.6" height="12" viewBox="0 0 20.1074 13.5254" fill="currentColor" fill-opacity="0.85"><path d="M18.2617 13.5156C19.2773 13.5156 20.1074 12.6953 20.1074 11.6602L20.1074 1.85547C20.1074 0.820312 19.2773 0 18.2617 0C17.2363 0 16.416 0.820312 16.416 1.85547L16.416 11.6602C16.416 12.6953 17.2363 13.5156 18.2617 13.5156Z" /><path d="M12.793 13.5156C13.8086 13.5156 14.6387 12.6953 14.6387 11.6602L14.6387 4.90234C14.6387 3.87695 13.8086 3.04688 12.793 3.04688C11.7676 3.04688 10.9375 3.87695 10.9375 4.90234L10.9375 11.6602C10.9375 12.7051 11.7676 13.5156 12.793 13.5156Z" /><path d="M7.32422 13.5156C8.33984 13.5156 9.16992 12.6953 9.16992 11.6602L9.16992 7.68555C9.16992 6.66016 8.33984 5.83008 7.32422 5.83008C6.29883 5.83008 5.46875 6.66016 5.46875 7.68555L5.46875 11.6602C5.46875 12.6855 6.29883 13.5156 7.32422 13.5156Z" /><path d="M1.85547 13.5156C2.87109 13.5156 3.69141 12.6953 3.69141 11.6602L3.69141 10.0879C3.69141 9.07227 2.87109 8.25195 1.85547 8.25195C0.830078 8.25195 0 9.07227 0 10.0879L0 11.6602C0 12.6953 0.830078 13.5156 1.85547 13.5156Z" /></svg>
+        <svg width="16.3" height="12.2" viewBox="0 0 17.1044 12.8027" fill="currentColor" fill-opacity="0.85"><path d="M0.383243 4.93164C0.832462 5.39062 1.51606 5.3125 2.08246 4.80469C3.86957 3.21289 6.08637 2.39258 8.55707 2.39258C11.018 2.39258 13.2543 3.23242 15.0317 4.80469C15.5883 5.3125 16.2719 5.37109 16.7309 4.92188C17.1899 4.45312 17.2485 3.75 16.7797 3.26172C14.8852 1.34766 11.7993 0 8.55707 0C5.31488 0 2.21918 1.35742 0.334415 3.27148C-0.144101 3.75-0.0855069 4.45312 0.383243 4.93164Z" /><path d="M3.49848 8.07617C4.00629 8.57422 4.66059 8.50586 5.23676 8.03711C6.1352 7.33398 7.3266 6.85547 8.55707 6.86523C9.78754 6.85547 10.9789 7.34375 11.8774 8.04688C12.4438 8.50586 13.1274 8.55469 13.6254 8.05664C14.1137 7.55859 14.1918 6.80664 13.6743 6.33789C12.4438 5.24414 10.6079 4.46289 8.55707 4.46289C6.49652 4.46289 4.66059 5.24414 3.43988 6.33789C3.00043 6.73828 2.88324 7.45117 3.49848 8.07617Z" /><path d="M7.6684 12.207C8.24457 12.7539 8.84027 12.7539 9.42621 12.207L10.4125 11.2695C10.9887 10.7129 11.1059 10.0195 10.4516 9.54102C9.93402 9.17969 9.27973 8.93555 8.55707 8.93555C7.81488 8.93555 7.17035 9.17969 6.66254 9.55078C6.00824 10.0195 6.1352 10.7227 6.71137 11.2695Z" /></svg>
+        <svg width="26.2" height="12" viewBox="0 0 1272 585" fill="currentColor" fill-opacity="0.85"><rect width="1155" height="585" rx="205" /><path d="M1192 196C1236 202 1272 253 1272 293C1272 333 1236 384 1192 390Z" /></svg>
+      </span>`;
+const glyph = (name: keyof typeof G, size: number, color = "#f5f5f5") =>
+  `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:${color};flex-shrink:0">${G[name]}</svg>`;
+---
+
+<div class="ig-pair" aria-hidden="true">
+<div class="ig-phone">
+  <div class="ig-screen">
+    <!-- CommentScreen: the post, dimmed, with the comments sheet slid up over it -->
+    <div class="ig-surface ig-comment">
+      <div class="ig-post-head">
+        <span class="ig-post-back"><Fragment set:html={glyph("back", 28)} /></span>
+        <div class="ig-post-title">
+          <p>{COPY.posts}</p>
+          <p>{account.handle}</p>
+        </div>
+      </div>
+      <div class="ig-post-owner">
+        <img class="ig-av" src={account.picture} alt="" width="32" height="32" />
+        <p>{account.handle}</p>
+        <Fragment set:html={glyph("menu", 24)} />
+      </div>
+      <div class="ig-post"><p>{COPY.caption.replace("{keyword}", KEYWORD)}</p></div>
+      <div class="ig-scrim"></div>
+      <div class="ig-sheet">
+        <span class="ig-grabber"></span>
+        <div class="ig-sheet-head">
+          <p>{COPY.comments}</p>
+          <span><Fragment set:html={glyph("send", 25)} /></span>
+        </div>
+        <div class="ig-comments">
+          <div class="ig-c ig-arrive" style="--n:0">
+            <Fragment set:html={defaultAvatar(36)} />
+            <div class="ig-c-body">
+              <p class="ig-c-meta"><b>{COPY.user}</b><span> {COPY.time}</span></p>
+              <p class="ig-c-text">{KEYWORD}</p>
+              <p class="ig-c-reply">{COPY.reply}</p>
+            </div>
+            <span class="ig-c-heart"><Fragment set:html={glyph("heart", 19, "#a8abb3")} /></span>
+          </div>
+          <div class="ig-c ig-c-is-reply ig-arrive" style="--n:1">
+            <img class="ig-av" src={account.picture} alt="" width="26" height="26" />
+            <div class="ig-c-body">
+              <p class="ig-c-meta"><b>{account.handle}</b><span> {COPY.time}</span></p>
+              <p class="ig-c-text">{COPY.publicReply}</p>
+              <p class="ig-c-reply">{COPY.reply}</p>
+            </div>
+            <span class="ig-c-heart"><Fragment set:html={glyph("heart", 19, "#a8abb3")} /></span>
+          </div>
+        </div>
+        <div class="ig-reactions">{REACTIONS.map((e) => <span>{e}</span>)}</div>
+        <div class="ig-add">
+          <Fragment set:html={defaultAvatar(42)} />
+          <div class="ig-add-field">
+            <span>{COPY.addComment.replace("{account}", account.handle)}</span>
+            <Fragment set:html={glyph("gallery", 24)} />
+            <Fragment set:html={glyph("gif", 24)} />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ig-status" set:html={STATUS} />
+  </div>
+  <img class="ig-frame" src="/assets/works/oruka/iphone17.webp" alt="" width="754" height="1639" loading="lazy" />
+</div>
+<div class="ig-phone">
+  <div class="ig-screen">
+    <!-- DmScreen -->
+    <div class="ig-surface">
+      <div class="ig-head">
+        <Fragment set:html={glyph("back", 28)} />
+        <img class="ig-av" src={account.picture} alt="" width="34" height="34" />
+        <div class="ig-who">
+          <p class="ig-handle">{account.handle}</p>
+          <p class="ig-sub">{COPY.businessChat}</p>
+        </div>
+        <span class="ig-actions">
+          <Fragment set:html={glyph("call", 25)} />
+          <Fragment set:html={glyph("video", 27)} />
+          <Fragment set:html={glyph("tag", 25)} />
+        </span>
+      </div>
+
+      <div class="ig-thread">
+        <div class="ig-thread-inner">
+          <div class="ig-profile">
+            <img class="ig-av" src={account.picture} alt="" width="88" height="88" />
+            <p class="ig-profile-name">{account.handle}</p>
+            <p class="ig-profile-kind">{COPY.accountKind}</p>
+            <span class="ig-profile-btn">{COPY.viewProfile}</span>
+          </div>
+
+          <p class="ig-context">
+            {contextBefore}<b>{account.handle}</b>{contextAfter} <b>{COPY.seePost}</b>
+          </p>
+
+          <div class="ig-msgs">
+            <div class="ig-in" style="--n:2">
+              <img class="ig-av" src={account.picture} alt="" width="28" height="28" />
+              <div class="ig-template">
+                <p class="ig-template-text">{COPY.opening}</p>
+                <p class="ig-template-btn">{COPY.button}</p>
+              </div>
+            </div>
+            <div class="ig-out" style="--n:3"><p style="background:#7d3be8">{COPY.button}</p></div>
+            <div class="ig-in" style="--n:4">
+              <img class="ig-av" src={account.picture} alt="" width="28" height="28" />
+              <div class="ig-template">
+                <p class="ig-template-text">{COPY.follow}</p>
+                <p class="ig-template-btn">{COPY.followButton}</p>
+              </div>
+            </div>
+            <div class="ig-out" style="--n:5"><p style="background:#6a43ee">{COPY.followButton}</p></div>
+            <div class="ig-in" style="--n:6">
+              <img class="ig-av" src={account.picture} alt="" width="28" height="28" />
+              <p class="ig-bubble">{finalText}<span class="ig-link">{finalLink}</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ig-composer-wrap">
+        <div class="ig-composer">
+          <span class="ig-cam"><Fragment set:html={glyph("camera", 19, "#fff")} /></span>
+          <span class="ig-placeholder">{COPY.message}</span>
+          <Fragment set:html={glyph("mic", 24)} />
+          <Fragment set:html={glyph("gallery", 24)} />
+          <Fragment set:html={glyph("chatDots", 24)} />
+          <Fragment set:html={glyph("addCircle", 24)} />
+        </div>
+      </div>
+    </div>
+
+    <div class="ig-status" set:html={STATUS} />
+  </div>
+  <img class="ig-frame" src="/assets/works/oruka/iphone17.webp" alt="" width="754" height="1639" loading="lazy" />
+</div>
+</div>

@@ -1,6 +1,6 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { App } from "../components/App";
+import Layout from "../layouts/HomeLayout.astro";
+import Services from "../components/home/Services.astro";
 ---
 
 <Layout
@@ -8,5 +8,5 @@ import { App } from "../components/App";
   description="Web products, SaaS, APIs and AI integrations with TypeScript, Next.js and PostgreSQL. Services by Manuel Erazo in Bogotá."
   lang="en"
 >
-  <App client:load page="services" initialLang="en" />
+  <Services lang="en" />
 </Layout>

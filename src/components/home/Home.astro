@@ -1,0 +1,232 @@
+---
+import { BRANDS } from "../../data/brands";
+import { ACTIVITY, BIO, EXPERIENCE_ITEMS, MORE_WORK, PROFILE, T, WORK_CARDS } from "../../data/home";
+import type { Lang } from "../../data/portfolio";
+import Scene from "./Scene.astro";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = (b: { en: string; es: string }) => b[lang];
+
+const INLINE: Record<string, { name: string; href: string; logo?: string; self?: boolean }> = {
+  services: { name: lang === "es" ? "servicios" : "services", href: lang === "es" ? "/es/services/" : "/services/", self: true },
+  gymrat: { name: "GymRat+", href: "https://gymratplus.com", logo: "/assets/works/gymrat/icon.webp" },
+  oruka: { name: "Oruka", href: "https://www.oruka.si/en", logo: "/assets/works/oruka/icon.webp" },
+};
+const bio = BIO[lang].map((p) => p.split(/(\{\w+\})/g));
+const cv = `/assets/CV_Manuel_Erazo_${lang.toUpperCase()}.pdf`;
+const links = [
+  { label: "GitHub", href: "https://github.com/manuekle", slug: "github" },
+  { label: "LinkedIn", href: "https://linkedin.com/in/manuekle", slug: "linkedin" },
+  { label: "Instagram", href: "https://instagram.com/manudev.jsx", slug: "instagram" },
+];
+---
+
+<a class="skip" href="#main">{t(T.skip)}</a>
+
+<div class="wrap">
+  <nav class="lang-bar" aria-label={t(T.langs)}>
+    <div class="lang-tabs">
+      <a href="/" hreflang="en" lang="en" class:list={{ on: lang === "en" }} aria-current={lang === "en" ? "page" : undefined}>English</a>
+      <a href="/es/" hreflang="es" lang="es" class:list={{ on: lang === "es" }} aria-current={lang === "es" ? "page" : undefined}>Español</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <!-- intro -->
+    <section class="fade-in">
+      <div class="hero">
+        <div class="hero-avatar">
+          <img src="/assets/avatar.webp" alt={PROFILE.name} width="160" height="160" fetchpriority="high" />
+        </div>
+        <div class="hero-text">
+          <h1>
+            {PROFILE.name}
+            <svg class="flag" width="18" height="12" viewBox="0 0 18 12" role="img" aria-label="Colombia">
+              <rect width="18" height="6" fill="#FCD116" />
+              <rect y="6" width="18" height="3" fill="#003893" />
+              <rect y="9" width="18" height="3" fill="#CE1126" />
+            </svg>
+          </h1>
+          <p>{t(T.role)} · {t(PROFILE.location)}</p>
+        </div>
+      </div>
+
+      <div class="bio">
+        {
+          bio.map((parts) => (
+            <p>
+              {parts.map((part) => {
+                const key = part.match(/^\{(\w+)\}$/)?.[1];
+                const l = key ? INLINE[key] : undefined;
+                return l ? (
+                  <a href={l.href} target={l.self ? undefined : "_blank"} rel={l.self ? undefined : "noopener"}>{l.logo && <img src={l.logo} alt="" width="18" height="18" />}<span>{l.name}</span></a>
+                ) : (
+                  part
+                );
+              })}
+            </p>
+          ))
+        }
+      </div>
+
+      <div class="contact-row">
+        <a class="contact-main" href={`mailto:${PROFILE.email}`}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="3" />
+            <path d="m4 7 8 6 8-6" />
+          </svg>
+          <span>{t(T.contact)}</span>
+        </a>
+        <a class="contact-alt" href={cv} target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+            <path d="M14 3v5h5M9 13h6M9 17h4" />
+          </svg>
+          <span>{t(T.cv)}</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- works -->
+    <section aria-labelledby="works-title">
+      <h2 class="eyebrow" id="works-title">{t(T.works)}</h2>
+      <div class="works">
+        {
+          WORK_CARDS.map((w, i) => (
+            <a class="card work" href={w.href} target="_blank" rel="noopener" data-work={w.id} data-layout={w.layout} data-tone={w.tone} style={`--card-bg:${w.bg}`}>
+              <div class="work-bg">
+                <Scene card={w} lang={lang} />
+              </div>
+              <div class="work-body">
+                <div class="work-head">
+                  <div class="work-name">
+                    {w.logo ? (
+                      <img class="work-logo" src={w.logo} alt="" width="28" height="28" loading={i < 2 ? "eager" : "lazy"} />
+                    ) : (
+                      <span class="work-logo work-mono" aria-hidden="true">{w.name[0]}</span>
+                    )}
+                    <h3>{w.name}</h3>
+                  </div>
+                  <span class="arrow-btn" aria-hidden="true">
+                    <svg class="arrow a" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                    <svg class="arrow b" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                  </span>
+                </div>
+                <p>{t(w.desc)}</p>
+                <ul class="facts">
+                  {w.facts.map((f, j) => (
+                    <li>
+                      {j === 0 ? (
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" /></svg>
+                      ) : (
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2.5" /><path d="M8 21h8" /></svg>
+                      )}
+                      <span>{t(f)}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+
+      <h3 class="eyebrow sub">{t(T.more)}</h3>
+      <ul class="more">
+        {
+          MORE_WORK.map((p) => (
+            <li>
+              <a href={p.liveUrl ?? p.sourceUrl} target="_blank" rel="noopener">
+                <span class="more-name">{p.name}</span>
+                <span class="more-desc">{t(p.tagline)}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <!-- experience -->
+    <section aria-labelledby="exp-title">
+      <h2 class="eyebrow" id="exp-title">{t(T.experience)}</h2>
+      <ol class="timeline">
+        {
+          EXPERIENCE_ITEMS.map((e) => (
+            <li>
+              <span class="when">{t(e.when)}</span>
+              <span class="what">
+                {t(e.what)}
+                {e.sub && <small>{t(e.sub)}</small>}
+              </span>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <!-- activity -->
+    <section aria-labelledby="act-title">
+      <h2 class="eyebrow" id="act-title">{t(T.activity)}</h2>
+      <ol class="timeline">
+        {
+          ACTIVITY.map((e) => (
+            <li>
+              <span class="when">{t(e.when)}</span>
+              <span class="what">{t(e.what)}</span>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <!-- links -->
+    <section class="links" aria-labelledby="links-title">
+      <h2 class="eyebrow" id="links-title">{t(T.links)}</h2>
+      <ul class="pills">
+        {
+          links.map((l) => (
+            <li>
+              <a class="pill" href={l.href} target="_blank" rel="noopener me">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d={BRANDS[l.slug].d} />
+                </svg>
+                <span>{l.label}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <footer>© 2026 {PROFILE.name}</footer>
+  </main>
+</div>
+
+<script>
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const cards = document.querySelectorAll<HTMLElement>(".work");
+  if (reduce) {
+    document.querySelectorAll<HTMLVideoElement>(".work video").forEach((v) => {
+      v.removeAttribute("autoplay");
+      v.pause();
+    });
+  } else if ("IntersectionObserver" in window) {
+    // Scenes only drift (and videos only play) while their card is on screen.
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          const card = e.target as HTMLElement;
+          card.toggleAttribute("data-live", e.isIntersecting);
+          card.querySelectorAll("video").forEach((v) => (e.isIntersecting ? v.play().catch(() => {}) : v.pause()));
+        }
+      },
+      { threshold: 0.2 },
+    );
+    cards.forEach((c) => io.observe(c));
+  } else {
+    cards.forEach((c) => c.setAttribute("data-live", ""));
+  }
+</script>

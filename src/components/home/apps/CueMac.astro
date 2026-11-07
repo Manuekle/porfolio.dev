@@ -1,0 +1,209 @@
+---
+/* Cue on a MacBook during a Google Meet call: the hero of Cue's own site, ported as is.
+   - markup + CSS: pronter/site/index.html (.stage .mac) and site/assets/style.css, where the
+     notch panel is built from macOS/PrompterPanel.swift (600 × 332 pt on a 1512 pt screen, drawn 1.4×)
+   - loop:         site/assets/main.js prompter(): waiting, 3-2-1 ring, 140 wpm, restart
+   - assets:       site/assets/img (macbook-frame.svg, mac-wallpaper.webp, meet.webp)
+   - Spanish:      the app's own labels (Localizable.xcstrings); the script is the site's, translated.
+   Class names are prefixed `cm-` so the site's generic ones (.panel, .play, .more…) stay local. */
+import type { Lang } from "../../../data/portfolio";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+const COPY = {
+  en: {
+    script: "Script",
+    copilot: "Copilot",
+    title: "Product demo",
+    recording: "Recording",
+    waiting: "Waiting for camera",
+    lines: [
+      "Hi everyone, and welcome back. Today I want to show you something we've been building for months.",
+      "It's a teleprompter that sits right under your camera, so you can look people in the eye and never lose your place.",
+      "It starts the moment your camera turns on, and it stays hidden when you share your screen. Let's get into it.",
+    ],
+  },
+  es: {
+    script: "Guion",
+    copilot: "Copiloto",
+    title: "Demo del producto",
+    recording: "Grabando",
+    waiting: "Esperando cámara",
+    lines: [
+      "Hola a todos, y bienvenidos de nuevo. Hoy quiero mostrarles algo que llevamos meses construyendo.",
+      "Es un teleprompter que va justo debajo de tu cámara, para que mires a la gente a los ojos y nunca pierdas el hilo.",
+      "Arranca en cuanto se enciende la cámara y no aparece cuando compartes pantalla. Vamos a verlo.",
+    ],
+  },
+}[lang];
+
+/* Hugeicons from the app (Shared/Hugeicons.xcassets), as the site's sprite has them. */
+const I = {
+  arrowDown: '<path d="M18 9.00005C18 9.00005 13.5811 15 12 15C10.4188 15 6 9 6 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>',
+  more: '<path d="M11.9967 12.5V12M11.9967 6.5V6M11.9967 18.5V18M12.9967 12.5C12.9967 11.9477 12.549 11.5 11.9967 11.5C11.4444 11.5 10.9967 11.9477 10.9967 12.5C10.9967 13.0523 11.4444 13.5 11.9967 13.5C12.549 13.5 12.9967 13.0523 12.9967 12.5ZM12.9967 6.5C12.9967 5.94772 12.549 5.5 11.9967 5.5C11.4444 5.5 10.9967 5.94772 10.9967 6.5C10.9967 7.05228 11.4444 7.5 11.9967 7.5C12.549 7.5 12.9967 7.05228 12.9967 6.5ZM12.9967 18.5C12.9967 17.9477 12.549 17.5 11.9967 17.5C11.4444 17.5 10.9967 17.9477 10.9967 18.5C10.9967 19.0523 11.4444 19.5 11.9967 19.5C12.549 19.5 12.9967 19.0523 12.9967 18.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>',
+  previous: '<path d="M8.06492 12.6258C8.31931 13.8374 9.67295 14.7077 12.3802 16.4481C15.3247 18.3411 16.797 19.2876 17.9895 18.9229C18.3934 18.7994 18.7654 18.5823 19.0777 18.2876C20 17.4178 20 15.6118 20 12C20 8.38816 20 6.58224 19.0777 5.71235C18.7654 5.41773 18.3934 5.20057 17.9895 5.07707C16.797 4.71243 15.3247 5.6589 12.3802 7.55186C9.67295 9.29233 8.31931 10.1626 8.06492 11.3742C7.97836 11.7865 7.97836 12.2135 8.06492 12.6258Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8" fill="currentColor"/><path d="M4 4L4 20" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"/>',
+  play: '<path d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8" fill="currentColor"/>',
+  pause: '<path d="M4 7C4 5.58579 4 4.87868 4.43934 4.43934C4.87868 4 5.58579 4 7 4C8.41421 4 9.12132 4 9.56066 4.43934C10 4.87868 10 5.58579 10 7V17C10 18.4142 10 19.1213 9.56066 19.5607C9.12132 20 8.41421 20 7 20C5.58579 20 4.87868 20 4.43934 19.5607C4 19.1213 4 18.4142 4 17V7Z" stroke="currentColor" stroke-width="1.8" fill="currentColor"/><path d="M14 7C14 5.58579 14 4.87868 14.4393 4.43934C14.8787 4 15.5858 4 17 4C18.4142 4 19.1213 4 19.5607 4.43934C20 4.87868 20 5.58579 20 7V17C20 18.4142 20 19.1213 19.5607 19.5607C19.1213 20 18.4142 20 17 20C15.5858 20 14.8787 20 14.4393 19.5607C14 19.1213 14 18.4142 14 17V7Z" stroke="currentColor" stroke-width="1.8" fill="currentColor"/>',
+  mirror: '<path d="M6.29516 14.4204C7.65364 13.4668 8.33288 12.99 8.46522 12.3436C8.51159 12.1172 8.51159 11.8828 8.46522 11.6563C8.33288 11.01 7.65364 10.5332 6.29516 9.57959C4.65002 8.42475 3.82745 7.84734 3.15323 8.03482C2.91938 8.09984 2.70324 8.22164 2.52214 8.39045C2 8.87715 2 9.9181 2 12C2 14.0819 2 15.1229 2.52214 15.6096C2.70324 15.7784 2.91938 15.9002 3.15323 15.9652C3.82745 16.1527 4.65003 15.5752 6.29516 14.4204Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" fill="currentColor"/><path d="M17.7048 9.57959C16.3464 10.5332 15.6671 11.01 15.5348 11.6564C15.4884 11.8828 15.4884 12.1172 15.5348 12.3436C15.6671 12.99 16.3464 13.4668 17.7048 14.4204C19.35 15.5752 20.1725 16.1527 20.8468 15.9652C21.0806 15.9002 21.2968 15.7784 21.4779 15.6096C22 15.1229 22 14.0819 22 12C22 9.9181 22 8.87715 21.4779 8.39045C21.2968 8.22164 21.0806 8.09984 20.8468 8.03482C20.1725 7.84734 19.35 8.42476 17.7048 9.57959Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" fill="currentColor"/><path d="M12 14V10M12 6.5V3M12 21V17.5" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"/>',
+  minus: '<path d="M20 12L4 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>',
+  plus: '<path d="M12 4V20M20 12H4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>',
+  speed: '<circle cx="12" cy="18" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M12 15V10" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"/><path d="M22 13C22 7.47715 17.5228 3 12 3C6.47715 3 2 7.47715 2 13" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"/>',
+  textSize: '<path d="M14 19L11.1069 10.7479C9.76348 6.91597 9.09177 5 8 5C6.90823 5 6.23652 6.91597 4.89309 10.7479L2 19M4.5 12H11.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/><path d="M21.9692 13.9392V18.4392M21.9692 13.9392C22.0164 13.1161 22.0182 12.4891 21.9194 11.9773C21.6864 10.7709 20.4258 10.0439 19.206 9.89599C18.0385 9.75447 17.1015 10.055 16.1535 11.4363M21.9692 13.9392L19.1256 13.9392C18.6887 13.9392 18.2481 13.9603 17.8272 14.0773C15.2545 14.7925 15.4431 18.4003 18.0233 18.845C18.3099 18.8944 18.6025 18.9156 18.8927 18.9026C19.5703 18.8724 20.1955 18.545 20.7321 18.1301C21.3605 17.644 21.9692 16.9655 21.9692 15.9392V13.9392Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>',
+} as const;
+const ico = (name: keyof typeof I, cls = "") =>
+  `<svg class="cm-ico ${cls}" viewBox="0 0 24 24" fill="none" aria-hidden="true">${I[name]}</svg>`;
+---
+
+<div class="cm-stage" aria-hidden="true">
+  <div class="cm-mac">
+    <img class="cm-frame" src="/assets/works/cue/macbook-frame.svg" alt="" width="2048" height="1237" loading="lazy" draggable="false" />
+    <div class="cm-screen">
+      <div class="cm-notch"></div>
+
+      <div class="cm-panel" data-cue-prompter data-recording={COPY.recording} data-waiting={COPY.waiting}>
+        <div class="cm-body">
+          <div class="cm-pnotch"></div>
+          <div class="cm-head">
+            <span class="cm-mode"><b>{COPY.script}</b><span>{COPY.copilot}</span></span>
+            <span class="cm-picker">{COPY.title}<Fragment set:html={ico("arrowDown")} /></span>
+            <span class="cm-grow"></span>
+            <span class="cm-detect"><i></i><span>{COPY.waiting}</span></span>
+            <span class="cm-elapsed"><span class="cm-timer">0:00</span><span class="cm-rem">−0:00</span></span>
+            <Fragment set:html={ico("more", "cm-more")} />
+          </div>
+          <div class="cm-window">
+            <div class="cm-band"></div>
+            <div class="cm-mask">
+              <div class="cm-script">
+                {COPY.lines.map((l) => <p>{l}</p>)}
+              </div>
+            </div>
+            <svg class="cm-marker" viewBox="0 0 11 18" aria-hidden="true"><path d="M0 0L11 9L0 18Z" fill="currentColor" /></svg>
+            <div class="cm-progress"><i></i></div>
+            <div class="cm-countdown">
+              <svg viewBox="0 0 100 100"><circle class="cm-track" cx="50" cy="50" r="45.5" /><circle class="cm-ring" cx="50" cy="50" r="45.5" /></svg>
+              <b>3</b>
+            </div>
+          </div>
+          <div class="cm-foot">
+            <span class="cm-cbtn"><Fragment set:html={ico("previous")} /></span>
+            <span class="cm-play"><Fragment set:html={ico("pause", "cm-i-pause")} /><Fragment set:html={ico("play", "cm-i-play")} /></span>
+            <span class="cm-stepper"><Fragment set:html={ico("minus", "cm-pm")} /><span><Fragment set:html={ico("speed")} />140</span><Fragment set:html={ico("plus", "cm-pm")} /></span>
+            <span class="cm-stepper"><Fragment set:html={ico("minus", "cm-pm")} /><span><Fragment set:html={ico("textSize")} />34</span><Fragment set:html={ico("plus", "cm-pm")} /></span>
+            <span class="cm-grow"></span>
+            <span class="cm-cbtn"><Fragment set:html={ico("mirror")} /></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cm-call">
+        <div class="cm-callbar"><i></i><i></i><i></i></div>
+        <img class="cm-feed" src="/assets/works/cue/meet.webp" alt="" width="2000" height="1250" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* site/assets/main.js prompter(), unchanged in behaviour: waiting for the camera, the
+     3-2-1 ring, scrolling at 140 wpm, a short pause, again. Runs only while on screen. */
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+  document.querySelectorAll<HTMLElement>("[data-cue-prompter]").forEach((panel) => {
+    const script = panel.querySelector<HTMLElement>(".cm-script")!;
+    const win = panel.querySelector<HTMLElement>(".cm-window")!;
+    if (reduce) {
+      script.style.transform = `translateY(${win.clientHeight * 0.3}px)`;
+      return;
+    }
+    const count = panel.querySelector<HTMLElement>(".cm-countdown")!;
+    const countNum = count.querySelector("b")!;
+    const timer = panel.querySelector<HTMLElement>(".cm-timer")!;
+    const remain = panel.querySelector<HTMLElement>(".cm-rem")!;
+    const progress = panel.querySelector<HTMLElement>(".cm-progress i")!;
+    const detect = panel.querySelector<HTMLElement>(".cm-detect")!;
+    const detectText = detect.querySelector("span")!;
+    const words = (script.textContent ?? "").trim().split(/\s+/).length;
+    const total = (words / 140) * 60;
+    const clock = (t: number) => {
+      t = Math.max(0, Math.floor(t));
+      return `${Math.floor(t / 60)}:${String(t % 60).padStart(2, "0")}`;
+    };
+    let p = 0;
+    let raf = 0;
+    let last = 0;
+    let running = false;
+    let phase = "idle";
+    let gen = 0;
+
+    const place = () => {
+      script.style.transform = `translateY(${win.clientHeight * 0.3 - p * script.offsetHeight}px)`;
+      progress.style.width = `${p * 100}%`;
+      timer.textContent = clock(p * total);
+      remain.textContent = "−" + clock(total - p * total);
+    };
+    const setActive = (on: boolean) => {
+      panel.classList.toggle("is-active", on);
+      detect.classList.toggle("is-on", on);
+      detectText.textContent = (on ? panel.dataset.recording : panel.dataset.waiting) ?? "";
+    };
+    async function cycle(myGen: number) {
+      phase = "ready";
+      p = 0;
+      place();
+      setActive(false);
+      await sleep(1600);
+      if (myGen !== gen) return;
+      phase = "count";
+      setActive(true);
+      for (const n of [3, 2, 1]) {
+        if (myGen !== gen) return;
+        countNum.textContent = String(n);
+        count.classList.remove("is-show");
+        void count.offsetWidth;
+        count.classList.add("is-show");
+        await sleep(1000);
+      }
+      count.classList.remove("is-show");
+      phase = "play";
+    }
+    function frame(t: number) {
+      if (!running) return;
+      const dt = last ? Math.min(t - last, 50) : 16;
+      last = t;
+      if (phase === "play") {
+        p = Math.min(1, p + dt / 1000 / total);
+        place();
+        if (p >= 1) {
+          phase = "done";
+          const g = ++gen;
+          sleep(1200).then(() => {
+            if (g === gen) cycle(g);
+          });
+        }
+      }
+      raf = requestAnimationFrame(frame);
+    }
+    addEventListener("resize", place);
+    place();
+    new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          if (running) return;
+          running = true;
+          last = 0;
+          raf = requestAnimationFrame(frame);
+          if (phase === "idle") cycle(++gen);
+        } else {
+          running = false;
+          cancelAnimationFrame(raf);
+        }
+      },
+      { threshold: 0.2 },
+    ).observe(win);
+  });
+</script>
