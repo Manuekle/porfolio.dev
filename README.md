@@ -65,7 +65,7 @@ src/
 └── styles/home.css
 public/
 ├── fonts/                Myriad Pro, Inter subset
-├── new-icon.png          the portfolio mark (source for every icon)
+├── new-icon.png          the "M" monogram (source for every icon)
 └── assets/
     ├── works/            card media and app icons
     ├── logos/            org and project marks used in data
@@ -87,8 +87,8 @@ public/
 
 ```bash
 node scripts/gen-logos.mjs      # src/data/brands.ts from Simple Icons
-node scripts/gen-icons.cjs      # favicons + apple-touch + android-chrome
-node scripts/gen-site-mark.cjs  # public/assets/mark.png
+node scripts/gen-icons.cjs      # (after gen-mark) favicons + apple-touch + android-chrome
+uv run scripts/gen-mark.py       # Myriad "M" mark: new-icon.png + assets/mark.png
 uv run scripts/gen-social.py    # English/Spanish OG + LinkedIn banner, using Myriad Pro
 node scripts/gen-avatar.cjs     # public/assets/avatar.png
 ```
