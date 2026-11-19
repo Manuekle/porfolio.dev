@@ -6,10 +6,10 @@ import { EDUCATION, EXPERIENCE, PROFILE, PROJECTS, type Bilingual, type Lang } f
 export const T = {
   hello: { en: "Hi, I'm Manuel.", es: "Hola, soy Manuel." },
   role: { en: "Full stack developer", es: "Desarrollador full stack" },
-  works: { en: "Works", es: "Proyectos" },
-  more: { en: "More", es: "Más" },
+  works: { en: "Selected projects", es: "Proyectos destacados" },
+  contributions: { en: "Contributions", es: "Contribuciones" },
   experience: { en: "Experience", es: "Experiencia" },
-  activity: { en: "Activity", es: "Actividad" },
+  activity: { en: "Hackathon activity", es: "Participación en hackathons" },
   links: { en: "Links", es: "Enlaces" },
   contact: { en: "Contact", es: "Contacto" },
   cv: { en: "Resume", es: "CV" },
@@ -22,15 +22,15 @@ export const T = {
 export const BIO: Record<Lang, string[]> = {
   en: [
     "Hi, I'm Manuel.",
-    "I'm a full stack developer in Bogotá, Colombia. I build SaaS products with TypeScript, React, Next.js and PostgreSQL, from the interface down to the database and the deploy.",
-    "I founded {gymrat}, a training and coaching platform with 60 users, and I'm building {oruka}, AI agents for customer support and sales on WhatsApp and Instagram.",
-    "I'm open to international remote roles, and I take on freelance work too: see my {services}.",
+    "I'm a full stack developer in Bogotá, Colombia. I build SaaS products with TypeScript, React, Next.js, Python and PostgreSQL, from the interface to the API, the data and the deployment.",
+    "My main projects are {oruka}, AI agents for customer support and sales; {ragis}, answers grounded in company documents; and {gymrat}, a platform for training, nutrition and coaching.",
+    "I also work on UI/UX redesigns, native mobile apps and hackathon experiments. I'm open to remote roles and freelance work: see my {services}.",
   ],
   es: [
     "Hola, soy Manuel.",
-    "Soy desarrollador full stack en Bogotá, Colombia. Construyo productos SaaS con TypeScript, React, Next.js y PostgreSQL, desde la interfaz hasta la base de datos y el despliegue.",
-    "Fundé {gymrat}, una plataforma de entrenamiento y coaching con 60 usuarios, y estoy construyendo {oruka}, agentes de IA para atención al cliente y ventas en WhatsApp e Instagram.",
-    "Busco empleo remoto internacional y también tomo proyectos freelance: mira mis {services}.",
+    "Soy desarrollador full stack en Bogotá, Colombia. Construyo productos SaaS con TypeScript, React, Next.js, Python y PostgreSQL, desde la interfaz hasta las APIs, los datos y el despliegue.",
+    "Mis proyectos principales son {oruka}, agentes de IA para atención al cliente y ventas; {ragis}, respuestas basadas en documentos empresariales; y {gymrat}, una plataforma de entrenamiento, nutrición y coaching.",
+    "También trabajo en rediseños de UI/UX, apps móviles nativas y experimentos de hackathon. Busco empleo remoto y tomo proyectos freelance: mira mis {services}.",
   ],
 };
 
@@ -48,63 +48,116 @@ export type WorkCard = {
   tone: "light" | "dark";
   /** Which live part of the app fills the card (components/home/apps). */
   layout: "phone" | "mac" | "demo" | "film";
+  /** Product media rendered in the existing scene slot. */
+  preview?: string;
 };
 
 
 export const WORK_CARDS: WorkCard[] = [
   {
-    id: "oruka",
-    tone: "dark" as const,
-    bg: "radial-gradient(60% 42% at 50% -6%, rgb(255 255 255 / 0.3), transparent 72%), radial-gradient(46% 30% at 50% 88%, rgb(150 190 255 / 0.32), transparent 75%), radial-gradient(55% 55% at 0% 100%, rgb(18 40 205 / 0.85), transparent 70%), radial-gradient(55% 55% at 100% 100%, rgb(18 40 205 / 0.85), transparent 70%), linear-gradient(180deg, #3b68ff 0%, #325cfe 40%, #2a4ff2 72%, #2145e6 100%)",
-    layout: "phone" as const,
-    desc: {
-      en: "AI agents that answer customers and close sales on WhatsApp and Instagram, with one inbox, contacts and deals.",
-      es: "Agentes de IA que atienden clientes y cierran ventas en WhatsApp e Instagram, con una bandeja, contactos y oportunidades.",
+    "id": "oruka",
+    "tone": "dark" as const,
+    "bg": "radial-gradient(60% 42% at 50% -6%, rgb(255 255 255 / 0.3), transparent 72%), radial-gradient(46% 30% at 50% 88%, rgb(150 190 255 / 0.32), transparent 75%), radial-gradient(55% 55% at 0% 100%, rgb(18 40 205 / 0.85), transparent 70%), radial-gradient(55% 55% at 100% 100%, rgb(18 40 205 / 0.85), transparent 70%), linear-gradient(180deg, #3b68ff 0%, #325cfe 40%, #2a4ff2 72%, #2145e6 100%)",
+    "layout": "phone" as const,
+    "desc": {
+      "en": "Built AI agents for customer support and sales on WhatsApp and Instagram, with a unified inbox, contacts, deals and workflow automation.",
+      "es": "Construí agentes de IA para atención al cliente y ventas en WhatsApp e Instagram, con una bandeja unificada, contactos, oportunidades y automatización de flujos."
     },
-    facts: [{ en: "Private beta", es: "Beta privada" }, { en: "Web · SaaS", es: "Web · SaaS" }],
+    "facts": [
+      {
+        "en": "Private beta",
+        "es": "Beta privada"
+      },
+      {
+        "en": "Next.js · TypeScript · PostgreSQL",
+        "es": "Next.js · TypeScript · PostgreSQL"
+      }
+    ]
   },
   {
-    id: "cue",
-    tone: "dark" as const,
-    bg: "radial-gradient(28% 55% at 0% 34%, rgba(120,214,255,.38), rgba(120,214,255,0) 70%), radial-gradient(24% 46% at 100% 20%, rgba(120,214,255,.32), rgba(120,214,255,0) 70%), radial-gradient(60% 42% at 50% 64%, rgba(0,70,210,.55), rgba(0,70,210,0) 72%), linear-gradient(180deg, #00a3ff 0%, #0a8aff 28%, #0a7cff 60%, #0066ee 100%)",
-    layout: "mac" as const,
-    desc: {
-      en: "A teleprompter that lives under the MacBook notch, starts when the camera turns on and stays hidden when you share your screen.",
-      es: "Un teleprompter que vive bajo el notch del MacBook, arranca cuando se enciende la cámara y no aparece al compartir pantalla.",
+    "id": "ragis",
+    "tone": "dark" as const,
+    "bg": "radial-gradient(28% 55% at 0% 34%, rgba(120,214,255,.38), rgba(120,214,255,0) 70%), radial-gradient(24% 46% at 100% 20%, rgba(120,214,255,.32), rgba(120,214,255,0) 70%), radial-gradient(60% 42% at 50% 64%, rgba(0,70,210,.55), rgba(0,70,210,0) 72%), linear-gradient(180deg, #00a3ff 0%, #0a8aff 28%, #0a7cff 60%, #0066ee 100%)",
+    "layout": "demo" as const,
+    "preview": "/assets/works/ragis/landing.jpg",
+    "desc": {
+      "en": "Built a multimodal RAG platform that answers from company documents with verifiable citations and document-level permissions.",
+      "es": "Construí una plataforma RAG multimodal que responde desde documentos empresariales, con citas verificables y permisos por documento."
     },
-    facts: [{ en: "macOS · iOS", es: "macOS · iOS" }, { en: "Swift", es: "Swift" }],
+    "facts": [
+      {
+        "en": "Text · Vectors · Graphs",
+        "es": "Texto · Vectores · Grafos"
+      },
+      {
+        "en": "Python · PostgreSQL · AWS",
+        "es": "Python · PostgreSQL · AWS"
+      }
+    ]
   },
   {
-    id: "focus",
-    tone: "dark" as const,
-    bg: "radial-gradient(55% 45% at 72% 78%, rgb(40 83 233 / 0.32), transparent 72%), radial-gradient(60% 40% at 50% 0%, rgb(255 255 255 / 0.06), transparent 70%), linear-gradient(180deg, #1c1c1c 0%, #181818 55%, #121212 100%)",
-    layout: "demo" as const,
-    desc: {
-      en: "Describe an edit in one sentence. Focus finds the subject, tracks it frame by frame and renders the video.",
-      es: "Describe una edición en una frase. Focus encuentra al sujeto, lo sigue cuadro a cuadro y renderiza el video.",
+    "id": "gymrat",
+    "tone": "dark" as const,
+    "bg": "radial-gradient(55% 45% at 72% 78%, rgb(40 83 233 / 0.32), transparent 72%), radial-gradient(60% 40% at 50% 0%, rgb(255 255 255 / 0.06), transparent 70%), linear-gradient(180deg, #1c1c1c 0%, #181818 55%, #121212 100%)",
+    "layout": "demo" as const,
+    "preview": "/assets/works/gymrat/landing.webp",
+    "desc": {
+      "en": "Founded and built a fitness platform for training plans, nutrition, athlete progress and coach management, including memberships and payments.",
+      "es": "Fundé y construí una plataforma de fitness para planes de entrenamiento, nutrición, progreso de atletas y gestión de entrenadores, con membresías y pagos."
     },
-    facts: [{ en: "Meta AI hackathon", es: "Hackathon de Meta" }, { en: "Web · AI video", es: "Web · Video IA" }],
-  },
-  {
-    id: "kanago",
-    tone: "light" as const,
-    bg: "radial-gradient(60% 45% at 50% 100%, rgb(255 111 156 / 0.14), transparent 72%), linear-gradient(180deg, #ffffff 0%, #fbf8fa 100%)",
-    layout: "film" as const,
-    desc: {
-      en: "Japanese from kana to JLPT on iPhone, with handwriting feedback, spaced review and widgets.",
-      es: "Japonés desde kana hasta JLPT en iPhone, con corrección de escritura, repaso espaciado y widgets.",
-    },
-    facts: [{ en: "iOS 17+", es: "iOS 17+" }, { en: "SwiftUI", es: "SwiftUI" }],
-  },
+    "facts": [
+      {
+        "en": "Training · Nutrition · Coaching",
+        "es": "Entrenamiento · Nutrición · Coaching"
+      },
+      {
+        "en": "Next.js · PostgreSQL · Drizzle",
+        "es": "Next.js · PostgreSQL · Drizzle"
+      }
+    ]
+  }
 ].map((c) => {
   const p = PROJECTS.find((x) => x.id === c.id)!;
   return { ...c, name: p.name, logo: p.logo, href: p.liveUrl ?? p.sourceUrl ?? "#" };
 });
 
-/** Projects that are not cards, as compact rows. */
-export const MORE_WORK = ["shift", "blindem", "gymrat", "cetamed", "lab10", "creagent", "forge", "blank", "sira", "butterflyar"]
-  .map((id) => PROJECTS.find((p) => p.id === id)!)
-  .filter(Boolean);
+/** Categories reuse the existing compact project rows. */
+export const WORK_GROUPS = [
+  { id: "ui-ux", title: { en: "UI/UX", es: "UI/UX" }, ids: ["redesign-trii", "redesign-dapta"] },
+  { id: "mobile", title: { en: "Mobile apps", es: "Apps móviles" }, ids: ["kanago", "cue", "butterflyar"] },
+  { id: "hackathons", title: { en: "Hackathon projects", es: "Proyectos de hackathon" }, ids: ["focus", "lab10", "cetamed", "forge"] },
+].map(({ ids, ...group }) => ({
+  ...group,
+  projects: ids.map((id) => {
+    const p = PROJECTS.find((project) => project.id === id)!;
+    // Link the public repository instead of Lab10's token-gated observatory.
+    return { ...p, href: p.liveLabel ? p.sourceUrl : p.liveUrl ?? p.sourceUrl };
+  }),
+}));
+
+/** Verified against GitHub on November 19, 2026. Forks are not merged contributions. */
+export const CONTRIBUTIONS = [
+  {
+    name: { en: "33 forks", es: "33 forks" },
+    href: "https://github.com/Manuekle?tab=repositories&type=fork",
+    desc: { en: "Forked repositories · Verified November 19, 2026", es: "Repositorios derivados · Verificado el 19 de noviembre de 2026" },
+  },
+  {
+    name: { en: "22 merged PRs", es: "22 PRs fusionados" },
+    href: "https://github.com/search?q=author%3AManuekle+is%3Apr+is%3Amerged+-user%3AManuekle&type=pullrequests",
+    desc: { en: "Merged in repositories owned by other accounts", es: "Fusionados en repositorios de otras cuentas" },
+  },
+  {
+    name: { en: "fincaagricola-app", es: "fincaagricola-app" },
+    href: "https://github.com/IverArley/fincaagricola-app/pulls?q=is%3Apr+author%3AManuekle+is%3Amerged",
+    desc: { en: "19 merged PRs · Data classes and administrative forms", es: "19 PRs fusionados · Clases de datos y formularios administrativos" },
+  },
+  {
+    name: { en: "first-contributions", es: "first-contributions" },
+    href: "https://github.com/firstcontributions/first-contributions/pull/51004",
+    desc: { en: "Contributor entry · Pull request #51004 merged", es: "Registro de colaborador · Pull request #51004 fusionado" },
+  },
+] satisfies { name: Bilingual; href: string; desc: Bilingual }[];
 
 export type TimelineItem = { when: Bilingual; what: Bilingual; sub?: Bilingual };
 

@@ -18,5 +18,5 @@ const Live = LIVE[card.id as keyof typeof LIVE];
 ---
 
 <div class:list={["scene", `scene-${card.layout}`]} aria-hidden="true">
-  {Live && <Live lang={lang} />}
+  {card.preview ? <img class="cm-feed" src={card.preview} alt="" width="1280" height="720" loading="lazy" /> : Live && <Live lang={lang} />}
 </div>

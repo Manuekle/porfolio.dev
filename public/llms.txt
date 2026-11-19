@@ -1,26 +1,37 @@
 # Manuel Erazo
 
-Full Stack Developer in Bogotá, Colombia, open to international remote roles.
+Full stack developer in Bogotá, Colombia. Builds SaaS products, interfaces and AI systems with TypeScript, React, Next.js, Python, PostgreSQL and AWS.
+Open to remote roles and freelance work. Systems Engineering graduate, Fundación Universitaria de Popayán, June 2026.
 
-Site: https://manudev.vercel.app
+English portfolio (default): https://manudev.vercel.app/
+Spanish portfolio: https://manudev.vercel.app/es/
 Email: meerazo7@hotmail.com
-GitHub: https://github.com/manuekle
+GitHub: https://github.com/Manuekle
 LinkedIn: https://linkedin.com/in/manuekle
 
-Builds SaaS products, APIs and AI integrations with React, Next.js, TypeScript, Node.js and PostgreSQL.
-Systems Engineering graduate, Fundación Universitaria de Popayán, June 2026.
-Spanish native; English B1 intermediate.
-English portfolio: https://manudev.vercel.app/
-Spanish portfolio: https://manudev.vercel.app/es/
+## Selected projects
+- Oruka — AI customer support and sales on WhatsApp and Instagram; unified inbox, contacts, deals and automation. Private beta — https://www.oruka.si/en
+- Ragis — multimodal RAG over company documents, with verifiable citations and document-level permissions. Python, PostgreSQL, Next.js, AWS and Terraform — https://ragis.app/ — https://github.com/Manuekle/ragis
+- GymRatPlus — training plans, nutrition, athlete progress, coaching, memberships and payments. Next.js, PostgreSQL and Drizzle — https://gymratplus.com
 
-## Projects
-- Oruka — AI customer support and sales in private beta, no users yet; previously Steve and Senka — https://www.oruka.si/en
-- GymRat+ — fitness and coaching platform with 60 users as confirmed in October 2026 — https://gymratplus.com
-- KanaGO! — native iOS 17+ Japanese learning app with SwiftUI, SM-2 review, local progress and WidgetKit; App Store release pending — https://kanago.vercel.app/
-- Cetamed — hospital operations hackathon prototype using synthetic data and 19 allowed query intents, no clinical deployment — https://cetamed.vercel.app
-- Blank — React component editor with editable TSX/CSS, themed visual controls, isolated previews and file exports — https://blank-manudev.vercel.app/
-- Frontier Lab10 — supervised computer-use agent; 45 of 56 hidden evaluation tasks completed on 11 October 2026, detailed scoring pending. Observatory requires a team token — https://agent-production-2577.up.railway.app/ui#/tareas/d83bb9d0-a988-4338-8739-5e64661193de
-- creagent — source-available agent composer under FSL-1.1-MIT with an MIT MCP server — https://creagent.fun/demo
-- forge — multi-agent product strategy — https://forgems.vercel.app
-- SIRA — QR attendance and academic reporting; live demo unavailable during the 12 October 2026 review — https://github.com/Manuekle/sira
-- ButterflyAR — Flutter and Dart educational augmented reality application — https://github.com/Manuekle/butterflyar-mobile
+## UI/UX
+- trii redesign — independent website concept focused on content architecture, navigation and page structure — https://redesign-trii.vercel.app
+- Dapta redesign — independent dashboard concept with a shared design system, AI composer, command search and demo data — https://redesign-dapta.vercel.app
+
+## Mobile apps
+- KanaGO! — native iPhone Japanese-learning app with SwiftUI, spaced review and WidgetKit; App Store release pending — https://kanago.vercel.app/
+- Cue — native teleprompter for Mac, iPhone and iPad — https://manuekle.github.io/cue/
+- ButterflyAR — Flutter and Dart educational augmented reality — https://github.com/Manuekle/butterflyar-mobile
+
+## Hackathon projects
+- Focus — AI video editing for the Meta Global AI Developer Hackathon 2026 — https://github.com/Manuekle/focus
+- Frontier Lab10 — supervised computer-use agent; 45 of 56 hidden tasks completed on October 11, 2026 — https://github.com/Manuekle/lab10-hack
+- Cetamed — hospital operations prototype using synthetic data; 19 allowed query intents — https://cetamed.vercel.app
+- Forge — multi-agent product planning for Agents League at AI Summit 2026 — https://forgems.vercel.app
+
+## Contributions
+Verified November 19, 2026. Forks are listed separately from accepted contributions.
+- 33 public forked repositories — https://github.com/Manuekle?tab=repositories&type=fork
+- 22 merged pull requests in repositories owned by other accounts — https://github.com/search?q=author%3AManuekle+is%3Apr+is%3Amerged+-user%3AManuekle&type=pullrequests
+- fincaagricola-app — 19 merged PRs for data classes and administrative forms — https://github.com/IverArley/fincaagricola-app/pulls?q=is%3Apr+author%3AManuekle+is%3Amerged
+- first-contributions — contributor entry merged in PR #51004 — https://github.com/firstcontributions/first-contributions/pull/51004
