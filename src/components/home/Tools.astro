@@ -1,0 +1,46 @@
+---
+import { T, TOOLS } from "../../data/home";
+import type { Lang } from "../../data/portfolio";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+---
+
+<div class="tools" aria-labelledby="tools-title">
+  <h2 class="eyebrow" id="tools-title">{T.tools[lang]}</h2>
+  <ul class="tool-icons">
+    {TOOLS.map((tool) => (
+      <li title={tool.name}>
+        <picture>
+          {tool.darkIcon && <source media="(prefers-color-scheme: dark)" srcset={`/assets/stack/${tool.darkIcon}.svg`} />}
+          <img src={`/assets/stack/${tool.icon}.svg`} alt={tool.name} width={tool.icon === "aws" ? 40 : 28} height="28" />
+        </picture>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .tools {
+    margin-top: 32px;
+  }
+  .tools .eyebrow {
+    margin-bottom: 14px;
+  }
+  .tool-icons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+  }
+  .tool-icons picture,
+  .tool-icons img {
+    display: block;
+  }
+  .tool-icons img {
+    height: 28px;
+    object-fit: contain;
+  }
+</style>

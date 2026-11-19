@@ -36,7 +36,9 @@ The card list is `WORK_CARDS` in `src/data/home.ts`; project facts come from
 rows into UI/UX, mobile apps and hackathon projects. `CONTRIBUTIONS` lists public
 forks and merged pull requests separately, with links to their evidence.
 
-The UI, global CSS, fonts, colors and motion are unchanged. Oruka keeps its
+The global CSS, fonts, colors and motion are unchanged. A compact SVGL tool row
+sits below the profile header, matching the GitHub README and supporting light
+and dark themes. Oruka keeps its
 live Instagram preview; Ragis uses a capture of its public landing page and
 GymRat+ uses artwork from its own landing assets in the same media slot.
 The other app scene components remain available for future content.

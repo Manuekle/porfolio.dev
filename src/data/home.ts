@@ -6,6 +6,7 @@ import { EDUCATION, EXPERIENCE, PROFILE, PROJECTS, type Bilingual, type Lang } f
 export const T = {
   hello: { en: "Hi, I'm Manuel.", es: "Hola, soy Manuel." },
   role: { en: "Full stack developer", es: "Desarrollador full stack" },
+  tools: { en: "Tools I work with", es: "Herramientas con las que trabajo" },
   works: { en: "Selected projects", es: "Proyectos destacados" },
   contributions: { en: "Contributions", es: "Contribuciones" },
   experience: { en: "Experience", es: "Experiencia" },
@@ -17,6 +18,18 @@ export const T = {
   langs: { en: "Language", es: "Idioma" },
   now: { en: "Now", es: "Hoy" },
 } satisfies Record<string, Bilingual>;
+
+/** The same curated SVGL icons used in the GitHub profile README. */
+export const TOOLS = [
+  { name: "TypeScript", icon: "typescript" },
+  { name: "React", icon: "react", darkIcon: "react-dark" },
+  { name: "Next.js", icon: "nextjs" },
+  { name: "Python", icon: "python" },
+  { name: "PostgreSQL", icon: "postgresql" },
+  { name: "Docker", icon: "docker" },
+  { name: "AWS", icon: "aws", darkIcon: "aws-dark" },
+  { name: "Terraform", icon: "terraform" },
+];
 
 /** Bio paragraphs. `{oruka}`-style tokens become inline project links. */
 export const BIO: Record<Lang, string[]> = {

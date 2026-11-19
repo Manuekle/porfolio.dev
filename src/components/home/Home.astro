@@ -3,6 +3,7 @@ import { BRANDS } from "../../data/brands";
 import { ACTIVITY, BIO, EXPERIENCE_ITEMS, CONTRIBUTIONS, PROFILE, T, WORK_CARDS, WORK_GROUPS } from "../../data/home";
 import type { Lang } from "../../data/portfolio";
 import Scene from "./Scene.astro";
+import Tools from "./Tools.astro";
 
 interface Props {
   lang: Lang;
@@ -54,6 +55,8 @@ const links = [
           <p>{t(T.role)} · {t(PROFILE.location)}</p>
         </div>
       </div>
+
+      <Tools lang={lang} />
 
       <div class="bio">
         {
