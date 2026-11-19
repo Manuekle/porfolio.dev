@@ -12,7 +12,7 @@ LinkedIn: https://linkedin.com/in/manuekle
 ## Selected projects
 - Oruka — AI customer support and sales on WhatsApp and Instagram; unified inbox, contacts, deals and automation. Private beta — https://www.oruka.si/en
 - Ragis — multimodal RAG over company documents, with verifiable citations and document-level permissions. Python, PostgreSQL, Next.js, AWS and Terraform — https://ragis.app/ — https://github.com/Manuekle/ragis
-- GymRatPlus — training plans, nutrition, athlete progress, coaching, memberships and payments. Next.js, PostgreSQL and Drizzle — https://gymratplus.com
+- GymRat+ — training plans, nutrition, athlete progress, coaching, memberships and payments. Next.js, PostgreSQL and Drizzle — https://gymratplus.com
 
 ## UI/UX
 - trii redesign — independent website concept focused on content architecture, navigation and page structure — https://redesign-trii.vercel.app

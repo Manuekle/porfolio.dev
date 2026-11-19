@@ -17,8 +17,8 @@ export const PROFILE = {
   phone: "+57 311 271 1242",
   site: "manudev.vercel.app",
   bio: {
-    es: "Construyo productos SaaS, interfaces y sistemas de IA: Oruka, Ragis y GymRatPlus. TypeScript, React, Next.js, Python, PostgreSQL y AWS.",
-    en: "I build SaaS products, interfaces and AI systems: Oruka, Ragis and GymRatPlus. TypeScript, React, Next.js, Python, PostgreSQL and AWS.",
+    es: "Construyo productos SaaS, interfaces y sistemas de IA: Oruka, Ragis y GymRat+. TypeScript, React, Next.js, Python, PostgreSQL y AWS.",
+    en: "I build SaaS products, interfaces and AI systems: Oruka, Ragis and GymRat+. TypeScript, React, Next.js, Python, PostgreSQL and AWS.",
   } as Bilingual,
 };
 
@@ -658,7 +658,7 @@ export const PROJECTS: Project[] = [
   },
   {
     "id": "gymrat",
-    "name": "GymRatPlus",
+    "name": "GymRat+",
     "year": "2024 —",
     "logo": "/assets/works/gymrat/icon.webp",
     "tagline": {

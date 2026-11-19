@@ -13,7 +13,7 @@ const t = (b: { en: string; es: string }) => b[lang];
 const INLINE: Record<string, { name: string; href: string; logo?: string; self?: boolean }> = {
   services: { name: lang === "es" ? "servicios" : "services", href: lang === "es" ? "/es/services/" : "/services/", self: true },
   ragis: { name: "Ragis", href: "https://ragis.app/", logo: "/assets/works/ragis/ragis-logo.svg" },
-  gymrat: { name: "GymRatPlus", href: "https://gymratplus.com", logo: "/assets/works/gymrat/icon.webp" },
+  gymrat: { name: "GymRat+", href: "https://gymratplus.com", logo: "/assets/works/gymrat/icon.webp" },
   oruka: { name: "Oruka", href: "https://www.oruka.si/en", logo: "/assets/works/oruka/icon.webp" },
 };
 const bio = BIO[lang].map((p) => p.split(/(\{\w+\})/g));

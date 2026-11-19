@@ -10,6 +10,6 @@ Public GitHub evidence for the portfolio content. Counts are a dated snapshot.
 
 Forking a repository does not demonstrate an upstream contribution. The portfolio separates forks from merged PRs and links to the underlying records.
 
-Project content was checked against repository READMEs and public product pages. trii and Dapta are independent redesign concepts. GymRatPlus's public deployment was paused at review time; its existing product URL remains, without implying that the site was reachable on this date.
+Project content was checked against repository READMEs and public product pages. trii and Dapta are independent redesign concepts. GymRat+'s public deployment was paused at review time; its existing product URL remains, without implying that the site was reachable on this date.
 
-Ragis preview: viewport capture of https://ragis.app/ on November 19, 2026. Ragis marks come from the project's own `docs/assets/brand` directory. GymRatPlus artwork comes from its own `apps/web/public/landing-assets/landing.webp`.
+Ragis preview: viewport capture of https://ragis.app/ on November 19, 2026. Ragis marks come from the project's own `docs/assets/brand` directory. GymRat+ artwork comes from its own `apps/web/public/landing-assets/landing.webp`.

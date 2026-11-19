@@ -30,7 +30,7 @@ reduced-motion guard and the services quote calculator).
 
 ## Works
 
-The three selected cards are **Oruka, Ragis and GymRatPlus**, in that order.
+The three selected cards are **Oruka, Ragis and GymRat+**, in that order.
 The card list is `WORK_CARDS` in `src/data/home.ts`; project facts come from
 `PROJECTS` in `src/data/portfolio.ts`. `WORK_GROUPS` organizes the existing compact
 rows into UI/UX, mobile apps and hackathon projects. `CONTRIBUTIONS` lists public
@@ -38,7 +38,7 @@ forks and merged pull requests separately, with links to their evidence.
 
 The UI, global CSS, fonts, colors and motion are unchanged. Oruka keeps its
 live Instagram preview; Ragis uses a capture of its public landing page and
-GymRatPlus uses artwork from its own landing assets in the same media slot.
+GymRat+ uses artwork from its own landing assets in the same media slot.
 The other app scene components remain available for future content.
 
 Their media and app icons live in `public/assets/works/<project>/`. Focus's
