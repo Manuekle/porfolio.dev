@@ -14,7 +14,7 @@ reduced-motion guard and the services quote calculator).
 | :---- | :--------- |
 | `/`, `/es/` | Home: intro, selected projects, UI/UX, mobile, hackathons, contributions, experience, activity, links |
 | `/services/`, `/es/services/` | What I build, pricing and the instant quote |
-| `/banner` | Hidden stage for rendering `public/og-banner.png` (noindex) |
+| `/banner` | Hidden preview and downloads for the generated English/Spanish OG assets (noindex) |
 
 ## Design
 
@@ -70,7 +70,7 @@ public/
 └── assets/
     ├── works/            card media and app icons
     ├── logos/            org and project marks used in data
-    ├── font/             Cooper and Inter, used only by /banner
+    ├── font/             legacy fonts; social assets use the main Natadecoco font
     └── CV_Manuel_Erazo_{ES,EN}.pdf
 ```
 
@@ -90,10 +90,15 @@ public/
 node scripts/gen-logos.mjs      # src/data/brands.ts from Simple Icons
 node scripts/gen-icons.cjs      # favicons + apple-touch + android-chrome
 node scripts/gen-site-mark.cjs  # public/assets/mark.png
-node scripts/gen-og.cjs         # public/og-banner.png from the mark
+uv run scripts/gen-social.py    # English/Spanish OG + LinkedIn banner, using Natadecoco
 node scripts/gen-avatar.cjs     # public/assets/avatar.png
 ```
 
 ## Deploy
 
 Static output. Drop `dist/` on Vercel, Netlify or Cloudflare Pages.
+
+Social artwork is generated from the bundled portfolio font. Versioned English and
+Spanish OG URLs keep share previews current; `public/og-banner.png` remains an
+English compatibility copy. The LinkedIn banner is exported to
+`output/linkedin/manuel-erazo-linkedin-banner.png` (1584 × 396).
