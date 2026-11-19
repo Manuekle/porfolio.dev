@@ -17,8 +17,8 @@ export const PROFILE = {
   phone: "+57 311 271 1242",
   site: "manudev.vercel.app",
   bio: {
-    es: "Desarrollo productos SaaS con TypeScript, React, Next.js y PostgreSQL. Interfaces, APIs, datos e integración de IA.",
-    en: "I build SaaS products with TypeScript, React, Next.js and PostgreSQL, across interfaces, APIs, data and AI integrations.",
+    es: "Construyo productos SaaS, interfaces y sistemas de IA: Oruka, Ragis y GymRat+. TypeScript, React, Next.js, Python, PostgreSQL y AWS.",
+    en: "I build SaaS products, interfaces and AI systems: Oruka, Ragis and GymRat+. TypeScript, React, Next.js, Python, PostgreSQL and AWS.",
   } as Bilingual,
 };
 
@@ -558,6 +558,74 @@ export type Project = {
 };
 
 export const PROJECTS: Project[] = [
+  {
+    "id": "ragis",
+    "name": "Ragis",
+    "year": "2026",
+    "logo": "/assets/works/ragis/ragis-logo-dark.svg",
+    "tagline": {
+      "en": "Company knowledge, with verifiable citations",
+      "es": "Conocimiento empresarial con citas verificables"
+    },
+    "blurb": {
+      "en": "Built a multimodal RAG platform that turns documents, spreadsheets, slides and recordings into answers linked to their exact sources.",
+      "es": "Construí una plataforma RAG multimodal que convierte documentos, hojas de cálculo, presentaciones y grabaciones en respuestas enlazadas a sus fuentes."
+    },
+    "decision": {
+      "en": "Combined full-text, vector and graph retrieval in PostgreSQL, with document-level permissions applied before retrieval and citation verification before answering.",
+      "es": "Combiné búsqueda de texto, vectores y grafos en PostgreSQL, con permisos por documento antes de recuperar información y verificación de citas antes de responder."
+    },
+    "result": {
+      "en": "Public code and product website. AWS infrastructure is defined in Terraform; the application also runs locally with Docker.",
+      "es": "Código público y sitio del producto. Infraestructura AWS definida con Terraform; la aplicación también corre localmente con Docker."
+    },
+    "stack": [
+      "nextdotjs",
+      "typescript",
+      "python",
+      "postgresql",
+      "docker"
+    ],
+    "liveUrl": "https://ragis.app/",
+    "sourceUrl": "https://github.com/Manuekle/ragis"
+  },
+  {
+    "id": "redesign-trii",
+    "name": "trii redesign",
+    "year": "2026",
+    "tagline": {
+      "en": "Independent website concept · Content architecture & navigation",
+      "es": "Concepto web independiente · Arquitectura de contenido y navegación"
+    },
+    "blurb": {
+      "en": "An independent redesign study of trii: sitemap, page briefs and a semantic Next.js foundation.",
+      "es": "Estudio independiente de rediseño de trii: mapa del sitio, objetivos por página y una base semántica en Next.js."
+    },
+    "stack": [
+      "nextdotjs",
+      "typescript"
+    ],
+    "liveUrl": "https://redesign-trii.vercel.app",
+    "sourceUrl": "https://github.com/Manuekle/redesign-trii"
+  },
+  {
+    "id": "redesign-dapta",
+    "name": "Dapta redesign",
+    "year": "2026",
+    "tagline": {
+      "en": "Independent dashboard concept · Design system & interactions",
+      "es": "Concepto independiente de dashboard · Sistema de diseño e interacciones"
+    },
+    "blurb": {
+      "en": "Rebuilt the Dapta home screen around a shared design system, an AI composer, command search and workspace navigation, using demo data.",
+      "es": "Rehíce el inicio de Dapta con un sistema de diseño compartido, un compositor de IA, búsqueda por comandos y navegación entre espacios, con datos de demostración."
+    },
+    "stack": [
+      "typescript"
+    ],
+    "liveUrl": "https://redesign-dapta.vercel.app",
+    "sourceUrl": "https://github.com/Manuekle/redesign-dapta"
+  },
   {
     "id": "oruka",
     "name": "Oruka",

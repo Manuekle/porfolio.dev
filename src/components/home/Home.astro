@@ -1,8 +1,9 @@
 ---
 import { BRANDS } from "../../data/brands";
-import { ACTIVITY, BIO, EXPERIENCE_ITEMS, MORE_WORK, PROFILE, T, WORK_CARDS } from "../../data/home";
+import { ACTIVITY, BIO, EXPERIENCE_ITEMS, CONTRIBUTIONS, PROFILE, T, WORK_CARDS, WORK_GROUPS } from "../../data/home";
 import type { Lang } from "../../data/portfolio";
 import Scene from "./Scene.astro";
+import Tools from "./Tools.astro";
 
 interface Props {
   lang: Lang;
@@ -12,6 +13,7 @@ const t = (b: { en: string; es: string }) => b[lang];
 
 const INLINE: Record<string, { name: string; href: string; logo?: string; self?: boolean }> = {
   services: { name: lang === "es" ? "servicios" : "services", href: lang === "es" ? "/es/services/" : "/services/", self: true },
+  ragis: { name: "Ragis", href: "https://ragis.app/", logo: "/assets/works/ragis/ragis-logo.svg" },
   gymrat: { name: "GymRat+", href: "https://gymratplus.com", logo: "/assets/works/gymrat/icon.webp" },
   oruka: { name: "Oruka", href: "https://www.oruka.si/en", logo: "/assets/works/oruka/icon.webp" },
 };
@@ -53,6 +55,8 @@ const links = [
           <p>{t(T.role)} · {t(PROFILE.location)}</p>
         </div>
       </div>
+
+      <Tools lang={lang} />
 
       <div class="bio">
         {
@@ -134,18 +138,35 @@ const links = [
         }
       </div>
 
-      <h3 class="eyebrow sub">{t(T.more)}</h3>
-      <ul class="more">
-        {
-          MORE_WORK.map((p) => (
+    </section>
+
+    {WORK_GROUPS.map((group) => (
+      <section aria-labelledby={`${group.id}-title`}>
+        <h2 class="eyebrow" id={`${group.id}-title`}>{t(group.title)}</h2>
+        <ul class="more">
+          {group.projects.map((p) => (
             <li>
-              <a href={p.liveUrl ?? p.sourceUrl} target="_blank" rel="noopener">
+              <a href={p.href} target="_blank" rel="noopener">
                 <span class="more-name">{p.name}</span>
                 <span class="more-desc">{t(p.tagline)}</span>
               </a>
             </li>
-          ))
-        }
+          ))}
+        </ul>
+      </section>
+    ))}
+
+    <section aria-labelledby="contributions-title">
+      <h2 class="eyebrow" id="contributions-title">{t(T.contributions)}</h2>
+      <ul class="more">
+        {CONTRIBUTIONS.map((entry) => (
+          <li>
+            <a href={entry.href} target="_blank" rel="noopener">
+              <span class="more-name">{t(entry.name)}</span>
+              <span class="more-desc">{t(entry.desc)}</span>
+            </a>
+          </li>
+        ))}
       </ul>
     </section>
 

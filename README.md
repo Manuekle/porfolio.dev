@@ -1,7 +1,7 @@
 # manudev — portfolio
 
-Personal portfolio of Manuel Erazo. One quiet column: intro, project cards that
-stack while you scroll, experience, activity and links. Bilingual (English at
+Personal portfolio of Manuel Erazo. One quiet column: intro, three project cards that
+stack while you scroll, categorized work, contributions, experience, activity and links. Bilingual (English at
 `/`, Spanish at `/es/`), light and dark from the system setting.
 
 Built with [Astro](https://astro.build) as plain `.astro` components: no UI
@@ -12,7 +12,7 @@ reduced-motion guard and the services quote calculator).
 
 | Route | What it is |
 | :---- | :--------- |
-| `/`, `/es/` | Home: intro, works, more work, experience, activity, links |
+| `/`, `/es/` | Home: intro, selected projects, UI/UX, mobile, hackathons, contributions, experience, activity, links |
 | `/services/`, `/es/services/` | What I build, pricing and the instant quote |
 | `/banner` | Hidden stage for rendering `public/og-banner.png` (noindex) |
 
@@ -30,19 +30,18 @@ reduced-motion guard and the services quote calculator).
 
 ## Works
 
-The card list is `WORK_CARDS` in `src/data/home.ts`; project facts (name, logo,
-links) come from `PROJECTS` in `src/data/portfolio.ts`. Every other project is a
-text row under "More" (`MORE_WORK`).
+The three selected cards are **Oruka, Ragis and GymRat+**, in that order.
+The card list is `WORK_CARDS` in `src/data/home.ts`; project facts come from
+`PROJECTS` in `src/data/portfolio.ts`. `WORK_GROUPS` organizes the existing compact
+rows into UI/UX, mobile apps and hackathon projects. `CONTRIBUTIONS` lists public
+forks and merged pull requests separately, with links to their evidence.
 
-Each card shows a live part of its app, ported from that app's own source, in
-`src/components/home/apps/`:
-
-| Card | Component | Ported from |
-| :--- | :-------- | :---------- |
-| Oruka | `OrukaPhone.astro` | the Instagram comment-automation preview (comment sheet, then DM) in the iPhone 17 frame |
-| Cue | `CueMac.astro` | the hero of Cue's site: MacBook, Meet call and the notch prompter with its 3-2-1 loop |
-| Focus | `FocusDemo.astro` | the Rotoscope demo (character, reference video, result) |
-| KanaGO! | `KanaFilm.astro` | the tour on KanaGO!'s site: real app screens, kanji and Kana-chan |
+The global CSS, fonts, colors and motion are unchanged. A compact SVGL tool row
+sits below the profile header, matching the GitHub README and supporting light
+and dark themes. Oruka keeps its
+live Instagram preview; Ragis uses a capture of its public landing page and
+GymRat+ uses artwork from its own landing assets in the same media slot.
+The other app scene components remain available for future content.
 
 Their media and app icons live in `public/assets/works/<project>/`. Focus's
 Rotoscope media (Reze, *Chainsaw Man*) and the Porkys font are used with
