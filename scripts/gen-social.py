@@ -2,7 +2,7 @@
 # requires-python = ">=3.10"
 # dependencies = ["pillow>=11,<14", "fonttools[woff]>=4.56,<5"]
 # ///
-"""Generate social artwork with the portfolio's exact bundled Natadecoco font.
+"""Generate social artwork with the portfolio's bundled Myriad Pro and Myriad Pro Light fonts.
 Run: uv run scripts/gen-social.py
 """
 from io import BytesIO
@@ -16,20 +16,22 @@ PUBLIC = ROOT / "public"
 SOCIAL = PUBLIC / "social"
 OUTPUT = ROOT / "output" / "linkedin"
 SCALE = 2
-PAPER = "#fff8f4"
+PAPER = "#faf9f6"
 INK = "#1d1b19"
 MUTED = "#695d47"
 SURFACE = "#f0e8e0"
 LINE = "#ded3c6"
-font = TTFont(PUBLIC / "fonts" / "Natadecoco-gothic.woff2")
-font.flavor = None
-font_data = BytesIO()
-font.save(font_data)
-FONT = font_data.getvalue()
+FONTS = {}
+for weight in ("light", "regular", "semibold", "bold"):
+    font = TTFont(PUBLIC / "fonts" / "myriad-pro" / f"{weight}.woff2")
+    font.flavor = None
+    data = BytesIO()
+    font.save(data)
+    FONTS[weight] = data.getvalue()
 
 
-def face(size):
-    return ImageFont.truetype(BytesIO(FONT), round(size * SCALE))
+def face(size, weight="regular"):
+    return ImageFont.truetype(BytesIO(FONTS[weight]), round(size * SCALE))
 
 
 def canvas(width, height):
@@ -37,12 +39,12 @@ def canvas(width, height):
     return image, ImageDraw.Draw(image)
 
 
-def text(draw, xy, value, size, color=INK, max_width=None):
-    f = face(size)
+def text(draw, xy, value, size, color=INK, max_width=None, weight="regular"):
+    f = face(size, weight)
     if max_width:
         while draw.textlength(value, font=f) > max_width * SCALE:
             size -= 1
-            f = face(size)
+            f = face(size, weight)
     x, y = xy
     box = draw.textbbox((0, 0), value, font=f)
     draw.text((x * SCALE, y * SCALE - box[1]), value, font=f, fill=color)
@@ -81,31 +83,25 @@ def save(image, path, size):
 
 def og(lang):
     image, draw = canvas(1200,630)
-    text(draw,(64,58),"manudev.vercel.app",26,MUTED)
-    text(draw,(64,170),"Manuel Erazo",88,max_width=780)
-    role = "Full stack developer" if lang == "en" else "Desarrollador full stack"
-    tagline = "Thoughtful interfaces, SaaS products & AI." if lang == "en" else "Interfaces cuidadas, productos SaaS e IA."
-    text(draw,(68,282),role,35,max_width=760)
-    text(draw,(68,348),tagline,27,MUTED,max_width=740)
-    round_photo(image,(900,156),232)
-    line(draw,(68,450,1132,450))
-    text(draw,(68,486),"Oruka / Ragis / GymRat+",28)
-    text(draw,(68,554),"TypeScript / React / Next.js / Python / PostgreSQL / AWS",21,MUTED,max_width=1064)
+    # Business-card layout: name, role, one human line, portrait. No links, projects or rules.
+    role = "Full-stack developer & AI specialist" if lang == "en" else "Desarrollador full-stack y especialista en IA"
+    tagline = "I build thoughtful products people enjoy using." if lang == "en" else "Construyo productos cuidados que da gusto usar."
+    text(draw,(80,206),"Manuel Erazo Medina",76,max_width=720)
+    text(draw,(83,312),role,34,"#727272",max_width=700,weight="light")
+    text(draw,(83,376),tagline,28,"#818181",max_width=700,weight="light")
+    round_photo(image,(868,185),260)
     save(image,SOCIAL/f"portfolio-og-{lang}-2026-11.png",(1200,630))
 
 
 def linkedin():
     image, draw = canvas(1584,396)
-    # Lower-left intentionally stays clear of LinkedIn's overlapping avatar.
-    mark(image,(102,78),142)
-    text(draw,(394,72),"Manuel Erazo",76,max_width=1088)
-    text(draw,(398,176),"Full stack developer",32)
-    text(draw,(398,234),"SaaS, AI & RAG, and thoughtful interfaces.",26,MUTED,max_width=1086)
-    line(draw,(398,298,1488,298))
-    text(draw,(398,326),"Oruka / Ragis / GymRat+",23)
-    domain="manudev.vercel.app"
-    width=draw.textlength(domain,font=face(22))/SCALE
-    text(draw,(1488-width,328),domain,22,MUTED)
+    # Flat bone-white field. Three centered lines; no texture, marks or rules.
+    def centered(value, y, size, color, weight="regular"):
+        width=draw.textlength(value,font=face(size,weight))/SCALE
+        text(draw,((1584-width)/2,y),value,size,color,weight=weight)
+    centered("Manuel Erazo Medina",104,72,INK)
+    centered("Full-stack developer & AI specialist",194,40,"#727272","light")
+    centered("Next.js   |   TypeScript   |   React   |   Node.js   |   AI Agents",278,26,"#818181","light")
     path=OUTPUT/"manuel-erazo-linkedin-banner.png"
     save(image,path,(1584,396))
 

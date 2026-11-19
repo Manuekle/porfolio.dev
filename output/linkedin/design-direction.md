@@ -1,9 +1,9 @@
-# Familiar form
+# Quiet type
 
-The identity begins with the portfolio's own Natadecoco lettering. Its informal curves carry the personality; generous spacing and consistent alignment provide the professional frame. Every glyph is rendered from the bundled font, with carefully measured text rather than a visual approximation.
+Myriad Pro and Myriad Pro Light carry the identity, rendered from the exact supplied font files. The name has the strongest scale and contrast; the role and technology line use the lighter weight. Measured typography replaces decoration.
 
-Warm paper, dark ink and a restrained taupe create continuity with the live site. Color is functional: the name leads, the role explains, the quieter line adds context. Meticulous spacing keeps each level readable when the artwork is reduced to a profile header or link preview.
+The LinkedIn banner is a completely flat bone-white field (#FAF9F6). It has no texture, gradient, illustration, logo or rule. Black and muted gray text reproduce the hierarchy of the supplied reference while keeping all copy in English.
 
-The composition makes room for the platform around it. LinkedIn's lower-left portrait area remains clear, while the website preview uses the existing portrait without altering the person. This careful balance treats the profile and its banner as a single composition.
+Three centered lines leave generous space around the identity and keep the lower-left avatar overlap clear of essential text. Every position is measured at the final 1584 × 396 format. This careful composition stays legible when the banner is reduced.
 
-Oruka, Ragis and GymRat+ are the evidence behind the identity. Their names appear together as a concise line, with the portfolio address providing a useful next step. Craftsmanship comes through exact typography, measured boundaries and clear reading order, with no extra decoration competing for attention.
+The portfolio and its English and Spanish share cards use the same Myriad family. The share cards read like a business card: name, role, one human line and the portrait, with no links or projects. Precise font rendering and carefully checked boundaries create continuity without changing the website layout.

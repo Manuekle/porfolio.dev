@@ -18,9 +18,8 @@ reduced-motion guard and the services quote calculator).
 
 ## Design
 
-- **Type:** Natadecoco for everything, one weight (`400`). It only covers ASCII,
-  so accents, `ñ`, `¿ ¡` and dashes fall back to the Inter subset through
-  `unicode-range`. Both live in `public/fonts/`.
+- **Type:** Myriad Pro for everything, regular weight (`400`), with light (`300`) for the role. The bundled regular, light, semibold and bold weights are self-hosted in
+  `public/fonts/myriad-pro/`, converted from the user-supplied OTF files.
 - **Colour:** warm Material 3 surfaces as CSS custom properties in
   `src/styles/home.css`, swapped under `prefers-color-scheme: dark`.
 - **Shape:** large outer corners (`--radius: 28px`) and 3px gaps between joined
@@ -65,12 +64,12 @@ src/
 ├── scripts/og-download.ts     PNG export for /banner
 └── styles/home.css
 public/
-├── fonts/                Natadecoco, Inter subset
+├── fonts/                Myriad Pro, Inter subset
 ├── new-icon.png          the portfolio mark (source for every icon)
 └── assets/
     ├── works/            card media and app icons
     ├── logos/            org and project marks used in data
-    ├── font/             legacy fonts; social assets use the main Natadecoco font
+    ├── font/             legacy fonts; social assets use the main Myriad Pro font
     └── CV_Manuel_Erazo_{ES,EN}.pdf
 ```
 
@@ -90,7 +89,7 @@ public/
 node scripts/gen-logos.mjs      # src/data/brands.ts from Simple Icons
 node scripts/gen-icons.cjs      # favicons + apple-touch + android-chrome
 node scripts/gen-site-mark.cjs  # public/assets/mark.png
-uv run scripts/gen-social.py    # English/Spanish OG + LinkedIn banner, using Natadecoco
+uv run scripts/gen-social.py    # English/Spanish OG + LinkedIn banner, using Myriad Pro
 node scripts/gen-avatar.cjs     # public/assets/avatar.png
 ```
 
