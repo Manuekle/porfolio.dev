@@ -14,13 +14,12 @@ reduced-motion guard and the services quote calculator).
 | :---- | :--------- |
 | `/`, `/es/` | Home: intro, selected projects, UI/UX, mobile, hackathons, contributions, experience, activity, links |
 | `/services/`, `/es/services/` | What I build, pricing and the instant quote |
-| `/banner` | Hidden stage for rendering `public/og-banner.png` (noindex) |
+| `/banner` | Hidden preview and downloads for the generated English/Spanish OG assets (noindex) |
 
 ## Design
 
-- **Type:** Natadecoco for everything, one weight (`400`). It only covers ASCII,
-  so accents, `ñ`, `¿ ¡` and dashes fall back to the Inter subset through
-  `unicode-range`. Both live in `public/fonts/`.
+- **Type:** Myriad Pro for everything, regular weight (`400`), with light (`300`) for the role. The bundled regular, light, semibold and bold weights are self-hosted in
+  `public/fonts/myriad-pro/`, converted from the user-supplied OTF files.
 - **Colour:** warm Material 3 surfaces as CSS custom properties in
   `src/styles/home.css`, swapped under `prefers-color-scheme: dark`.
 - **Shape:** large outer corners (`--radius: 28px`) and 3px gaps between joined
@@ -65,12 +64,12 @@ src/
 ├── scripts/og-download.ts     PNG export for /banner
 └── styles/home.css
 public/
-├── fonts/                Natadecoco, Inter subset
+├── fonts/                Myriad Pro, Inter subset
 ├── new-icon.png          the portfolio mark (source for every icon)
 └── assets/
     ├── works/            card media and app icons
     ├── logos/            org and project marks used in data
-    ├── font/             Cooper and Inter, used only by /banner
+    ├── font/             legacy fonts; social assets use the main Myriad Pro font
     └── CV_Manuel_Erazo_{ES,EN}.pdf
 ```
 
@@ -90,10 +89,15 @@ public/
 node scripts/gen-logos.mjs      # src/data/brands.ts from Simple Icons
 node scripts/gen-icons.cjs      # favicons + apple-touch + android-chrome
 node scripts/gen-site-mark.cjs  # public/assets/mark.png
-node scripts/gen-og.cjs         # public/og-banner.png from the mark
+uv run scripts/gen-social.py    # English/Spanish OG + LinkedIn banner, using Myriad Pro
 node scripts/gen-avatar.cjs     # public/assets/avatar.png
 ```
 
 ## Deploy
 
 Static output. Drop `dist/` on Vercel, Netlify or Cloudflare Pages.
+
+Social artwork is generated from the bundled portfolio font. Versioned English and
+Spanish OG URLs keep share previews current; `public/og-banner.png` remains an
+English compatibility copy. The LinkedIn banner is exported to
+`output/linkedin/manuel-erazo-linkedin-banner.png` (1584 × 396).

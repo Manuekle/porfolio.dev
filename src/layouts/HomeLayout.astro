@@ -11,15 +11,18 @@ interface Props {
 const {
   title = "Manuel Erazo — Full Stack Developer",
   description =
-    "Full Stack Developer in Bogotá. TypeScript, React, Next.js and PostgreSQL. SaaS products, APIs and AI integrations. Open to international remote roles.",
+    "Full stack developer in Bogotá building Oruka, Ragis and GymRat+. SaaS, UI/UX and AI with TypeScript, React, Next.js, Python, PostgreSQL and AWS.",
   lang = "en",
-  image = "/og-banner.png",
+  image = `/social/portfolio-og-${lang === "es" ? "es" : "en"}-2026-11.png`,
 } = Astro.props;
 
 const siteUrl = Astro.site ?? new URL("https://manudev.vercel.app");
 const canonical = new URL(Astro.url.pathname, siteUrl);
 const ogImage = new URL(image, siteUrl);
 const ogLocale = lang === "es" ? "es_CO" : "en_US";
+const imageAlt = lang === "es"
+  ? "Manuel Erazo, desarrollador full stack — Oruka, Ragis y GymRat+"
+  : "Manuel Erazo, full stack developer — Oruka, Ragis and GymRat+";
 const route = Astro.url.pathname.replace(/^\/es\/?/, "/").replace(/\/$/, "");
 const englishUrl = new URL(`${route || ""}/`, siteUrl);
 const spanishUrl = new URL(`/es${route}/`, siteUrl);
@@ -63,6 +66,10 @@ const jsonLd = {
         "LLMs",
         "SaaS",
         "Product design",
+        "Python",
+        "AWS",
+        "Retrieval-augmented generation",
+        "Terraform",
       ],
     },
   ],
@@ -97,7 +104,7 @@ const jsonLd = {
     <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Self-hosted type -->
-    <link rel="preload" as="font" type="font/woff2" href="/fonts/Natadecoco-gothic.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/myriad-pro/regular.woff2" crossorigin />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -108,17 +115,18 @@ const jsonLd = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:secure_url" content={ogImage} />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Manuel Erazo — Full Stack Developer" />
+    <meta property="og:image:alt" content={imageAlt} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:image:alt" content="Manuel Erazo — Full Stack Developer" />
+    <meta name="twitter:image:alt" content={imageAlt} />
 
     <link rel="me" href="https://github.com/manuekle" />
     <link rel="me" href="https://linkedin.com/in/manuekle" />
