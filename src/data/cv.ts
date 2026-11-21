@@ -40,7 +40,7 @@ const contact = () => [
 export const CV: Record<Lang, Cv> = {
   en: {
     name: "Manuel Esteban Erazo Medina",
-    headline: "Full Stack Developer | TypeScript, React, Next.js, Python, PostgreSQL, AWS | AI Agents and RAG",
+    headline: "AI Engineer · Full Stack Developer | Python, TypeScript, Next.js, PostgreSQL, AWS | AI Agents and RAG",
     contact: contact(),
     sections: {
       summary: "Summary",
@@ -52,15 +52,15 @@ export const CV: Record<Lang, Cv> = {
       certifications: "Certifications",
     },
     summary:
-      "Full stack developer who builds SaaS products end to end: interfaces, REST APIs, PostgreSQL data models and deployment. Focused on AI agents and retrieval-augmented generation (RAG): support and sales agents for WhatsApp and Instagram, a multimodal RAG platform with citations, and a computer-use agent.",
+      "AI engineer and full stack developer who builds SaaS products end to end: interfaces, REST APIs, PostgreSQL data models and deployment. Focused on AI agents and retrieval-augmented generation (RAG): support and sales agents for WhatsApp and Instagram, a multimodal RAG platform with citations, and a computer-use agent.",
     experience: [
       {
         title: "Blindem",
-        meta: "Full Stack Developer | Colombia",
+        meta: "AI Engineer | Colombia",
         when: "Oct 2026 – Present",
         bullets: [
-          "Build Blindem Liquidaciones, a labor management app that calculates Colombian contract settlements (severance, bonus, vacation, indemnity, contributions) with each year's legal parameters and Excel export.",
-          "Laravel 12, PHP 8.3, PostgreSQL 16 and Docker; 101 PHPUnit tests and a local Ollama LLM assistant that explains each figure citing the law.",
+          "Build the local LLM assistant (Ollama) of Blindem Liquidaciones, which explains each settlement figure and answers labor-law questions citing the law.",
+          "The app calculates Colombian contract settlements (severance, bonus, vacation, indemnity, contributions) with each year's legal parameters; Laravel 12, PHP 8.3, PostgreSQL 16, Docker, 101 PHPUnit tests.",
         ],
       },
       {
@@ -165,7 +165,7 @@ export const CV: Record<Lang, Cv> = {
   },
   es: {
     name: "Manuel Esteban Erazo Medina",
-    headline: "Desarrollador Full Stack | TypeScript, React, Next.js, Python, PostgreSQL, AWS | Agentes de IA y RAG",
+    headline: "Ingeniero de IA · Full Stack | Python, TypeScript, Next.js, PostgreSQL, AWS | Agentes de IA y RAG",
     contact: contact(),
     sections: {
       summary: "Perfil",
@@ -177,15 +177,15 @@ export const CV: Record<Lang, Cv> = {
       certifications: "Certificaciones",
     },
     summary:
-      "Desarrollador full stack que construye productos SaaS de principio a fin: interfaces, APIs REST, modelos de datos en PostgreSQL y despliegue. Enfocado en agentes de IA y generación aumentada por recuperación (RAG): agentes de soporte y ventas para WhatsApp e Instagram, una plataforma RAG multimodal con citas y un agente de uso del computador.",
+      "Ingeniero de IA y desarrollador full stack que construye productos SaaS completos: interfaces, APIs REST, modelos de datos en PostgreSQL y despliegue. Enfocado en agentes de IA y generación aumentada por recuperación (RAG): agentes de soporte y ventas para WhatsApp e Instagram, una plataforma RAG multimodal con citas y un agente de uso del computador.",
     experience: [
       {
         title: "Blindem",
-        meta: "Desarrollador Full Stack | Colombia",
+        meta: "Ingeniero de Inteligencia Artificial | Colombia",
         when: "Oct 2026 – Presente",
         bullets: [
-          "Construyo Blindem Liquidaciones, app de gestión laboral que calcula liquidaciones de contratos en Colombia (cesantías, prima, vacaciones, indemnización, aportes) con la vigencia legal de cada año y exporta a Excel.",
-          "Laravel 12, PHP 8.3, PostgreSQL 16 y Docker; 101 pruebas PHPUnit y un asistente local con Ollama (LLM) que explica cada cifra citando la norma.",
+          "Construyo el asistente LLM local (Ollama) de Blindem Liquidaciones, que explica cada cifra de la liquidación y responde preguntas laborales citando la norma.",
+          "La app calcula liquidaciones de contratos en Colombia (cesantías, prima, vacaciones, indemnización, aportes) con la vigencia legal de cada año; Laravel 12, PHP 8.3, PostgreSQL 16, Docker, 101 pruebas PHPUnit.",
         ],
       },
       {

@@ -325,8 +325,8 @@ export const EXPERIENCE: Experience[] = [
   {
     "id": "blindem",
     "role": {
-      "en": "Full Stack Developer",
-      "es": "Desarrollador Full Stack"
+      "en": "AI Engineer",
+      "es": "Ingeniero de Inteligencia Artificial"
     },
     "org": "Blindem",
     "logo": null,
@@ -349,12 +349,12 @@ export const EXPERIENCE: Experience[] = [
     },
     "bullets": [
       {
-        "en": "Build Blindem Liquidaciones, which calculates severance, interest, bonus, vacation, indemnity and social security contributions with each year's legal parameters and exports to Excel.",
-        "es": "Construyo Blindem Liquidaciones, que calcula cesantías, intereses, prima, vacaciones, indemnización y aportes con la vigencia legal de cada año y exporta a Excel."
+        "en": "Build the local Ollama assistant of Blindem Liquidaciones, which explains each settlement figure and answers labor-law questions citing the law.",
+        "es": "Construyo el asistente local con Ollama de Blindem Liquidaciones, que explica cada cifra de la liquidación y responde preguntas laborales citando la norma."
       },
       {
-        "en": "Laravel 12, PHP 8.3, PostgreSQL 16 and Docker; every saved settlement is an immutable record, covered by 101 PHPUnit tests, and a local Ollama assistant explains each figure citing the law.",
-        "es": "Laravel 12, PHP 8.3, PostgreSQL 16 y Docker; cada liquidación guardada es un registro inmutable, con 101 pruebas PHPUnit, y un asistente local con Ollama explica cada cifra citando la norma."
+        "en": "The app calculates severance, interest, bonus, vacation, indemnity and contributions with each year's legal parameters; Laravel 12, PHP 8.3, PostgreSQL 16, Docker and 101 PHPUnit tests.",
+        "es": "La app calcula cesantías, intereses, prima, vacaciones, indemnización y aportes con la vigencia legal de cada año; Laravel 12, PHP 8.3, PostgreSQL 16, Docker y 101 pruebas PHPUnit."
       }
     ]
   },
