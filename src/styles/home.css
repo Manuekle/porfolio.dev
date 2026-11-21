@@ -1,4 +1,4 @@
-/* Home — single column, blue light surfaces, Myriad Pro typography. */
+/* Home — single column, blue light surfaces, Allo titles and Myriad Pro text. */
 
 @font-face {
   font-family: "Myriad Pro";
@@ -80,6 +80,10 @@
   --ease-spatial: cubic-bezier(0.42, 1.67, 0.21, 0.9);
   --ease-effects: cubic-bezier(0.31, 0.94, 0.34, 1);
   --font: "Myriad Pro", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Allo", var(--font);
+  --tracking-body: -0.04em;
+  --tracking-title: -0.02em;
+  --tracking: var(--tracking-body);
 }
 
 /* ------------------------------------------------------------------ base */
@@ -88,6 +92,12 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  letter-spacing: var(--tracking);
+}
+:where(h1, h2, h3, h4, h5, h6) {
+  --tracking: var(--tracking-title);
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
 }
 html {
   background: var(--bg);
@@ -158,7 +168,7 @@ main {
   color: var(--ink-3);
   font-size: 12px;
   font-weight: 400;
-  letter-spacing: 0.12em;
+  letter-spacing: var(--tracking-title);
   text-transform: uppercase;
 }
 .eyebrow.sub {
@@ -276,7 +286,7 @@ main {
   font-size: 26px;
   font-weight: 400;
   line-height: 1.2;
-  letter-spacing: -0.01em;
+  letter-spacing: var(--tracking-title);
 }
 .flag {
   border-radius: 3px;
@@ -452,7 +462,7 @@ main {
   margin: 0;
   font-size: 20px;
   font-weight: 400;
-  letter-spacing: -0.01em;
+  letter-spacing: var(--tracking-title);
 }
 .work-body > p {
   max-width: 36em;
@@ -540,8 +550,12 @@ main {
   margin-top: 22px;
 }
 .scene {
+  --tracking: normal;
   position: relative;
   display: block;
+}
+.scene * {
+  letter-spacing: inherit;
 }
 
 /* ------------------------------------------------- phone: Oruka on Instagram */
@@ -1920,7 +1934,7 @@ main {
 .when {
   color: var(--ink-3);
   font-size: 13px;
-  letter-spacing: 0.02em;
+  letter-spacing: var(--tracking-body);
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
@@ -2086,7 +2100,7 @@ footer {
   font-size: 40px;
   font-weight: 400;
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--tracking-title);
 }
 .page-title + .bio {
   margin-top: 16px;

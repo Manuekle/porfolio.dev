@@ -18,8 +18,11 @@ reduced-motion guard and services quote calculator.
 
 ## Design
 
-- **Type:** Myriad Pro for everything, regular weight (`400`), with light (`300`) for the role. The bundled regular, light, semibold and bold weights are self-hosted in
-  `public/fonts/myriad-pro/`, converted from the user-supplied OTF files.
+- **Type:** Allo from `allo-font` for headings (`letter-spacing: -0.02em`),
+  paired with Myriad Pro for body text (`letter-spacing: -0.04em`). Body text
+  uses regular weight (`400`), with light (`300`) for the role. The bundled
+  Myriad Pro weights are self-hosted in `public/fonts/myriad-pro/`, converted
+  from the user-supplied OTF files. Embedded app previews keep their own type.
 - **Colour:** blue and white light surfaces as CSS custom properties in
   `src/styles/home.css`, independent of the system theme.
 - **Background:** an original animated WebGL canvas inspired by the flowing
