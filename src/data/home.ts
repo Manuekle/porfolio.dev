@@ -5,7 +5,7 @@ import { EDUCATION, EXPERIENCE, PROFILE, PROJECTS, type Bilingual, type Lang } f
 
 export const T = {
   hello: { en: "Hi, I'm Manuel.", es: "Hola, soy Manuel." },
-  role: { en: "Full stack developer", es: "Desarrollador full stack" },
+  role: { en: "AI Engineer · Full Stack Developer", es: "Ingeniero de IA · Desarrollador Full Stack" },
   tools: { en: "Tools I work with", es: "Herramientas con las que trabajo" },
   works: { en: "Selected projects", es: "Proyectos destacados" },
   contributions: { en: "Contributions", es: "Contribuciones" },
@@ -48,13 +48,13 @@ export const TOOLS = [
 export const BIO: Record<Lang, string[]> = {
   en: [
     "Hi, I'm Manuel.",
-    "I'm a full stack developer in Bogotá, Colombia. I build SaaS products with TypeScript, React, Next.js, Python and PostgreSQL, from the interface to the API, the data and the deployment.",
+    "I'm an AI engineer and full stack developer in Bogotá, Colombia. I build SaaS products with TypeScript, React, Next.js, Python and PostgreSQL, from the interface to the API, the data and the deployment.",
     "My main projects are {oruka}, AI agents for customer support and sales; {ragis}, answers grounded in company documents; and {gymrat}, a platform for training, nutrition and coaching.",
     "I also work on UI/UX redesigns, native mobile apps and hackathon experiments. I'm open to remote roles and freelance work: see my {services}.",
   ],
   es: [
     "Hola, soy Manuel.",
-    "Soy desarrollador full stack en Bogotá, Colombia. Construyo productos SaaS con TypeScript, React, Next.js, Python y PostgreSQL, desde la interfaz hasta las APIs, los datos y el despliegue.",
+    "Soy ingeniero de IA y desarrollador full stack en Bogotá, Colombia. Construyo productos SaaS con TypeScript, React, Next.js, Python y PostgreSQL, desde la interfaz hasta las APIs, los datos y el despliegue.",
     "Mis proyectos principales son {oruka}, agentes de IA para atención al cliente y ventas; {ragis}, respuestas basadas en documentos empresariales; y {gymrat}, una plataforma de entrenamiento, nutrición y coaching.",
     "También trabajo en rediseños de UI/UX, apps móviles nativas y experimentos de hackathon. Busco empleo remoto y tomo proyectos freelance: mira mis {services}.",
   ],
