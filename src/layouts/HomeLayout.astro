@@ -1,5 +1,7 @@
 ---
+import "allo-font/allo.css";
 import "../styles/home.css";
+import MeltBackground from "../components/home/MeltBackground.astro";
 
 interface Props {
   title?: string;
@@ -90,8 +92,8 @@ const jsonLd = {
     />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#fff8f4" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#151311" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#e7f2ff" />
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang="en" href={englishUrl} />
     <link rel="alternate" hreflang="es" href={spanishUrl} />
@@ -133,6 +135,7 @@ const jsonLd = {
     <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body>
+    <MeltBackground />
     <slot />
   </body>
 </html>

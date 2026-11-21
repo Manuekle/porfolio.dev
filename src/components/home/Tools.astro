@@ -13,10 +13,7 @@ const { lang } = Astro.props;
   <ul class="tool-icons">
     {TOOLS.map((tool) => (
       <li title={tool.name}>
-        <picture>
-          {tool.darkIcon && <source media="(prefers-color-scheme: dark)" srcset={`/assets/stack/${tool.darkIcon}.svg`} />}
-          <img src={`/assets/stack/${tool.icon}.svg`} alt={tool.name} width={tool.icon === "aws" ? 40 : 28} height="28" />
-        </picture>
+        <img src={`/assets/stack/${tool.icon}.svg`} alt={tool.name} width={tool.icon === "aws" ? 40 : 28} height="28" />
       </li>
     ))}
   </ul>

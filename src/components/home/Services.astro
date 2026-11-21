@@ -1,6 +1,7 @@
 ---
 import { ADDONS, CAPABILITIES, COPY, PACKAGES, PROFILE, SPEEDS, type Lang } from "../../data/portfolio";
 import { T } from "../../data/home";
+import Icon from "./Icon.astro";
 
 interface Props {
   lang: Lang;
@@ -53,17 +54,11 @@ const quoteData = {
       </div>
       <div class="contact-row">
         <a class="contact-main" href={quoteMail}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="3" y="5" width="18" height="14" rx="3" />
-            <path d="m4 7 8 6 8-6" />
-          </svg>
+          <Icon name="mail" />
           <span>{s.cta}</span>
         </a>
         <a class="contact-alt" href="#quote">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="5" y="3" width="14" height="18" rx="3" />
-            <path d="M9 7h6M9 11h.01M12 11h.01M15 11h.01M9 14h.01M12 14h.01M15 14h.01M9 17h.01M12 17h.01M15 17h.01" />
-          </svg>
+          <Icon name="calculator" />
           <span>{q.title}</span>
         </a>
       </div>
@@ -181,14 +176,14 @@ const quoteData = {
           <ul class="quote-rows" data-rows></ul>
           <p class="note">{q.note}</p>
           <div class="contact-row">
-            <a class="contact-main" data-send href={quoteMail}><span>{q.send}</span></a>
-            <button class="contact-alt" type="reset"><span>{q.restart}</span></button>
+            <a class="contact-main" data-send href={quoteMail}><Icon name="mail" /><span>{q.send}</span></a>
+            <button class="contact-alt" type="reset"><Icon name="refresh" /><span>{q.restart}</span></button>
           </div>
         </div>
       </form>
     </section>
 
-    <footer><a class="footer-link" href={home}>← {s.back}</a> · © 2026 {PROFILE.name}</footer>
+    <footer><a class="footer-link" href={home}><Icon name="back" size={16} />{s.back}</a> · © 2026 {PROFILE.name}</footer>
   </main>
 </div>
 

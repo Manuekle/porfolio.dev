@@ -1,4 +1,4 @@
-/* Home — single column, warm Material 3 surfaces, Myriad Pro typography. */
+/* Home — single column, blue light surfaces, Allo titles and Myriad Pro text. */
 
 @font-face {
   font-family: "Myriad Pro";
@@ -61,42 +61,29 @@
 }
 
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
 
-  --primary: #695d47;
+  --primary: #245bab;
   --on-primary: #fff;
-  --secondary-container: #eee1cf;
-  --on-secondary-container: #4e4639;
-  --bg: #fff8f4;
-  --ink: #1d1b19;
-  --ink-2: #494643;
-  --ink-3: #7a7673;
-  --line: #cbc5c1;
-  --surface: #f3ede8;
-  --surface-2: #e7e1dd;
-  --selection: #f2e0c5;
+  --secondary-container: #deebfc;
+  --on-secondary-container: #234a7d;
+  --bg: #e7f2ff;
+  --ink: #162438;
+  --ink-2: #3e5068;
+  --ink-3: #526782;
+  --line: #bdcfe5;
+  --surface: #edf4fc;
+  --surface-2: #deebf9;
+  --selection: #bedaff;
 
   --radius: 28px;
   --ease-spatial: cubic-bezier(0.42, 1.67, 0.21, 0.9);
   --ease-effects: cubic-bezier(0.31, 0.94, 0.34, 1);
   --font: "Myriad Pro", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --primary: #d5c4aa;
-    --on-primary: #392f1d;
-    --secondary-container: #4e4639;
-    --on-secondary-container: #eee1cf;
-    --bg: #151311;
-    --ink: #e7e1dd;
-    --ink-2: #cbc5c1;
-    --ink-3: #94908c;
-    --line: #494643;
-    --surface: #211f1d;
-    --surface-2: #373431;
-    --selection: #514531;
-  }
+  --font-display: "Allo", var(--font);
+  --tracking-body: -0.04em;
+  --tracking-title: -0.02em;
+  --tracking: var(--tracking-body);
 }
 
 /* ------------------------------------------------------------------ base */
@@ -105,6 +92,14 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  letter-spacing: var(--tracking);
+}
+:where(h1, h2, h3, h4, h5, h6) {
+  --tracking: var(--tracking-title);
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 500;
+  text-wrap: balance;
 }
 html {
   background: var(--bg);
@@ -115,6 +110,9 @@ html {
   -webkit-tap-highlight-color: transparent;
 }
 body {
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
   margin: 0;
   font-size: 16px;
   line-height: 1.55;
@@ -171,8 +169,8 @@ main {
   margin: 0 0 20px;
   color: var(--ink-3);
   font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.12em;
+  font-weight: 500;
+  letter-spacing: var(--tracking-title);
   text-transform: uppercase;
 }
 .eyebrow.sub {
@@ -191,7 +189,7 @@ main {
 
 /* state layer: a currentColor wash on hover / focus / press */
 .state,
-.contact-row a,
+.contact-row :is(a, button),
 .lang-tabs a,
 .pill,
 .card,
@@ -200,7 +198,7 @@ main {
   overflow: hidden;
   isolation: isolate;
 }
-.contact-row a::after,
+.contact-row :is(a, button)::after,
 .lang-tabs a::after,
 .pill::after,
 .card::after,
@@ -215,14 +213,14 @@ main {
   transition: opacity 0.15s var(--ease-effects);
 }
 @media (hover: hover) {
-  .contact-row a:hover::after,
+  .contact-row :is(a, button):hover::after,
   .lang-tabs a:not(.on):hover::after,
   .pill:hover::after,
   .more a:hover::after {
     opacity: 0.08;
   }
 }
-.contact-row a:active::after,
+.contact-row :is(a, button):active::after,
 .lang-tabs a:active::after,
 .pill:active::after,
 .card:active::after,
@@ -240,21 +238,23 @@ main {
 }
 .lang-tabs {
   display: inline-flex;
-  gap: 2px;
+  gap: 6px;
 }
 .lang-tabs a {
   display: inline-flex;
   align-items: center;
-  min-height: 32px;
-  padding: 0 8px;
-  border-radius: 8px;
+  min-height: 44px;
+  padding: 0 12px;
+  border-radius: 12px;
   color: var(--ink-3);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1;
   transition: color 0.2s ease, border-radius 0.35s var(--ease-spatial);
 }
 .lang-tabs a.on {
-  color: var(--ink);
+  background: var(--secondary-container);
+  color: var(--on-secondary-container);
+  font-weight: 600;
 }
 
 /* --------------------------------------------------------------- intro */
@@ -288,9 +288,9 @@ main {
   gap: 10px;
   margin: 0;
   font-size: 26px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.2;
-  letter-spacing: -0.01em;
+  letter-spacing: var(--tracking-title);
 }
 .flag {
   border-radius: 3px;
@@ -338,27 +338,37 @@ main {
 
 .contact-row {
   display: flex;
-  gap: 3px;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 10px;
   width: fit-content;
+  max-width: 100%;
   margin-top: 28px;
 }
-.contact-row a {
+.contact-row :is(a, button) {
+  appearance: none;
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
   min-height: 48px;
-  padding: 0 22px 0 18px;
+  padding: 12px 18px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  font: inherit;
   font-size: 15px;
-  transition: border-radius 0.35s var(--ease-spatial);
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  text-wrap: balance;
+  cursor: pointer;
+  touch-action: manipulation;
 }
-.contact-row a:first-child {
-  border-radius: 24px 8px 8px 24px;
-}
-.contact-row a:last-child {
-  border-radius: 8px 24px 24px 8px;
-}
-.contact-row a:active {
-  border-radius: 24px;
+.ui-icon {
+  display: inline-block;
+  flex: none;
+  vertical-align: middle;
 }
 .contact-main {
   background: var(--primary);
@@ -367,6 +377,9 @@ main {
 .contact-alt {
   background: var(--secondary-container);
   color: var(--on-secondary-container);
+}
+.contact-row .contact-alt {
+  border-color: var(--line);
 }
 
 /* --------------------------------------------------------------- works */
@@ -465,8 +478,8 @@ main {
 .work h3 {
   margin: 0;
   font-size: 20px;
-  font-weight: 400;
-  letter-spacing: -0.01em;
+  font-weight: 500;
+  letter-spacing: var(--tracking-title);
 }
 .work-body > p {
   max-width: 36em;
@@ -497,23 +510,15 @@ main {
   display: grid;
   place-items: center;
   flex: none;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
   overflow: hidden;
   background: var(--card-chip);
   color: var(--card-ink);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   transition: background 0.3s, color 0.3s;
-}
-.arrow-btn .arrow {
-  position: absolute;
-  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s;
-}
-.arrow-btn .b {
-  opacity: 0;
-  transform: translateX(-28px);
 }
 .card:hover .arrow-btn,
 .card:focus-visible .arrow-btn {
@@ -524,16 +529,6 @@ main {
 .card[data-tone="light"]:focus-visible .arrow-btn {
   background: #111;
   color: #fff;
-}
-.card:hover .a,
-.card:focus-visible .a {
-  opacity: 0;
-  transform: translateX(28px);
-}
-.card:hover .b,
-.card:focus-visible .b {
-  opacity: 1;
-  transform: none;
 }
 
 /* ---------------------------------------------------------------- scenes */
@@ -554,8 +549,12 @@ main {
   margin-top: 22px;
 }
 .scene {
+  --tracking: normal;
   position: relative;
   display: block;
+}
+.scene * {
+  letter-spacing: inherit;
 }
 
 /* ------------------------------------------------- phone: Oruka on Instagram */
@@ -1934,7 +1933,7 @@ main {
 .when {
   color: var(--ink-3);
   font-size: 13px;
-  letter-spacing: 0.02em;
+  letter-spacing: var(--tracking-body);
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
@@ -1954,7 +1953,7 @@ main {
 .pills {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 3px;
+  gap: 10px;
 }
 .pills li {
   display: flex;
@@ -1967,19 +1966,11 @@ main {
   width: 100%;
   min-height: 48px;
   padding: 0 12px;
-  border-radius: 10px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
   background: var(--surface);
   font-size: 15px;
-  transition: border-radius 0.35s var(--ease-spatial);
-}
-.pills li:first-child .pill {
-  border-radius: 24px 10px 10px 24px;
-}
-.pills li:last-child .pill {
-  border-radius: 10px 24px 24px 10px;
-}
-.pills .pill:active {
-  border-radius: 24px;
+  touch-action: manipulation;
 }
 
 footer {
@@ -2020,11 +2011,11 @@ footer {
   .contact-row {
     width: 100%;
   }
-  .contact-row a {
-    flex: 1 1 0;
+  .contact-row :is(a, button) {
+    flex: 1 1 160px;
     justify-content: center;
     min-width: 0;
-    padding: 0 12px;
+    padding: 12px;
   }
   .card {
     padding: 20px;
@@ -2098,19 +2089,13 @@ footer {
 .page-title {
   margin: 28px 0 0;
   font-size: 40px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--tracking-title);
 }
 .page-title + .bio {
   margin-top: 16px;
 }
-.contact-row button {
-  border: 0;
-  font: inherit;
-  cursor: pointer;
-}
-
 /* joined tiles: 3px gaps, big outer corners */
 .tiles {
   display: grid;
@@ -2138,7 +2123,7 @@ footer {
 .price h3 {
   margin: 0;
   font-size: 17px;
-  font-weight: 400;
+  font-weight: 500;
 }
 .tile p {
   margin: 6px 0 0;
@@ -2245,8 +2230,10 @@ footer {
   gap: 2px;
   padding: 14px 16px;
   border-radius: 14px;
+  border: 1px solid var(--line);
   background: var(--surface);
   cursor: pointer;
+  touch-action: manipulation;
   transition: background 0.2s, color 0.2s, border-radius 0.35s var(--ease-spatial);
 }
 .opt-sub {
@@ -2254,7 +2241,7 @@ footer {
   font-size: 13px;
 }
 .opt:has(input:checked) {
-  border-radius: 22px;
+  border-color: var(--primary);
   background: var(--primary);
   color: var(--on-primary);
 }
@@ -2276,12 +2263,14 @@ footer {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  min-height: 36px;
+  min-height: 44px;
   padding: 0 14px;
   border-radius: 10px;
+  border: 1px solid var(--line);
   background: var(--surface);
   font-size: 14px;
   cursor: pointer;
+  touch-action: manipulation;
   transition: background 0.2s, color 0.2s, border-radius 0.35s var(--ease-spatial);
 }
 .chip em {
@@ -2290,7 +2279,7 @@ footer {
   font-style: normal;
 }
 .chip:has(input:checked) span {
-  border-radius: 18px;
+  border-color: var(--primary);
   background: var(--secondary-container);
   color: var(--on-secondary-container);
   box-shadow: inset 0 0 0 1.5px var(--primary);
@@ -2343,6 +2332,10 @@ footer {
 }
 
 .footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-color: var(--line);

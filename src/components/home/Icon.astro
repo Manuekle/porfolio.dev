@@ -1,0 +1,39 @@
+---
+import {
+  ArrowLeft01Icon, ArrowUpRight01Icon, Calculator01Icon, ComputerIcon,
+  File01Icon, GithubIcon, InstagramIcon, Linkedin01Icon, Mail01Icon,
+  RefreshIcon, StarIcon,
+} from "@hugeicons/core-free-icons";
+
+const icons = {
+  mail: Mail01Icon, resume: File01Icon, calculator: Calculator01Icon,
+  refresh: RefreshIcon, external: ArrowUpRight01Icon, back: ArrowLeft01Icon,
+  star: StarIcon, computer: ComputerIcon, github: GithubIcon,
+  linkedin: Linkedin01Icon, instagram: InstagramIcon,
+};
+interface Props {
+  name: keyof typeof icons;
+  size?: number;
+  class?: string;
+}
+const { name, size = 20, class: className } = Astro.props;
+const paths = icons[name].map(([, attributes]) => attributes);
+// Custom duotone treatment of MIT-licensed free paths, not the Pro icon set.
+const tones: Partial<Record<keyof typeof icons, number>> = {
+  mail: 1, resume: 2, calculator: 4, star: 0, computer: 1,
+  github: 1, linkedin: 3, instagram: 0,
+};
+const tone = tones[name];
+const svgAttributes = (attributes: Record<string, string | number>) => Object.fromEntries(
+  Object.entries(attributes)
+    .filter(([key]) => key !== "key" && key !== "strokeWidth")
+    .map(([key, value]) => [key.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`), value]),
+);
+---
+
+<svg class:list={["ui-icon", className]} data-icon={name} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <g fill="currentColor" stroke="none" opacity="0.18">
+    {tone === undefined ? <circle cx="12" cy="12" r="7.5" /> : <path d={String(paths[tone].d)} />}
+  </g>
+  {paths.map((attributes) => <path {...svgAttributes(attributes)} />)}
+</svg>
