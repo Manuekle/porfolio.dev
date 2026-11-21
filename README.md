@@ -2,11 +2,11 @@
 
 Personal portfolio of Manuel Erazo. One quiet column: intro, three project cards that
 stack while you scroll, categorized work, contributions, experience, activity and links. Bilingual (English at
-`/`, Spanish at `/es/`), light and dark from the system setting.
+`/`, Spanish at `/es/`), always in light mode.
 
 Built with [Astro](https://astro.build) as plain `.astro` components: no UI
-framework, no CSS framework, and only two small inline scripts (the video
-reduced-motion guard and the services quote calculator).
+framework or CSS framework. Small scripts handle the canvas background, video
+reduced-motion guard and services quote calculator.
 
 ## Pages
 
@@ -20,8 +20,12 @@ reduced-motion guard and the services quote calculator).
 
 - **Type:** Myriad Pro for everything, regular weight (`400`), with light (`300`) for the role. The bundled regular, light, semibold and bold weights are self-hosted in
   `public/fonts/myriad-pro/`, converted from the user-supplied OTF files.
-- **Colour:** warm Material 3 surfaces as CSS custom properties in
-  `src/styles/home.css`, swapped under `prefers-color-scheme: dark`.
+- **Colour:** blue and white light surfaces as CSS custom properties in
+  `src/styles/home.css`, independent of the system theme.
+- **Background:** an original animated WebGL canvas inspired by the flowing
+  bands in [Melt](https://feralui.dev/gradients/melt), with a light reading area.
+  It renders at up to 30 fps, pauses in hidden tabs, holds still for reduced
+  motion and falls back to a CSS gradient when WebGL is unavailable.
 - **Shape:** large outer corners (`--radius: 28px`) and 3px gaps between joined
   pieces (contact buttons, link pills, rows, tiles). Corners morph on press.
 - **Motion:** state layers on hover and press, a short fade on the intro and
@@ -35,9 +39,8 @@ The card list is `WORK_CARDS` in `src/data/home.ts`; project facts come from
 rows into UI/UX, mobile apps and hackathon projects. `CONTRIBUTIONS` lists public
 forks and merged pull requests separately, with links to their evidence.
 
-The global CSS, fonts, colors and motion are unchanged. A compact SVGL tool row
-sits below the profile header, matching the GitHub README and supporting light
-and dark themes. Oruka keeps its
+A compact SVGL tool row sits below the profile header, matching the GitHub
+README and using light-theme assets consistently. Oruka keeps its
 live Instagram preview; Ragis uses a capture of its public landing page and
 GymRat+ uses artwork from its own landing assets in the same media slot.
 The other app scene components remain available for future content.

@@ -1,4 +1,4 @@
-/* Home — single column, warm Material 3 surfaces, Myriad Pro typography. */
+/* Home — single column, blue light surfaces, Myriad Pro typography. */
 
 @font-face {
   font-family: "Myriad Pro";
@@ -61,42 +61,25 @@
 }
 
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
 
-  --primary: #695d47;
+  --primary: #245bab;
   --on-primary: #fff;
-  --secondary-container: #eee1cf;
-  --on-secondary-container: #4e4639;
-  --bg: #fff8f4;
-  --ink: #1d1b19;
-  --ink-2: #494643;
-  --ink-3: #7a7673;
-  --line: #cbc5c1;
-  --surface: #f3ede8;
-  --surface-2: #e7e1dd;
-  --selection: #f2e0c5;
+  --secondary-container: #deebfc;
+  --on-secondary-container: #234a7d;
+  --bg: #e7f2ff;
+  --ink: #162438;
+  --ink-2: #3e5068;
+  --ink-3: #526782;
+  --line: #bdcfe5;
+  --surface: #edf4fc;
+  --surface-2: #deebf9;
+  --selection: #bedaff;
 
   --radius: 28px;
   --ease-spatial: cubic-bezier(0.42, 1.67, 0.21, 0.9);
   --ease-effects: cubic-bezier(0.31, 0.94, 0.34, 1);
   --font: "Myriad Pro", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --primary: #d5c4aa;
-    --on-primary: #392f1d;
-    --secondary-container: #4e4639;
-    --on-secondary-container: #eee1cf;
-    --bg: #151311;
-    --ink: #e7e1dd;
-    --ink-2: #cbc5c1;
-    --ink-3: #94908c;
-    --line: #494643;
-    --surface: #211f1d;
-    --surface-2: #373431;
-    --selection: #514531;
-  }
 }
 
 /* ------------------------------------------------------------------ base */
@@ -115,6 +98,9 @@ html {
   -webkit-tap-highlight-color: transparent;
 }
 body {
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
   margin: 0;
   font-size: 16px;
   line-height: 1.55;
