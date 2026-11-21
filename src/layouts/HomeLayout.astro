@@ -10,11 +10,11 @@ interface Props {
 }
 
 const {
-  title = "Manuel Erazo — Full Stack Developer",
+  title = "Manuel Erazo — AI Engineer & Full Stack Developer",
   description =
-    "Full stack developer in Bogotá building Oruka, Ragis and GymRat+. SaaS, UI/UX and AI with TypeScript, React, Next.js, Python, PostgreSQL and AWS.",
+    "AI engineer and full stack developer in Bogotá building Oruka, Ragis and GymRat+. SaaS, UI/UX and AI with TypeScript, React, Next.js, Python, PostgreSQL and AWS.",
   lang = "en",
-  image = `/social/portfolio-og-${lang === "es" ? "es" : "en"}-2026-11-21.png`,
+  image = `/social/portfolio-og-${lang === "es" ? "es" : "en"}-2026-11-21b.png`,
 } = Astro.props;
 
 const siteUrl = Astro.site ?? new URL("https://manudev.vercel.app");
@@ -22,8 +22,8 @@ const canonical = new URL(Astro.url.pathname, siteUrl);
 const ogImage = new URL(image, siteUrl);
 const ogLocale = lang === "es" ? "es_CO" : "en_US";
 const imageAlt = lang === "es"
-  ? "Manuel, desarrollador full stack en Bogotá, Colombia — productos SaaS y agentes de IA"
-  : "Manuel, full stack developer in Bogotá, Colombia — SaaS products and AI agents";
+  ? "Manuel, ingeniero de IA y desarrollador full stack en Bogotá, Colombia — productos SaaS y agentes de IA"
+  : "Manuel, AI engineer and full stack developer in Bogotá, Colombia — SaaS products and AI agents";
 const route = Astro.url.pathname.replace(/^\/es\/?/, "/").replace(/\/$/, "");
 const englishUrl = new URL(`${route || ""}/`, siteUrl);
 const spanishUrl = new URL(`/es${route}/`, siteUrl);
@@ -45,7 +45,7 @@ const jsonLd = {
       alternateName: ["Manuel Erazo", "Manuekle"],
       url: "https://manudev.vercel.app/",
       image: "https://manudev.vercel.app/assets/avatar.png?v=faab900674b4",
-      jobTitle: "Full Stack Developer",
+      jobTitle: "AI Engineer and Full Stack Developer",
       email: "mailto:meerazo7@hotmail.com",
       telephone: "+57-311-271-1242",
       address: {

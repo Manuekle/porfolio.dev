@@ -96,10 +96,17 @@ const tagline = { en: "SaaS products and AI agents", es: "Productos SaaS y agent
         display: flex;
         align-items: center;
         gap: 14px;
-        margin: 22px 0 0;
+        margin: 18px 0 0;
         color: var(--muted);
-        font-size: 36px;
+        font-size: 34px;
         line-height: 1.2;
+      }
+      .role strong {
+        color: var(--text);
+        font-weight: 600;
+      }
+      .role.place {
+        margin-top: 8px;
       }
       .flag {
         border-radius: 4px;
@@ -161,8 +168,9 @@ const tagline = { en: "SaaS products and AI agents", es: "Productos SaaS y agent
         </div>
         <div>
           <h1>Manuel</h1>
-          <p class="role">
-            {t(T.role)} · {t(PROFILE.location)}
+          <p class="role"><strong>{t(T.role)}</strong></p>
+          <p class="role place">
+            {t(PROFILE.location)}
             <svg class="flag" width="42" height="28" viewBox="0 0 3 2" aria-hidden="true">
               <path fill="#FCD116" d="M0 0h3v1H0z" />
               <path fill="#003893" d="M0 1h3v.5H0z" />

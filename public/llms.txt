@@ -1,6 +1,6 @@
 # Manuel Erazo
 
-Full stack developer in Bogotá, Colombia. Builds SaaS products, interfaces and AI systems with TypeScript, React, Next.js, Python, PostgreSQL and AWS.
+AI engineer and full stack developer in Bogotá, Colombia. Builds SaaS products, interfaces and AI systems with TypeScript, React, Next.js, Python, PostgreSQL and AWS.
 Currently AI Engineer at Blindem (labor settlements for Colombia, since October 2026). Open to remote roles and freelance work. Systems Engineering graduate, Fundación Universitaria de Popayán, June 2026.
 
 English portfolio (default): https://manudev.vercel.app/
