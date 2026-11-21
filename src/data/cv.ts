@@ -40,7 +40,7 @@ const contact = () => [
 export const CV: Record<Lang, Cv> = {
   en: {
     name: "Manuel Esteban Erazo Medina",
-    headline: "AI Engineer · Full Stack Developer | Python, TypeScript, Next.js, PostgreSQL, AWS | AI Agents and RAG",
+    headline: "AI Engineer · Full Stack Developer",
     contact: contact(),
     sections: {
       summary: "Summary",
@@ -165,7 +165,7 @@ export const CV: Record<Lang, Cv> = {
   },
   es: {
     name: "Manuel Esteban Erazo Medina",
-    headline: "Ingeniero de IA · Full Stack | Python, TypeScript, Next.js, PostgreSQL, AWS | Agentes de IA y RAG",
+    headline: "Ingeniero de Inteligencia Artificial · Desarrollador Full Stack",
     contact: contact(),
     sections: {
       summary: "Perfil",
@@ -184,7 +184,7 @@ export const CV: Record<Lang, Cv> = {
         meta: "Ingeniero de Inteligencia Artificial | Colombia",
         when: "Oct 2026 – Presente",
         bullets: [
-          "Construyo el asistente LLM local (Ollama) de Blindem Liquidaciones, que explica cada cifra de la liquidación y responde preguntas laborales citando la norma.",
+          "Construyo el asistente LLM local (Ollama) de Blindem: explica cada cifra y responde dudas laborales citando la norma.",
           "La app calcula liquidaciones de contratos en Colombia (cesantías, prima, vacaciones, indemnización, aportes) con la vigencia legal de cada año; Laravel 12, PHP 8.3, PostgreSQL 16, Docker, 101 pruebas PHPUnit.",
         ],
       },
@@ -251,7 +251,7 @@ export const CV: Record<Lang, Cv> = {
         meta: "Next.js, TypeScript, MCP",
         link: { label: "creagent.fun", href: "https://creagent.fun/demo" },
         bullets: [
-          "Composer visual de agentes de IA con skills reutilizables y exportación para Claude Code, Codex y Cursor; servidor MCP publicado en npm.",
+          "Composer visual de agentes de IA con skills reutilizables y exportación a Claude Code, Codex y Cursor; servidor MCP en npm.",
         ],
       },
     ],
