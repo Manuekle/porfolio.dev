@@ -18,7 +18,7 @@ reduced-motion guard and services quote calculator.
 
 ## Design
 
-- **Type:** Allo from `allo-font` for headings (`letter-spacing: -0.02em`),
+- **Type:** Allo Medium (`500`) from `allo-font` for headings (`letter-spacing: -0.02em`),
   paired with Myriad Pro for body text (`letter-spacing: -0.04em`). Body text
   uses regular weight (`400`), with light (`300`) for the role. The bundled
   Myriad Pro weights are self-hosted in `public/fonts/myriad-pro/`, converted
@@ -30,7 +30,11 @@ reduced-motion guard and services quote calculator.
   It renders at up to 30 fps, pauses in hidden tabs, holds still for reduced
   motion and falls back to a CSS gradient when WebGL is unavailable.
 - **Shape:** large outer corners (`--radius: 28px`) and 3px gaps between joined
-  pieces (contact buttons, link pills, rows, tiles). Corners morph on press.
+  rows and tiles. Actions use targets of at least 48px, 14px corners and 10px
+  gaps, with the same styling for links and buttons.
+- **Icons:** `@hugeicons/core-free-icons` rendered as static SVG by `Icon.astro`,
+  with a custom translucent fill for a duotone appearance. This uses the MIT
+  free set, not Hugeicons Pro Duotone. Product and technology logos retain their brands.
 - **Motion:** state layers on hover and press, a short fade on the intro and
   the sticky card stack. Everything respects `prefers-reduced-motion`.
 
