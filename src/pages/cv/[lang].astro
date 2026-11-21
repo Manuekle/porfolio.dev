@@ -1,0 +1,188 @@
+---
+/* Source of the CV PDFs (public/assets/CV_Manuel_Erazo_{EN,ES}.pdf). Built
+   for applicant tracking systems: one column, real text, standard headings,
+   no tables, images or icons. Print it from Chrome to US Letter:
+   chrome --headless=new --no-pdf-header-footer --print-to-pdf=out.pdf <url> */
+import { CV, type CvEntry } from "../../data/cv";
+import type { Lang } from "../../data/portfolio";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "es" } }];
+}
+const lang = Astro.params.lang as Lang;
+const cv = CV[lang];
+const entries = (list: CvEntry[]) => list;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="author" content={cv.name} />
+    <title>{cv.name} — CV</title>
+    <style>
+      @page {
+        size: Letter;
+        margin: 0.42in 0.55in;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        color: #111;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 9pt;
+        line-height: 1.22;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      body {
+        max-width: 7.4in;
+        margin: 0 auto;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      h1 {
+        margin: 0;
+        font-size: 18pt;
+        line-height: 1.15;
+        text-align: center;
+      }
+      .headline {
+        margin: 3pt 0 0;
+        font-size: 10pt;
+        font-weight: 700;
+        text-align: center;
+        color: #0062d6;
+      }
+      .contact {
+        margin: 3pt 0 0;
+        font-size: 8.5pt;
+        text-align: center;
+        white-space: nowrap;
+      }
+      .contact span + span::before {
+        content: " | ";
+        color: #666;
+      }
+      h2 {
+        margin: 6pt 0 3pt;
+        padding-bottom: 2pt;
+        border-bottom: 1px solid #111;
+        font-size: 10pt;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      p {
+        margin: 0;
+      }
+      .entry + .entry {
+        margin-top: 3pt;
+      }
+      .row {
+        display: flex;
+        justify-content: space-between;
+        gap: 12pt;
+      }
+      .row strong {
+        font-size: 9.6pt;
+      }
+      .when {
+        flex: none;
+        white-space: nowrap;
+      }
+      .meta {
+        font-style: italic;
+      }
+      ul {
+        margin: 2pt 0 0;
+        padding-left: 13pt;
+      }
+      li + li {
+        margin-top: 1pt;
+      }
+      .skills p + p {
+        margin-top: 1pt;
+      }
+      .inline span + span::before {
+        content: " · ";
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>{cv.name}</h1>
+      <p class="headline">{cv.headline}</p>
+      <p class="contact">
+        {cv.contact.map((c) => <span>{c.href ? <a href={c.href}>{c.label}</a> : c.label}</span>)}
+      </p>
+    </header>
+
+    <section>
+      <h2>{cv.sections.summary}</h2>
+      <p>{cv.summary}</p>
+    </section>
+
+    <section>
+      <h2>{cv.sections.experience}</h2>
+      {entries(cv.experience).map((e) => (
+        <div class="entry">
+          <div class="row">
+            <span><strong>{e.title}</strong>{e.meta && <> | <span class="meta">{e.meta}</span></>}</span>
+            {e.when && <span class="when">{e.when}</span>}
+          </div>
+          <ul>{e.bullets.map((b) => <li>{b}</li>)}</ul>
+        </div>
+      ))}
+    </section>
+
+    <section>
+      <h2>{cv.sections.projects}</h2>
+      {entries(cv.projects).map((e) => (
+        <div class="entry">
+          <div class="row">
+            <span><strong>{e.title}</strong>{e.meta && <> | <span class="meta">{e.meta}</span></>}</span>
+            {e.link && <a class="when" href={e.link.href}>{e.link.label}</a>}
+          </div>
+          <ul>{e.bullets.map((b) => <li>{b}</li>)}</ul>
+        </div>
+      ))}
+    </section>
+
+    <section>
+      <h2>{cv.sections.openSource}</h2>
+      {entries(cv.openSource).map((e) => (
+        <div class="entry">
+          <div class="row">
+            <span><strong>{e.title}</strong>{e.meta && <> | <span class="meta">{e.meta}</span></>}</span>
+            {e.link && <a class="when" href={e.link.href}>{e.link.label}</a>}
+          </div>
+          <ul>{e.bullets.map((b) => <li>{b}</li>)}</ul>
+        </div>
+      ))}
+    </section>
+
+    <section class="skills">
+      <h2>{cv.sections.skills}</h2>
+      {cv.skills.map((s) => <p><strong>{s.label}:</strong> {s.items}</p>)}
+    </section>
+
+    <section>
+      <h2>{cv.sections.education}</h2>
+      {entries(cv.education).map((e) => (
+        <div class="entry row">
+          <span><strong>{e.title}</strong> | {e.meta}</span>
+          <span class="when">{e.when}</span>
+        </div>
+      ))}
+    </section>
+
+    <section>
+      <h2>{cv.sections.certifications}</h2>
+      <p class="inline">{cv.certifications.map((c) => <span>{c}</span>)}</p>
+    </section>
+  </body>
+</html>

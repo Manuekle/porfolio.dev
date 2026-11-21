@@ -150,7 +150,7 @@ export const WORK_CARDS: WorkCard[] = [
 /** Categories reuse the existing compact project rows. */
 export const WORK_GROUPS = [
   { id: "ui-ux", title: { en: "UI/UX", es: "UI/UX" }, ids: ["redesign-trii", "redesign-dapta"] },
-  { id: "mobile", title: { en: "Mobile apps", es: "Apps móviles" }, ids: ["kanago", "cue", "butterflyar"] },
+  { id: "mobile", title: { en: "Mobile apps", es: "Apps móviles" }, ids: ["kanago", "cue", "nxnative", "butterflyar"] },
   { id: "hackathons", title: { en: "Hackathon projects", es: "Proyectos de hackathon" }, ids: ["focus", "lab10", "cetamed", "forge"] },
 ].map(({ ids, ...group }) => ({
   ...group,
@@ -256,8 +256,16 @@ export const AGENTS: Agent[] = [
   },
 ];
 
-/** Verified against GitHub on November 19, 2026. Forks are not merged contributions. */
+/** Verified against GitHub on November 19, 2026 (nxnative stars on November 21). Forks are not merged contributions. */
 export const CONTRIBUTIONS = [
+  {
+    name: { en: "nxnative", es: "nxnative" },
+    href: "https://github.com/seedds/nxnative",
+    desc: {
+      en: "Open source · 16.3k stars · NX Packer and NX Pad built on my fork",
+      es: "Código abierto · 16.3k estrellas · NX Packer y NX Pad construidos en mi fork",
+    },
+  },
   {
     name: { en: "33 forks", es: "33 forks" },
     href: "https://github.com/Manuekle?tab=repositories&type=fork",

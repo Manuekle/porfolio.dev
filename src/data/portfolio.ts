@@ -323,6 +323,42 @@ export type Experience = {
 
 export const EXPERIENCE: Experience[] = [
   {
+    "id": "blindem",
+    "role": {
+      "en": "Full Stack Developer",
+      "es": "Desarrollador Full Stack"
+    },
+    "org": "Blindem",
+    "logo": null,
+    "logoFile": "/assets/works/blindem/icon.webp",
+    "kind": {
+      "en": "Full-time",
+      "es": "Tiempo completo"
+    },
+    "where": {
+      "en": "Colombia",
+      "es": "Colombia"
+    },
+    "period": {
+      "en": "Oct 2026 — Present",
+      "es": "Oct 2026 — Presente"
+    },
+    "summary": {
+      "en": "Labor management and contract settlements for Colombia.",
+      "es": "Gestión laboral y liquidación de contratos en Colombia."
+    },
+    "bullets": [
+      {
+        "en": "Build Blindem Liquidaciones, which calculates severance, interest, bonus, vacation, indemnity and social security contributions with each year's legal parameters and exports to Excel.",
+        "es": "Construyo Blindem Liquidaciones, que calcula cesantías, intereses, prima, vacaciones, indemnización y aportes con la vigencia legal de cada año y exporta a Excel."
+      },
+      {
+        "en": "Laravel 12, PHP 8.3, PostgreSQL 16 and Docker; every saved settlement is an immutable record, covered by 101 PHPUnit tests, and a local Ollama assistant explains each figure citing the law.",
+        "es": "Laravel 12, PHP 8.3, PostgreSQL 16 y Docker; cada liquidación guardada es un registro inmutable, con 101 pruebas PHPUnit, y un asistente local con Ollama explica cada cifra citando la norma."
+      }
+    ]
+  },
+  {
     "id": "gymrat",
     "role": {
       "en": "Founder and Full Stack Developer",
@@ -709,6 +745,31 @@ export const PROJECTS: Project[] = [
     "stack": ["swift", "ollama", "openai"],
     "liveUrl": "https://manuekle.github.io/cue/",
     "sourceUrl": "https://github.com/Manuekle/cue"
+  },
+  {
+    "id": "nxnative",
+    "name": "nxnative",
+    "year": "2026",
+    "logo": "/assets/works/nxnative/icon.png",
+    "tagline": {
+      "en": "NX Packer for Mac and NX Pad for iPhone",
+      "es": "NX Packer para Mac y NX Pad para iPhone"
+    },
+    "blurb": {
+      "en": "Built NX Packer, a Mac app that packages a game into a native Mac or iPhone app, and NX Pad, which turns an iPhone into a Wi-Fi controller, on a fork of the open-source nxnative (16.3k stars).",
+      "es": "Construí NX Packer, una app de Mac que empaqueta un juego como app nativa de Mac o iPhone, y NX Pad, que convierte un iPhone en un control por Wi-Fi, sobre un fork del proyecto open source nxnative (16.3k estrellas)."
+    },
+    "decision": {
+      "en": "NX Packer wraps the project's Python and Xcode build tools in one window: pick the source, the game and the target, then build.",
+      "es": "NX Packer reúne en una ventana las herramientas de compilación del proyecto en Python y Xcode: eliges el código, el juego y el destino, y compilas."
+    },
+    "result": {
+      "en": "NX Packer 0.1.0 released as a DMG for Apple silicon, with setup guides on a public site.",
+      "es": "NX Packer 0.1.0 publicado como DMG para Apple silicon, con guías de instalación en una web pública."
+    },
+    "stack": ["swift", "python"],
+    "liveUrl": "https://manuekle.github.io/nxnative/",
+    "sourceUrl": "https://github.com/Manuekle/nxnative"
   },
   {
     "id": "focus",
