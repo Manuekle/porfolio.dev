@@ -323,6 +323,42 @@ export type Experience = {
 
 export const EXPERIENCE: Experience[] = [
   {
+    "id": "blindem",
+    "role": {
+      "en": "Full Stack Developer",
+      "es": "Desarrollador Full Stack"
+    },
+    "org": "Blindem",
+    "logo": null,
+    "logoFile": "/assets/works/blindem/icon.webp",
+    "kind": {
+      "en": "Full-time",
+      "es": "Tiempo completo"
+    },
+    "where": {
+      "en": "Colombia",
+      "es": "Colombia"
+    },
+    "period": {
+      "en": "Oct 2026 — Present",
+      "es": "Oct 2026 — Presente"
+    },
+    "summary": {
+      "en": "Labor management and contract settlements for Colombia.",
+      "es": "Gestión laboral y liquidación de contratos en Colombia."
+    },
+    "bullets": [
+      {
+        "en": "Build Blindem Liquidaciones, which calculates severance, interest, bonus, vacation, indemnity and social security contributions with each year's legal parameters and exports to Excel.",
+        "es": "Construyo Blindem Liquidaciones, que calcula cesantías, intereses, prima, vacaciones, indemnización y aportes con la vigencia legal de cada año y exporta a Excel."
+      },
+      {
+        "en": "Laravel 12, PHP 8.3, PostgreSQL 16 and Docker; every saved settlement is an immutable record, covered by 101 PHPUnit tests, and a local Ollama assistant explains each figure citing the law.",
+        "es": "Laravel 12, PHP 8.3, PostgreSQL 16 y Docker; cada liquidación guardada es un registro inmutable, con 101 pruebas PHPUnit, y un asistente local con Ollama explica cada cifra citando la norma."
+      }
+    ]
+  },
+  {
     "id": "gymrat",
     "role": {
       "en": "Founder and Full Stack Developer",
