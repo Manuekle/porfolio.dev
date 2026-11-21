@@ -1,0 +1,49 @@
+---
+/* Notion-style page rail: a column of short ticks at the right edge, one per
+   section, the current one in blue. Hover (or focus) opens it into a list of
+   the section names. */
+import { T } from "../../data/home";
+import type { Lang } from "../../data/portfolio";
+
+export type RailItem = { id: string; label: string; sub?: boolean };
+interface Props {
+  lang: Lang;
+  items: RailItem[];
+}
+const { lang, items } = Astro.props;
+---
+
+<nav class="rail" aria-label={T.onPage[lang]}>
+  <ol>
+    {items.map((i) => (
+      <li>
+        <a href={`#${i.id}`} data-rail={i.id} class:list={{ sub: i.sub }}>
+          <span class="rail-label">{i.label}</span>
+          <span class="rail-tick" aria-hidden="true"></span>
+        </a>
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<script>
+  // Mark the section being read: the last one whose top has passed a line a
+  // third of the way down the screen.
+  const links = [...document.querySelectorAll<HTMLAnchorElement>(".rail a[data-rail]")];
+  const targets = links.map((a) => document.getElementById(a.dataset.rail!));
+  let frame = 0;
+  function update() {
+    frame = 0;
+    const line = innerHeight / 3;
+    let current = 0;
+    targets.forEach((el, i) => {
+      if (el && el.getBoundingClientRect().top <= line) current = i;
+    });
+    // At the very bottom the last section is the one in view.
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) current = links.length - 1;
+    links.forEach((a, i) => (i === current ? a.setAttribute("aria-current", "location") : a.removeAttribute("aria-current")));
+  }
+  addEventListener("scroll", () => (frame ||= requestAnimationFrame(update)), { passive: true });
+  addEventListener("resize", () => (frame ||= requestAnimationFrame(update)));
+  update();
+</script>

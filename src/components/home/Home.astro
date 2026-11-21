@@ -4,6 +4,10 @@ import { ACTIVITY, BIO, EXPERIENCE_ITEMS, CONTRIBUTIONS, PROFILE, T, WORK_CARDS,
 import type { Lang } from "../../data/portfolio";
 import Scene from "./Scene.astro";
 import Tools from "./Tools.astro";
+import TopBar from "./TopBar.astro";
+import Rail from "./Rail.astro";
+import End from "./End.astro";
+import Agents from "./Agents.astro";
 
 interface Props {
   lang: Lang;
@@ -19,44 +23,49 @@ const INLINE: Record<string, { name: string; href: string; logo?: string; self?:
 };
 const bio = BIO[lang].map((p) => p.split(/(\{\w+\})/g));
 const cv = `/assets/CV_Manuel_Erazo_${lang.toUpperCase()}.pdf`;
-const links = [
-  { label: "GitHub", href: "https://github.com/manuekle", slug: "github" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/manuekle", slug: "linkedin" },
-  { label: "Instagram", href: "https://instagram.com/manudev.jsx", slug: "instagram" },
-] as const;
+const rail = [
+  { id: "intro", label: t(T.intro) },
+  { id: "works-title", label: t(T.works_short) },
+  { id: "agents-title", label: t(T.agentsShort) },
+  ...WORK_GROUPS.map((g) => ({ id: `${g.id}-title`, label: t(g.title), sub: true })),
+  { id: "contributions-title", label: t(T.contributions) },
+  { id: "exp-title", label: t(T.experience) },
+  { id: "act-title", label: t(T.activity) },
+  { id: "final-title", label: t(T.contact) },
+];
 ---
 
 <a class="skip" href="#main">{t(T.skip)}</a>
 
-<div class="wrap">
-  <nav class="lang-bar" aria-label={t(T.langs)}>
-    <div class="lang-tabs">
-      <a href="/" hreflang="en" lang="en" class:list={{ on: lang === "en" }} aria-current={lang === "en" ? "page" : undefined}>English</a>
-      <a href="/es/" hreflang="es" lang="es" class:list={{ on: lang === "es" }} aria-current={lang === "es" ? "page" : undefined}>Español</a>
-    </div>
-  </nav>
+<Rail lang={lang} items={rail} />
 
+<div class="sheet">
+<TopBar lang={lang} page="home" />
+<div class="wrap">
   <main id="main">
     <!-- intro -->
-    <section class="fade-in">
+    <section id="intro" class="intro fade-in">
       <div class="hero">
         <div class="hero-avatar">
+          <span class="halo" aria-hidden="true"></span>
           <img src="/assets/avatar.webp?v=faab900674b4" alt={PROFILE.name} width="160" height="160" fetchpriority="high" />
         </div>
-        <div class="hero-text">
-          <h1>
-            {PROFILE.name}
-            <svg class="flag" width="18" height="12" viewBox="0 0 18 12" role="img" aria-label="Colombia">
-              <rect width="18" height="6" fill="#FCD116" />
-              <rect y="6" width="18" height="3" fill="#003893" />
-              <rect y="9" width="18" height="3" fill="#CE1126" />
-            </svg>
-          </h1>
-          <p>{t(T.role)} · {t(PROFILE.location)}</p>
-        </div>
+        <h1>Manuel</h1>
+        <p class="hero-role">
+          {t(T.role)} · {t(PROFILE.location)}
+          <svg class="flag" width="21" height="14" viewBox="0 0 3 2" role="img" aria-label="Colombia">
+            <path fill="#FCD116" d="M0 0h3v1H0z" />
+            <path fill="#003893" d="M0 1h3v.5H0z" />
+            <path fill="#CE1126" d="M0 1.5h3V2H0z" />
+            <linearGradient id="flag-gloss" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#fff" stop-opacity=".35" />
+              <stop offset=".5" stop-color="#fff" stop-opacity="0" />
+              <stop offset="1" stop-color="#000" stop-opacity=".12" />
+            </linearGradient>
+            <path fill="url(#flag-gloss)" d="M0 0h3v2H0z" />
+          </svg>
+        </p>
       </div>
-
-      <Tools lang={lang} />
 
       <div class="bio">
         {
@@ -76,21 +85,23 @@ const links = [
         }
       </div>
 
-      <div class="contact-row">
-        <a class="contact-main" href={`mailto:${PROFILE.email}`}>
-          <Icon name="mail" />
+      <div class="ctas">
+        <a class="btn btn-blue" href={`mailto:${PROFILE.email}`}>
+          <Icon name="mail" size={18} />
           <span>{t(T.contact)}</span>
         </a>
-        <a class="contact-alt" href={cv} target="_blank" rel="noopener">
-          <Icon name="resume" />
+        <a class="btn btn-light" href={cv} target="_blank" rel="noopener">
+          <Icon name="resume" size={18} />
           <span>{t(T.cv)}</span>
         </a>
       </div>
+
+      <Tools lang={lang} />
     </section>
 
     <!-- works -->
-    <section aria-labelledby="works-title">
-      <h2 class="eyebrow" id="works-title">{t(T.works)}</h2>
+    <section id="works" aria-labelledby="works-title">
+      <h2 class="sec-title" id="works-title">{t(T.works)}</h2>
       <div class="works">
         {
           WORK_CARDS.map((w, i) => (
@@ -130,12 +141,13 @@ const links = [
           ))
         }
       </div>
-
     </section>
+
+    <Agents lang={lang} />
 
     {WORK_GROUPS.map((group) => (
       <section aria-labelledby={`${group.id}-title`}>
-        <h2 class="eyebrow" id={`${group.id}-title`}>{t(group.title)}</h2>
+        <h2 class="sec-title" id={`${group.id}-title`}>{t(group.title)}</h2>
         <ul class="more">
           {group.projects.map((p) => (
             <li>
@@ -150,7 +162,7 @@ const links = [
     ))}
 
     <section aria-labelledby="contributions-title">
-      <h2 class="eyebrow" id="contributions-title">{t(T.contributions)}</h2>
+      <h2 class="sec-title" id="contributions-title">{t(T.contributions)}</h2>
       <ul class="more">
         {CONTRIBUTIONS.map((entry) => (
           <li>
@@ -165,7 +177,7 @@ const links = [
 
     <!-- experience -->
     <section aria-labelledby="exp-title">
-      <h2 class="eyebrow" id="exp-title">{t(T.experience)}</h2>
+      <h2 class="sec-title" id="exp-title">{t(T.experience)}</h2>
       <ol class="timeline">
         {
           EXPERIENCE_ITEMS.map((e) => (
@@ -183,7 +195,7 @@ const links = [
 
     <!-- activity -->
     <section aria-labelledby="act-title">
-      <h2 class="eyebrow" id="act-title">{t(T.activity)}</h2>
+      <h2 class="sec-title" id="act-title">{t(T.activity)}</h2>
       <ol class="timeline">
         {
           ACTIVITY.map((e) => (
@@ -195,27 +207,11 @@ const links = [
         }
       </ol>
     </section>
-
-    <!-- links -->
-    <section class="links" aria-labelledby="links-title">
-      <h2 class="eyebrow" id="links-title">{t(T.links)}</h2>
-      <ul class="pills">
-        {
-          links.map((l) => (
-            <li>
-              <a class="pill" href={l.href} target="_blank" rel="noopener me">
-                <Icon name={l.slug} />
-                <span>{l.label}</span>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
-
-    <footer>© 2026 {PROFILE.name}</footer>
   </main>
 </div>
+</div>
+
+<End lang={lang} />
 
 <script>
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;

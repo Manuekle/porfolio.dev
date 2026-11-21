@@ -1,0 +1,66 @@
+---
+/* The agents, each drawn as a blobatar (blobatar.dev). @blobatar/react is
+   rendered to inline SVG here, at build time; CSS animates it and a small
+   script lets the eyes follow the pointer. No React reaches the browser. */
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { Blobatar } from "@blobatar/react";
+import { happy, idle, smug, surprised, thinking, wink } from "blobatar/expression";
+import "blobatar/motion.css";
+import "blobatar/gaze.css";
+import Icon from "./Icon.astro";
+import { AGENTS, T } from "../../data/home";
+import type { Lang } from "../../data/portfolio";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = (b: { en: string; es: string }) => b[lang];
+const MOODS = { idle, happy, thinking, wink, smug, surprised };
+/* Cue's blue for every body; the name still picks the shape and the tone,
+   from pale to ink. */
+const HUE = 252;
+const face = (a: (typeof AGENTS)[number]) =>
+  renderToStaticMarkup(
+    createElement(Blobatar, { name: a.seed, animate: "always", expression: MOODS[a.mood], hue: HUE, tone: a.tone }),
+  );
+---
+
+<section class="agents" aria-labelledby="agents-title">
+  <div class="agents-head">
+    <h2 class="sec-title" id="agents-title">{t(T.agents)}</h2>
+    <p class="agents-lede">
+      {t(T.agentsLede)} <span class="agents-hint">{t(T.agentsHint)}</span>
+    </p>
+  </div>
+  <ul class="agent-grid">
+    {AGENTS.map((a) => {
+      const Tag = a.href ? "a" : "div";
+      return (
+        <li>
+          <Tag class="agent" href={a.href} target={a.href ? "_blank" : undefined} rel={a.href ? "noopener" : undefined}>
+            <span class="agent-face" set:html={face(a)} />
+            <span class="agent-name">
+              {a.name}
+              {a.href && <Icon name="external" size={14} />}
+            </span>
+            <span class="agent-role">{t(a.role)}</span>
+            <span class="agent-desc">{t(a.desc)}</span>
+            <span class="agent-tag">{t(a.tag)}</span>
+          </Tag>
+        </li>
+      );
+    })}
+  </ul>
+</section>
+
+<script>
+  import { gaze } from "blobatar/gaze";
+
+  // The eyes follow the cursor. gaze() stands down by itself under reduced
+  // motion or without a fine pointer, so touch screens keep the idle glance.
+  document.querySelectorAll<SVGSVGElement>(".agent-face svg").forEach((svg) => {
+    gaze(svg, { target: "pointer" });
+  });
+</script>

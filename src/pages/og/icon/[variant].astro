@@ -1,0 +1,129 @@
+---
+/* Source of the site icon (public/*.png): an Allo "M" on Cue's blue, in a
+   continuous-corner squircle. Capture each variant at its size with a
+   transparent background:
+   chrome --headless=new --default-background-color=00000000 \
+     --window-size=1024,1024 --screenshot=out.png <url>
+   app   1024, squircle: favicons and the manifest icon
+   full  1024, square to the edge: apple-touch-icon and the maskable icon
+         (the platform cuts its own shape, so the glyph keeps to the safe zone)
+   small 256, squircle, a bigger and bolder glyph that survives 16 px */
+import "allo-font/allo.css";
+import "../../../styles/home.css";
+
+export function getStaticPaths() {
+  return [{ params: { variant: "app" } }, { params: { variant: "full" } }, { params: { variant: "small" } }];
+}
+const { variant } = Astro.params;
+const size = variant === "small" ? 256 : 1024;
+
+/* superellipse |x|^5 + |y|^5 = 1: the continuous corner of Apple's icons */
+const squircle = (s: number, n = 5) => {
+  const r = s / 2;
+  const pts: string[] = [];
+  for (let i = 0; i < 360; i++) {
+    const a = (i / 360) * Math.PI * 2;
+    const c = Math.cos(a);
+    const sn = Math.sin(a);
+    const x = r + Math.sign(c) * Math.abs(c) ** (2 / n) * r;
+    const y = r + Math.sign(sn) * Math.abs(sn) ** (2 / n) * r;
+    pts.push(`${x.toFixed(2)},${y.toFixed(2)}`);
+  }
+  return `M${pts.join("L")}Z`;
+};
+const shape = variant === "full" ? `M0,0H${size}V${size}H0Z` : squircle(size);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Icon · {variant}</title>
+    <style define:vars={{ s: `${size}px` }}>
+      html,
+      body {
+        margin: 0;
+        background: transparent;
+      }
+      .icon {
+        position: relative;
+        isolation: isolate;
+        display: grid;
+        place-items: center;
+        width: var(--s);
+        height: var(--s);
+        overflow: hidden;
+        background:
+          radial-gradient(60% 46% at 50% -8%, rgb(255 255 255 / 0.42), rgb(255 255 255 / 0) 70%),
+          radial-gradient(40% 50% at 0% 30%, rgb(120 214 255 / 0.4), rgb(120 214 255 / 0) 70%),
+          radial-gradient(36% 46% at 100% 18%, rgb(120 214 255 / 0.32), rgb(120 214 255 / 0) 70%),
+          radial-gradient(70% 40% at 50% 100%, rgb(0 50 190 / 0.5), rgb(0 50 190 / 0) 72%),
+          linear-gradient(180deg, #00a3ff 0%, #0a8aff 30%, #0a7cff 58%, #0066ee 82%, #0058dc 100%);
+      }
+      /* fine grain, as on every Cue surface (dropped at favicon size) */
+      .icon::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        opacity: 0.2;
+        mix-blend-mode: overlay;
+        background: var(--grain);
+      }
+      .small.icon::after {
+        display: none;
+      }
+      .rim {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+      }
+      .m {
+        --tracking: -0.02em;
+        position: relative;
+        z-index: 1;
+        color: #fff;
+        font-family: var(--font-display);
+        font-size: calc(var(--s) * 0.56);
+        font-weight: 640;
+        line-height: 1;
+        /* Allo's capitals sit high in the em box: nudge to the optical centre */
+        transform: translateY(-1.5%);
+        background: linear-gradient(180deg, #fff 45%, #e3f0ff 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 calc(var(--s) * 0.018) calc(var(--s) * 0.03) rgb(0 34 110 / 0.38))
+          drop-shadow(0 calc(var(--s) * 0.004) 0 rgb(0 40 130 / 0.18));
+      }
+      .full .m {
+        font-size: calc(var(--s) * 0.46);
+      }
+      .small .m {
+        --tracking: -0.01em;
+        font-size: calc(var(--s) * 0.66);
+        font-weight: 720;
+        transform: translateY(-2%);
+        filter: drop-shadow(0 calc(var(--s) * 0.012) calc(var(--s) * 0.015) rgb(0 34 110 / 0.35));
+      }
+    </style>
+  </head>
+  <body>
+    <div class:list={["icon", variant]} style={`clip-path: path("${shape}")`}>
+      <span class="m">M</span>
+      <svg class="rim" viewBox={`0 0 ${size} ${size}`} aria-hidden="true">
+        <defs>
+          <linearGradient id="rim" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fff" stop-opacity=".55" />
+            <stop offset=".35" stop-color="#fff" stop-opacity=".08" />
+            <stop offset=".75" stop-color="#fff" stop-opacity="0" />
+            <stop offset="1" stop-color="#001a66" stop-opacity=".28" />
+          </linearGradient>
+        </defs>
+        <path d={shape} fill="none" stroke="url(#rim)" stroke-width={size * 0.012} />
+      </svg>
+    </div>
+  </body>
+</html>

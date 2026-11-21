@@ -1,0 +1,143 @@
+---
+/* LinkedIn cover, 1584 × 396. LinkedIn already prints the name and headline
+   under it and lays the profile photo over the bottom-left corner, so the
+   cover only carries the line the profile is about, and the agents,
+   all kept to the right of the photo. Capture at exactly 1584 × 396:
+   chrome --headless=new --window-size=1584,396 --screenshot=out.png <url> */
+import "allo-font/allo.css";
+import "../../../styles/home.css";
+import { blobatar } from "blobatar";
+import { happy, idle, smug, surprised, thinking, wink } from "blobatar/expression";
+import { AGENTS } from "../../../data/home";
+
+export function getStaticPaths() {
+  return [{ params: { variant: "blue" } }, { params: { variant: "light" } }];
+}
+const { variant } = Astro.params;
+const MOODS = { idle, happy, thinking, wink, smug, surprised };
+const faces = AGENTS.map((a) => blobatar(a.seed, { hue: 252, tone: a.tone, expression: MOODS[a.mood] }));
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>LinkedIn cover · {variant}</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: #fff;
+        overscroll-behavior: none;
+      }
+      .cover {
+        position: relative;
+        isolation: isolate;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 52px;
+        width: 1584px;
+        height: 396px;
+        overflow: hidden;
+        /* the photo covers the lower left (about a third of the width in the
+           mobile app): everything starts after it */
+        padding: 0 64px 0 520px;
+        box-sizing: border-box;
+      }
+      .cover.blue {
+        color: #fff;
+        background: var(--blue-surface);
+      }
+      .cover.blue::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        opacity: 0.22;
+        mix-blend-mode: overlay;
+        background: var(--grain);
+      }
+      .cover.light {
+        color: var(--text);
+        background:
+          radial-gradient(40% 90% at 88% 50%, rgb(10 132 255 / 0.12), rgb(10 132 255 / 0) 70%),
+          radial-gradient(30% 70% at 62% 110%, rgb(82 210 228 / 0.12), rgb(82 210 228 / 0) 70%),
+          var(--mist);
+      }
+      h1 {
+        --tracking: -0.035em;
+        margin: 0;
+        font-size: 54px;
+        font-weight: 600;
+        line-height: 1.04;
+        white-space: nowrap;
+      }
+      .blue h1 {
+        text-shadow: 0 1px 2px rgb(0 40 120 / 0.15);
+      }
+      .light h1 em {
+        color: var(--blue);
+        font-style: normal;
+      }
+      .blue h1 em {
+        font-style: normal;
+      }
+      .meta {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin: 18px 0 0;
+        font-size: 27px;
+        line-height: 1.2;
+        white-space: nowrap;
+      }
+      .blue .meta {
+        color: rgb(255 255 255 / 0.86);
+      }
+      .light .meta {
+        color: var(--muted);
+      }
+      /* the agents, as an avatar stack */
+      .crew {
+        display: flex;
+        flex: none;
+        flex-direction: row-reverse;
+      }
+      .crew i {
+        display: grid;
+        place-items: center;
+        width: 72px;
+        height: 72px;
+        margin-left: -14px;
+        border-radius: 50%;
+        background: #fff;
+      }
+      .blue .crew i {
+        box-shadow: 0 0 0 4px rgb(255 255 255 / 0.25), 0 14px 28px -14px rgb(0 30 100 / 0.6);
+      }
+      .light .crew i {
+        background: #fff;
+        box-shadow: 0 0 0 4px var(--mist), 0 14px 28px -16px rgb(0 30 100 / 0.35);
+      }
+      .crew svg {
+        width: 60px;
+        height: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class:list={["cover", variant]}>
+      <div>
+        <h1>I build SaaS products<br /><em>and AI agents.</em></h1>
+        <p class="meta">
+          <span>Open to remote roles and freelance</span>
+        </p>
+      </div>
+      <div class="crew" aria-hidden="true">
+        {[...faces].reverse().map((svg) => <i set:html={svg} />)}
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,39 +1,64 @@
 ---
+/* Hugeicons (free, MIT) drawn solid. The free set ships only strokes, so each
+   icon names its body shapes, which are filled, and the detail strokes inside
+   them, which are cut out of the fill — the way a solid icon is drawn. Strokes
+   that sit outside the body (a monitor stand, an arrow) stay strokes. */
 import {
   ArrowLeft01Icon, ArrowUpRight01Icon, Calculator01Icon, ComputerIcon,
   File01Icon, GithubIcon, InstagramIcon, Linkedin01Icon, Mail01Icon,
-  RefreshIcon, StarIcon,
+  RefreshIcon, SparklesIcon, StarIcon,
 } from "@hugeicons/core-free-icons";
+import { uid } from "../../scripts/uid";
 
+type Data = typeof Mail01Icon;
+type Recipe = { data: Data; fill?: number[]; cut?: number[]; line?: number[]; split?: true };
+
+/* `split` icons keep two shapes in one path: the first subpath is cut, the rest filled. */
 const icons = {
-  mail: Mail01Icon, resume: File01Icon, calculator: Calculator01Icon,
-  refresh: RefreshIcon, external: ArrowUpRight01Icon, back: ArrowLeft01Icon,
-  star: StarIcon, computer: ComputerIcon, github: GithubIcon,
-  linkedin: Linkedin01Icon, instagram: InstagramIcon,
-};
+  mail: { data: Mail01Icon, fill: [1], cut: [0] },
+  resume: { data: File01Icon, fill: [2], cut: [0, 1], split: true },
+  calculator: { data: Calculator01Icon, fill: [4], cut: [0, 1, 2, 3] },
+  refresh: { data: RefreshIcon, line: [0] },
+  external: { data: ArrowUpRight01Icon, line: [0] },
+  back: { data: ArrowLeft01Icon, line: [0] },
+  star: { data: StarIcon, fill: [0] },
+  computer: { data: ComputerIcon, fill: [1], line: [0] },
+  github: { data: GithubIcon, fill: [1], line: [0] },
+  linkedin: { data: Linkedin01Icon, fill: [3], cut: [0, 1, 2] },
+  instagram: { data: InstagramIcon, fill: [0], cut: [1, 2] },
+  sparkle: { data: SparklesIcon, fill: [0, 1] },
+} satisfies Record<string, Recipe>;
+
 interface Props {
   name: keyof typeof icons;
   size?: number;
   class?: string;
 }
 const { name, size = 20, class: className } = Astro.props;
-const paths = icons[name].map(([, attributes]) => attributes);
-// Custom duotone treatment of MIT-licensed free paths, not the Pro icon set.
-const tones: Partial<Record<keyof typeof icons, number>> = {
-  mail: 1, resume: 2, calculator: 4, star: 0, computer: 1,
-  github: 1, linkedin: 3, instagram: 0,
-};
-const tone = tones[name];
-const svgAttributes = (attributes: Record<string, string | number>) => Object.fromEntries(
-  Object.entries(attributes)
-    .filter(([key]) => key !== "key" && key !== "strokeWidth")
-    .map(([key, value]) => [key.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`), value]),
-);
+const r: Recipe = icons[name];
+const d = (i: number) => String(r.data[i][1].d);
+
+let fill = (r.fill ?? []).map(d);
+let cut = (r.cut ?? []).map(d);
+if (r.split) {
+  // "M…fold M…outline": the fold is cut, the outline filled.
+  const [fold, ...rest] = fill[0].split(/(?=M)/);
+  fill = [rest.join("")];
+  cut = [...cut, fold];
+}
+const line = (r.line ?? []).map(d);
+const id = uid("hi");
 ---
 
-<svg class:list={["ui-icon", className]} data-icon={name} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-  <g fill="currentColor" stroke="none" opacity="0.18">
-    {tone === undefined ? <circle cx="12" cy="12" r="7.5" /> : <path d={String(paths[tone].d)} />}
-  </g>
-  {paths.map((attributes) => <path {...svgAttributes(attributes)} />)}
+<svg class:list={["ui-icon", className]} data-icon={name} width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+  {fill.length > 0 && (
+    <>
+      <mask id={id} maskUnits="userSpaceOnUse" x="-1" y="-1" width="26" height="26">
+        {fill.map((p) => <path d={p} fill="#fff" stroke="#fff" stroke-width="1.5" stroke-linejoin="round" />)}
+        {cut.map((p) => <path d={p} stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />)}
+      </mask>
+      <rect x="-1" y="-1" width="26" height="26" fill="currentColor" mask={`url(#${id})`} />
+    </>
+  )}
+  {line.map((p) => <path d={p} stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />)}
 </svg>

@@ -9,7 +9,7 @@ const { lang } = Astro.props;
 ---
 
 <div class="tools" aria-labelledby="tools-title">
-  <h2 class="eyebrow" id="tools-title">{T.tools[lang]}</h2>
+  <h2 class="tools-title" id="tools-title">{T.tools[lang]}</h2>
   <ul class="tool-icons">
     {TOOLS.map((tool) => (
       <li title={tool.name}>
@@ -21,16 +21,22 @@ const { lang } = Astro.props;
 
 <style>
   .tools {
-    margin-top: 32px;
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
   }
-  .tools .eyebrow {
-    margin-bottom: 14px;
+  .tools-title {
+    margin: 0 0 16px;
+    color: var(--muted);
+    font-family: var(--font);
+    font-size: 14px;
+    font-weight: 400;
   }
   .tool-icons {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 16px;
+    gap: 20px;
   }
   .tool-icons picture,
   .tool-icons img {
@@ -39,5 +45,10 @@ const { lang } = Astro.props;
   .tool-icons img {
     height: 28px;
     object-fit: contain;
+  }
+  @media (max-width: 600px) {
+    .tool-icons {
+      gap: 14px;
+    }
   }
 </style>
