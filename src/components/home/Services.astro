@@ -2,6 +2,9 @@
 import { ADDONS, CAPABILITIES, COPY, PACKAGES, PROFILE, SPEEDS, type Lang } from "../../data/portfolio";
 import { T } from "../../data/home";
 import Icon from "./Icon.astro";
+import TopBar from "./TopBar.astro";
+import Rail from "./Rail.astro";
+import End from "./End.astro";
 
 interface Props {
   lang: Lang;
@@ -10,8 +13,14 @@ const { lang } = Astro.props;
 const t = (b: { en: string; es: string }) => b[lang];
 const s = COPY[lang].services;
 const q = COPY[lang].quote;
-const home = lang === "es" ? "/es/" : "/";
 const from = lang === "es" ? "Desde" : "From";
+const rail = [
+  { id: "intro", label: t(T.services) },
+  { id: "offer-title", label: s.offerTitle },
+  { id: "price-title", label: s.priceTitle },
+  { id: "quote-title", label: q.title },
+  { id: "final-title", label: t(T.contact) },
+];
 const quoteMail = `mailto:${PROFILE.email}?subject=${encodeURIComponent(lang === "es" ? "Cotización de servicios" : "Services quote")}`;
 
 /* data for the quote script */
@@ -33,32 +42,25 @@ const quoteData = {
 
 <a class="skip" href="#main">{t(T.skip)}</a>
 
-<div class="wrap">
-  <nav class="lang-bar" aria-label={t(T.langs)}>
-    <div class="lang-tabs">
-      <a href="/services/" hreflang="en" lang="en" class:list={{ on: lang === "en" }} aria-current={lang === "en" ? "page" : undefined}>English</a>
-      <a href="/es/services/" hreflang="es" lang="es" class:list={{ on: lang === "es" }} aria-current={lang === "es" ? "page" : undefined}>Español</a>
-    </div>
-  </nav>
+<Rail lang={lang} items={rail} />
 
+<div class="sheet">
+<TopBar lang={lang} page="services" />
+<div class="wrap">
   <main id="main">
     <!-- intro -->
-    <section class="fade-in">
-      <a class="back" href={home}>
-        <img src="/assets/avatar.webp?v=faab900674b4" alt="" width="28" height="28" />
-        <span>{PROFILE.name}</span>
-      </a>
+    <section id="intro" class="fade-in">
       <h1 class="page-title">{s.title}</h1>
       <div class="bio">
         <p>{s.intro}</p>
       </div>
-      <div class="contact-row">
-        <a class="contact-main" href={quoteMail}>
-          <Icon name="mail" />
+      <div class="ctas">
+        <a class="btn btn-blue" href={quoteMail}>
+          <Icon name="mail" size={18} />
           <span>{s.cta}</span>
         </a>
-        <a class="contact-alt" href="#quote">
-          <Icon name="calculator" />
+        <a class="btn btn-light" href="#quote">
+          <Icon name="calculator" size={18} />
           <span>{q.title}</span>
         </a>
       </div>
@@ -66,7 +68,7 @@ const quoteData = {
 
     <!-- what I build -->
     <section aria-labelledby="offer-title">
-      <h2 class="eyebrow" id="offer-title">{s.offerTitle}</h2>
+      <h2 class="sec-title" id="offer-title">{s.offerTitle}</h2>
       <ul class="tiles">
         {
           CAPABILITIES.map((c) => (
@@ -81,7 +83,7 @@ const quoteData = {
 
     <!-- pricing -->
     <section aria-labelledby="price-title">
-      <h2 class="eyebrow" id="price-title">{s.priceTitle}</h2>
+      <h2 class="sec-title" id="price-title">{s.priceTitle}</h2>
       <ul class="prices">
         {
           PACKAGES.map((p) => (
@@ -112,7 +114,7 @@ const quoteData = {
 
     <!-- instant quote -->
     <section id="quote" aria-labelledby="quote-title">
-      <h2 class="eyebrow" id="quote-title">{q.title}</h2>
+      <h2 class="sec-title" id="quote-title">{q.title}</h2>
       <form class="quote" data-quote={JSON.stringify(quoteData)}>
         <fieldset>
           <legend>{q.step1}</legend>
@@ -175,17 +177,19 @@ const quoteData = {
           </div>
           <ul class="quote-rows" data-rows></ul>
           <p class="note">{q.note}</p>
-          <div class="contact-row">
-            <a class="contact-main" data-send href={quoteMail}><Icon name="mail" /><span>{q.send}</span></a>
-            <button class="contact-alt" type="reset"><Icon name="refresh" /><span>{q.restart}</span></button>
+          <div class="ctas">
+            <a class="btn btn-blue" data-send href={quoteMail}><Icon name="mail" size={18} /><span>{q.send}</span></a>
+            <button class="btn btn-light" type="reset"><Icon name="refresh" size={18} /><span>{q.restart}</span></button>
           </div>
         </div>
       </form>
     </section>
 
-    <footer><a class="footer-link" href={home}><Icon name="back" size={16} />{s.back}</a> · © 2026 {PROFILE.name}</footer>
   </main>
 </div>
+</div>
+
+<End lang={lang} />
 
 <script>
   type Data = {

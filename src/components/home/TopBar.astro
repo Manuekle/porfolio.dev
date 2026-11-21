@@ -1,0 +1,39 @@
+---
+/* A quiet line at the top of the page, not fixed: the way home, Services and
+   the language. Navigation within the page lives in the rail. */
+import Icon from "./Icon.astro";
+import { T } from "../../data/home";
+import type { Lang } from "../../data/portfolio";
+
+interface Props {
+  lang: Lang;
+  page: "home" | "services";
+}
+const { lang, page } = Astro.props;
+const t = (b: { en: string; es: string }) => b[lang];
+const home = lang === "es" ? "/es/" : "/";
+const services = lang === "es" ? "/es/services/" : "/services/";
+const route = page === "services" ? "services/" : "";
+const langs = [
+  { code: "en", label: "EN", name: "English", href: `/${route}` },
+  { code: "es", label: "ES", name: "Español", href: `/es/${route}` },
+] as const;
+---
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    {page === "services" ? (
+      <a class="topbar-link" href={home}>
+        <Icon name="back" size={14} />
+        <span>Manuel</span>
+      </a>
+    ) : (
+      <a class="topbar-link" href={services}>{t(T.services)}</a>
+    )}
+    <nav class="langs" aria-label={t(T.langs)}>
+      {langs.map((l) => (
+        <a href={l.href} hreflang={l.code} lang={l.code} title={l.name} aria-label={l.name} aria-current={lang === l.code ? "page" : undefined}>{l.label}</a>
+      ))}
+    </nav>
+  </div>
+</header>

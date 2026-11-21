@@ -1,0 +1,54 @@
+---
+/* Closing band on Cue's blue surface: the last call to action, then the footer. */
+import Icon from "./Icon.astro";
+import { PROFILE, T } from "../../data/home";
+import type { Lang } from "../../data/portfolio";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = (b: { en: string; es: string }) => b[lang];
+const cv = `/assets/CV_Manuel_Erazo_${lang.toUpperCase()}.pdf`;
+const links = [
+  { label: "GitHub", href: "https://github.com/manuekle", slug: "github" },
+  { label: "LinkedIn", href: "https://linkedin.com/in/manuekle", slug: "linkedin" },
+  { label: "Instagram", href: "https://instagram.com/manudev.jsx", slug: "instagram" },
+] as const;
+---
+
+<div class="end">
+  <section class="final" aria-labelledby="final-title">
+    <div class="wrap">
+      <img class="final-avatar" src="/assets/avatar.webp?v=faab900674b4" alt="" width="88" height="88" loading="lazy" />
+      <h2 id="final-title">{t(T.endTitle)}</h2>
+      <p>{t(T.endBody)}</p>
+      <div class="ctas">
+        <a class="btn btn-white" href={`mailto:${PROFILE.email}`}>
+          <Icon name="mail" size={18} />
+          <span>{t(T.contact)}</span>
+        </a>
+        <a class="btn btn-link" href={cv} target="_blank" rel="noopener">
+          <span>{t(T.cv)}</span>
+          <Icon name="external" size={16} class="arr" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>© 2026 {PROFILE.name}</span>
+      <ul class="socials" aria-label={t(T.links)}>
+        {links.map((l) => (
+          <li>
+            <a href={l.href} target="_blank" rel="noopener me">
+              <Icon name={l.slug} size={18} />
+              <span>{l.label}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </footer>
+</div>

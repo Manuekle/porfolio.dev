@@ -17,6 +17,19 @@ export const T = {
   skip: { en: "Skip to content", es: "Saltar al contenido" },
   langs: { en: "Language", es: "Idioma" },
   now: { en: "Now", es: "Hoy" },
+  onPage: { en: "On this page", es: "En esta página" },
+  intro: { en: "Intro", es: "Inicio" },
+  agentsShort: { en: "AI agents", es: "Agentes de IA" },
+  works_short: { en: "Projects", es: "Proyectos" },
+  services: { en: "Services", es: "Servicios" },
+  agents: { en: "AI agents I've built", es: "Agentes de IA que he construido" },
+  agentsLede: { en: "Each one has a job, a name and a face.", es: "Cada uno tiene un trabajo, un nombre y una cara." },
+  agentsHint: { en: "Move your cursor, they're watching.", es: "Mueve el cursor, te están mirando." },
+  endTitle: { en: "Let's build something great.", es: "Construyamos algo grande." },
+  endBody: {
+    en: "Open to remote roles and freelance projects. Tell me what you're building.",
+    es: "Disponible para empleo remoto y proyectos freelance. Cuéntame qué estás construyendo.",
+  },
 } satisfies Record<string, Bilingual>;
 
 /** The same curated SVGL icons used in the GitHub profile README. */
@@ -147,6 +160,101 @@ export const WORK_GROUPS = [
     return { ...p, href: p.liveLabel ? p.sourceUrl : p.liveUrl ?? p.sourceUrl };
   }),
 }));
+
+export type Agent = {
+  /** Seed for the blobatar: the same name always draws the same creature. */
+  seed: string;
+  name: string;
+  role: Bilingual;
+  desc: Bilingual;
+  tag: Bilingual;
+  /** Swatch from pale (0) to ink (0.999), so the set reads blue, black and white. */
+  tone: number;
+  /** Pose from blobatar/expression. */
+  mood: "idle" | "happy" | "thinking" | "wink" | "smug" | "surprised";
+  href?: string;
+};
+
+/** Agents I have built, each with its own face. Facts come from PROJECTS / HACKATHONS. */
+export const AGENTS: Agent[] = [
+  {
+    seed: "oruka-agent",
+    tone: 0.62,
+    name: "Oruka",
+    role: { en: "Support & sales", es: "Soporte y ventas" },
+    desc: {
+      en: "Answers customers on WhatsApp and Instagram from the business's own knowledge.",
+      es: "Responde a clientes en WhatsApp e Instagram con el conocimiento del propio negocio.",
+    },
+    tag: { en: "Private beta", es: "Beta privada" },
+    mood: "happy",
+    href: "https://www.oruka.si/en",
+  },
+  {
+    seed: "ragis-agent",
+    tone: 0.5,
+    name: "Ragis",
+    role: { en: "Document answers", es: "Respuestas de documentos" },
+    desc: {
+      en: "Reads company documents and answers with the exact page it came from.",
+      es: "Lee documentos de la empresa y responde con la página exacta de donde salió.",
+    },
+    tag: { en: "RAG", es: "RAG" },
+    mood: "thinking",
+    href: "https://ragis.app/",
+  },
+  {
+    seed: "lab10-agent",
+    tone: 0.999,
+    name: "Lab10",
+    role: { en: "Computer use", es: "Uso del computador" },
+    desc: {
+      en: "Watches a remote desktop over VNC, plans and acts under a supervisor.",
+      es: "Observa un escritorio remoto por VNC, planifica y actúa con supervisión.",
+    },
+    tag: { en: "45 / 56 tasks", es: "45 / 56 tareas" },
+    mood: "surprised",
+    href: "https://github.com/Manuekle/lab10-hack",
+  },
+  {
+    seed: "forge-agent",
+    tone: 0.97,
+    name: "Forge",
+    role: { en: "Multi-agent planning", es: "Planificación multiagente" },
+    desc: {
+      en: "Six specialists and an orchestrator critique and vote on a product brief.",
+      es: "Seis especialistas y un orquestador revisan y votan sobre un brief de producto.",
+    },
+    tag: { en: "Agents League", es: "Agents League" },
+    mood: "smug",
+    href: "https://forgems.vercel.app",
+  },
+  {
+    seed: "creagent-agent",
+    tone: 0.05,
+    name: "creagent",
+    role: { en: "Agent composer", es: "Composer de agentes" },
+    desc: {
+      en: "Composes agents from reusable skills and serves them over MCP.",
+      es: "Compone agentes con skills reutilizables y los sirve por MCP.",
+    },
+    tag: { en: "npm · MCP", es: "npm · MCP" },
+    mood: "wink",
+    href: "https://creagent.fun/demo",
+  },
+  {
+    seed: "claude-code-agent",
+    tone: 0.7,
+    name: "48h coder",
+    role: { en: "Autonomous coding", es: "Código autónomo" },
+    desc: {
+      en: "Multi-step reasoning and autonomous task execution, built in 48 hours.",
+      es: "Razonamiento multipaso y ejecución autónoma de tareas, construido en 48 horas.",
+    },
+    tag: { en: "Claude Code Hackathon", es: "Claude Code Hackathon" },
+    mood: "idle",
+  },
+];
 
 /** Verified against GitHub on November 19, 2026. Forks are not merged contributions. */
 export const CONTRIBUTIONS = [

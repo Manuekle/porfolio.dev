@@ -1,7 +1,6 @@
 ---
 import "allo-font/allo.css";
 import "../styles/home.css";
-import MeltBackground from "../components/home/MeltBackground.astro";
 
 interface Props {
   title?: string;
@@ -15,7 +14,7 @@ const {
   description =
     "Full stack developer in Bogotá building Oruka, Ragis and GymRat+. SaaS, UI/UX and AI with TypeScript, React, Next.js, Python, PostgreSQL and AWS.",
   lang = "en",
-  image = `/social/portfolio-og-${lang === "es" ? "es" : "en"}-2026-11.png`,
+  image = `/social/portfolio-og-${lang === "es" ? "es" : "en"}-2026-11-21.png`,
 } = Astro.props;
 
 const siteUrl = Astro.site ?? new URL("https://manudev.vercel.app");
@@ -23,8 +22,8 @@ const canonical = new URL(Astro.url.pathname, siteUrl);
 const ogImage = new URL(image, siteUrl);
 const ogLocale = lang === "es" ? "es_CO" : "en_US";
 const imageAlt = lang === "es"
-  ? "Manuel Erazo, desarrollador full stack — Oruka, Ragis y GymRat+"
-  : "Manuel Erazo, full stack developer — Oruka, Ragis and GymRat+";
+  ? "Manuel, desarrollador full stack en Bogotá, Colombia — productos SaaS y agentes de IA"
+  : "Manuel, full stack developer in Bogotá, Colombia — SaaS products and AI agents";
 const route = Astro.url.pathname.replace(/^\/es\/?/, "/").replace(/\/$/, "");
 const englishUrl = new URL(`${route || ""}/`, siteUrl);
 const spanishUrl = new URL(`/es${route}/`, siteUrl);
@@ -93,17 +92,17 @@ const jsonLd = {
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="color-scheme" content="light" />
-    <meta name="theme-color" content="#e7f2ff" />
+    <meta name="theme-color" content="#ffffff" />
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang="en" href={englishUrl} />
     <link rel="alternate" hreflang="es" href={spanishUrl} />
     <link rel="alternate" hreflang="x-default" href={englishUrl} />
 
     <!-- Icons / manifest -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2026-11-21" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2026-11-21" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2026-11-21" />
+    <link rel="manifest" href="/site.webmanifest?v=2026-11-21" />
 
     <!-- Self-hosted type -->
     <link rel="preload" as="font" type="font/woff2" href="/fonts/myriad-pro/regular.woff2" crossorigin />
@@ -135,7 +134,34 @@ const jsonLd = {
     <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body>
-    <MeltBackground />
     <slot />
+    <script>
+      // Sections rise in as they scroll into view; agent tiles follow one by one.
+      if (!matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) {
+        const items = [
+          ...document.querySelectorAll<HTMLElement>("main > section:not(.fade-in) > :is(h2, .agents-head, p.note)"),
+          ...document.querySelectorAll<HTMLElement>("main > section:not(.fade-in) > :is(.more, .timeline, .tiles, .prices, .quote)"),
+          ...document.querySelectorAll<HTMLElement>(".agent-grid > li, .final .wrap > *"),
+        ];
+        document.querySelectorAll<HTMLElement>(".agent-grid > li").forEach((li, i) => li.style.setProperty("--reveal-delay", `${(i % 3) * 70}ms`));
+        document.querySelectorAll<HTMLElement>(".final .wrap > *").forEach((el, i) => el.style.setProperty("--reveal-delay", `${i * 80}ms`));
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (!e.isIntersecting) continue;
+              e.target.classList.add("in");
+              io.unobserve(e.target);
+            }
+          },
+          { rootMargin: "0px 0px -8% 0px" },
+        );
+        for (const el of items) {
+          // Already on screen at load: leave it be.
+          if (el.getBoundingClientRect().top < innerHeight) continue;
+          el.classList.add("reveal");
+          io.observe(el);
+        }
+      }
+    </script>
   </body>
 </html>
