@@ -711,6 +711,31 @@ export const PROJECTS: Project[] = [
     "sourceUrl": "https://github.com/Manuekle/cue"
   },
   {
+    "id": "nxnative",
+    "name": "nxnative",
+    "year": "2026",
+    "logo": "/assets/works/nxnative/icon.png",
+    "tagline": {
+      "en": "NX Packer for Mac and NX Pad for iPhone",
+      "es": "NX Packer para Mac y NX Pad para iPhone"
+    },
+    "blurb": {
+      "en": "Built NX Packer, a Mac app that packages a game into a native Mac or iPhone app, and NX Pad, which turns an iPhone into a Wi-Fi controller, on a fork of the open-source nxnative (16.3k stars).",
+      "es": "Construí NX Packer, una app de Mac que empaqueta un juego como app nativa de Mac o iPhone, y NX Pad, que convierte un iPhone en un control por Wi-Fi, sobre un fork del proyecto open source nxnative (16.3k estrellas)."
+    },
+    "decision": {
+      "en": "NX Packer wraps the project's Python and Xcode build tools in one window: pick the source, the game and the target, then build.",
+      "es": "NX Packer reúne en una ventana las herramientas de compilación del proyecto en Python y Xcode: eliges el código, el juego y el destino, y compilas."
+    },
+    "result": {
+      "en": "NX Packer 0.1.0 released as a DMG for Apple silicon, with setup guides on a public site.",
+      "es": "NX Packer 0.1.0 publicado como DMG para Apple silicon, con guías de instalación en una web pública."
+    },
+    "stack": ["swift", "python"],
+    "liveUrl": "https://manuekle.github.io/nxnative/",
+    "sourceUrl": "https://github.com/Manuekle/nxnative"
+  },
+  {
     "id": "focus",
     "name": "Focus",
     "year": "2026",

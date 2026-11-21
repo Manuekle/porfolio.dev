@@ -21,6 +21,7 @@ LinkedIn: https://linkedin.com/in/manuekle
 ## Mobile apps
 - KanaGO! — native iPhone Japanese-learning app with SwiftUI, spaced review and WidgetKit; App Store release pending — https://kanago.vercel.app/
 - Cue — native teleprompter for Mac, iPhone and iPad — https://manuekle.github.io/cue/
+- nxnative — NX Packer (Mac app that packages a game into a native Mac or iPhone app) and NX Pad (iPhone as a Wi-Fi controller), built on a fork of the open-source nxnative (16.3k stars) — https://manuekle.github.io/nxnative/
 - ButterflyAR — Flutter and Dart educational augmented reality — https://github.com/Manuekle/butterflyar-mobile
 
 ## Hackathon projects
